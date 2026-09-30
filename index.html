@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="tr" dir="ltr">
+<html lang="tr" dir="ltr" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <!-- Sekme İkonu (Favicon) -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Ccircle cx='256' cy='256' r='236' fill='%23F0F0D0' stroke='%23504840' stroke-width='24'/%3E%3Cellipse cx='256' cy='256' rx='98' ry='236' fill='none' stroke='%23504840' stroke-width='24'/%3E%3Cline x1='24' y1='170' x2='488' y2='170' stroke='%23504840' stroke-width='24'/%3E%3Cline x1='24' y1='342' x2='488' y2='342' stroke='%23504840' stroke-width='24'/%3E%3Cline x1='256' y1='20' x2='256' y2='492' stroke='%23504840' stroke-width='24'/%3E%3C/svg%3E">
-<!-- SEO / Search Engine Metadata -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Ccircle cx='256' cy='256' r='236' fill='%23F0F0D0' stroke='%23504840' stroke-width='24'/%3E%3Cellipse cx='256' cy='256' rx='98' ry='236' fill='none' stroke='%23504840' stroke-width='24'/%3E%3Cline x1='24' y1='170' x2='488' y2='170' stroke='%23504840' stroke-width='24'/%3E%3Cline x1='24' y1='342' x2='488' y2='342' stroke='%23504840' stroke-width='24'/%3E%3Cline x1='256' y1='20' x2='256' y2='492' stroke='%23504840' stroke-width='24'/%3E%3C/svg%3E">
+  
+  <!-- SEO / Search Engine Metadata -->
   <meta name="description" content="Yusuf Başaran — IT / Bilgi İşlem. Yazılım, web geliştirme, donanım arıza tespiti ve dijital okuryazarlık alanlarında teknik yetkinliklere sahip bilişim mezunu.">
   <meta name="author" content="Yusuf Başaran">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="theme-color" content="#E5E8E0">
+  <meta name="theme-color" content="#0d1117">
   <link rel="canonical" href="https://yusufbasaran.dev/">
 
-  <!-- Open Graph: LinkedIn, WhatsApp, Facebook and other crawlers -->
+  <!-- Open Graph -->
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Yusuf Başaran — IT / Bilgi İşlem">
   <meta property="og:description" content="Yusuf Başaran'ın bilişim, yazılım, web geliştirme ve teknik yetkinliklerini içeren kişisel özgeçmişi.">
@@ -34,7 +36,7 @@
   <meta name="twitter:image" content="/profile.jpg">
   <meta name="twitter:image:alt" content="Yusuf Başaran">
 
-  <!-- JSON-LD / Schema.org: Person + WebPage -->
+  <!-- JSON-LD / Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -49,7 +51,7 @@
         "description": "Yazılım, web geliştirme ve donanım arıza tespiti alanlarında temel teknik yetkinliklere sahip bilişim mezunu.",
         "email": "mailto:yusufbasaran63@hotmail.com",
         "telephone": "+905338493063",
-        "url": " https://yusufbasaran.dev/",
+        "url": "https://yusufbasaran.dev/",
         "image": "/profile.jpg",
         "address": {
           "@type": "PostalAddress",
@@ -89,431 +91,1149 @@
     ]
   }
   </script>
-<title>Yusuf Başaran — IT / Bilgi İşlem</title>
-<link rel="preload" as="image" href="/profile.jpg" type="image/jpeg">
+
+  <title>Yusuf Başaran — IT / Bilgi İşlem</title>
+  <link rel="preload" as="image" href="/profile.jpg" type="image/jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #E5E8E0;
-    --bg-panel: #F6F6F0;
-    --ink: #1E2A22;
-    --ink-soft: #4B5A50;
-    --line: #C6CCBD;
-    --copper: #A85A24;
-    --copper-soft: #C97A3F;
-    --pine: #3C6B52;
-    --shadow: rgba(30, 42, 34, 0.08);
-  }
-  :root:not([data-theme="light"]) {
-    @media (prefers-color-scheme: dark) {
-      --bg: #14181A;
-      --bg-panel: #1B211E;
-      --ink: #E9ECE4;
-      --ink-soft: #A6B0A3;
-      --line: #333D36;
-      --copper: #E08A47;
-      --copper-soft: #C97A3F;
-      --pine: #6FA98A;
-      --shadow: rgba(0, 0, 0, 0.35);
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --bg-panel: rgba(22, 29, 43, 0.7);
+      --bg-panel-hover: rgba(30, 41, 59, 0.85);
+      --ink: #f1f5f9;
+      --ink-soft: #94a3b8;
+      --line: rgba(148, 163, 184, 0.15);
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.25);
+      --brand: #f59e0b;
+      --success: #10b981;
+      --glass-blur: blur(14px);
+      --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      --radius: 14px;
+      --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     }
-  }
-  :root[data-theme="dark"] {
-    --bg: #14181A;
-    --bg-panel: #1B211E;
-    --ink: #E9ECE4;
-    --ink-soft: #A6B0A3;
-    --line: #333D36;
-    --copper: #E08A47;
-    --copper-soft: #C97A3F;
-    --pine: #6FA98A;
-    --shadow: rgba(0, 0, 0, 0.35);
-  }
 
-  * { box-sizing: border-box; }
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --bg-panel: rgba(255, 255, 255, 0.85);
+      --bg-panel-hover: rgba(255, 255, 255, 0.98);
+      --ink: #0f172a;
+      --ink-soft: #64748b;
+      --line: rgba(100, 116, 139, 0.18);
+      --accent: #0284c7;
+      --accent-glow: rgba(2, 132, 199, 0.15);
+      --brand: #d97706;
+      --success: #059669;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+    }
 
-  html, body {
-    margin: 0;
-    padding: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Work Sans', sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  body {
-    display: flex;
-    justify-content: center;
-    padding: 64px 24px 96px;
-  }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  @media (max-width: 640px) {
-    body { padding: 36px 16px 64px; }
-  }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 16px 80px;
+      position: relative;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
-  .sheet {
-    width: 100%;
-    max-width: 760px;
-  }
+    /* Arkaplan Işık Efektleri */
+    body::before, body::after {
+      content: "";
+      position: fixed;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      filter: blur(120px);
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.15;
+    }
+    body::before {
+      top: -100px;
+      right: -100px;
+      background: var(--accent);
+    }
+    body::after {
+      bottom: -100px;
+      left: -100px;
+      background: var(--brand);
+    }
 
-  .id-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 24px;
-    padding-bottom: 28px;
-    border-bottom: 2px solid var(--ink);
-  }
+    .container {
+      width: 100%;
+      max-width: 820px;
+      margin: 0 auto;
+    }
 
-  .id-photo {
-    width: 108px;
-    height: 108px;
-    border-radius: 4px;
-    object-fit: cover;
-    flex-shrink: 0;
-    filter: grayscale(1) contrast(1.05);
-    border: 1px solid var(--line);
-  }
+    /* Üst Araç Çubuğu / Navigasyon */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background: var(--bg-panel);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--line);
+      border-radius: 100px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 16px;
+      z-index: 50;
+    }
 
-  .id-text h1 {
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    font-size: clamp(2.1rem, 6vw, 3.1rem);
-    line-height: 1;
-    margin: 0 0 8px;
-    letter-spacing: -0.01em;
-  }
+    .nav-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--success);
+    }
 
-  .id-text .role {
-    font-size: 1rem;
-    color: var(--copper);
-    font-weight: 600;
-  }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--success);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--success);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
 
-  @media (max-width: 480px) {
-    .id-row { flex-direction: column-reverse; align-items: flex-start; }
-  }
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
 
-  .meta-strip {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px 0;
-    margin-top: 22px;
-    font-size: 0.92rem;
-    color: var(--ink-soft);
-  }
+    .btn-icon {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .btn-icon:hover {
+      background: var(--bg-panel-hover);
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
 
-  .meta-strip span {
-    padding: 0 16px;
-    border-right: 1px solid var(--line);
-  }
-  .meta-strip span:first-child { padding-left: 0; }
-  .meta-strip span:last-child { border-right: none; }
+    /* Profil Başlık Kartı */
+    .hero-card {
+      background: var(--bg-panel);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 36px;
+      box-shadow: var(--shadow);
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
 
-  .meta-strip a { color: var(--ink-soft); text-decoration: none; }
-  .meta-strip a:hover { color: var(--copper); }
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--brand));
+    }
 
-  section {
-    margin-top: 46px;
-  }
+    .avatar-wrapper {
+      position: relative;
+      flex-shrink: 0;
+    }
 
-  h2 {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    font-size: 1.4rem;
-    margin: 0 0 18px;
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-  }
+    .avatar-img {
+      width: 124px;
+      height: 124px;
+      border-radius: 20px;
+      object-fit: cover;
+      display: block;
+      border: 2px solid var(--line);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
 
-  h2::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: var(--line);
-    transform: translateY(-4px);
-  }
+    .hero-card:hover .avatar-img {
+      border-color: var(--accent);
+      transform: scale(1.02);
+    }
 
-  .about p {
-    font-size: 1.02rem;
-    line-height: 1.7;
-    max-width: 62ch;
-    color: var(--ink);
-    margin: 0;
-  }
+    .hero-content {
+      flex: 1;
+    }
 
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px 24px;
-  }
-  @media (max-width: 480px) {
-    .skills-grid { grid-template-columns: 1fr; }
-  }
+    .hero-content h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
 
-  .skill {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--line);
-    font-size: 0.98rem;
-  }
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-glow);
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
 
-  .skill::before {
-    content: "";
-    width: 7px;
-    height: 7px;
-    background: var(--pine);
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
+    .contact-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
 
-  .edu-row {
-    display: flex;
-    gap: 24px;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .edu-row:last-child { border-bottom: none; }
+    .chip-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.84rem;
+      padding: 7px 14px;
+      background: rgba(148, 163, 184, 0.08);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink-soft);
+      text-decoration: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: var(--transition);
+    }
 
-  .edu-year {
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    color: var(--copper);
-    flex-shrink: 0;
-    width: 108px;
-    font-size: 0.98rem;
-  }
+    .chip-btn:hover {
+      background: var(--bg-panel-hover);
+      color: var(--ink);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
 
-  .edu-body strong { display: block; font-weight: 600; margin-bottom: 2px; }
-  .edu-body span { color: var(--ink-soft); font-size: 0.94rem; }
+    .chip-btn svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
 
-  .exp-card {
-    background: var(--bg-panel);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 24px 26px;
-    box-shadow: 0 1px 0 var(--shadow);
-  }
+    /* Eylem Butonları Paneli */
+    .quick-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
 
-  .exp-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 6px 16px;
-    margin-bottom: 4px;
-  }
+    .action-btn {
+      flex: 1;
+      min-width: 170px;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 1px solid var(--line);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: var(--transition);
+      text-decoration: none;
+      font-family: inherit;
+    }
 
-  .exp-head strong {
-    font-size: 1.08rem;
-    font-weight: 600;
-  }
+    .action-btn.primary {
+      background: var(--accent);
+      color: #0b0f17;
+      border-color: var(--accent);
+      box-shadow: 0 4px 14px var(--accent-glow);
+    }
+    .action-btn.primary:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
 
-  .exp-head .duration {
-    font-size: 0.85rem;
-    color: var(--pine);
-    font-weight: 600;
-    background: color-mix(in srgb, var(--pine) 14%, transparent);
-    padding: 3px 10px;
-    border-radius: 100px;
-  }
+    .action-btn.secondary {
+      background: var(--bg-panel);
+      color: var(--ink);
+    }
+    .action-btn.secondary:hover {
+      background: var(--bg-panel-hover);
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
 
-  .exp-org {
-    color: var(--ink-soft);
-    font-size: 0.94rem;
-    margin-bottom: 16px;
-  }
+    /* Bölüm Başlıkları */
+    section {
+      margin-bottom: 36px;
+    }
 
-  .exp-card ul {
-    margin: 0;
-    padding-left: 18px;
-  }
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--ink);
+    }
 
-  .exp-card li {
-    margin-bottom: 10px;
-    line-height: 1.6;
-    font-size: 0.97rem;
-  }
-  .exp-card li:last-child { margin-bottom: 0; }
-  .exp-card li::marker { color: var(--copper-soft); }
+    .section-title svg {
+      width: 20px;
+      height: 20px;
+      color: var(--accent);
+    }
 
-  .refs {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-  }
-  @media (max-width: 480px) {
-    .refs { grid-template-columns: 1fr; }
-  }
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
 
-  .ref-card {
-    border-left: 2px solid var(--copper);
-    padding: 4px 0 4px 16px;
-  }
+    /* Hakkımda Metin Bloğu */
+    .about-card {
+      background: var(--bg-panel);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      line-height: 1.75;
+      color: var(--ink-soft);
+      font-size: 0.97rem;
+      box-shadow: var(--shadow);
+    }
 
-  .ref-card strong { display: block; font-size: 1rem; font-weight: 600; }
-  .ref-card span { display: block; color: var(--ink-soft); font-size: 0.9rem; margin-top: 2px; }
-  .ref-card a { color: inherit; text-decoration: none; }
-  .ref-card a:hover { color: var(--copper); }
+    /* Beceriler Bölümü & Filtreler */
+    .skills-filter {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
 
-  footer {
-    margin-top: 56px;
-    padding-top: 20px;
-    border-top: 1px solid var(--line);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.85rem;
-    color: var(--ink-soft);
-  }
+    .filter-btn {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--ink-soft);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
 
-  .print-btn {
-    background: none;
-    border: 1px solid var(--line);
-    color: var(--ink);
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.85rem;
-    padding: 8px 16px;
-    border-radius: 100px;
-    cursor: pointer;
-  }
-  .print-btn:hover { border-color: var(--copper); color: var(--copper); }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--accent-glow);
+      color: var(--accent);
+      border-color: var(--accent);
+    }
 
-  @media print {
-    body { padding: 0; background: #fff; }
-    .print-btn { display: none; }
-    .exp-card { box-shadow: none; }
-  }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
 
-  :focus-visible {
-    outline: 2px solid var(--copper);
-    outline-offset: 2px;
-  }
+    .skill-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: var(--transition);
+      cursor: default;
+    }
 
-  @media (prefers-reduced-motion: no-preference) {
-    .sheet { animation: rise 0.5s ease-out; }
-  }
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-</style>
+    .skill-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      background: var(--bg-panel-hover);
+      box-shadow: 0 6px 20px -6px var(--accent-glow);
+    }
+
+    .skill-icon-box {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--accent-glow);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .skill-info strong {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .skill-info span {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      margin-top: 2px;
+    }
+
+    /* Zaman Çizelgesi (Deneyim ve Eğitim) */
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 10px;
+      bottom: 10px;
+      width: 2px;
+      background: var(--line);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 24px;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    .timeline-dot {
+      position: absolute;
+      left: -28px;
+      top: 22px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 3px solid var(--accent);
+      transition: var(--transition);
+    }
+
+    .timeline-item:hover .timeline-dot {
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
+    }
+
+    .card {
+      background: var(--bg-panel);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+
+    .card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      background: var(--bg-panel-hover);
+      transform: translateY(-2px);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-size: 1.06rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .badge-date {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-glow);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    .card-subtitle {
+      font-size: 0.92rem;
+      color: var(--brand);
+      font-weight: 500;
+      margin-bottom: 14px;
+    }
+
+    .card-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .card-list li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 8px;
+      font-size: 0.93rem;
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
+    .card-list li:last-child { margin-bottom: 0; }
+
+    .card-list li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 1rem;
+    }
+
+    /* Referanslar Grid */
+    .refs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .ref-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+      transition: var(--transition);
+    }
+
+    .ref-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .ref-card strong {
+      font-size: 1.05rem;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .ref-card span {
+      font-size: 0.86rem;
+      color: var(--ink-soft);
+    }
+
+    .ref-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      margin-top: 4px;
+    }
+    .ref-action:hover {
+      text-decoration: underline;
+    }
+
+    /* Altbilgi */
+    footer {
+      margin-top: 24px;
+      padding: 24px 0 0;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.86rem;
+      color: var(--ink-soft);
+    }
+
+    /* Bildirim Toast Pop-up */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0f172a;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 100px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1000;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Scroll Reveal Animasyon Sınıfları */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Başa Dön Butonu */
+    .scroll-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--bg-panel);
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--line);
+      color: var(--ink);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.8);
+      transition: var(--transition);
+      z-index: 90;
+      box-shadow: var(--shadow);
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+
+    .scroll-top:hover {
+      background: var(--accent);
+      color: #0b0f17;
+      border-color: var(--accent);
+    }
+
+    /* Mobil Düzenleme */
+    @media (max-width: 680px) {
+      .hero-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 28px 20px;
+        gap: 20px;
+      }
+      .contact-chips {
+        justify-content: center;
+      }
+      .refs-grid {
+        grid-template-columns: 1fr;
+      }
+      .action-btn {
+        width: 100%;
+      }
+    }
+
+    /* Yazdırma Modu */
+    @media print {
+      body {
+        background: #fff !important;
+        color: #000 !important;
+        padding: 0 !important;
+      }
+      body::before, body::after, .top-bar, .quick-actions, .skills-filter, .scroll-top, .toast, .btn-icon {
+        display: none !important;
+      }
+      .hero-card, .card, .about-card, .ref-card {
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 10px 0 !important;
+      }
+      .hero-card { border-bottom: 2px solid #000 !important; }
+      .timeline::before { background: #ccc !important; }
+      .timeline-dot { border-color: #000 !important; background: #fff !important; }
+      .badge-date, .hero-badge { color: #000 !important; border: 1px solid #ccc !important; background: none !important; }
+      .card-subtitle { color: #333 !important; }
+    }
+  </style>
 </head>
 <body>
-  <main class="sheet">
-    <div class="id-row">
-      <div class="id-text">
+
+  <div class="container">
+    <!-- Üst Araç Çubuğu -->
+    <header class="top-bar">
+      <div class="nav-status">
+        <span class="status-dot"></span>
+        <span>İş / Proje Fırsatlarına Açık</span>
+      </div>
+      <div class="nav-actions">
+        <!-- Tema Değiştirici Buton -->
+        <button class="btn-icon" id="themeToggle" title="Tema Değiştir" aria-label="Tema Değiştir">
+          <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <!-- Dinamik İkon JS ile güncellenir -->
+          </svg>
+        </button>
+        <!-- Yazdır Butonu -->
+        <button class="btn-icon" onclick="window.print()" title="Yazdır / PDF Kaydet" aria-label="Yazdır">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Profil Başlığı (Hero) -->
+    <main class="hero-card reveal">
+      <div class="avatar-wrapper">
+        <img class="avatar-img" width="124" height="124" src="/profile.jpg" alt="Yusuf Başaran" fetchpriority="high">
+      </div>
+      <div class="hero-content">
         <h1>Yusuf Başaran</h1>
-        <div class="role">IT / Bilgi İşlem</div>
-        <div class="meta-strip">
-          <span><a href="tel:+905338493063">+90 533 849 30 63</a></span>
-          <span><a href="mailto:yusufbasaran63@hotmail.com">yusufbasaran63@hotmail.com</a></span>
-          <span>Gazimağusa / Kıbrıs</span>
+        <span class="hero-badge">IT / Bilgi İşlem</span>
+        
+        <div class="contact-chips">
+          <button class="chip-btn" onclick="copyToClipboard('+905338493063', 'Telefon numarası kopyalandı!')" title="Tıkla ve Kopyala">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>+90 533 849 30 63</span>
+          </button>
+
+          <button class="chip-btn" onclick="copyToClipboard('yusufbasaran63@hotmail.com', 'E-posta adresi kopyalandı!')" title="Tıkla ve Kopyala">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>yusufbasaran63@hotmail.com</span>
+          </button>
+
+          <span class="chip-btn" style="cursor: default;">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Gazimağusa / Kıbrıs</span>
+          </span>
         </div>
       </div>
-      <img class="id-photo" width="108" height="108" decoding="async" fetchpriority="high" alt="Yusuf Başaran" src="/profile.jpg">
+    </main>
+
+    <!-- Hızlı Eylem Butonları -->
+    <div class="quick-actions reveal">
+      <a href="mailto:yusufbasaran63@hotmail.com" class="action-btn primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        <span>İletişime Geç</span>
+      </a>
+
+      <button onclick="downloadVCard()" class="action-btn secondary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        <span>Kartviziti Kaydet (.vcf)</span>
+      </button>
+
+      <button onclick="window.print()" class="action-btn secondary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        <span>PDF Olarak İndir</span>
+      </button>
     </div>
 
-    <section class="about">
-      <h2>Hakkımda</h2>
-      <p>Doğu Akdeniz Üniversitesi Bilgisayar Programcılığı bölümünden mezun; yazılım, web geliştirme ve donanım arıza tespiti konularında temel teknik yetkinliklere sahip bir bilişim mezunuyum. Farklı iş kollarında edindiğim çalışma tecrübeleri sayesinde sorumluluk bilinci yüksek, güçlü iletişim kurabilen ve takım çalışmasına yatkın bir profile sahibim. Analitik düşünce yapım ve sürekli öğrenme tutkumla, kendimi sürekli geliştirerek yazılım dünyasında kalıcı ve başarılı adımlar atmayı hedefliyorum.</p>
-    </section>
-
-    <section class="skills">
-      <h2>Beceriler</h2>
-      <div class="skills-grid">
-        <div class="skill">Yazılım Geliştirme</div>
-        <div class="skill">Donanım Uzmanlığı</div>
-        <div class="skill">Problem Çözme</div>
-        <div class="skill">İletişim ve Uyum</div>
-        <div class="skill">Öğrenme Hızı</div>
-        <div class="skill">Sorumluluk Bilinci</div>
+    <!-- Hakkımda Bölümü -->
+    <section class="reveal">
+      <h2 class="section-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span>Hakkımda</span>
+      </h2>
+      <div class="about-card">
+        Doğu Akdeniz Üniversitesi Bilgisayar Programcılığı bölümünden mezun; yazılım, web geliştirme ve donanım arıza tespiti konularında temel teknik yetkinliklere sahip bir bilişim mezunuyum. Farklı iş kollarında edindiğim çalışma tecrübeleri sayesinde sorumluluk bilinci yüksek, güçlü iletişim kurabilen ve takım çalışmasına yatkın bir profile sahibim. Analitik düşünce yapım ve sürekli öğrenme tutkumla, kendimi sürekli geliştirerek yazılım dünyasında kalıcı ve başarılı adımlar atmayı hedefliyorum.
       </div>
     </section>
 
-    <section class="education">
-      <h2>Eğitim</h2>
-      <div class="edu-row">
-        <div class="edu-year">2024–2026</div>
-        <div class="edu-body">
-          <strong>Doğu Akdeniz Üniversitesi</strong>
-          <span>Bilgisayar Programcılığı (Önlisans)</span>
-        </div>
+    <!-- Beceriler Bölümü (Filtrelenebilir) -->
+    <section class="reveal">
+      <h2 class="section-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        <span>Beceriler ve Uzmanlıklar</span>
+      </h2>
+      
+      <div class="skills-filter">
+        <button class="filter-btn active" onclick="filterSkills('all')">Tümü</button>
+        <button class="filter-btn" onclick="filterSkills('tech')">Yazılım & Donanım</button>
+        <button class="filter-btn" onclick="filterSkills('soft')">Kişisel Yetkinlikler</button>
       </div>
-      <div class="edu-row">
-        <div class="edu-year">Yabancı Dil</div>
-        <div class="edu-body">
-          <strong>İngilizce</strong>
-          <span>A1 seviyesi</span>
+
+      <div class="skills-grid" id="skillsGrid">
+        <div class="skill-card" data-cat="tech">
+          <div class="skill-icon-box">💻</div>
+          <div class="skill-info">
+            <strong>Yazılım Geliştirme</strong>
+            <span>Web & Temel Algoritmalar</span>
+          </div>
+        </div>
+
+        <div class="skill-card" data-cat="tech">
+          <div class="skill-icon-box">⚙️️</div>
+          <div class="skill-info">
+            <strong>Donanım Uzmanlığı</strong>
+            <span>Arıza Tespiti & Montaj</span>
+          </div>
+        </div>
+
+        <div class="skill-card" data-cat="tech">
+          <div class="skill-icon-box">📊</div>
+          <div class="skill-info">
+            <strong>CRM & Proje Yönetimi</strong>
+            <span>Bitrix24, Google Workspace</span>
+          </div>
+        </div>
+
+        <div class="skill-card" data-cat="soft">
+          <div class="skill-icon-box">🧩</div>
+          <div class="skill-info">
+            <strong>Problem Çözme</strong>
+            <span>Analitik & Hızlı Çözümleme</span>
+          </div>
+        </div>
+
+        <div class="skill-card" data-cat="soft">
+          <div class="skill-icon-box">🤝</div>
+          <div class="skill-info">
+            <strong>İletişim ve Uyum</strong>
+            <span>Takım Çalışması & İfade</span>
+          </div>
+        </div>
+
+        <div class="skill-card" data-cat="soft">
+          <div class="skill-icon-box">🚀</div>
+          <div class="skill-info">
+            <strong>Öğrenme Hızı</strong>
+            <span>Teknoloji Adaptasyonu</span>
+          </div>
+        </div>
+
+        <div class="skill-card" data-cat="soft">
+          <div class="skill-icon-box">🎯</div>
+          <div class="skill-info">
+            <strong>Sorumluluk Bilinci</strong>
+            <span>Görev Takibi & Disiplin</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="experience">
-      <h2>Deneyim</h2>
-      <div class="exp-card">
-        <div class="exp-head">
-          <strong>IT / Bilgi İşlem Stajyeri</strong>
-          <span class="duration">2025 · 40 iş günü</span>
-        </div>
-        <div class="exp-org">Fumel Software</div>
-        <ul>
-          <li>Bitrix24 ve Google Workspace araçlarını kullanarak proje yönetimi, görev takibi ve kurumsal dosyalama süreçlerini yürüttüm.</li>
-          <li>CRM altyapısı, müşteri ilişkileri süreçleri ve veri analizi uygulamaları üzerinde çalışarak operasyonel iş akışlarına destek oldum.</li>
-        </ul>
-      </div>
+    <!-- Deneyim Bölümü (Timeline) -->
+    <section class="reveal">
+      <h2 class="section-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+        <span>Deneyim</span>
+      </h2>
 
-      <div class="exp-card">
-        <div class="exp-head">
-          <strong>Gönüllü Eğitmen</strong>
-          <span class="duration">2019 – 2024</span>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">IT / Bilgi İşlem Stajyeri</span>
+              <span class="badge-date">2025 · 40 İş Günü</span>
+            </div>
+            <div class="card-subtitle">Fumel Software</div>
+            <ul class="card-list">
+              <li>Bitrix24 ve Google Workspace araçlarını kullanarak proje yönetimi, görev takibi ve kurumsal dosyalama süreçlerini yürüttüm.</li>
+              <li>CRM altyapısı, müşteri ilişkileri süreçleri ve veri analizi uygulamaları üzerinde çalışarak operasyonel iş akışlarına destek oldum.</li>
+            </ul>
+          </div>
         </div>
-        <div class="exp-org">Sulukule Gönüllüleri Derneği</div>
-        <ul>
-          <li>Dernek bünyesinde çocuklara yönelik bilgisayar eğitimleri ve dijital okuryazarlık atölyeleri düzenledim.</li>
-          <li>Düzenli olarak yürüttüğüm atölyelerle çocukların temel bilgisayar becerilerini geliştirmesine katkı sağladım.</li>
-          <li>Eğitim materyallerini çocukların seviyesine uygun şekilde sadeleştirerek anlatım pratiklerimi geliştirdim.</li>
-        </ul>
-      </div>
 
-      <div class="exp-card">
-        <div class="exp-head">
-          <strong>Gönüllü Eğitmen</strong>
-          <span class="duration">Gönüllü</span>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">Gönüllü Eğitmen</span>
+              <span class="badge-date">2019 – 2024</span>
+            </div>
+            <div class="card-subtitle">Sulukule Gönüllüleri Derneği</div>
+            <ul class="card-list">
+              <li>Dernek bünyesinde çocuklara yönelik bilgisayar eğitimleri ve dijital okuryazarlık atölyeleri düzenledim.</li>
+              <li>Düzenli olarak yürüttüğüm atölyelerle çocukların temel bilgisayar becerilerini geliştirmesine katkı sağladım.</li>
+              <li>Eğitim materyallerini çocukların seviyesine uygun şekilde sadeleştirerek anlatım pratiklerimi geliştirdim.</li>
+            </ul>
+          </div>
         </div>
-        <div class="exp-org">İstanbul Bilgi Üniversitesi — BİLGİ Çocuk Çalışmaları Birimi</div>
-        <ul>
-          <li>Birim bünyesinde çocuklara bilgisayar kullanımı ve dijital okuryazarlık üzerine eğitimler verdim.</li>
-          <li>Düzenlediğim atölyelerle çocukların teknolojiyle güvenli ve bilinçli şekilde tanışmasına katkı sağladım.</li>
-          <li>Yaş gruplarına uygun, uygulamalı eğitim içerikleri hazırlayıp sundum.</li>
-        </ul>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">Gönüllü Eğitmen</span>
+              <span class="badge-date">Gönüllü</span>
+            </div>
+            <div class="card-subtitle">İstanbul Bilgi Üniversitesi — BİLGİ Çocuk Çalışmaları Birimi</div>
+            <ul class="card-list">
+              <li>Birim bünyesinde çocuklara bilgisayar kullanımı ve dijital okuryazarlık üzerine eğitimler verdim.</li>
+              <li>Düzenlediğim atölyelerle çocukların teknolojiyle güvenli ve bilinçli şekilde tanışmasına katkı sağladım.</li>
+              <li>Yaş gruplarına uygun, uygulamalı eğitim içerikleri hazırlayıp sundum.</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="references">
-      <h2>Referanslar</h2>
-      <div class="refs">
+    <!-- Eğitim Bölümü -->
+    <section class="reveal">
+      <h2 class="section-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+        <span>Eğitim & Yabancı Dil</span>
+      </h2>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">Doğu Akdeniz Üniversitesi</span>
+              <span class="badge-date">2024 – 2026</span>
+            </div>
+            <div class="card-subtitle">Bilgisayar Programcılığı (Önlisans)</div>
+            <p style="font-size: 0.92rem; color: var(--ink-soft); line-height: 1.6;">Yazılım geliştirme temelleri, algoritma tasarımı, veritabanı yönetimi ve donanım teknolojileri üzerine kapsamlı eğitim.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">Yabancı Dil: İngilizce</span>
+              <span class="badge-date">Temel Düzey</span>
+            </div>
+            <div class="card-subtitle">A1 Seviyesi</div>
+            <p style="font-size: 0.92rem; color: var(--ink-soft); line-height: 1.6;">Mesleki terimleri anlama ve temel teknik dokümantasyon okuma becerisi.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Referanslar -->
+    <section class="reveal">
+      <h2 class="section-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        <span>Referanslar</span>
+      </h2>
+      <div class="refs-grid">
         <div class="ref-card">
-          <strong>Taylan Karaman</strong>
-          <span>Fumel Software</span>
-          <span><a href="tel:+905525423983">+90 552 542 39 83</a></span>
+          <div>
+            <strong>Taylan Karaman</strong>
+            <span>Fumel Software</span>
+          </div>
+          <a class="ref-action" href="tel:+905525423983">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>+90 552 542 39 83</span>
+          </a>
         </div>
+
         <div class="ref-card">
-          <strong>Cem  Demirayak</strong>
-          <span>Sulukule Gönüllüleri Derneği</span>
-          <span><a href="tel:+905382695269">+90 538 269 52 69</a></span>
+          <div>
+            <strong>Cem Demirayak</strong>
+            <span>Sulukule Gönüllüleri Derneği</span>
+          </div>
+          <a class="ref-action" href="tel:+905382695269">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>+90 538 269 52 69</span>
+          </a>
         </div>
       </div>
     </section>
 
+    <!-- Altbilgi -->
     <footer>
-      <span>Yusuf Başaran — Özgeçmiş</span>
-      <button class="print-btn" onclick="window.print()">Yazdır / PDF olarak kaydet</button>
+      <span>© Yusuf Başaran — Tüm Hakları Saklıdır.</span>
+      <span>Güncellenme: 2026</span>
     </footer>
-  </main>
+  </div>
+
+  <!-- Başa Dön Butonu -->
+  <button class="scroll-top" id="scrollTopBtn" onclick="scrollToTop()" title="Başa Dön" aria-label="Başa Dön">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <!-- Kopyalama Toast Bildirimi -->
+  <div class="toast" id="toast">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <span id="toastMsg">Panoya kopyalandı!</span>
+  </div>
+
+  <!-- İşlevsel Scriptler -->
+  <script>
+    // 1. Tema Yönetimi (Dark / Light)
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const root = document.documentElement;
+
+    function getPreferredTheme() {
+      const stored = localStorage.getItem('theme');
+      if (stored) return stored;
+      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+
+    function applyTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      if (theme === 'light') {
+        themeIcon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+      } else {
+        themeIcon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+      }
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme') || 'dark';
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
+    applyTheme(getPreferredTheme());
+
+    // 2. Panoya Kopyalama ve Toast Gösterimi
+    function copyToClipboard(text, message) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => showToast(message));
+      } else {
+        const tempInput = document.createElement('input');
+        tempInput.value = text;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        showToast(message);
+      }
+    }
+
+    let toastTimeout;
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    // 3. vCard (.vcf) İndirici
+    function downloadVCard() {
+      const vcardData = [
+        'BEGIN:VCARD',
+        'VERSION:3.0',
+        'N:Başaran;Yusuf;;;',
+        'FN:Yusuf Başaran',
+        'TITLE:IT / Bilgi İşlem',
+        'TEL;TYPE=CELL:+905338493063',
+        'EMAIL;TYPE=INTERNET:yusufbasaran63@hotmail.com',
+        'URL:https://yusufbasaran.dev/',
+        'ADR;TYPE=HOME:;;Gazimağusa;Kıbrıs;;;',
+        'END:VCARD'
+      ].join('\r\n');
+
+      const blob = new Blob([vcardData], { type: 'text/vcard;charset=utf-8;' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'Yusuf_Basaran_IT.vcf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast('Kartvizit indirildi!');
+    }
+
+    // 4. Beceri Filtreleme
+    function filterSkills(category) {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const cards = document.querySelectorAll('.skill-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-cat') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // 5. Scroll Reveal & Başa Dön
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
