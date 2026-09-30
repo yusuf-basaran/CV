@@ -102,7 +102,7 @@
     :root {
       --bg: #0b0f17;
       --bg-panel: rgba(22, 29, 43, 0.7);
-      --bg-panel-hover: rgba(30, 41, 59, 0.85);
+      --bg-panel-hover: rgba(30, 41, 59, 0.9);
       --ink: #f1f5f9;
       --ink-soft: #94a3b8;
       --line: rgba(148, 163, 184, 0.15);
@@ -132,9 +132,7 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       background: var(--bg);
@@ -150,7 +148,6 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* Arkaplan Işık Efektleri */
     body::before, body::after {
       content: "";
       position: fixed;
@@ -179,7 +176,7 @@
       margin: 0 auto;
     }
 
-    /* Üst Araç Çubuğu / Navigasyon */
+    /* Üst Navigasyon */
     .top-bar {
       display: flex;
       justify-content: space-between;
@@ -245,7 +242,7 @@
       transform: translateY(-2px);
     }
 
-    /* Profil Başlık Kartı */
+    /* Profil Hero Kartı */
     .hero-card {
       background: var(--bg-panel);
       backdrop-filter: var(--glass-blur);
@@ -258,8 +255,7 @@
       gap: 32px;
       align-items: center;
       position: relative;
-      overflow: hidden;
-      margin-bottom: 28px;
+      margin-bottom: 36px;
     }
 
     .hero-card::after {
@@ -322,6 +318,7 @@
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 12px;
+      align-items: center;
     }
 
     .chip-btn {
@@ -355,21 +352,95 @@
       stroke-width: 2;
     }
 
-    /* Eylem Butonları Paneli */
-    .quick-actions {
+    /* Açılır Menü (Dropdown) Kapsayıcıları */
+    .dropdown-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-wrapper .chevron-icon {
+      width: 12px;
+      height: 12px;
+      margin-left: 2px;
+      transition: transform 0.25s ease;
+      stroke-width: 2.5;
+    }
+
+    .dropdown-wrapper.active .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      min-width: 195px;
+      background: var(--bg-panel);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 6px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px) scale(0.96);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 100;
+    }
+
+    .dropdown-menu.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+
+    .dropdown-item {
+      width: 100%;
       display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 32px;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: none;
+      background: transparent;
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 0.86rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+      text-align: left;
+    }
+
+    .dropdown-item:hover {
+      background: var(--bg-panel-hover);
+      color: var(--accent);
+    }
+
+    .dropdown-item svg {
+      width: 15px;
+      height: 15px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* En Alt Eylem Butonu (Kartvizit) */
+    .bottom-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 36px;
+      margin-bottom: 20px;
     }
 
     .action-btn {
-      flex: 1;
-      min-width: 170px;
-      padding: 12px 18px;
+      width: 100%;
+      max-width: 320px;
+      padding: 13px 20px;
       border-radius: 10px;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       border: 1px solid var(--line);
       cursor: pointer;
       display: inline-flex;
@@ -379,24 +450,11 @@
       transition: var(--transition);
       text-decoration: none;
       font-family: inherit;
-    }
-
-    .action-btn.primary {
-      background: var(--accent);
-      color: #0b0f17;
-      border-color: var(--accent);
-      box-shadow: 0 4px 14px var(--accent-glow);
-    }
-    .action-btn.primary:hover {
-      filter: brightness(1.1);
-      transform: translateY(-2px);
-    }
-
-    .action-btn.secondary {
       background: var(--bg-panel);
       color: var(--ink);
     }
-    .action-btn.secondary:hover {
+
+    .action-btn:hover {
       background: var(--bg-panel-hover);
       border-color: var(--accent);
       color: var(--accent);
@@ -446,7 +504,7 @@
       box-shadow: var(--shadow);
     }
 
-    /* Beceriler Bölümü & Filtreler */
+    /* Beceriler */
     .skills-filter {
       display: flex;
       gap: 8px;
@@ -524,7 +582,7 @@
       margin-top: 2px;
     }
 
-    /* Zaman Çizelgesi (Deneyim ve Eğitim) */
+    /* Zaman Çizelgesi */
     .timeline {
       position: relative;
       padding-left: 28px;
@@ -634,7 +692,7 @@
       font-size: 1rem;
     }
 
-    /* Referanslar Grid */
+    /* Referanslar */
     .refs-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -685,7 +743,7 @@
 
     /* Altbilgi */
     footer {
-      margin-top: 24px;
+      margin-top: 10px;
       padding: 24px 0 0;
       border-top: 1px solid var(--line);
       display: flex;
@@ -697,7 +755,7 @@
       color: var(--ink-soft);
     }
 
-    /* Bildirim Toast Pop-up */
+    /* Bildirim Toast */
     .toast {
       position: fixed;
       bottom: 24px;
@@ -725,7 +783,7 @@
       opacity: 1;
     }
 
-    /* Scroll Reveal Animasyon Sınıfları */
+    /* Scroll Reveal */
     .reveal {
       opacity: 0;
       transform: translateY(20px);
@@ -773,7 +831,7 @@
       border-color: var(--accent);
     }
 
-    /* Mobil Düzenleme */
+    /* Mobil Uyum */
     @media (max-width: 680px) {
       .hero-card {
         flex-direction: column;
@@ -784,22 +842,29 @@
       .contact-chips {
         justify-content: center;
       }
+      .dropdown-menu {
+        left: 50%;
+        transform: translateX(-50%) translateY(-6px) scale(0.96);
+      }
+      .dropdown-menu.show {
+        transform: translateX(-50%) translateY(0) scale(1);
+      }
       .refs-grid {
         grid-template-columns: 1fr;
       }
       .action-btn {
-        width: 100%;
+        max-width: 100%;
       }
     }
 
-    /* Yazdırma Modu */
+    /* Baskı Modu */
     @media print {
       body {
         background: #fff !important;
         color: #000 !important;
         padding: 0 !important;
       }
-      body::before, body::after, .top-bar, .quick-actions, .skills-filter, .scroll-top, .toast, .btn-icon {
+      body::before, body::after, .top-bar, .bottom-actions, .skills-filter, .scroll-top, .toast, .btn-icon, .dropdown-menu {
         display: none !important;
       }
       .hero-card, .card, .about-card, .ref-card {
@@ -819,7 +884,7 @@
 <body>
 
   <div class="container">
-    <!-- Üst Araç Çubuğu -->
+    <!-- Üst Sabit Araç Çubuğu (Yazdır Butonu Burada Yer Almaktadır) -->
     <header class="top-bar">
       <div class="nav-status">
         <span class="status-dot"></span>
@@ -828,11 +893,9 @@
       <div class="nav-actions">
         <!-- Tema Değiştirici Buton -->
         <button class="btn-icon" id="themeToggle" title="Tema Değiştir" aria-label="Tema Değiştir">
-          <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <!-- Dinamik İkon JS ile güncellenir -->
-          </svg>
+          <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"></svg>
         </button>
-        <!-- Yazdır Butonu -->
+        <!-- Yazdır / PDF Butonu -->
         <button class="btn-icon" onclick="window.print()" title="Yazdır / PDF Kaydet" aria-label="Yazdır">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="6 9 6 2 18 2 18 9"></polyline>
@@ -853,16 +916,47 @@
         <span class="hero-badge">IT / Bilgi İşlem</span>
         
         <div class="contact-chips">
-          <button class="chip-btn" onclick="copyToClipboard('+905338493063', 'Telefon numarası kopyalandı!')" title="Tıkla ve Kopyala">
-            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            <span>+90 533 849 30 63</span>
-          </button>
+          <!-- 2 Seçenekli Telefon Butonu (Dropdown) -->
+          <div class="dropdown-wrapper" id="phoneWrapper">
+            <button class="chip-btn" id="phoneDropdownBtn" onclick="toggleMenu('phoneWrapper', 'phoneDropdownMenu', 'phoneDropdownBtn', event)" title="Telefon seçenekleri" aria-expanded="false">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>+90 533 849 30 63</span>
+              <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            
+            <div class="dropdown-menu" id="phoneDropdownMenu">
+              <button class="dropdown-item" onclick="handleCopyText('+905338493063', 'Telefon numarası kopyalandı!', event)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Numarayı Kopyala</span>
+              </button>
+              <a href="tel:+905338493063" class="dropdown-item" onclick="closeAllMenus()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <span>Hemen Ara</span>
+              </a>
+            </div>
+          </div>
 
-          <button class="chip-btn" onclick="copyToClipboard('yusufbasaran63@hotmail.com', 'E-posta adresi kopyalandı!')" title="Tıkla ve Kopyala">
-            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            <span>yusufbasaran63@hotmail.com</span>
-          </button>
+          <!-- 2 Seçenekli E-posta Butonu (Dropdown) -->
+          <div class="dropdown-wrapper" id="emailWrapper">
+            <button class="chip-btn" id="emailDropdownBtn" onclick="toggleMenu('emailWrapper', 'emailDropdownMenu', 'emailDropdownBtn', event)" title="E-posta seçenekleri" aria-expanded="false">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>yusufbasaran63@hotmail.com</span>
+              <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            
+            <div class="dropdown-menu" id="emailDropdownMenu">
+              <button class="dropdown-item" onclick="handleCopyText('yusufbasaran63@hotmail.com', 'E-posta adresi kopyalandı!', event)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>E-postayı Kopyala</span>
+              </button>
+              <a href="mailto:yusufbasaran63@hotmail.com" class="dropdown-item" onclick="closeAllMenus()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                <span>E-posta Gönder</span>
+              </a>
+            </div>
+          </div>
 
+          <!-- Konum -->
           <span class="chip-btn" style="cursor: default;">
             <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
             <span>Gazimağusa / Kıbrıs</span>
@@ -870,24 +964,6 @@
         </div>
       </div>
     </main>
-
-    <!-- Hızlı Eylem Butonları -->
-    <div class="quick-actions reveal">
-      <a href="mailto:yusufbasaran63@hotmail.com" class="action-btn primary">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-        <span>İletişime Geç</span>
-      </a>
-
-      <button onclick="downloadVCard()" class="action-btn secondary">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-        <span>Kartviziti Kaydet (.vcf)</span>
-      </button>
-
-      <button onclick="window.print()" class="action-btn secondary">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-        <span>PDF Olarak İndir</span>
-      </button>
-    </div>
 
     <!-- Hakkımda Bölümü -->
     <section class="reveal">
@@ -900,7 +976,7 @@
       </div>
     </section>
 
-    <!-- Beceriler Bölümü (Filtrelenebilir) -->
+    <!-- Beceriler Bölümü -->
     <section class="reveal">
       <h2 class="section-title">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
@@ -923,7 +999,7 @@
         </div>
 
         <div class="skill-card" data-cat="tech">
-          <div class="skill-icon-box">⚙️️</div>
+          <div class="skill-icon-box">⚙</div>
           <div class="skill-info">
             <strong>Donanım Uzmanlığı</strong>
             <span>Arıza Tespiti & Montaj</span>
@@ -972,7 +1048,7 @@
       </div>
     </section>
 
-    <!-- Deneyim Bölümü (Timeline) -->
+    <!-- Deneyim Bölümü -->
     <section class="reveal">
       <h2 class="section-title">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
@@ -1094,6 +1170,14 @@
       </div>
     </section>
 
+    <!-- En Alt Eylem Butonu (Yalnızca Kartvizit Kaydet) -->
+    <div class="bottom-actions reveal">
+      <button onclick="downloadVCard()" class="action-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        <span>Kartviziti Kaydet (.vcf)</span>
+      </button>
+    </div>
+
     <!-- Altbilgi -->
     <footer>
       <span>© Yusuf Başaran — Tüm Hakları Saklıdır.</span>
@@ -1112,9 +1196,9 @@
     <span id="toastMsg">Panoya kopyalandı!</span>
   </div>
 
-  <!-- İşlevsel Scriptler -->
+  <!-- JavaScript Kodları -->
   <script>
-    // 1. Tema Yönetimi (Dark / Light)
+    // 1. Tema Yönetimi
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
     const root = document.documentElement;
@@ -1169,7 +1253,44 @@
       }, 2500);
     }
 
-    // 3. vCard (.vcf) İndirici
+    // 3. Ortak Dropdown Menü Yöneticisi
+    function toggleMenu(wrapperId, menuId, btnId, e) {
+      e.stopPropagation();
+      const wrapper = document.getElementById(wrapperId);
+      const menu = document.getElementById(menuId);
+      const btn = document.getElementById(btnId);
+      const isOpen = menu.classList.contains('show');
+
+      // Önce açık tüm menüleri kapat
+      closeAllMenus();
+
+      if (!isOpen) {
+        menu.classList.add('show');
+        wrapper.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    function closeAllMenus() {
+      document.querySelectorAll('.dropdown-menu').forEach(menu => menu.classList.remove('show'));
+      document.querySelectorAll('.dropdown-wrapper').forEach(wrap => wrap.classList.remove('active'));
+      document.querySelectorAll('.dropdown-wrapper button').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+    }
+
+    function handleCopyText(text, message, e) {
+      e.stopPropagation();
+      copyToClipboard(text, message);
+      closeAllMenus();
+    }
+
+    // Sayfa boşluğuna tıklandığında menüleri kapat
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.dropdown-wrapper')) {
+        closeAllMenus();
+      }
+    });
+
+    // 4. vCard (.vcf) İndirici
     function downloadVCard() {
       const vcardData = [
         'BEGIN:VCARD',
@@ -1194,7 +1315,7 @@
       showToast('Kartvizit indirildi!');
     }
 
-    // 4. Beceri Filtreleme
+    // 5. Beceri Filtreleme
     function filterSkills(category) {
       const buttons = document.querySelectorAll('.filter-btn');
       buttons.forEach(btn => btn.classList.remove('active'));
@@ -1210,7 +1331,7 @@
       });
     }
 
-    // 5. Scroll Reveal & Başa Dön
+    // 6. Scroll Reveal & Başa Dön
     const scrollTopBtn = document.getElementById('scrollTopBtn');
 
     window.addEventListener('scroll', () => {
