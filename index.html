@@ -3,19 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Sekme İkonu (Favicon) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Ccircle cx='256' cy='256' r='236' fill='%23F0F0D0' stroke='%23504840' stroke-width='24'/%3E%3Cellipse cx='256' cy='256' rx='98' ry='236' fill='none' stroke='%23504840' stroke-width='24'/%3E%3Cline x1='24' y1='170' x2='488' y2='170' stroke='%23504840' stroke-width='24'/%3E%3Cline x1='24' y1='342' x2='488' y2='342' stroke='%23504840' stroke-width='24'/%3E%3Cline x1='256' y1='20' x2='256' y2='492' stroke='%23504840' stroke-width='24'/%3E%3C/svg%3E">
 <!-- SEO / Search Engine Metadata -->
   <meta name="description" content="Yusuf Başaran — IT / Bilgi İşlem. Yazılım, web geliştirme, donanım arıza tespiti ve dijital okuryazarlık alanlarında teknik yetkinliklere sahip bilişim mezunu.">
   <meta name="author" content="Yusuf Başaran">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="theme-color" content="#E5E8E0">
-  <link rel="canonical" href="https://yusufbasaran.dev">
+  <link rel="canonical" href="/">
 
   <!-- Open Graph: LinkedIn, WhatsApp, Facebook and other crawlers -->
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Yusuf Başaran — IT / Bilgi İşlem">
   <meta property="og:description" content="Yusuf Başaran'ın bilişim, yazılım, web geliştirme ve teknik yetkinliklerini içeren kişisel özgeçmişi.">
-  <meta property="og:url" content="https://yusufbasaran.dev">
+  <meta property="og:url" content="/">
   <meta property="og:site_name" content="Yusuf Başaran">
   <meta property="og:locale" content="tr_TR">
   <meta property="profile:first_name" content="Yusuf">
@@ -39,7 +41,7 @@
     "@graph": [
       {
         "@type": "Person",
-        "@id": "https://yusufbasaran.dev/#person",
+        "@id": "/#person",
         "name": "Yusuf Başaran",
         "givenName": "Yusuf",
         "familyName": "Başaran",
@@ -47,8 +49,8 @@
         "description": "Yazılım, web geliştirme ve donanım arıza tespiti alanlarında temel teknik yetkinliklere sahip bilişim mezunu.",
         "email": "mailto:yusufbasaran63@hotmail.com",
         "telephone": "+905338493063",
-        "url": "https://yusufbasaran.dev",
-        "image": "https://yusufbasaran.dev/profile.jpg",
+        "url": "/",
+        "image": "/profile.jpg",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Gazimağusa",
@@ -75,13 +77,13 @@
       },
       {
         "@type": "ProfilePage",
-        "@id": "https://yusufbasaran.dev/#profile",
-        "url": "https://yusufbasaran.dev",
+        "@id": "/#profile",
+        "url": "/",
         "name": "Yusuf Başaran — IT / Bilgi İşlem",
         "description": "Yusuf Başaran'ın kişisel profili, bilişim alanındaki eğitimi ve deneyimleri.",
         "inLanguage": "tr-TR",
         "mainEntity": {
-          "@id": "https://yusufbasaran.dev/#person"
+          "@id": "/#person"
         }
       }
     ]
@@ -89,7 +91,7 @@
   </script>
 <title>Yusuf Başaran — IT / Bilgi İşlem</title>
 <link rel="preload" as="image" href="/profile.jpg" type="image/jpeg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -196,7 +198,6 @@
   .meta-strip {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     gap: 6px 0;
     margin-top: 22px;
     font-size: 0.92rem;
@@ -204,33 +205,14 @@
   }
 
   .meta-strip span {
-    padding: 0 14px;
+    padding: 0 16px;
     border-right: 1px solid var(--line);
-    display: inline-flex;
-    align-items: center;
   }
   .meta-strip span:first-child { padding-left: 0; }
   .meta-strip span:last-child { border-right: none; }
 
-  .meta-strip a {
-    color: var(--ink-soft);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
+  .meta-strip a { color: var(--ink-soft); text-decoration: none; }
   .meta-strip a:hover { color: var(--copper); }
-  .meta-strip a:hover svg path { fill: var(--copper); }
-
-  .globe-svg {
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-  }
-  .globe-svg path {
-    fill: currentColor;
-    transition: fill 0.15s ease;
-  }
 
   section {
     margin-top: 46px;
@@ -314,10 +296,8 @@
     border: 1px solid var(--line);
     border-radius: 6px;
     padding: 24px 26px;
-    margin-bottom: 16px;
     box-shadow: 0 1px 0 var(--shadow);
   }
-  .exp-card:last-child { margin-bottom: 0; }
 
   .exp-head {
     display: flex;
@@ -432,14 +412,6 @@
         <div class="meta-strip">
           <span><a href="tel:+905338493063">+90 533 849 30 63</a></span>
           <span><a href="mailto:yusufbasaran63@hotmail.com">yusufbasaran63@hotmail.com</a></span>
-          <span>
-            <a href="https://yusufbasaran.dev" target="_blank" rel="noopener noreferrer">
-              <svg class="globe-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12C2 17.523 6.477 22 12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2ZM12 3.9C13.25 5.8 14.05 8.75 14.22 11.1H9.78C9.95 8.75 10.75 5.8 12 3.9ZM9.78 12.9H14.22C14.05 15.25 13.25 18.2 12 20.1C10.75 18.2 9.95 15.25 9.78 12.9ZM8.27 11.1C8.44 8.7 9.17 6.07 10.22 4.14C6.89 4.88 4.34 7.67 3.95 11.1H8.27ZM3.95 12.9C4.34 16.33 6.89 19.12 10.22 19.86C9.17 17.93 8.44 15.3 8.27 12.9H3.95ZM13.78 19.86C14.83 17.93 15.56 15.3 15.73 12.9H20.05C19.66 16.33 17.11 19.12 13.78 19.86ZM15.73 11.1C15.56 8.7 14.83 6.07 13.78 4.14C17.11 4.88 19.66 7.67 20.05 11.1H15.73Z" />
-              </svg>
-              yusufbasaran.dev
-            </a>
-          </span>
           <span>Gazimağusa / Kıbrıs</span>
         </div>
       </div>
@@ -531,7 +503,7 @@
           <span><a href="tel:+905525423983">+90 552 542 39 83</a></span>
         </div>
         <div class="ref-card">
-          <strong>Cem Demirayak</strong>
+          <strong>Cem  Demirayak</strong>
           <span>Sulukule Gönüllüleri Derneği</span>
           <span><a href="tel:+905382695269">+90 538 269 52 69</a></span>
         </div>
