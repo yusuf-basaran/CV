@@ -110,7 +110,7 @@
       --accent-glow: rgba(56, 189, 248, 0.25);
       --brand: #f59e0b;
       --success: #10b981;
-      --glass-blur: blur(16px);
+      --glass-blur: blur(14px);
       --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
       --radius: 14px;
       --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
@@ -118,7 +118,7 @@
 
     [data-theme="light"] {
       --bg: #f8fafc;
-      --bg-panel: rgba(255, 255, 255, 0.88);
+      --bg-panel: rgba(255, 255, 255, 0.85);
       --bg-panel-hover: rgba(255, 255, 255, 0.98);
       --ink: #0f172a;
       --ink-soft: #64748b;
@@ -142,7 +142,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 32px 16px 100px;
+      padding: 32px 16px 80px;
       position: relative;
       overflow-x: hidden;
       transition: background-color 0.3s ease, color 0.3s ease;
@@ -176,184 +176,73 @@
       margin: 0 auto;
     }
 
-    /* -----------------------------------------------
-       1. MASAÜSTÜ MENÜ BUTONU (2. GÖRSELDEKİ GİBİ)
-    -------------------------------------------------- */
-    .desktop-menu-widget {
-      position: fixed;
-      top: 24px;
-      right: 28px;
-      z-index: 1000;
+    /* Üst Navigasyon */
+    .top-bar {
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
-
-    .desktop-menu-btn {
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
       background: var(--bg-panel);
       backdrop-filter: var(--glass-blur);
       -webkit-backdrop-filter: var(--glass-blur);
       border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 10px 14px 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
+      border-radius: 100px;
+      margin-bottom: 32px;
       box-shadow: var(--shadow);
-      transition: var(--transition);
-      outline: none;
+      position: sticky;
+      top: 16px;
+      z-index: 50;
     }
 
-    .desktop-menu-btn:hover {
-      transform: translateY(-2px);
-      border-color: var(--accent);
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
-    }
-
-    .desktop-menu-avatar {
-      width: 50px;
-      height: 50px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+    .nav-status {
       display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--success);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--success);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--success);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn-icon {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      color: #ffffff;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
-      font-size: 1.25rem;
-      box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4);
-      user-select: none;
-    }
-
-    .desktop-menu-text {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      color: var(--ink-soft);
-      text-transform: uppercase;
-      user-select: none;
-    }
-
-    /* Masaüstü Menü Açılır Paneli */
-    .desktop-menu-panel {
-      position: absolute;
-      top: calc(100% + 12px);
-      right: 0;
-      width: 250px;
-      background: var(--bg-panel);
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 12px;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px) scale(0.96);
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .desktop-menu-panel.show {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0) scale(1);
-    }
-
-    .menu-link {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 14px;
-      border-radius: 10px;
-      color: var(--ink);
-      text-decoration: none;
-      font-size: 0.92rem;
-      font-weight: 500;
-      transition: var(--transition);
-      background: transparent;
-      border: none;
-      width: 100%;
       cursor: pointer;
-      text-align: left;
-      font-family: inherit;
+      transition: var(--transition);
     }
-
-    .menu-link:hover {
+    .btn-icon:hover {
       background: var(--bg-panel-hover);
+      border-color: var(--accent);
       color: var(--accent);
-      transform: translateX(3px);
+      transform: translateY(-2px);
     }
 
-    .menu-divider {
-      height: 1px;
-      background: var(--line);
-      margin: 6px 0;
-    }
-
-    /* -----------------------------------------------
-       2. MOBİL YÜZEN NAVİGASYON BARI (1. GÖRSELDEKİ GİBİ)
-    -------------------------------------------------- */
-    .mobile-nav-bar {
-      display: none; /* Masaüstünde gizlidir */
-    }
-
-    @media (max-width: 680px) {
-      /* Masaüstü menüsünü mobilde gizle */
-      .desktop-menu-widget {
-        display: none !important;
-      }
-
-      /* 1. Görseldeki Alt Bar */
-      .mobile-nav-bar {
-        display: flex;
-        position: fixed;
-        bottom: 18px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: calc(100% - 28px);
-        max-width: 440px;
-        background: var(--bg-panel);
-        backdrop-filter: var(--glass-blur);
-        -webkit-backdrop-filter: var(--glass-blur);
-        border: 1px solid var(--line);
-        border-radius: 100px;
-        padding: 5px;
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
-        z-index: 1000;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .mobile-nav-item {
-        flex: 1;
-        text-align: center;
-        padding: 9px 6px;
-        font-size: 0.86rem;
-        font-weight: 600;
-        color: var(--ink-soft);
-        text-decoration: none;
-        border-radius: 100px;
-        transition: var(--transition);
-        white-space: nowrap;
-      }
-
-      /* 1. Görseldeki "Deneyim" gibi aktif sekme vurgusu */
-      .mobile-nav-item.active {
-        background: color-mix(in srgb, var(--accent) 18%, transparent);
-        color: var(--accent);
-        font-weight: 700;
-      }
-    }
-
-    /* -----------------------------------------------
-       GENEL SAYFA VE KART BİLEŞENLERİ
-    -------------------------------------------------- */
+    /* Profil Hero Kartı */
     .hero-card {
       background: var(--bg-panel);
       backdrop-filter: var(--glass-blur);
@@ -366,7 +255,6 @@
       gap: 32px;
       align-items: center;
       position: relative;
-      margin-top: 16px;
       margin-bottom: 36px;
     }
 
@@ -576,7 +464,6 @@
     /* Bölüm Başlıkları */
     section {
       margin-bottom: 36px;
-      scroll-margin-top: 40px;
     }
 
     .section-title {
@@ -888,7 +775,7 @@
       opacity: 0;
       pointer-events: none;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 2000;
+      z-index: 1000;
     }
 
     .toast.show {
@@ -906,6 +793,42 @@
     .reveal.active {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* Başa Dön Butonu */
+    .scroll-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--bg-panel);
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--line);
+      color: var(--ink);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.8);
+      transition: var(--transition);
+      z-index: 90;
+      box-shadow: var(--shadow);
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+
+    .scroll-top:hover {
+      background: var(--accent);
+      color: #0b0f17;
+      border-color: var(--accent);
     }
 
     /* Mobil Uyum */
@@ -941,7 +864,7 @@
         color: #000 !important;
         padding: 0 !important;
       }
-      body::before, body::after, .desktop-menu-widget, .mobile-nav-bar, .bottom-actions, .skills-filter, .toast, .dropdown-menu {
+      body::before, body::after, .top-bar, .bottom-actions, .skills-filter, .scroll-top, .toast, .btn-icon, .dropdown-menu {
         display: none !important;
       }
       .hero-card, .card, .about-card, .ref-card {
@@ -960,75 +883,31 @@
 </head>
 <body>
 
-  <!-- ========================================================
-       1. MASAÜSTÜ MENÜ BUTONU VE AÇILIR PANELİ (2. Görseldeki Gibi)
-  ============================================================= -->
-  <div class="desktop-menu-widget">
-    <button class="desktop-menu-btn" id="desktopMenuBtn" onclick="toggleDesktopMenu(event)" aria-label="Menüyü Aç" aria-expanded="false">
-      <!-- Degrade İkon (YB) -->
-      <div class="desktop-menu-avatar">YB</div>
-      <span class="desktop-menu-text">MENÜ</span>
-    </button>
-
-    <!-- Tıklandığında Açılan Panel -->
-    <div class="desktop-menu-panel" id="desktopMenuPanel">
-      <a href="#hero" class="menu-link" onclick="closeDesktopMenu()">
-        <span>🏠</span>
-        <span>Ana Sayfa</span>
-      </a>
-      <a href="#about" class="menu-link" onclick="closeDesktopMenu()">
-        <span>👤</span>
-        <span>Hakkımda</span>
-      </a>
-      <a href="#skills" class="menu-link" onclick="closeDesktopMenu()">
-        <span>🚀</span>
-        <span>Yolculuğum / Beceriler</span>
-      </a>
-      <a href="#experience" class="menu-link" onclick="closeDesktopMenu()">
-        <span>💼</span>
-        <span>Deneyim</span>
-      </a>
-      <a href="#education" class="menu-link" onclick="closeDesktopMenu()">
-        <span>🎓</span>
-        <span>Eğitim</span>
-      </a>
-      <a href="#references" class="menu-link" onclick="closeDesktopMenu()">
-        <span>🤝</span>
-        <span>Referanslar</span>
-      </a>
-      
-      <div class="menu-divider"></div>
-
-      <!-- Tema Değiştirici -->
-      <button class="menu-link" onclick="toggleTheme(); closeDesktopMenu();">
-        <span id="desktopThemeIcon">🌙</span>
-        <span id="desktopThemeText">Karanlık / Aydınlık Mod</span>
-      </button>
-
-      <!-- Yazdır / PDF -->
-      <button class="menu-link" onclick="window.print(); closeDesktopMenu();">
-        <span>🖨️</span>
-        <span>Yazdır / PDF Kaydet</span>
-      </button>
-    </div>
-  </div>
-
-  <!-- ========================================================
-       2. MOBİL YÜZEN NAVİGASYON BARI (1. Görseldeki Gibi)
-  ============================================================= -->
-  <nav class="mobile-nav-bar" aria-label="Mobil Gezinti">
-    <a href="#hero" class="mobile-nav-item active" data-target="hero">Ana Sayfa</a>
-    <a href="#about" class="mobile-nav-item" data-target="about">Hakkımda</a>
-    <a href="#skills" class="mobile-nav-item" data-target="skills">Yolculuğum</a>
-    <a href="#experience" class="mobile-nav-item" data-target="experience">Deneyim</a>
-  </nav>
-
-  <!-- ========================================================
-       SAYFA İÇERİĞİ
-  ============================================================= -->
   <div class="container">
+    <!-- Üst Sabit Araç Çubuğu (Yazdır Butonu Burada Yer Almaktadır) -->
+    <header class="top-bar">
+      <div class="nav-status">
+        <span class="status-dot"></span>
+        <span>İş / Proje Fırsatlarına Açık</span>
+      </div>
+      <div class="nav-actions">
+        <!-- Tema Değiştirici Buton -->
+        <button class="btn-icon" id="themeToggle" title="Tema Değiştir" aria-label="Tema Değiştir">
+          <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"></svg>
+        </button>
+        <!-- Yazdır / PDF Butonu -->
+        <button class="btn-icon" onclick="window.print()" title="Yazdır / PDF Kaydet" aria-label="Yazdır">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+        </button>
+      </div>
+    </header>
+
     <!-- Profil Başlığı (Hero) -->
-    <main class="hero-card reveal" id="hero">
+    <main class="hero-card reveal">
       <div class="avatar-wrapper">
         <img class="avatar-img" width="124" height="124" src="/profile.jpg" alt="Yusuf Başaran" fetchpriority="high">
       </div>
@@ -1087,7 +966,7 @@
     </main>
 
     <!-- Hakkımda Bölümü -->
-    <section class="reveal" id="about">
+    <section class="reveal">
       <h2 class="section-title">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
         <span>Hakkımda</span>
@@ -1097,8 +976,8 @@
       </div>
     </section>
 
-    <!-- Beceriler / Yolculuğum Bölümü -->
-    <section class="reveal" id="skills">
+    <!-- Beceriler Bölümü -->
+    <section class="reveal">
       <h2 class="section-title">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
         <span>Beceriler ve Uzmanlıklar</span>
@@ -1170,7 +1049,7 @@
     </section>
 
     <!-- Deneyim Bölümü -->
-    <section class="reveal" id="experience">
+    <section class="reveal">
       <h2 class="section-title">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
         <span>Deneyim</span>
@@ -1227,7 +1106,7 @@
     </section>
 
     <!-- Eğitim Bölümü -->
-    <section class="reveal" id="education">
+    <section class="reveal">
       <h2 class="section-title">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
         <span>Eğitim & Yabancı Dil</span>
@@ -1261,7 +1140,7 @@
     </section>
 
     <!-- Referanslar -->
-    <section class="reveal" id="references">
+    <section class="reveal">
       <h2 class="section-title">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
         <span>Referanslar</span>
@@ -1291,7 +1170,7 @@
       </div>
     </section>
 
-    <!-- En Alt Eylem Butonu (Kartvizit) -->
+    <!-- En Alt Eylem Butonu (Yalnızca Kartvizit Kaydet) -->
     <div class="bottom-actions reveal">
       <button onclick="downloadVCard()" class="action-btn">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
@@ -1306,6 +1185,11 @@
     </footer>
   </div>
 
+  <!-- Başa Dön Butonu -->
+  <button class="scroll-top" id="scrollTopBtn" onclick="scrollToTop()" title="Başa Dön" aria-label="Başa Dön">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
   <!-- Kopyalama Toast Bildirimi -->
   <div class="toast" id="toast">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -1315,9 +1199,9 @@
   <!-- JavaScript Kodları -->
   <script>
     // 1. Tema Yönetimi
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
     const root = document.documentElement;
-    const desktopThemeIcon = document.getElementById('desktopThemeIcon');
-    const desktopThemeText = document.getElementById('desktopThemeText');
 
     function getPreferredTheme() {
       const stored = localStorage.getItem('theme');
@@ -1329,74 +1213,20 @@
       root.setAttribute('data-theme', theme);
       localStorage.setItem('theme', theme);
       if (theme === 'light') {
-        desktopThemeIcon.textContent = '☀️️';
-        desktopThemeText.textContent = 'Karanlık Moda Geç';
+        themeIcon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
       } else {
-        desktopThemeIcon.textContent = '🌙';
-        desktopThemeText.textContent = 'Aydınlık Moda Geç';
+        themeIcon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
       }
     }
 
-    function toggleTheme() {
+    themeToggle.addEventListener('click', () => {
       const current = root.getAttribute('data-theme') || 'dark';
       applyTheme(current === 'dark' ? 'light' : 'dark');
-    }
+    });
 
     applyTheme(getPreferredTheme());
 
-    // 2. Masaüstü Menü Kontrolü (2. Görsel)
-    function toggleDesktopMenu(e) {
-      e.stopPropagation();
-      const panel = document.getElementById('desktopMenuPanel');
-      const btn = document.getElementById('desktopMenuBtn');
-      const isOpen = panel.classList.contains('show');
-
-      if (isOpen) {
-        closeDesktopMenu();
-      } else {
-        panel.classList.add('show');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    }
-
-    function closeDesktopMenu() {
-      const panel = document.getElementById('desktopMenuPanel');
-      const btn = document.getElementById('desktopMenuBtn');
-      if (panel) panel.classList.remove('show');
-      if (btn) btn.setAttribute('aria-expanded', 'false');
-    }
-
-    // 3. Ortak İletişim Dropdown Menüleri (Telefon ve E-posta)
-    function toggleMenu(wrapperId, menuId, btnId, e) {
-      e.stopPropagation();
-      const wrapper = document.getElementById(wrapperId);
-      const menu = document.getElementById(menuId);
-      const btn = document.getElementById(btnId);
-      const isOpen = menu.classList.contains('show');
-
-      closeAllMenus();
-
-      if (!isOpen) {
-        menu.classList.add('show');
-        wrapper.classList.add('active');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    }
-
-    function closeAllMenus() {
-      document.querySelectorAll('.dropdown-menu').forEach(menu => menu.classList.remove('show'));
-      document.querySelectorAll('.dropdown-wrapper').forEach(wrap => wrap.classList.remove('active'));
-      document.querySelectorAll('.dropdown-wrapper button').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
-      closeDesktopMenu();
-    }
-
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.dropdown-wrapper') && !e.target.closest('.desktop-menu-widget')) {
-        closeAllMenus();
-      }
-    });
-
-    // 4. Panoya Kopyalama ve Toast Gösterimi
+    // 2. Panoya Kopyalama ve Toast Gösterimi
     function copyToClipboard(text, message) {
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(() => showToast(message));
@@ -1423,13 +1253,44 @@
       }, 2500);
     }
 
+    // 3. Ortak Dropdown Menü Yöneticisi
+    function toggleMenu(wrapperId, menuId, btnId, e) {
+      e.stopPropagation();
+      const wrapper = document.getElementById(wrapperId);
+      const menu = document.getElementById(menuId);
+      const btn = document.getElementById(btnId);
+      const isOpen = menu.classList.contains('show');
+
+      // Önce açık tüm menüleri kapat
+      closeAllMenus();
+
+      if (!isOpen) {
+        menu.classList.add('show');
+        wrapper.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    function closeAllMenus() {
+      document.querySelectorAll('.dropdown-menu').forEach(menu => menu.classList.remove('show'));
+      document.querySelectorAll('.dropdown-wrapper').forEach(wrap => wrap.classList.remove('active'));
+      document.querySelectorAll('.dropdown-wrapper button').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+    }
+
     function handleCopyText(text, message, e) {
       e.stopPropagation();
       copyToClipboard(text, message);
       closeAllMenus();
     }
 
-    // 5. vCard (.vcf) İndirici
+    // Sayfa boşluğuna tıklandığında menüleri kapat
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.dropdown-wrapper')) {
+        closeAllMenus();
+      }
+    });
+
+    // 4. vCard (.vcf) İndirici
     function downloadVCard() {
       const vcardData = [
         'BEGIN:VCARD',
@@ -1454,7 +1315,7 @@
       showToast('Kartvizit indirildi!');
     }
 
-    // 6. Beceri Filtreleme
+    // 5. Beceri Filtreleme
     function filterSkills(category) {
       const buttons = document.querySelectorAll('.filter-btn');
       buttons.forEach(btn => btn.classList.remove('active'));
@@ -1470,29 +1331,21 @@
       });
     }
 
-    // 7. Mobil Bar ScrollSpy (Kaydırdıkça 1. Görseldeki Gibi Aktif Buton Vurgusu)
-    const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
-    const sections = document.querySelectorAll('main.hero-card, section');
+    // 6. Scroll Reveal & Başa Dön
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
 
     window.addEventListener('scroll', () => {
-      let currentSectionId = 'hero';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 120;
-        if (window.scrollY >= sectionTop) {
-          currentSectionId = section.getAttribute('id');
-        }
-      });
-
-      mobileNavItems.forEach(item => {
-        if (item.getAttribute('data-target') === currentSectionId) {
-          item.classList.add('active');
-        } else {
-          item.classList.remove('active');
-        }
-      });
+      if (window.scrollY > 300) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
     });
 
-    // Scroll Reveal
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
