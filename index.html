@@ -110,6 +110,7 @@
       --accent-glow: rgba(56, 189, 248, 0.25);
       --brand: #f59e0b;
       --success: #10b981;
+      --danger: #ef4444;
       --glass-blur: blur(14px);
       --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
       --radius: 14px;
@@ -127,11 +128,11 @@
       --accent-glow: rgba(2, 132, 199, 0.15);
       --brand: #d97706;
       --success: #059669;
+      --danger: #dc2626;
       --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -159,16 +160,8 @@
       pointer-events: none;
       opacity: 0.15;
     }
-    body::before {
-      top: -100px;
-      right: -100px;
-      background: var(--accent);
-    }
-    body::after {
-      bottom: -100px;
-      left: -100px;
-      background: var(--brand);
-    }
+    body::before { top: -100px; right: -100px; background: var(--accent); }
+    body::after { bottom: -100px; left: -100px; background: var(--brand); }
 
     .container {
       width: 100%;
@@ -187,7 +180,7 @@
       -webkit-backdrop-filter: var(--glass-blur);
       border: 1px solid var(--line);
       border-radius: 100px;
-      margin-bottom: 32px;
+      margin-bottom: 24px;
       box-shadow: var(--shadow);
       position: sticky;
       top: 16px;
@@ -242,6 +235,35 @@
       transform: translateY(-2px);
     }
 
+    /* Yönetici (Admin) Modu Kontrol Çubuğu */
+    .admin-bar {
+      display: none;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px dashed var(--brand);
+      border-radius: 12px;
+      padding: 12px 18px;
+      margin-bottom: 24px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .admin-bar.active { display: flex; }
+    .admin-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--brand);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .admin-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
     /* Profil Hero Kartı */
     .hero-card {
       background: var(--bg-panel);
@@ -261,18 +283,12 @@
     .hero-card::after {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: 3px;
       background: linear-gradient(90deg, var(--accent), var(--brand));
     }
 
-    .avatar-wrapper {
-      position: relative;
-      flex-shrink: 0;
-    }
-
+    .avatar-wrapper { position: relative; flex-shrink: 0; cursor: pointer; }
     .avatar-img {
       width: 124px;
       height: 124px;
@@ -283,16 +299,9 @@
       box-shadow: var(--shadow);
       transition: var(--transition);
     }
+    .hero-card:hover .avatar-img { border-color: var(--accent); transform: scale(1.02); }
 
-    .hero-card:hover .avatar-img {
-      border-color: var(--accent);
-      transform: scale(1.02);
-    }
-
-    .hero-content {
-      flex: 1;
-    }
-
+    .hero-content { flex: 1; }
     .hero-content h1 {
       font-family: 'Outfit', sans-serif;
       font-size: clamp(1.8rem, 4vw, 2.5rem);
@@ -336,39 +345,18 @@
       font-family: inherit;
       transition: var(--transition);
     }
-
     .chip-btn:hover {
       background: var(--bg-panel-hover);
       color: var(--ink);
       border-color: var(--accent);
       transform: translateY(-2px);
     }
+    .chip-btn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; }
 
-    .chip-btn svg {
-      width: 15px;
-      height: 15px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-    }
-
-    /* Açılır Menü (Dropdown) Kapsayıcıları */
-    .dropdown-wrapper {
-      position: relative;
-      display: inline-block;
-    }
-
-    .dropdown-wrapper .chevron-icon {
-      width: 12px;
-      height: 12px;
-      margin-left: 2px;
-      transition: transform 0.25s ease;
-      stroke-width: 2.5;
-    }
-
-    .dropdown-wrapper.active .chevron-icon {
-      transform: rotate(180deg);
-    }
+    /* Dropdown Menüler */
+    .dropdown-wrapper { position: relative; display: inline-block; }
+    .dropdown-wrapper .chevron-icon { width: 12px; height: 12px; margin-left: 2px; transition: transform 0.25s ease; stroke-width: 2.5; }
+    .dropdown-wrapper.active .chevron-icon { transform: rotate(180deg); }
 
     .dropdown-menu {
       position: absolute;
@@ -388,12 +376,7 @@
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 100;
     }
-
-    .dropdown-menu.show {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0) scale(1);
-    }
+    .dropdown-menu.show { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
 
     .dropdown-item {
       width: 100%;
@@ -413,59 +396,11 @@
       transition: var(--transition);
       text-align: left;
     }
-
-    .dropdown-item:hover {
-      background: var(--bg-panel-hover);
-      color: var(--accent);
-    }
-
-    .dropdown-item svg {
-      width: 15px;
-      height: 15px;
-      color: var(--accent);
-      flex-shrink: 0;
-    }
-
-    /* En Alt Eylem Butonu (Kartvizit) */
-    .bottom-actions {
-      display: flex;
-      justify-content: center;
-      margin-top: 36px;
-      margin-bottom: 20px;
-    }
-
-    .action-btn {
-      width: 100%;
-      max-width: 320px;
-      padding: 13px 20px;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 0.92rem;
-      border: 1px solid var(--line);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: var(--transition);
-      text-decoration: none;
-      font-family: inherit;
-      background: var(--bg-panel);
-      color: var(--ink);
-    }
-
-    .action-btn:hover {
-      background: var(--bg-panel-hover);
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-2px);
-    }
+    .dropdown-item:hover { background: var(--bg-panel-hover); color: var(--accent); }
+    .dropdown-item svg { width: 15px; height: 15px; color: var(--accent); flex-shrink: 0; }
 
     /* Bölüm Başlıkları */
-    section {
-      margin-bottom: 36px;
-    }
-
+    section { margin-bottom: 36px; }
     .section-title {
       font-family: 'Outfit', sans-serif;
       font-size: 1.35rem;
@@ -476,21 +411,9 @@
       gap: 12px;
       color: var(--ink);
     }
+    .section-title svg { width: 20px; height: 20px; color: var(--accent); }
+    .section-title::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 
-    .section-title svg {
-      width: 20px;
-      height: 20px;
-      color: var(--accent);
-    }
-
-    .section-title::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: var(--line);
-    }
-
-    /* Hakkımda Metin Bloğu */
     .about-card {
       background: var(--bg-panel);
       backdrop-filter: var(--glass-blur);
@@ -505,14 +428,7 @@
     }
 
     /* Beceriler */
-    .skills-filter {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 16px;
-      overflow-x: auto;
-      padding-bottom: 4px;
-    }
-
+    .skills-filter { display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 4px; }
     .filter-btn {
       background: transparent;
       border: 1px solid var(--line);
@@ -525,19 +441,9 @@
       transition: var(--transition);
       white-space: nowrap;
     }
+    .filter-btn.active, .filter-btn:hover { background: var(--accent-glow); color: var(--accent); border-color: var(--accent); }
 
-    .filter-btn.active, .filter-btn:hover {
-      background: var(--accent-glow);
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 12px;
-    }
-
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
     .skill-card {
       background: var(--bg-panel);
       border: 1px solid var(--line);
@@ -549,156 +455,167 @@
       transition: var(--transition);
       cursor: default;
     }
-
     .skill-card:hover {
       transform: translateY(-3px);
       border-color: var(--accent);
       background: var(--bg-panel-hover);
       box-shadow: 0 6px 20px -6px var(--accent-glow);
     }
-
     .skill-icon-box {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: var(--accent-glow);
-      color: var(--accent);
+      width: 32px; height: 32px; border-radius: 8px; background: var(--accent-glow); color: var(--accent);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .skill-info strong { display: block; font-size: 0.92rem; font-weight: 600; }
+    .skill-info span { display: block; font-size: 0.78rem; color: var(--ink-soft); margin-top: 2px; }
+
+    /* Projeler Bölümü */
+    .projects-header-box {
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 18px;
+    }
+    .project-card {
+      background: var(--bg-panel);
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .project-card.is-hidden {
+      opacity: 0.55;
+      border-style: dashed;
+    }
+    .project-img-box {
+      width: 100%;
+      height: 150px;
+      background: rgba(148, 163, 184, 0.05);
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+    .project-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .project-card:hover .project-img { transform: scale(1.05); }
+
+    .project-badge-hidden {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--brand);
+      color: #0b0f17;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .project-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .project-tag { font-size: 0.74rem; font-weight: 600; color: var(--accent); background: var(--accent-glow); padding: 2px 8px; border-radius: 100px; }
+    .project-title { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+    .project-desc { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.55; margin-bottom: 16px; flex: 1; }
+    .project-links { display: flex; gap: 8px; margin-top: auto; }
+
+    .project-link-btn {
+      flex: 1;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .skill-info strong {
-      display: block;
-      font-size: 0.92rem;
+      gap: 6px;
+      padding: 8px 12px;
+      font-size: 0.84rem;
       font-weight: 600;
-    }
-
-    .skill-info span {
-      display: block;
-      font-size: 0.78rem;
-      color: var(--ink-soft);
-      margin-top: 2px;
-    }
-
-    /* Zaman Çizelgesi */
-    .timeline {
-      position: relative;
-      padding-left: 28px;
-    }
-
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 7px;
-      top: 10px;
-      bottom: 10px;
-      width: 2px;
-      background: var(--line);
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 24px;
-    }
-    .timeline-item:last-child { margin-bottom: 0; }
-
-    .timeline-dot {
-      position: absolute;
-      left: -28px;
-      top: 22px;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--bg);
-      border: 3px solid var(--accent);
+      border-radius: 8px;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: rgba(148, 163, 184, 0.08);
+      color: var(--ink);
       transition: var(--transition);
     }
+    .project-link-btn:hover { background: var(--accent); color: #0b0f17; border-color: var(--accent); }
 
-    .timeline-item:hover .timeline-dot {
-      background: var(--accent);
-      box-shadow: 0 0 12px var(--accent);
+    /* Yöneticiye Özel Kart İçi Kontrol Butonları */
+    .admin-card-controls {
+      display: none;
+      background: rgba(15, 23, 42, 0.4);
+      border-top: 1px dashed var(--line);
+      padding: 10px 14px;
+      gap: 6px;
+      flex-wrap: wrap;
     }
+    .admin-mode .admin-card-controls { display: flex; }
+
+    .btn-ctrl {
+      padding: 5px 9px;
+      border-radius: 6px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      border: 1px solid var(--line);
+      background: var(--bg-panel);
+      color: var(--ink);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: var(--transition);
+      font-family: inherit;
+    }
+    .btn-ctrl:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-ctrl.danger:hover { border-color: var(--danger); color: var(--danger); }
+    .btn-ctrl.active-state { background: var(--accent-glow); border-color: var(--accent); color: var(--accent); }
+
+    /* Zaman Çizelgesi (Deneyim & Eğitim) */
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before { content: ""; position: absolute; left: 7px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
+    .timeline-item { position: relative; margin-bottom: 24px; }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute; left: -28px; top: 22px; width: 16px; height: 16px; border-radius: 50%;
+      background: var(--bg); border: 3px solid var(--accent); transition: var(--transition);
+    }
+    .timeline-item:hover .timeline-dot { background: var(--accent); box-shadow: 0 0 12px var(--accent); }
 
     .card {
       background: var(--bg-panel);
       backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 22px 24px;
       transition: var(--transition);
       box-shadow: var(--shadow);
     }
+    .card:hover { border-color: rgba(56, 189, 248, 0.4); background: var(--bg-panel-hover); transform: translateY(-2px); }
 
-    .card:hover {
-      border-color: rgba(56, 189, 248, 0.4);
-      background: var(--bg-panel-hover);
-      transform: translateY(-2px);
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 8px 16px;
-      margin-bottom: 6px;
-    }
-
-    .card-title {
-      font-size: 1.06rem;
-      font-weight: 700;
-      color: var(--ink);
-    }
-
-    .badge-date {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--accent);
-      background: var(--accent-glow);
-      padding: 3px 10px;
-      border-radius: 100px;
-    }
-
-    .card-subtitle {
-      font-size: 0.92rem;
-      color: var(--brand);
-      font-weight: 500;
-      margin-bottom: 14px;
-    }
-
-    .card-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    .card-list li {
-      position: relative;
-      padding-left: 20px;
-      margin-bottom: 8px;
-      font-size: 0.93rem;
-      line-height: 1.6;
-      color: var(--ink-soft);
-    }
+    .card-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 6px; }
+    .card-title { font-size: 1.06rem; font-weight: 700; color: var(--ink); }
+    .badge-date { font-size: 0.8rem; font-weight: 600; color: var(--accent); background: var(--accent-glow); padding: 3px 10px; border-radius: 100px; }
+    .card-subtitle { font-size: 0.92rem; color: var(--brand); font-weight: 500; margin-bottom: 14px; }
+    .card-list { list-style: none; padding: 0; }
+    .card-list li { position: relative; padding-left: 20px; margin-bottom: 8px; font-size: 0.93rem; line-height: 1.6; color: var(--ink-soft); }
     .card-list li:last-child { margin-bottom: 0; }
-
-    .card-list li::before {
-      content: "▹";
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-size: 1rem;
-    }
+    .card-list li::before { content: "▹"; position: absolute; left: 0; color: var(--accent); font-size: 1rem; }
 
     /* Referanslar */
-    .refs-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
+    .refs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .ref-card {
       background: var(--bg-panel);
       border: 1px solid var(--line);
@@ -710,173 +627,89 @@
       gap: 12px;
       transition: var(--transition);
     }
+    .ref-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .ref-card strong { font-size: 1.05rem; display: block; margin-bottom: 2px; }
+    .ref-card span { font-size: 0.86rem; color: var(--ink-soft); }
+    .ref-action { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--accent); text-decoration: none; margin-top: 4px; }
+    .ref-action:hover { text-decoration: underline; }
 
-    .ref-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-3px);
+    .bottom-actions { display: flex; justify-content: center; margin-top: 36px; margin-bottom: 20px; }
+    .action-btn {
+      width: 100%; max-width: 320px; padding: 13px 20px; border-radius: 10px; font-weight: 600; font-size: 0.92rem;
+      border: 1px solid var(--line); cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+      gap: 8px; transition: var(--transition); text-decoration: none; font-family: inherit; background: var(--bg-panel); color: var(--ink);
     }
+    .action-btn:hover { background: var(--bg-panel-hover); border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
-    .ref-card strong {
-      font-size: 1.05rem;
-      display: block;
-      margin-bottom: 2px;
-    }
-
-    .ref-card span {
-      font-size: 0.86rem;
-      color: var(--ink-soft);
-    }
-
-    .ref-action {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--accent);
-      text-decoration: none;
-      margin-top: 4px;
-    }
-    .ref-action:hover {
-      text-decoration: underline;
-    }
-
-    /* Altbilgi */
     footer {
-      margin-top: 10px;
-      padding: 24px 0 0;
-      border-top: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 14px;
-      font-size: 0.86rem;
-      color: var(--ink-soft);
+      margin-top: 10px; padding: 24px 0 0; border-top: 1px solid var(--line);
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; font-size: 0.86rem; color: var(--ink-soft);
     }
 
-    /* Bildirim Toast */
+    /* Modal Penceresi */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(6px);
+      z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 16px;
+      opacity: 0; visibility: hidden; transition: all 0.25s ease;
+    }
+    .modal-overlay.show { opacity: 1; visibility: visible; }
+    .modal-card {
+      background: var(--bg); border: 1px solid var(--line); border-radius: 18px; width: 100%; max-width: 500px;
+      padding: 26px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6); max-height: 90vh; overflow-y: auto;
+    }
+    .modal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .modal-title { font-size: 1.25rem; font-weight: 700; color: var(--ink); font-family: 'Outfit', sans-serif; }
+    .modal-close-btn { background: none; border: none; color: var(--ink-soft); font-size: 1.5rem; cursor: pointer; }
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+    .form-input, .form-textarea {
+      width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--line);
+      background: var(--bg-panel); color: var(--ink); font-family: inherit; font-size: 0.9rem; outline: none;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
+    .form-textarea { resize: vertical; min-height: 75px; }
+    .form-row-checkbox { display: flex; gap: 18px; margin-top: 10px; flex-wrap: wrap; }
+    .checkbox-label { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; cursor: pointer; color: var(--ink); }
+    .modal-foot { display: flex; gap: 10px; justify-content: flex-end; margin-top: 22px; }
+
     .toast {
-      position: fixed;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%) translateY(100px);
-      background: #0f172a;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 100px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 1000;
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(100px);
+      background: #0f172a; color: #fff; padding: 10px 20px; border-radius: 100px; font-size: 0.88rem; font-weight: 600;
+      display: flex; align-items: center; gap: 8px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      opacity: 0; pointer-events: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 3000;
     }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-    .toast.show {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
-    }
-
-    /* Scroll Reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Başa Dön Butonu */
     .scroll-top {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: var(--bg-panel);
-      backdrop-filter: var(--glass-blur);
-      border: 1px solid var(--line);
-      color: var(--ink);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transform: scale(0.8);
-      transition: var(--transition);
-      z-index: 90;
-      box-shadow: var(--shadow);
+      position: fixed; bottom: 24px; right: 24px; background: var(--bg-panel); backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--line); color: var(--ink); width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden;
+      transform: scale(0.8); transition: var(--transition); z-index: 90; box-shadow: var(--shadow);
     }
+    .scroll-top.visible { opacity: 1; visibility: visible; transform: scale(1); }
+    .scroll-top:hover { background: var(--accent); color: #0b0f17; border-color: var(--accent); }
 
-    .scroll-top.visible {
-      opacity: 1;
-      visibility: visible;
-      transform: scale(1);
-    }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
 
-    .scroll-top:hover {
-      background: var(--accent);
-      color: #0b0f17;
-      border-color: var(--accent);
-    }
-
-    /* Mobil Uyum */
     @media (max-width: 680px) {
-      .hero-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 28px 20px;
-        gap: 20px;
-      }
-      .contact-chips {
-        justify-content: center;
-      }
-      .dropdown-menu {
-        left: 50%;
-        transform: translateX(-50%) translateY(-6px) scale(0.96);
-      }
-      .dropdown-menu.show {
-        transform: translateX(-50%) translateY(0) scale(1);
-      }
-      .refs-grid {
-        grid-template-columns: 1fr;
-      }
-      .action-btn {
-        max-width: 100%;
-      }
+      .hero-card { flex-direction: column; text-align: center; padding: 28px 20px; gap: 20px; }
+      .contact-chips { justify-content: center; }
+      .refs-grid { grid-template-columns: 1fr; }
+      .action-btn { max-width: 100%; }
     }
 
-    /* Baskı Modu */
     @media print {
-      body {
-        background: #fff !important;
-        color: #000 !important;
-        padding: 0 !important;
-      }
-      body::before, body::after, .top-bar, .bottom-actions, .skills-filter, .scroll-top, .toast, .btn-icon, .dropdown-menu {
+      body { background: #fff !important; color: #000 !important; padding: 0 !important; }
+      body::before, body::after, .top-bar, .admin-bar, .bottom-actions, .skills-filter, .scroll-top, .toast, .btn-icon, .admin-card-controls {
         display: none !important;
       }
-      .hero-card, .card, .about-card, .ref-card {
-        background: none !important;
-        border: none !important;
-        box-shadow: none !important;
-        padding: 10px 0 !important;
-      }
+      .hero-card, .card, .about-card, .ref-card, .project-card { background: none !important; border: none !important; box-shadow: none !important; padding: 10px 0 !important; }
       .hero-card { border-bottom: 2px solid #000 !important; }
       .timeline::before { background: #ccc !important; }
       .timeline-dot { border-color: #000 !important; background: #fff !important; }
-      .badge-date, .hero-badge { color: #000 !important; border: 1px solid #ccc !important; background: none !important; }
+      .badge-date, .hero-badge, .project-tag { color: #000 !important; border: 1px solid #ccc !important; background: none !important; }
       .card-subtitle { color: #333 !important; }
     }
   </style>
@@ -884,18 +717,16 @@
 <body>
 
   <div class="container">
-    <!-- Üst Sabit Araç Çubuğu (Yazdır Butonu Burada Yer Almaktadır) -->
+    <!-- Üst Sabit Araç Çubuğu -->
     <header class="top-bar">
       <div class="nav-status">
         <span class="status-dot"></span>
         <span>İş / Proje Fırsatlarına Açık</span>
       </div>
       <div class="nav-actions">
-        <!-- Tema Değiştirici Buton -->
         <button class="btn-icon" id="themeToggle" title="Tema Değiştir" aria-label="Tema Değiştir">
           <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"></svg>
         </button>
-        <!-- Yazdır / PDF Butonu -->
         <button class="btn-icon" onclick="window.print()" title="Yazdır / PDF Kaydet" aria-label="Yazdır">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="6 9 6 2 18 2 18 9"></polyline>
@@ -906,9 +737,23 @@
       </div>
     </header>
 
+    <!-- SADECE SİZE ÖZEL YÖNETİCİ KONSOLU (Giriş Yapıldığında Görünür) -->
+    <div class="admin-bar" id="adminBar">
+      <div class="admin-title">
+        <span>🛡️ Yönetici Modu Aktif</span>
+      </div>
+      <div class="admin-actions">
+        <button class="btn-ctrl" onclick="toggleAllDefaultProjects()" id="btnToggleDefaults">👁️ Örnek Projeleri Gizle</button>
+        <button class="btn-ctrl" onclick="openAddProjectModal()">➕ Yeni Proje Ekle</button>
+        <button class="btn-ctrl" onclick="generateShareUrl()">🔗 Özel Link Oluştur</button>
+        <button class="btn-ctrl danger" onclick="logoutAdmin()">Çıkış Yap</button>
+      </div>
+    </div>
+
     <!-- Profil Başlığı (Hero) -->
     <main class="hero-card reveal">
-      <div class="avatar-wrapper">
+      <!-- 5 Kez Tıklandığında Gizli Giriş Açan Fotoğraf Alanı -->
+      <div class="avatar-wrapper" onclick="handleAvatarSecretClicks()" title="Yusuf Başaran">
         <img class="avatar-img" width="124" height="124" src="/profile.jpg" alt="Yusuf Başaran" fetchpriority="high">
       </div>
       <div class="hero-content">
@@ -916,14 +761,13 @@
         <span class="hero-badge">IT / Bilgi İşlem</span>
         
         <div class="contact-chips">
-          <!-- 2 Seçenekli Telefon Butonu (Dropdown) -->
+          <!-- 2 Seçenekli Telefon Butonu -->
           <div class="dropdown-wrapper" id="phoneWrapper">
             <button class="chip-btn" id="phoneDropdownBtn" onclick="toggleMenu('phoneWrapper', 'phoneDropdownMenu', 'phoneDropdownBtn', event)" title="Telefon seçenekleri" aria-expanded="false">
               <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
               <span>+90 533 849 30 63</span>
               <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
-            
             <div class="dropdown-menu" id="phoneDropdownMenu">
               <button class="dropdown-item" onclick="handleCopyText('+905338493063', 'Telefon numarası kopyalandı!', event)">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
@@ -936,14 +780,13 @@
             </div>
           </div>
 
-          <!-- 2 Seçenekli E-posta Butonu (Dropdown) -->
+          <!-- 2 Seçenekli E-posta Butonu -->
           <div class="dropdown-wrapper" id="emailWrapper">
             <button class="chip-btn" id="emailDropdownBtn" onclick="toggleMenu('emailWrapper', 'emailDropdownMenu', 'emailDropdownBtn', event)" title="E-posta seçenekleri" aria-expanded="false">
               <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
               <span>yusufbasaran63@hotmail.com</span>
               <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
-            
             <div class="dropdown-menu" id="emailDropdownMenu">
               <button class="dropdown-item" onclick="handleCopyText('yusufbasaran63@hotmail.com', 'E-posta adresi kopyalandı!', event)">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
@@ -956,7 +799,6 @@
             </div>
           </div>
 
-          <!-- Konum -->
           <span class="chip-btn" style="cursor: default;">
             <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
             <span>Gazimağusa / Kıbrıs</span>
@@ -990,62 +832,25 @@
       </div>
 
       <div class="skills-grid" id="skillsGrid">
-        <div class="skill-card" data-cat="tech">
-          <div class="skill-icon-box">💻</div>
-          <div class="skill-info">
-            <strong>Yazılım Geliştirme</strong>
-            <span>Web & Temel Algoritmalar</span>
-          </div>
-        </div>
-
-        <div class="skill-card" data-cat="tech">
-          <div class="skill-icon-box">⚙</div>
-          <div class="skill-info">
-            <strong>Donanım Uzmanlığı</strong>
-            <span>Arıza Tespiti & Montaj</span>
-          </div>
-        </div>
-
-        <div class="skill-card" data-cat="tech">
-          <div class="skill-icon-box">📊</div>
-          <div class="skill-info">
-            <strong>CRM & Proje Yönetimi</strong>
-            <span>Bitrix24, Google Workspace</span>
-          </div>
-        </div>
-
-        <div class="skill-card" data-cat="soft">
-          <div class="skill-icon-box">🧩</div>
-          <div class="skill-info">
-            <strong>Problem Çözme</strong>
-            <span>Analitik & Hızlı Çözümleme</span>
-          </div>
-        </div>
-
-        <div class="skill-card" data-cat="soft">
-          <div class="skill-icon-box">🤝</div>
-          <div class="skill-info">
-            <strong>İletişim ve Uyum</strong>
-            <span>Takım Çalışması & İfade</span>
-          </div>
-        </div>
-
-        <div class="skill-card" data-cat="soft">
-          <div class="skill-icon-box">🚀</div>
-          <div class="skill-info">
-            <strong>Öğrenme Hızı</strong>
-            <span>Teknoloji Adaptasyonu</span>
-          </div>
-        </div>
-
-        <div class="skill-card" data-cat="soft">
-          <div class="skill-icon-box">🎯</div>
-          <div class="skill-info">
-            <strong>Sorumluluk Bilinci</strong>
-            <span>Görev Takibi & Disiplin</span>
-          </div>
-        </div>
+        <div class="skill-card" data-cat="tech"><div class="skill-icon-box">💻</div><div class="skill-info"><strong>Yazılım Geliştirme</strong><span>Web & Temel Algoritmalar</span></div></div>
+        <div class="skill-card" data-cat="tech"><div class="skill-icon-box">⚙️</div><div class="skill-info"><strong>Donanım Uzmanlığı</strong><span>Arıza Tespiti & Montaj</span></div></div>
+        <div class="skill-card" data-cat="tech"><div class="skill-icon-box">📊</div><div class="skill-info"><strong>CRM & Proje Yönetimi</strong><span>Bitrix24, Google Workspace</span></div></div>
+        <div class="skill-card" data-cat="soft"><div class="skill-icon-box">🧩</div><div class="skill-info"><strong>Problem Çözme</strong><span>Analitik & Hızlı Çözümleme</span></div></div>
+        <div class="skill-card" data-cat="soft"><div class="skill-icon-box">🤝</div><div class="skill-info"><strong>İletişim ve Uyum</strong><span>Takım Çalışması & İfade</span></div></div>
+        <div class="skill-card" data-cat="soft"><div class="skill-icon-box">🚀</div><div class="skill-info"><strong>Öğrenme Hızı</strong><span>Teknoloji Adaptasyonu</span></div></div>
+        <div class="skill-card" data-cat="soft"><div class="skill-icon-box">🎯</div><div class="skill-info"><strong>Sorumluluk Bilinci</strong><span>Görev Takibi & Disiplin</span></div></div>
       </div>
+    </section>
+
+    <!-- PROJELER BÖLÜMÜ -->
+    <section class="reveal" id="projectsSection">
+      <div class="projects-header-box">
+        <h2 class="section-title" style="margin-bottom: 0;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+          <span>Projeler</span>
+        </h2>
+      </div>
+      <div class="projects-grid" id="projectsGrid"></div>
     </section>
 
     <!-- Deneyim Bölümü -->
@@ -1170,7 +975,7 @@
       </div>
     </section>
 
-    <!-- En Alt Eylem Butonu (Yalnızca Kartvizit Kaydet) -->
+    <!-- En Alt Eylem Butonu (Kartvizit Kaydet) -->
     <div class="bottom-actions reveal">
       <button onclick="downloadVCard()" class="action-btn">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
@@ -1185,15 +990,82 @@
     </footer>
   </div>
 
+  <!-- PROJE EKLEME / DÜZENLEME MODALI -->
+  <div class="modal-overlay" id="projectModal" onclick="if(event.target === this) closeProjectModal()">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3 class="modal-title" id="modalTitle">Yeni Proje Ekle</h3>
+        <button class="modal-close-btn" onclick="closeProjectModal()">&times;</button>
+      </div>
+
+      <form id="projectForm" onsubmit="handleSaveProject(event)">
+        <input type="hidden" id="editProjectId" value="">
+
+        <div class="form-group">
+          <label for="projTitle">Proje Başlığı *</label>
+          <input type="text" id="projTitle" class="form-input" required placeholder="Örn: Fumel CRM Dashboard">
+        </div>
+
+        <div class="form-group">
+          <label for="projDesc">Proje Açıklaması *</label>
+          <textarea id="projDesc" class="form-textarea" required placeholder="Projenin amacı ve yapılan çalışmalar..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="projImg">Görsel URL (veya aşağıdan seçin)</label>
+          <input type="url" id="projImg" class="form-input" placeholder="https://ornek.com/resim.jpg">
+          <div style="font-size: 0.8rem; color: var(--ink-soft); margin: 6px 0 2px;">Veya Cihazdan Görsel Yükleyin:</div>
+          <input type="file" id="projImgFile" accept="image/*" class="form-input" onchange="handleImageFile(event)">
+        </div>
+
+        <div class="form-group">
+          <label for="projGithub">GitHub Linki</label>
+          <input type="url" id="projGithub" class="form-input" placeholder="https://github.com/yusufbasaran/proje">
+        </div>
+
+        <div class="form-group">
+          <label for="projDemo">Canlı Site / Demo Linki</label>
+          <input type="url" id="projDemo" class="form-input" placeholder="https://yusufbasaran.dev">
+        </div>
+
+        <div class="form-group">
+          <label for="projTags">Etiketler (Virgülle ayırın)</label>
+          <input type="text" id="projTags" class="form-input" placeholder="JavaScript, Bitrix24, Web">
+        </div>
+
+        <!-- Görünürlük Kontrolleri -->
+        <div class="form-row-checkbox">
+          <label class="checkbox-label">
+            <input type="checkbox" id="checkVisible" checked>
+            <span>Projeyi Ziyaretçilere Göster</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="checkGithub" checked>
+            <span>GitHub Butonunu Aç</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="checkDemo" checked>
+            <span>Canlı Demo Butonunu Aç</span>
+          </label>
+        </div>
+
+        <div class="modal-foot">
+          <button type="button" class="btn-ctrl" onclick="closeProjectModal()">İptal</button>
+          <button type="submit" class="btn-ctrl active-state">Kaydet</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- Başa Dön Butonu -->
   <button class="scroll-top" id="scrollTopBtn" onclick="scrollToTop()" title="Başa Dön" aria-label="Başa Dön">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
   </button>
 
-  <!-- Kopyalama Toast Bildirimi -->
+  <!-- Toast Bildirimi -->
   <div class="toast" id="toast">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-    <span id="toastMsg">Panoya kopyalandı!</span>
+    <span id="toastMsg">İşlem başarılı!</span>
   </div>
 
   <!-- JavaScript Kodları -->
@@ -1253,7 +1125,7 @@
       }, 2500);
     }
 
-    // 3. Ortak Dropdown Menü Yöneticisi
+    // 3. Dropdown Menü Kontrolleri
     function toggleMenu(wrapperId, menuId, btnId, e) {
       e.stopPropagation();
       const wrapper = document.getElementById(wrapperId);
@@ -1261,7 +1133,6 @@
       const btn = document.getElementById(btnId);
       const isOpen = menu.classList.contains('show');
 
-      // Önce açık tüm menüleri kapat
       closeAllMenus();
 
       if (!isOpen) {
@@ -1283,7 +1154,6 @@
       closeAllMenus();
     }
 
-    // Sayfa boşluğuna tıklandığında menüleri kapat
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.dropdown-wrapper')) {
         closeAllMenus();
@@ -1331,9 +1201,374 @@
       });
     }
 
-    // 6. Scroll Reveal & Başa Dön
-    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    // ========================================================
+    // 6. YÖNETİCİ (ADMIN) & PROJE YÖNETİM SİSTEMİ
+    // ========================================================
+    const ADMIN_PASS = 'yb2026';
+    let isAdmin = false;
 
+    const DEFAULT_PROJECTS = [
+      {
+        id: 'p-default-1',
+        title: 'Fumel CRM Entegrasyon & İş Akışı',
+        desc: 'Bitrix24 ve Google Workspace araçları ile kurumsal görev yönetimi ve veri analizi iş akışları.',
+        img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80',
+        github: 'https://github.com/yusufbasaran',
+        demo: 'https://yusufbasaran.dev',
+        tags: ['Bitrix24', 'CRM', 'Google Workspace'],
+        visible: true,
+        showGithub: true,
+        showDemo: true,
+        isDefault: true
+      },
+      {
+        id: 'p-default-2',
+        title: 'Dijital Okuryazarlık & Bilişim Atölyesi',
+        desc: 'Çocuklara ve gençlere temel bilgisayar kullanımı, donanım mimarisi ve teknoloji bilinci kazandırma projesi.',
+        img: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80',
+        github: 'https://github.com/yusufbasaran',
+        demo: '',
+        tags: ['Eğitim', 'Donanım', 'Dijitalleşme'],
+        visible: true,
+        showGithub: true,
+        showDemo: false,
+        isDefault: true
+      }
+    ];
+
+    let projects = [];
+    let uploadedImageBase64 = '';
+
+    // Fotoğrafa 5 kez tıklanırsa admin girişi aç
+    let secretClickCount = 0;
+    let secretClickTimer;
+    function handleAvatarSecretClicks() {
+      secretClickCount++;
+      clearTimeout(secretClickTimer);
+      secretClickTimer = setTimeout(() => { secretClickCount = 0; }, 2000);
+
+      if (secretClickCount >= 5) {
+        secretClickCount = 0;
+        checkAdminAccess(true);
+      }
+    }
+
+    function checkAdminAccess(forcePrompt = false) {
+      if (sessionStorage.getItem('yb_admin') === 'true') {
+        enableAdminMode();
+        return;
+      }
+
+      if (window.location.hash === '#admin' || forcePrompt) {
+        const pass = prompt('Lütfen Yönetici Şifresini Giriniz:');
+        if (pass === ADMIN_PASS) {
+          sessionStorage.setItem('yb_admin', 'true');
+          enableAdminMode();
+          showToast('Yönetici girişi başarılı!');
+          if (window.location.hash === '#admin') {
+            history.replaceState(null, null, ' ');
+          }
+        } else if (pass !== null) {
+          alert('Hatalı şifre!');
+        }
+      }
+    }
+
+    function enableAdminMode() {
+      isAdmin = true;
+      document.body.classList.add('admin-mode');
+      document.getElementById('adminBar').classList.add('active');
+      renderProjects();
+    }
+
+    function logoutAdmin() {
+      sessionStorage.removeItem('yb_admin');
+      isAdmin = false;
+      document.body.classList.remove('admin-mode');
+      document.getElementById('adminBar').classList.remove('active');
+      renderProjects();
+      showToast('Yönetici modundan çıkış yapıldı.');
+    }
+
+    // Projeleri Bellekten veya URL'den Yükle
+    function initProjects() {
+      const urlProjects = loadProjectsFromUrl();
+      if (urlProjects && urlProjects.length > 0) {
+        projects = urlProjects;
+        saveProjects();
+        showToast('Projeler linkten yüklendi!');
+      } else {
+        const stored = localStorage.getItem('yb_projects');
+        if (stored) {
+          try { projects = JSON.parse(stored); } catch (e) { projects = DEFAULT_PROJECTS; }
+        } else {
+          projects = DEFAULT_PROJECTS;
+          saveProjects();
+        }
+      }
+      renderProjects();
+    }
+
+    function saveProjects() {
+      localStorage.setItem('yb_projects', JSON.stringify(projects));
+    }
+
+    function renderProjects() {
+      const grid = document.getElementById('projectsGrid');
+      grid.innerHTML = '';
+
+      // Ziyaretçiler sadece visible === true olanları görür
+      const displayList = isAdmin ? projects : projects.filter(p => p.visible !== false);
+
+      if (displayList.length === 0) {
+        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 36px; border: 2px dashed var(--line); border-radius: var(--radius); color: var(--ink-soft); font-size: 0.95rem;">Şu anda listelenecek proje bulunmamaktadır.</div>';
+        return;
+      }
+
+      displayList.forEach(p => {
+        const card = document.createElement('div');
+        card.className = `project-card ${p.visible === false ? 'is-hidden' : ''}`;
+
+        const fallbackImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect fill='%231B211E' width='400' height='200'/%3E%3Ctext fill='%2364748b' x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='18'%3EYusuf Ba%C5%9Faran Proje%3C/text%3E%3C/svg%3E";
+        const imgSrc = p.img || fallbackImg;
+        const tagsHtml = (p.tags || []).map(t => `<span class="project-tag">${escapeHtml(t.trim())}</span>`).join('');
+
+        // Butonların ziyaretçiye görünme koşulları
+        const gitBtn = (p.github && p.showGithub !== false) ? `
+          <a href="${encodeURI(p.github)}" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            <span>GitHub</span>
+          </a>` : '';
+
+        const demoBtn = (p.demo && p.showDemo !== false) ? `
+          <a href="${encodeURI(p.demo)}" target="_blank" rel="noopener noreferrer" class="project-link-btn">Canlı İncele</a>` : '';
+
+        card.innerHTML = `
+          <div class="project-img-box">
+            <img src="${imgSrc}" alt="${escapeHtml(p.title)}" class="project-img" onerror="this.src='${fallbackImg}'">
+            ${p.visible === false ? '<span class="project-badge-hidden">GİZLİ / TASLAK</span>' : ''}
+          </div>
+          <div class="project-body">
+            <div class="project-tags">${tagsHtml}</div>
+            <h3 class="project-title">${escapeHtml(p.title)}</h3>
+            <p class="project-desc">${escapeHtml(p.desc)}</p>
+            <div class="project-links">${gitBtn}${demoBtn}</div>
+          </div>
+          <!-- Yönetici Kontrol Butonları -->
+          <div class="admin-card-controls">
+            <button class="btn-ctrl ${p.visible === false ? 'active-state' : ''}" onclick="toggleProjectVisibility('${p.id}')">
+              ${p.visible === false ? '🕶️ Ziyaretçiye Aç' : '👁️ Ziyaretçiye Gizle'}
+            </button>
+            <button class="btn-ctrl ${p.showGithub === false ? 'active-state' : ''}" onclick="toggleButtonVisibility('${p.id}', 'github')">
+              ${p.showGithub === false ? '🐙 Git Aç' : '🐙 Git Gizle'}
+            </button>
+            <button class="btn-ctrl ${p.showDemo === false ? 'active-state' : ''}" onclick="toggleButtonVisibility('${p.id}', 'demo')">
+              ${p.showDemo === false ? '🌐 Demo Aç' : '🌐 Demo Gizle'}
+            </button>
+            <button class="btn-ctrl" onclick="openEditProjectModal('${p.id}')">✏️ Düzenle</button>
+            <button class="btn-ctrl danger" onclick="deleteProject('${p.id}')">🗑️ Sil</button>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+
+      updateDefaultToggleBtnState();
+    }
+
+    // Kart İçi Hızlı Anahtarlar
+    function toggleProjectVisibility(id) {
+      const p = projects.find(item => item.id === id);
+      if (p) {
+        p.visible = !(p.visible !== false);
+        saveProjects();
+        renderProjects();
+        showToast(p.visible ? 'Proje ziyaretçilere açıldı.' : 'Proje ziyaretçilere gizlendi.');
+      }
+    }
+
+    function toggleButtonVisibility(id, type) {
+      const p = projects.find(item => item.id === id);
+      if (p) {
+        if (type === 'github') {
+          p.showGithub = !(p.showGithub !== false);
+          showToast(p.showGithub ? 'GitHub butonu açıldı.' : 'GitHub butonu gizlendi.');
+        } else if (type === 'demo') {
+          p.showDemo = !(p.showDemo !== false);
+          showToast(p.showDemo ? 'Demo butonu açıldı.' : 'Demo butonu gizlendi.');
+        }
+        saveProjects();
+        renderProjects();
+      }
+    }
+
+    // Örnek Projeleri Toplu Gizle / Aç
+    function toggleAllDefaultProjects() {
+      const defaults = projects.filter(p => p.isDefault);
+      if (defaults.length === 0) return;
+
+      const anyVisible = defaults.some(p => p.visible !== false);
+      defaults.forEach(p => { p.visible = !anyVisible; });
+
+      saveProjects();
+      renderProjects();
+      showToast(anyVisible ? 'Örnek projeler ziyaretçilere gizlendi.' : 'Örnek projeler ziyaretçilere açıldı.');
+    }
+
+    function updateDefaultToggleBtnState() {
+      const btn = document.getElementById('btnToggleDefaults');
+      if (!btn) return;
+      const defaults = projects.filter(p => p.isDefault);
+      if (defaults.length === 0) {
+        btn.style.display = 'none';
+        return;
+      }
+      btn.style.display = 'inline-flex';
+      const anyVisible = defaults.some(p => p.visible !== false);
+      btn.textContent = anyVisible ? '👁️ Örnek Projeleri Gizle' : '🕶️ Örnek Projeleri Aç';
+    }
+
+    // Modal İşlemleri
+    function openAddProjectModal() {
+      document.getElementById('editProjectId').value = '';
+      document.getElementById('projectForm').reset();
+      document.getElementById('modalTitle').textContent = 'Yeni Proje Ekle';
+      document.getElementById('checkVisible').checked = true;
+      document.getElementById('checkGithub').checked = true;
+      document.getElementById('checkDemo').checked = true;
+      uploadedImageBase64 = '';
+      document.getElementById('projectModal').classList.add('show');
+    }
+
+    function openEditProjectModal(id) {
+      const p = projects.find(item => item.id === id);
+      if (!p) return;
+
+      document.getElementById('editProjectId').value = p.id;
+      document.getElementById('projTitle').value = p.title || '';
+      document.getElementById('projDesc').value = p.desc || '';
+      document.getElementById('projImg').value = (p.img && !p.img.startsWith('data:')) ? p.img : '';
+      document.getElementById('projGithub').value = p.github || '';
+      document.getElementById('projDemo').value = p.demo || '';
+      document.getElementById('projTags').value = (p.tags || []).join(', ');
+      document.getElementById('checkVisible').checked = p.visible !== false;
+      document.getElementById('checkGithub').checked = p.showGithub !== false;
+      document.getElementById('checkDemo').checked = p.showDemo !== false;
+      uploadedImageBase64 = (p.img && p.img.startsWith('data:')) ? p.img : '';
+
+      document.getElementById('modalTitle').textContent = 'Projeyi Düzenle';
+      document.getElementById('projectModal').classList.add('show');
+    }
+
+    function closeProjectModal() {
+      document.getElementById('projectModal').classList.remove('show');
+    }
+
+    function handleImageFile(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(evt) { uploadedImageBase64 = evt.target.result; };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function handleSaveProject(e) {
+      e.preventDefault();
+      const id = document.getElementById('editProjectId').value;
+      const title = document.getElementById('projTitle').value.trim();
+      const desc = document.getElementById('projDesc').value.trim();
+      const imgUrl = document.getElementById('projImg').value.trim();
+      const github = document.getElementById('projGithub').value.trim();
+      const demo = document.getElementById('projDemo').value.trim();
+      const tagsRaw = document.getElementById('projTags').value.trim();
+
+      const tags = tagsRaw ? tagsRaw.split(',').map(t => t.trim()).filter(Boolean) : ['Yazılım'];
+
+      const projectData = {
+        title,
+        desc,
+        img: uploadedImageBase64 || imgUrl,
+        github,
+        demo,
+        tags,
+        visible: document.getElementById('checkVisible').checked,
+        showGithub: document.getElementById('checkGithub').checked,
+        showDemo: document.getElementById('checkDemo').checked
+      };
+
+      if (id) {
+        const idx = projects.findIndex(p => p.id === id);
+        if (idx !== -1) {
+          projects[idx] = { ...projects[idx], ...projectData };
+          showToast('Proje güncellendi!');
+        }
+      } else {
+        const newProj = {
+          id: 'p-' + Date.now(),
+          ...projectData,
+          isDefault: false
+        };
+        projects.unshift(newProj);
+        showToast('Yeni proje eklendi!');
+      }
+
+      saveProjects();
+      renderProjects();
+      closeProjectModal();
+    }
+
+    function deleteProject(id) {
+      if (confirm('Bu projeyi silmek istediğinize emin misiniz?')) {
+        projects = projects.filter(p => p.id !== id);
+        saveProjects();
+        renderProjects();
+        showToast('Proje silindi.');
+      }
+    }
+
+    // Özel Paylaşılabilir URL Oluşturma (#data=...)
+    function generateShareUrl() {
+      try {
+        const jsonStr = JSON.stringify(projects);
+        const encoded = btoa(encodeURIComponent(jsonStr).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
+        const shareUrl = window.location.origin + window.location.pathname + '#data=' + encoded;
+        copyToClipboard(shareUrl, 'Özel link panoya kopyalandı!');
+      } catch (err) {
+        showToast('Link oluşturulurken hata meydana geldi.');
+      }
+    }
+
+    function loadProjectsFromUrl() {
+      const hash = window.location.hash;
+      if (hash && hash.startsWith('#data=')) {
+        try {
+          const encoded = hash.substring(6);
+          const jsonStr = decodeURIComponent(Array.prototype.map.call(atob(encoded), (c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+          const parsed = JSON.parse(jsonStr);
+          if (Array.isArray(parsed)) return parsed;
+        } catch (e) {
+          console.warn('URL veri formatı çözülemedi:', e);
+        }
+      }
+      return null;
+    }
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Sayfa Başlatma
+    initProjects();
+    checkAdminAccess();
+
+    // 7. Scroll Reveal & Başa Dön
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
         scrollTopBtn.classList.add('visible');
