@@ -625,6 +625,14 @@
       .action-btn { max-width: 100%; }
     }
 
+    /* Diller kartı */
+    .lang-row + .lang-row { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
+    .lang-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 10px; }
+    .lang-name { font-size: 1.06rem; font-weight: 700; color: var(--ink); }
+    .lang-bar { height: 6px; border-radius: 100px; background: var(--line); overflow: hidden; }
+    .lang-bar > span { display: block; height: 100%; border-radius: 100px; background: linear-gradient(90deg, var(--accent), var(--brand)); }
+    .lang-note { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.55; margin-top: 10px; }
+
     /* Hareket azaltma tercihi */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
@@ -809,8 +817,8 @@
               </div>
               <div class="card-subtitle">Fumel Software</div>
               <ul class="card-list">
-                <li>Bitrix24 ve Google Workspace araçlarını kullanarak proje yönetimi, görev takibi ve dosyalama süreçlerini yürüttüm.</li>
-                <li>CRM altyapısı ve iş akışlarına destek oldum.</li>
+                <li>Bitrix24 ve Google Workspace araçlarını kullanarak proje yönetimi, görev takibi ve kurumsal dosyalama süreçlerini yürüttüm.</li>
+                <li>CRM altyapısı ve iş akışlarında destek vererek, müşteri ilişkileri ve veri takibi süreçlerinin işleyişine temel düzeyde katkıda bulundum.</li>
               </ul>
             </div>
           </div>
@@ -824,7 +832,25 @@
               </div>
               <div class="card-subtitle">Sulukule Gönüllüleri Derneği</div>
               <ul class="card-list">
-                <li>Çocuklara yönelik temel bilgisayar eğitimleri ve dijital okuryazarlık atölyeleri düzenledim.</li>
+                <li>Dernek bünyesinde çocuklara yönelik temel bilgisayar eğitimleri ve dijital okuryazarlık atölyeleri düzenledim.</li>
+                <li>Düzenli olarak yürüttüğüm atölyelerle çocukların temel bilgisayar becerilerini geliştirmesine katkı sağladım.</li>
+                <li>Eğitim içeriklerini çocukların yaş ve seviyesine göre sadeleştirerek anlatım pratiklerimi geliştirdim.</li>
+                <li>Dernek bünyesinde yürütülen 6'dan fazla projede görev aldım.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Gönüllü Eğitmen</h3>
+                <span class="badge-date">2022 · 1 Yıl</span>
+              </div>
+              <div class="card-subtitle">İstanbul Bilgi Üniversitesi — BİLGİ Çocuk Çalışmaları Birimi · Gönüllü</div>
+              <ul class="card-list">
+                <li>Bir yıl süren atölye programında 40'tan fazla öğrenciye bilgisayar kullanımı ve dijital okuryazarlık eğitimi verdim.</li>
+                <li>Düzenlediğim atölyelerle çocukların teknolojiyle güvenli ve bilinçli şekilde tanışmasına katkı sağladım.</li>
+                <li>Yaş gruplarına uygun, uygulamalı eğitim içerikleri hazırlayıp sundum.</li>
               </ul>
             </div>
           </div>
@@ -847,7 +873,29 @@
                 <span class="badge-date">2024 – 2026</span>
               </div>
               <div class="card-subtitle">Bilgisayar Programcılığı (Önlisans)</div>
-              <p style="font-size: 0.92rem; color: var(--ink-soft); line-height: 1.6;">Yazılım geliştirme temelleri, algoritma tasarımı ve veritabanı yönetimi.</p>
+              <p style="font-size: 0.92rem; color: var(--ink-soft); line-height: 1.6;">Yazılım geliştirme temelleri, algoritma tasarımı, veritabanı yönetimi ve donanım teknolojileri üzerine kapsamlı eğitim.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="card lang-card">
+              <div class="lang-row">
+                <div class="lang-head">
+                  <h3 class="lang-name">Türkçe</h3>
+                  <span class="badge-date">Anadil</span>
+                </div>
+                <div class="lang-bar" role="img" aria-label="Türkçe: anadil"><span style="width: 100%;"></span></div>
+              </div>
+
+              <div class="lang-row">
+                <div class="lang-head">
+                  <h3 class="lang-name">İngilizce</h3>
+                  <span class="badge-date">A1 · Temel Düzey</span>
+                </div>
+                <div class="lang-bar" role="img" aria-label="İngilizce: A1, temel düzey"><span style="width: 17%;"></span></div>
+                <p class="lang-note">Temel teknik terimleri anlama ve basit teknik dokümanları okuma.</p>
+              </div>
             </div>
           </div>
         </div>
