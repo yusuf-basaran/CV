@@ -4,99 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- Sekme İkonu (Favicon) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Ccircle cx='256' cy='256' r='236' fill='%23F0F0D0' stroke='%23504840' stroke-width='24'/%3E%3Cellipse cx='256' cy='256' rx='98' ry='236' fill='none' stroke='%23504840' stroke-width='24'/%3E%3Cline x1='24' y1='170' x2='488' y2='170' stroke='%23504840' stroke-width='24'/%3E%3Cline x1='24' y1='342' x2='488' y2='342' stroke='%23504840' stroke-width='24'/%3E%3Cline x1='256' y1='20' x2='256' y2='492' stroke='%23504840' stroke-width='24'/%3E%3C/svg%3E">
   
-  <!-- SEO / Search Engine Metadata -->
   <meta name="description" content="Yusuf Başaran — IT / Bilgi İşlem. Yazılım, web geliştirme, donanım arıza tespiti ve dijital okuryazarlık alanlarında teknik yetkinliklere sahip bilişim mezunu.">
   <meta name="author" content="Yusuf Başaran">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0d1117">
   <link rel="canonical" href="https://yusufbasaran.dev/">
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="profile">
-  <meta property="og:title" content="Yusuf Başaran — IT / Bilgi İşlem">
-  <meta property="og:description" content="Yusuf Başaran'ın bilişim, yazılım, web geliştirme ve teknik yetkinliklerini içeren kişisel özgeçmişi.">
-  <meta property="og:url" content="https://yusufbasaran.dev/">
-  <meta property="og:site_name" content="Yusuf Başaran">
-  <meta property="og:locale" content="tr_TR">
-  <meta property="profile:first_name" content="Yusuf">
-  <meta property="profile:last_name" content="Başaran">
-  <meta property="profile:username" content="yusufbasaran">
-  <meta property="og:image" content="/profile.jpg">
-  <meta property="og:image:alt" content="Yusuf Başaran">
-  <meta property="og:image:type" content="image/jpeg">
-
-  <!-- X / Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Yusuf Başaran — IT / Bilgi İşlem">
-  <meta name="twitter:description" content="Yusuf Başaran'ın bilişim, yazılım, web geliştirme ve teknik yetkinliklerini içeren kişisel özgeçmişi.">
-  <meta name="twitter:image" content="/profile.jpg">
-  <meta name="twitter:image:alt" content="Yusuf Başaran">
-
-  <!-- JSON-LD / Schema.org -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Person",
-        "@id": "/#person",
-        "name": "Yusuf Başaran",
-        "givenName": "Yusuf",
-        "familyName": "Başaran",
-        "jobTitle": "IT / Bilgi İşlem",
-        "description": "Yazılım, web geliştirme ve donanım arıza tespiti alanlarında temel teknik yetkinliklere sahip bilişim mezunu.",
-        "email": "mailto:yusufbasaran63@hotmail.com",
-        "telephone": "+905338493063",
-        "url": "https://yusufbasaran.dev/",
-        "image": "/profile.jpg",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Gazimağusa",
-          "addressCountry": "CY"
-        },
-        "alumniOf": {
-          "@type": "CollegeOrUniversity",
-          "name": "Doğu Akdeniz Üniversitesi"
-        },
-        "knowsAbout": [
-          "Bilgi işlem",
-          "Yazılım",
-          "Web geliştirme",
-          "Donanım arıza tespiti",
-          "CRM",
-          "Google Workspace",
-          "Bitrix24",
-          "Dijital okuryazarlık"
-        ],
-        "hasOccupation": {
-          "@type": "Occupation",
-          "name": "IT / Bilgi İşlem"
-        }
-      },
-      {
-        "@type": "ProfilePage",
-        "@id": "/#profile",
-        "url": "/",
-        "name": "Yusuf Başaran — IT / Bilgi İşlem",
-        "description": "Yusuf Başaran'ın kişisel profili, bilişim alanındaki eğitimi ve deneyimleri.",
-        "inLanguage": "tr-TR",
-        "mainEntity": {
-          "@id": "/#person"
-        }
-      }
-    ]
-  }
-  </script>
-
   <title>Yusuf Başaran — IT / Bilgi İşlem</title>
-  <link rel="preload" as="image" href="/profile.jpg" type="image/jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
     :root {
@@ -163,13 +85,8 @@
     body::before { top: -100px; right: -100px; background: var(--accent); }
     body::after { bottom: -100px; left: -100px; background: var(--brand); }
 
-    .container {
-      width: 100%;
-      max-width: 820px;
-      margin: 0 auto;
-    }
+    .container { width: 100%; max-width: 820px; margin: 0 auto; }
 
-    /* Üst Navigasyon */
     .top-bar {
       display: flex;
       justify-content: space-between;
@@ -209,11 +126,7 @@
       50% { opacity: 0.4; transform: scale(0.85); }
     }
 
-    .nav-actions {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
+    .nav-actions { display: flex; gap: 10px; align-items: center; }
 
     .btn-icon {
       background: transparent;
@@ -235,7 +148,6 @@
       transform: translateY(-2px);
     }
 
-    /* Yönetici (Admin) Modu Kontrol Çubuğu */
     .admin-bar {
       display: none;
       background: rgba(245, 158, 11, 0.12);
@@ -257,14 +169,8 @@
       align-items: center;
       gap: 8px;
     }
-    .admin-actions {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
+    .admin-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 
-    /* Profil Hero Kartı */
     .hero-card {
       background: var(--bg-panel);
       backdrop-filter: var(--glass-blur);
@@ -322,13 +228,7 @@
       border: 1px solid rgba(56, 189, 248, 0.2);
     }
 
-    .contact-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 12px;
-      align-items: center;
-    }
+    .contact-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; align-items: center; }
 
     .chip-btn {
       display: inline-flex;
@@ -353,7 +253,6 @@
     }
     .chip-btn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; }
 
-    /* Dropdown Menüler */
     .dropdown-wrapper { position: relative; display: inline-block; }
     .dropdown-wrapper .chevron-icon { width: 12px; height: 12px; margin-left: 2px; transition: transform 0.25s ease; stroke-width: 2.5; }
     .dropdown-wrapper.active .chevron-icon { transform: rotate(180deg); }
@@ -399,7 +298,6 @@
     .dropdown-item:hover { background: var(--bg-panel-hover); color: var(--accent); }
     .dropdown-item svg { width: 15px; height: 15px; color: var(--accent); flex-shrink: 0; }
 
-    /* Bölüm Başlıkları */
     section { margin-bottom: 36px; }
     .section-title {
       font-family: 'Outfit', sans-serif;
@@ -427,7 +325,6 @@
       box-shadow: var(--shadow);
     }
 
-    /* Beceriler */
     .skills-filter { display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 4px; }
     .filter-btn {
       background: transparent;
@@ -468,20 +365,8 @@
     .skill-info strong { display: block; font-size: 0.92rem; font-weight: 600; }
     .skill-info span { display: block; font-size: 0.78rem; color: var(--ink-soft); margin-top: 2px; }
 
-    /* Projeler Bölümü */
-    .projects-header-box {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-    }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 18px;
-    }
+    .projects-header-box { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 18px; }
     .project-card {
       background: var(--bg-panel);
       backdrop-filter: var(--glass-blur);
@@ -495,10 +380,8 @@
       box-shadow: var(--shadow);
     }
     .project-card:hover { border-color: var(--accent); transform: translateY(-4px); }
-    .project-card.is-hidden {
-      opacity: 0.55;
-      border-style: dashed;
-    }
+    .project-card.is-hidden { opacity: 0.55; border-style: dashed; }
+    
     .project-img-box {
       width: 100%;
       height: 150px;
@@ -520,15 +403,9 @@
       font-weight: 700;
       padding: 3px 8px;
       border-radius: 6px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     }
 
-    .project-body {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
+    .project-body { padding: 18px; display: flex; flex-direction: column; flex: 1; }
     .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
     .project-tag { font-size: 0.74rem; font-weight: 600; color: var(--accent); background: var(--accent-glow); padding: 2px 8px; border-radius: 100px; }
     .project-title { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
@@ -553,7 +430,6 @@
     }
     .project-link-btn:hover { background: var(--accent); color: #0b0f17; border-color: var(--accent); }
 
-    /* Yöneticiye Özel Kart İçi Kontrol Butonları */
     .admin-card-controls {
       display: none;
       background: rgba(15, 23, 42, 0.4);
@@ -583,7 +459,6 @@
     .btn-ctrl.danger:hover { border-color: var(--danger); color: var(--danger); }
     .btn-ctrl.active-state { background: var(--accent-glow); border-color: var(--accent); color: var(--accent); }
 
-    /* Zaman Çizelgesi (Deneyim & Eğitim) */
     .timeline { position: relative; padding-left: 28px; }
     .timeline::before { content: ""; position: absolute; left: 7px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
     .timeline-item { position: relative; margin-bottom: 24px; }
@@ -614,7 +489,6 @@
     .card-list li:last-child { margin-bottom: 0; }
     .card-list li::before { content: "▹"; position: absolute; left: 0; color: var(--accent); font-size: 1rem; }
 
-    /* Referanslar */
     .refs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .ref-card {
       background: var(--bg-panel);
@@ -646,7 +520,6 @@
       display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; font-size: 0.86rem; color: var(--ink-soft);
     }
 
-    /* Modal Penceresi */
     .modal-overlay {
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(6px);
@@ -699,25 +572,11 @@
       .refs-grid { grid-template-columns: 1fr; }
       .action-btn { max-width: 100%; }
     }
-
-    @media print {
-      body { background: #fff !important; color: #000 !important; padding: 0 !important; }
-      body::before, body::after, .top-bar, .admin-bar, .bottom-actions, .skills-filter, .scroll-top, .toast, .btn-icon, .admin-card-controls {
-        display: none !important;
-      }
-      .hero-card, .card, .about-card, .ref-card, .project-card { background: none !important; border: none !important; box-shadow: none !important; padding: 10px 0 !important; }
-      .hero-card { border-bottom: 2px solid #000 !important; }
-      .timeline::before { background: #ccc !important; }
-      .timeline-dot { border-color: #000 !important; background: #fff !important; }
-      .badge-date, .hero-badge, .project-tag { color: #000 !important; border: 1px solid #ccc !important; background: none !important; }
-      .card-subtitle { color: #333 !important; }
-    }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <!-- Üst Sabit Araç Çubuğu -->
     <header class="top-bar">
       <div class="nav-status">
         <span class="status-dot"></span>
@@ -737,33 +596,27 @@
       </div>
     </header>
 
-    <!-- SADECE SİZE ÖZEL YÖNETİCİ KONSOLU (Giriş Yapıldığında Görünür) -->
     <div class="admin-bar" id="adminBar">
       <div class="admin-title">
-        <span>🛡️ Yönetici Modu Aktif</span>
+        <span>🛡️ Yönetici Modu Aktif (Supabase)</span>
       </div>
       <div class="admin-actions">
-        <button class="btn-ctrl" onclick="toggleAllDefaultProjects()" id="btnToggleDefaults">👁️ Örnek Projeleri Gizle</button>
         <button class="btn-ctrl" onclick="openAddProjectModal()">➕ Yeni Proje Ekle</button>
-        <button class="btn-ctrl" onclick="generateShareUrl()">🔗 Özel Link Oluştur</button>
         <button class="btn-ctrl danger" onclick="logoutAdmin()">Çıkış Yap</button>
       </div>
     </div>
 
-    <!-- Profil Başlığı (Hero) -->
     <main class="hero-card reveal">
-      <!-- 5 Kez Tıklandığında Gizli Giriş Açan Fotoğraf Alanı -->
       <div class="avatar-wrapper" onclick="handleAvatarSecretClicks()" title="Yusuf Başaran">
-        <img class="avatar-img" width="124" height="124" src="/profile.jpg" alt="Yusuf Başaran" fetchpriority="high">
+        <img class="avatar-img" width="124" height="124" src="/profile.jpg" alt="Yusuf Başaran">
       </div>
       <div class="hero-content">
         <h1>Yusuf Başaran</h1>
         <span class="hero-badge">IT / Bilgi İşlem</span>
         
         <div class="contact-chips">
-          <!-- 2 Seçenekli Telefon Butonu -->
           <div class="dropdown-wrapper" id="phoneWrapper">
-            <button class="chip-btn" id="phoneDropdownBtn" onclick="toggleMenu('phoneWrapper', 'phoneDropdownMenu', 'phoneDropdownBtn', event)" title="Telefon seçenekleri" aria-expanded="false">
+            <button class="chip-btn" id="phoneDropdownBtn" onclick="toggleMenu('phoneWrapper', 'phoneDropdownMenu', 'phoneDropdownBtn', event)" aria-expanded="false">
               <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
               <span>+90 533 849 30 63</span>
               <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -780,9 +633,8 @@
             </div>
           </div>
 
-          <!-- 2 Seçenekli E-posta Butonu -->
           <div class="dropdown-wrapper" id="emailWrapper">
-            <button class="chip-btn" id="emailDropdownBtn" onclick="toggleMenu('emailWrapper', 'emailDropdownMenu', 'emailDropdownBtn', event)" title="E-posta seçenekleri" aria-expanded="false">
+            <button class="chip-btn" id="emailDropdownBtn" onclick="toggleMenu('emailWrapper', 'emailDropdownMenu', 'emailDropdownBtn', event)" aria-expanded="false">
               <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
               <span>yusufbasaran63@hotmail.com</span>
               <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -807,18 +659,16 @@
       </div>
     </main>
 
-    <!-- Hakkımda Bölümü -->
     <section class="reveal">
       <h2 class="section-title">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
         <span>Hakkımda</span>
       </h2>
       <div class="about-card">
-        Doğu Akdeniz Üniversitesi Bilgisayar Programcılığı bölümünden mezun; yazılım, web geliştirme ve donanım arıza tespiti konularında temel teknik yetkinliklere sahip bir bilişim mezunuyum. Farklı iş kollarında edindiğim çalışma tecrübeleri sayesinde sorumluluk bilinci yüksek, güçlü iletişim kurabilen ve takım çalışmasına yatkın bir profile sahibim. Analitik düşünce yapım ve sürekli öğrenme tutkumla, kendimi sürekli geliştirerek yazılım dünyasında kalıcı ve başarılı adımlar atmayı hedefliyorum.
+        Doğu Akdeniz Üniversitesi Bilgisayar Programcılığı bölümünden mezun; yazılım, web geliştirme ve donanım arıza tespiti konularında temel teknik yetkinliklere sahip bir bilişim mezunuyum. Farklı iş kollarında edindiğim çalışma tecrübeleri sayesinde sorumluluk bilinci yüksek, güçlü iletişim kurabilen ve takım çalışmasına yatkın bir profile sahibim.
       </div>
     </section>
 
-    <!-- Beceriler Bölümü -->
     <section class="reveal">
       <h2 class="section-title">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
@@ -842,7 +692,6 @@
       </div>
     </section>
 
-    <!-- PROJELER BÖLÜMÜ -->
     <section class="reveal" id="projectsSection">
       <div class="projects-header-box">
         <h2 class="section-title" style="margin-bottom: 0;">
@@ -850,10 +699,11 @@
           <span>Projeler</span>
         </h2>
       </div>
-      <div class="projects-grid" id="projectsGrid"></div>
+      <div class="projects-grid" id="projectsGrid">
+        <div style="grid-column: 1/-1; text-align: center; padding: 30px; color: var(--ink-soft);">Yükleniyor...</div>
+      </div>
     </section>
 
-    <!-- Deneyim Bölümü -->
     <section class="reveal">
       <h2 class="section-title">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
@@ -870,8 +720,8 @@
             </div>
             <div class="card-subtitle">Fumel Software</div>
             <ul class="card-list">
-              <li>Bitrix24 ve Google Workspace araçlarını kullanarak proje yönetimi, görev takibi ve kurumsal dosyalama süreçlerini yürüttüm.</li>
-              <li>CRM altyapısı, müşteri ilişkileri süreçleri ve veri analizi uygulamaları üzerinde çalışarak operasyonel iş akışlarına destek oldum.</li>
+              <li>Bitrix24 ve Google Workspace araçlarını kullanarak proje yönetimi, görev takibi ve dosyalama süreçlerini yürüttüm.</li>
+              <li>CRM altyapısı ve iş akışlarına destek oldum.</li>
             </ul>
           </div>
         </div>
@@ -885,32 +735,13 @@
             </div>
             <div class="card-subtitle">Sulukule Gönüllüleri Derneği</div>
             <ul class="card-list">
-              <li>Dernek bünyesinde çocuklara yönelik bilgisayar eğitimleri ve dijital okuryazarlık atölyeleri düzenledim.</li>
-              <li>Düzenli olarak yürüttüğüm atölyelerle çocukların temel bilgisayar becerilerini geliştirmesine katkı sağladım.</li>
-              <li>Eğitim materyallerini çocukların seviyesine uygun şekilde sadeleştirerek anlatım pratiklerimi geliştirdim.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="card">
-            <div class="card-header">
-              <span class="card-title">Gönüllü Eğitmen</span>
-              <span class="badge-date">Gönüllü</span>
-            </div>
-            <div class="card-subtitle">İstanbul Bilgi Üniversitesi — BİLGİ Çocuk Çalışmaları Birimi</div>
-            <ul class="card-list">
-              <li>Birim bünyesinde çocuklara bilgisayar kullanımı ve dijital okuryazarlık üzerine eğitimler verdim.</li>
-              <li>Düzenlediğim atölyelerle çocukların teknolojiyle güvenli ve bilinçli şekilde tanışmasına katkı sağladım.</li>
-              <li>Yaş gruplarına uygun, uygulamalı eğitim içerikleri hazırlayıp sundum.</li>
+              <li>Çocuklara yönelik temel bilgisayar eğitimleri ve dijital okuryazarlık atölyeleri düzenledim.</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Eğitim Bölümü -->
     <section class="reveal">
       <h2 class="section-title">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
@@ -926,25 +757,12 @@
               <span class="badge-date">2024 – 2026</span>
             </div>
             <div class="card-subtitle">Bilgisayar Programcılığı (Önlisans)</div>
-            <p style="font-size: 0.92rem; color: var(--ink-soft); line-height: 1.6;">Yazılım geliştirme temelleri, algoritma tasarımı, veritabanı yönetimi ve donanım teknolojileri üzerine kapsamlı eğitim.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="card">
-            <div class="card-header">
-              <span class="card-title">Yabancı Dil: İngilizce</span>
-              <span class="badge-date">Temel Düzey</span>
-            </div>
-            <div class="card-subtitle">A1 Seviyesi</div>
-            <p style="font-size: 0.92rem; color: var(--ink-soft); line-height: 1.6;">Mesleki terimleri anlama ve temel teknik dokümantasyon okuma becerisi.</p>
+            <p style="font-size: 0.92rem; color: var(--ink-soft); line-height: 1.6;">Yazılım geliştirme temelleri, algoritma tasarımı ve veritabanı yönetimi.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Referanslar -->
     <section class="reveal">
       <h2 class="section-title">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
@@ -975,7 +793,6 @@
       </div>
     </section>
 
-    <!-- En Alt Eylem Butonu (Kartvizit Kaydet) -->
     <div class="bottom-actions reveal">
       <button onclick="downloadVCard()" class="action-btn">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
@@ -983,14 +800,12 @@
       </button>
     </div>
 
-    <!-- Altbilgi -->
     <footer>
       <span>© Yusuf Başaran — Tüm Hakları Saklıdır.</span>
       <span>Güncellenme: 2026</span>
     </footer>
   </div>
 
-  <!-- PROJE EKLEME / DÜZENLEME MODALI -->
   <div class="modal-overlay" id="projectModal" onclick="if(event.target === this) closeProjectModal()">
     <div class="modal-card">
       <div class="modal-head">
@@ -1003,41 +818,38 @@
 
         <div class="form-group">
           <label for="projTitle">Proje Başlığı *</label>
-          <input type="text" id="projTitle" class="form-input" required placeholder="Örn: Fumel CRM Dashboard">
+          <input type="text" id="projTitle" class="form-input" required placeholder="Örn: Portfolyo Sitesi">
         </div>
 
         <div class="form-group">
           <label for="projDesc">Proje Açıklaması *</label>
-          <textarea id="projDesc" class="form-textarea" required placeholder="Projenin amacı ve yapılan çalışmalar..."></textarea>
+          <textarea id="projDesc" class="form-textarea" required placeholder="Projenin amacı ve teknolojileri..."></textarea>
         </div>
 
         <div class="form-group">
-          <label for="projImg">Görsel URL (veya aşağıdan seçin)</label>
+          <label for="projImg">Görsel URL</label>
           <input type="url" id="projImg" class="form-input" placeholder="https://ornek.com/resim.jpg">
-          <div style="font-size: 0.8rem; color: var(--ink-soft); margin: 6px 0 2px;">Veya Cihazdan Görsel Yükleyin:</div>
-          <input type="file" id="projImgFile" accept="image/*" class="form-input" onchange="handleImageFile(event)">
         </div>
 
         <div class="form-group">
           <label for="projGithub">GitHub Linki</label>
-          <input type="url" id="projGithub" class="form-input" placeholder="https://github.com/yusufbasaran/proje">
+          <input type="url" id="projGithub" class="form-input" placeholder="https://github.com/yusufbasaran">
         </div>
 
         <div class="form-group">
-          <label for="projDemo">Canlı Site / Demo Linki</label>
+          <label for="projDemo">Canlı Site Linki</label>
           <input type="url" id="projDemo" class="form-input" placeholder="https://yusufbasaran.dev">
         </div>
 
         <div class="form-group">
           <label for="projTags">Etiketler (Virgülle ayırın)</label>
-          <input type="text" id="projTags" class="form-input" placeholder="JavaScript, Bitrix24, Web">
+          <input type="text" id="projTags" class="form-input" placeholder="Supabase, JavaScript, Web">
         </div>
 
-        <!-- Görünürlük Kontrolleri -->
         <div class="form-row-checkbox">
           <label class="checkbox-label">
             <input type="checkbox" id="checkVisible" checked>
-            <span>Projeyi Ziyaretçilere Göster</span>
+            <span>Ziyaretçilere Göster</span>
           </label>
           <label class="checkbox-label">
             <input type="checkbox" id="checkGithub" checked>
@@ -1051,26 +863,31 @@
 
         <div class="modal-foot">
           <button type="button" class="btn-ctrl" onclick="closeProjectModal()">İptal</button>
-          <button type="submit" class="btn-ctrl active-state">Kaydet</button>
+          <button type="submit" class="btn-ctrl active-state" id="btnSave">Kaydet</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- Başa Dön Butonu -->
   <button class="scroll-top" id="scrollTopBtn" onclick="scrollToTop()" title="Başa Dön" aria-label="Başa Dön">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
   </button>
 
-  <!-- Toast Bildirimi -->
   <div class="toast" id="toast">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
     <span id="toastMsg">İşlem başarılı!</span>
   </div>
 
-  <!-- JavaScript Kodları -->
   <script>
-    // 1. Tema Yönetimi
+    const SUPABASE_URL = 'https://hqauyhneidkjpchjhutb.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhxYXV5aG5laWRranBjaGpodXRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTExMzc2NjIsImV4cCI6MjEwNjcxMzY2Mn0.XmAwz3BRDyN2iAxvQTCLehevdfeoR04dOxKxDxpwEXg';
+    
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    const ADMIN_PASS = 'yb2026';
+    let isAdmin = false;
+    let projects = [];
+
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
     const root = document.documentElement;
@@ -1095,23 +912,7 @@
       const current = root.getAttribute('data-theme') || 'dark';
       applyTheme(current === 'dark' ? 'light' : 'dark');
     });
-
     applyTheme(getPreferredTheme());
-
-    // 2. Panoya Kopyalama ve Toast Gösterimi
-    function copyToClipboard(text, message) {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(() => showToast(message));
-      } else {
-        const tempInput = document.createElement('input');
-        tempInput.value = text;
-        document.body.appendChild(tempInput);
-        tempInput.select();
-        document.execCommand('copy');
-        document.body.removeChild(tempInput);
-        showToast(message);
-      }
-    }
 
     let toastTimeout;
     function showToast(msg) {
@@ -1120,21 +921,20 @@
       toastMsg.textContent = msg;
       toast.classList.add('show');
       clearTimeout(toastTimeout);
-      toastTimeout = setTimeout(() => {
-        toast.classList.remove('show');
-      }, 2500);
+      toastTimeout = setTimeout(() => { toast.classList.remove('show'); }, 2500);
     }
 
-    // 3. Dropdown Menü Kontrolleri
+    function copyToClipboard(text, message) {
+      navigator.clipboard.writeText(text).then(() => showToast(message));
+    }
+
     function toggleMenu(wrapperId, menuId, btnId, e) {
       e.stopPropagation();
       const wrapper = document.getElementById(wrapperId);
       const menu = document.getElementById(menuId);
       const btn = document.getElementById(btnId);
       const isOpen = menu.classList.contains('show');
-
       closeAllMenus();
-
       if (!isOpen) {
         menu.classList.add('show');
         wrapper.classList.add('active');
@@ -1143,9 +943,9 @@
     }
 
     function closeAllMenus() {
-      document.querySelectorAll('.dropdown-menu').forEach(menu => menu.classList.remove('show'));
-      document.querySelectorAll('.dropdown-wrapper').forEach(wrap => wrap.classList.remove('active'));
-      document.querySelectorAll('.dropdown-wrapper button').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+      document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('show'));
+      document.querySelectorAll('.dropdown-wrapper').forEach(w => w.classList.remove('active'));
+      document.querySelectorAll('.dropdown-wrapper button').forEach(b => b.setAttribute('aria-expanded', 'false'));
     }
 
     function handleCopyText(text, message, e) {
@@ -1155,18 +955,13 @@
     }
 
     document.addEventListener('click', (e) => {
-      if (!e.target.closest('.dropdown-wrapper')) {
-        closeAllMenus();
-      }
+      if (!e.target.closest('.dropdown-wrapper')) closeAllMenus();
     });
 
-    // 4. vCard (.vcf) İndirici
     function downloadVCard() {
       const vcardData = [
-        'BEGIN:VCARD',
-        'VERSION:3.0',
-        'N:Başaran;Yusuf;;;',
-        'FN:Yusuf Başaran',
+        'BEGIN:VCARD', 'VERSION:3.0',
+        'N:Başaran;Yusuf;;;', 'FN:Yusuf Başaran',
         'TITLE:IT / Bilgi İşlem',
         'TEL;TYPE=CELL:+905338493063',
         'EMAIL;TYPE=INTERNET:yusufbasaran63@hotmail.com',
@@ -1185,61 +980,205 @@
       showToast('Kartvizit indirildi!');
     }
 
-    // 5. Beceri Filtreleme
     function filterSkills(category) {
-      const buttons = document.querySelectorAll('.filter-btn');
-      buttons.forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
       event.target.classList.add('active');
-
-      const cards = document.querySelectorAll('.skill-card');
-      cards.forEach(card => {
-        if (category === 'all' || card.getAttribute('data-cat') === category) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
+      document.querySelectorAll('.skill-card').forEach(card => {
+        card.style.display = (category === 'all' || card.getAttribute('data-cat') === category) ? 'flex' : 'none';
       });
     }
 
-    // ========================================================
-    // 6. YÖNETİCİ (ADMIN) & PROJE YÖNETİM SİSTEMİ
-    // ========================================================
-    const ADMIN_PASS = 'yb2026';
-    let isAdmin = false;
+    async function loadProjectsFromSupabase() {
+      const grid = document.getElementById('projectsGrid');
+      try {
+        const { data, error } = await supabaseClient
+          .from('projects')
+          .select('*')
+          .order('created_at', { ascending: false });
 
-    const DEFAULT_PROJECTS = [
-      {
-        id: 'p-default-1',
-        title: 'Fumel CRM Entegrasyon & İş Akışı',
-        desc: 'Bitrix24 ve Google Workspace araçları ile kurumsal görev yönetimi ve veri analizi iş akışları.',
-        img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80',
-        github: 'https://github.com/yusufbasaran',
-        demo: 'https://yusufbasaran.dev',
-        tags: ['Bitrix24', 'CRM', 'Google Workspace'],
-        visible: true,
-        showGithub: true,
-        showDemo: true,
-        isDefault: true
-      },
-      {
-        id: 'p-default-2',
-        title: 'Dijital Okuryazarlık & Bilişim Atölyesi',
-        desc: 'Çocuklara ve gençlere temel bilgisayar kullanımı, donanım mimarisi ve teknoloji bilinci kazandırma projesi.',
-        img: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80',
-        github: 'https://github.com/yusufbasaran',
-        demo: '',
-        tags: ['Eğitim', 'Donanım', 'Dijitalleşme'],
-        visible: true,
-        showGithub: true,
-        showDemo: false,
-        isDefault: true
+        if (error) throw error;
+        projects = data || [];
+        renderProjects();
+      } catch (err) {
+        console.error('Supabase hatası:', err);
+        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--danger); padding: 20px;">Projeler yüklenirken hata oluştu.</div>';
       }
-    ];
+    }
 
-    let projects = [];
-    let uploadedImageBase64 = '';
+    function renderProjects() {
+      const grid = document.getElementById('projectsGrid');
+      grid.innerHTML = '';
 
-    // Fotoğrafa 5 kez tıklanırsa admin girişi aç
+      const displayList = isAdmin ? projects : projects.filter(p => p.visible !== false);
+
+      if (displayList.length === 0) {
+        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 36px; border: 2px dashed var(--line); border-radius: var(--radius); color: var(--ink-soft); font-size: 0.95rem;">Şu anda listelenecek proje bulunmamaktadır.</div>';
+        return;
+      }
+
+      displayList.forEach(p => {
+        const card = document.createElement('div');
+        card.className = `project-card ${p.visible === false ? 'is-hidden' : ''}`;
+
+        const fallbackImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect fill='%231B211E' width='400' height='200'/%3E%3Ctext fill='%2364748b' x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='18'%3EYusuf Ba%C5%9Faran Proje%3C/text%3E%3C/svg%3E";
+        const imgSrc = p.img || fallbackImg;
+        const tagsHtml = (p.tags || []).map(t => `<span class="project-tag">${escapeHtml(t.trim())}</span>`).join('');
+
+        const gitBtn = (p.github && p.show_github !== false) ? `
+          <a href="${encodeURI(p.github)}" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            <span>GitHub</span>
+          </a>` : '';
+
+        const demoBtn = (p.demo && p.show_demo !== false) ? `
+          <a href="${encodeURI(p.demo)}" target="_blank" rel="noopener noreferrer" class="project-link-btn">Canlı İncele</a>` : '';
+
+        card.innerHTML = `
+          <div class="project-img-box">
+            <img src="${imgSrc}" alt="${escapeHtml(p.title)}" class="project-img" onerror="this.src='${fallbackImg}'">
+            ${p.visible === false ? '<span class="project-badge-hidden">GİZLİ</span>' : ''}
+          </div>
+          <div class="project-body">
+            <div class="project-tags">${tagsHtml}</div>
+            <h3 class="project-title">${escapeHtml(p.title)}</h3>
+            <p class="project-desc">${escapeHtml(p.description || '')}</p>
+            <div class="project-links">${gitBtn}${demoBtn}</div>
+          </div>
+          <div class="admin-card-controls">
+            <button class="btn-ctrl ${p.visible === false ? 'active-state' : ''}" onclick="toggleProjectVisibility('${p.id}')">
+              ${p.visible === false ? '🕶️ Aç' : '👁️ Gizle'}
+            </button>
+            <button class="btn-ctrl ${p.show_github === false ? 'active-state' : ''}" onclick="toggleButtonVisibility('${p.id}', 'github')">Git</button>
+            <button class="btn-ctrl ${p.show_demo === false ? 'active-state' : ''}" onclick="toggleButtonVisibility('${p.id}', 'demo')">Demo</button>
+            <button class="btn-ctrl" onclick="openEditProjectModal('${p.id}')">✏️ Düzenle</button>
+            <button class="btn-ctrl danger" onclick="deleteProject('${p.id}')">🗑️ Sil</button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    async function handleSaveProject(e) {
+      e.preventDefault();
+      const saveBtn = document.getElementById('btnSave');
+      saveBtn.disabled = true;
+      saveBtn.textContent = 'Kaydediliyor...';
+
+      const id = document.getElementById('editProjectId').value;
+      const title = document.getElementById('projTitle').value.trim();
+      const description = document.getElementById('projDesc').value.trim();
+      const img = document.getElementById('projImg').value.trim();
+      const github = document.getElementById('projGithub').value.trim();
+      const demo = document.getElementById('projDemo').value.trim();
+      const tagsRaw = document.getElementById('projTags').value.trim();
+
+      const tags = tagsRaw ? tagsRaw.split(',').map(t => t.trim()).filter(Boolean) : ['Yazılım'];
+
+      const payload = {
+        title,
+        description,
+        img,
+        github,
+        demo,
+        tags,
+        visible: document.getElementById('checkVisible').checked,
+        show_github: document.getElementById('checkGithub').checked,
+        show_demo: document.getElementById('checkDemo').checked
+      };
+
+      try {
+        if (id) {
+          const { error } = await supabaseClient.from('projects').update(payload).eq('id', id);
+          if (error) throw error;
+          showToast('Proje güncellendi!');
+        } else {
+          const { error } = await supabaseClient.from('projects').insert([payload]);
+          if (error) throw error;
+          showToast('Yeni proje eklendi!');
+        }
+        closeProjectModal();
+        await loadProjectsFromSupabase();
+      } catch (err) {
+        console.error(err);
+        alert('Kaydetme hatası: ' + err.message);
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.textContent = 'Kaydet';
+      }
+    }
+
+    async function toggleProjectVisibility(id) {
+      const p = projects.find(item => item.id === id);
+      if (!p) return;
+      const newState = !p.visible;
+      const { error } = await supabaseClient.from('projects').update({ visible: newState }).eq('id', id);
+      if (!error) {
+        p.visible = newState;
+        renderProjects();
+        showToast(newState ? 'Proje açıldı.' : 'Proje gizlendi.');
+      }
+    }
+
+    async function toggleButtonVisibility(id, type) {
+      const p = projects.find(item => item.id === id);
+      if (!p) return;
+      const field = type === 'github' ? 'show_github' : 'show_demo';
+      const newState = !p[field];
+      const updateData = {};
+      updateData[field] = newState;
+
+      const { error } = await supabaseClient.from('projects').update(updateData).eq('id', id);
+      if (!error) {
+        p[field] = newState;
+        renderProjects();
+        showToast('Ayar güncellendi.');
+      }
+    }
+
+    async function deleteProject(id) {
+      if (!confirm('Bu projeyi kalıcı olarak silmek istiyor musunuz?')) return;
+      const { error } = await supabaseClient.from('projects').delete().eq('id', id);
+      if (!error) {
+        showToast('Proje silindi.');
+        await loadProjectsFromSupabase();
+      } else {
+        alert('Silme hatası: ' + error.message);
+      }
+    }
+
+    function openAddProjectModal() {
+      document.getElementById('editProjectId').value = '';
+      document.getElementById('projectForm').reset();
+      document.getElementById('modalTitle').textContent = 'Yeni Proje Ekle';
+      document.getElementById('checkVisible').checked = true;
+      document.getElementById('checkGithub').checked = true;
+      document.getElementById('checkDemo').checked = true;
+      document.getElementById('projectModal').classList.add('show');
+    }
+
+    function openEditProjectModal(id) {
+      const p = projects.find(item => item.id === id);
+      if (!p) return;
+
+      document.getElementById('editProjectId').value = p.id;
+      document.getElementById('projTitle').value = p.title || '';
+      document.getElementById('projDesc').value = p.description || '';
+      document.getElementById('projImg').value = p.img || '';
+      document.getElementById('projGithub').value = p.github || '';
+      document.getElementById('projDemo').value = p.demo || '';
+      document.getElementById('projTags').value = (p.tags || []).join(', ');
+      document.getElementById('checkVisible').checked = p.visible !== false;
+      document.getElementById('checkGithub').checked = p.show_github !== false;
+      document.getElementById('checkDemo').checked = p.show_demo !== false;
+
+      document.getElementById('modalTitle').textContent = 'Projeyi Düzenle';
+      document.getElementById('projectModal').classList.add('show');
+    }
+
+    function closeProjectModal() {
+      document.getElementById('projectModal').classList.remove('show');
+    }
+
     let secretClickCount = 0;
     let secretClickTimer;
     function handleAvatarSecretClicks() {
@@ -1265,9 +1204,7 @@
           sessionStorage.setItem('yb_admin', 'true');
           enableAdminMode();
           showToast('Yönetici girişi başarılı!');
-          if (window.location.hash === '#admin') {
-            history.replaceState(null, null, ' ');
-          }
+          if (window.location.hash === '#admin') history.replaceState(null, null, ' ');
         } else if (pass !== null) {
           alert('Hatalı şifre!');
         }
@@ -1290,270 +1227,6 @@
       showToast('Yönetici modundan çıkış yapıldı.');
     }
 
-    // Projeleri Bellekten veya URL'den Yükle
-    function initProjects() {
-      const urlProjects = loadProjectsFromUrl();
-      if (urlProjects && urlProjects.length > 0) {
-        projects = urlProjects;
-        saveProjects();
-        showToast('Projeler linkten yüklendi!');
-      } else {
-        const stored = localStorage.getItem('yb_projects');
-        if (stored) {
-          try { projects = JSON.parse(stored); } catch (e) { projects = DEFAULT_PROJECTS; }
-        } else {
-          projects = DEFAULT_PROJECTS;
-          saveProjects();
-        }
-      }
-      renderProjects();
-    }
-
-    function saveProjects() {
-      localStorage.setItem('yb_projects', JSON.stringify(projects));
-    }
-
-    function renderProjects() {
-      const grid = document.getElementById('projectsGrid');
-      grid.innerHTML = '';
-
-      // Ziyaretçiler sadece visible === true olanları görür
-      const displayList = isAdmin ? projects : projects.filter(p => p.visible !== false);
-
-      if (displayList.length === 0) {
-        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 36px; border: 2px dashed var(--line); border-radius: var(--radius); color: var(--ink-soft); font-size: 0.95rem;">Şu anda listelenecek proje bulunmamaktadır.</div>';
-        return;
-      }
-
-      displayList.forEach(p => {
-        const card = document.createElement('div');
-        card.className = `project-card ${p.visible === false ? 'is-hidden' : ''}`;
-
-        const fallbackImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect fill='%231B211E' width='400' height='200'/%3E%3Ctext fill='%2364748b' x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='18'%3EYusuf Ba%C5%9Faran Proje%3C/text%3E%3C/svg%3E";
-        const imgSrc = p.img || fallbackImg;
-        const tagsHtml = (p.tags || []).map(t => `<span class="project-tag">${escapeHtml(t.trim())}</span>`).join('');
-
-        // Butonların ziyaretçiye görünme koşulları
-        const gitBtn = (p.github && p.showGithub !== false) ? `
-          <a href="${encodeURI(p.github)}" target="_blank" rel="noopener noreferrer" class="project-link-btn">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-            <span>GitHub</span>
-          </a>` : '';
-
-        const demoBtn = (p.demo && p.showDemo !== false) ? `
-          <a href="${encodeURI(p.demo)}" target="_blank" rel="noopener noreferrer" class="project-link-btn">Canlı İncele</a>` : '';
-
-        card.innerHTML = `
-          <div class="project-img-box">
-            <img src="${imgSrc}" alt="${escapeHtml(p.title)}" class="project-img" onerror="this.src='${fallbackImg}'">
-            ${p.visible === false ? '<span class="project-badge-hidden">GİZLİ / TASLAK</span>' : ''}
-          </div>
-          <div class="project-body">
-            <div class="project-tags">${tagsHtml}</div>
-            <h3 class="project-title">${escapeHtml(p.title)}</h3>
-            <p class="project-desc">${escapeHtml(p.desc)}</p>
-            <div class="project-links">${gitBtn}${demoBtn}</div>
-          </div>
-          <!-- Yönetici Kontrol Butonları -->
-          <div class="admin-card-controls">
-            <button class="btn-ctrl ${p.visible === false ? 'active-state' : ''}" onclick="toggleProjectVisibility('${p.id}')">
-              ${p.visible === false ? '🕶️ Ziyaretçiye Aç' : '👁️ Ziyaretçiye Gizle'}
-            </button>
-            <button class="btn-ctrl ${p.showGithub === false ? 'active-state' : ''}" onclick="toggleButtonVisibility('${p.id}', 'github')">
-              ${p.showGithub === false ? '🐙 Git Aç' : '🐙 Git Gizle'}
-            </button>
-            <button class="btn-ctrl ${p.showDemo === false ? 'active-state' : ''}" onclick="toggleButtonVisibility('${p.id}', 'demo')">
-              ${p.showDemo === false ? '🌐 Demo Aç' : '🌐 Demo Gizle'}
-            </button>
-            <button class="btn-ctrl" onclick="openEditProjectModal('${p.id}')">✏️ Düzenle</button>
-            <button class="btn-ctrl danger" onclick="deleteProject('${p.id}')">🗑️ Sil</button>
-          </div>
-        `;
-
-        grid.appendChild(card);
-      });
-
-      updateDefaultToggleBtnState();
-    }
-
-    // Kart İçi Hızlı Anahtarlar
-    function toggleProjectVisibility(id) {
-      const p = projects.find(item => item.id === id);
-      if (p) {
-        p.visible = !(p.visible !== false);
-        saveProjects();
-        renderProjects();
-        showToast(p.visible ? 'Proje ziyaretçilere açıldı.' : 'Proje ziyaretçilere gizlendi.');
-      }
-    }
-
-    function toggleButtonVisibility(id, type) {
-      const p = projects.find(item => item.id === id);
-      if (p) {
-        if (type === 'github') {
-          p.showGithub = !(p.showGithub !== false);
-          showToast(p.showGithub ? 'GitHub butonu açıldı.' : 'GitHub butonu gizlendi.');
-        } else if (type === 'demo') {
-          p.showDemo = !(p.showDemo !== false);
-          showToast(p.showDemo ? 'Demo butonu açıldı.' : 'Demo butonu gizlendi.');
-        }
-        saveProjects();
-        renderProjects();
-      }
-    }
-
-    // Örnek Projeleri Toplu Gizle / Aç
-    function toggleAllDefaultProjects() {
-      const defaults = projects.filter(p => p.isDefault);
-      if (defaults.length === 0) return;
-
-      const anyVisible = defaults.some(p => p.visible !== false);
-      defaults.forEach(p => { p.visible = !anyVisible; });
-
-      saveProjects();
-      renderProjects();
-      showToast(anyVisible ? 'Örnek projeler ziyaretçilere gizlendi.' : 'Örnek projeler ziyaretçilere açıldı.');
-    }
-
-    function updateDefaultToggleBtnState() {
-      const btn = document.getElementById('btnToggleDefaults');
-      if (!btn) return;
-      const defaults = projects.filter(p => p.isDefault);
-      if (defaults.length === 0) {
-        btn.style.display = 'none';
-        return;
-      }
-      btn.style.display = 'inline-flex';
-      const anyVisible = defaults.some(p => p.visible !== false);
-      btn.textContent = anyVisible ? '👁️ Örnek Projeleri Gizle' : '🕶️ Örnek Projeleri Aç';
-    }
-
-    // Modal İşlemleri
-    function openAddProjectModal() {
-      document.getElementById('editProjectId').value = '';
-      document.getElementById('projectForm').reset();
-      document.getElementById('modalTitle').textContent = 'Yeni Proje Ekle';
-      document.getElementById('checkVisible').checked = true;
-      document.getElementById('checkGithub').checked = true;
-      document.getElementById('checkDemo').checked = true;
-      uploadedImageBase64 = '';
-      document.getElementById('projectModal').classList.add('show');
-    }
-
-    function openEditProjectModal(id) {
-      const p = projects.find(item => item.id === id);
-      if (!p) return;
-
-      document.getElementById('editProjectId').value = p.id;
-      document.getElementById('projTitle').value = p.title || '';
-      document.getElementById('projDesc').value = p.desc || '';
-      document.getElementById('projImg').value = (p.img && !p.img.startsWith('data:')) ? p.img : '';
-      document.getElementById('projGithub').value = p.github || '';
-      document.getElementById('projDemo').value = p.demo || '';
-      document.getElementById('projTags').value = (p.tags || []).join(', ');
-      document.getElementById('checkVisible').checked = p.visible !== false;
-      document.getElementById('checkGithub').checked = p.showGithub !== false;
-      document.getElementById('checkDemo').checked = p.showDemo !== false;
-      uploadedImageBase64 = (p.img && p.img.startsWith('data:')) ? p.img : '';
-
-      document.getElementById('modalTitle').textContent = 'Projeyi Düzenle';
-      document.getElementById('projectModal').classList.add('show');
-    }
-
-    function closeProjectModal() {
-      document.getElementById('projectModal').classList.remove('show');
-    }
-
-    function handleImageFile(e) {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(evt) { uploadedImageBase64 = evt.target.result; };
-        reader.readAsDataURL(file);
-      }
-    }
-
-    function handleSaveProject(e) {
-      e.preventDefault();
-      const id = document.getElementById('editProjectId').value;
-      const title = document.getElementById('projTitle').value.trim();
-      const desc = document.getElementById('projDesc').value.trim();
-      const imgUrl = document.getElementById('projImg').value.trim();
-      const github = document.getElementById('projGithub').value.trim();
-      const demo = document.getElementById('projDemo').value.trim();
-      const tagsRaw = document.getElementById('projTags').value.trim();
-
-      const tags = tagsRaw ? tagsRaw.split(',').map(t => t.trim()).filter(Boolean) : ['Yazılım'];
-
-      const projectData = {
-        title,
-        desc,
-        img: uploadedImageBase64 || imgUrl,
-        github,
-        demo,
-        tags,
-        visible: document.getElementById('checkVisible').checked,
-        showGithub: document.getElementById('checkGithub').checked,
-        showDemo: document.getElementById('checkDemo').checked
-      };
-
-      if (id) {
-        const idx = projects.findIndex(p => p.id === id);
-        if (idx !== -1) {
-          projects[idx] = { ...projects[idx], ...projectData };
-          showToast('Proje güncellendi!');
-        }
-      } else {
-        const newProj = {
-          id: 'p-' + Date.now(),
-          ...projectData,
-          isDefault: false
-        };
-        projects.unshift(newProj);
-        showToast('Yeni proje eklendi!');
-      }
-
-      saveProjects();
-      renderProjects();
-      closeProjectModal();
-    }
-
-    function deleteProject(id) {
-      if (confirm('Bu projeyi silmek istediğinize emin misiniz?')) {
-        projects = projects.filter(p => p.id !== id);
-        saveProjects();
-        renderProjects();
-        showToast('Proje silindi.');
-      }
-    }
-
-    // Özel Paylaşılabilir URL Oluşturma (#data=...)
-    function generateShareUrl() {
-      try {
-        const jsonStr = JSON.stringify(projects);
-        const encoded = btoa(encodeURIComponent(jsonStr).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
-        const shareUrl = window.location.origin + window.location.pathname + '#data=' + encoded;
-        copyToClipboard(shareUrl, 'Özel link panoya kopyalandı!');
-      } catch (err) {
-        showToast('Link oluşturulurken hata meydana geldi.');
-      }
-    }
-
-    function loadProjectsFromUrl() {
-      const hash = window.location.hash;
-      if (hash && hash.startsWith('#data=')) {
-        try {
-          const encoded = hash.substring(6);
-          const jsonStr = decodeURIComponent(Array.prototype.map.call(atob(encoded), (c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
-          const parsed = JSON.parse(jsonStr);
-          if (Array.isArray(parsed)) return parsed;
-        } catch (e) {
-          console.warn('URL veri formatı çözülemedi:', e);
-        }
-      }
-      return null;
-    }
-
     function escapeHtml(str) {
       return String(str || '')
         .replace(/&/g, '&amp;')
@@ -1563,32 +1236,18 @@
         .replace(/'/g, '&#039;');
     }
 
-    // Sayfa Başlatma
-    initProjects();
+    loadProjectsFromSupabase();
     checkAdminAccess();
 
-    // 7. Scroll Reveal & Başa Dön
     const scrollTopBtn = document.getElementById('scrollTopBtn');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        scrollTopBtn.classList.add('visible');
-      } else {
-        scrollTopBtn.classList.remove('visible');
-      }
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
     });
-
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
     }, { threshold: 0.1 });
-
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 </body>
