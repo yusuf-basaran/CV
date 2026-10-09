@@ -595,6 +595,19 @@
     .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
     .form-textarea { resize: vertical; min-height: 75px; }
     .form-row-checkbox { display: flex; gap: 18px; margin-top: 10px; flex-wrap: wrap; }
+
+    /* Görsel yükleme */
+    .upload-box { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .upload-box input[type="file"] { display: none; }
+    .upload-preview {
+      width: 64px; height: 64px; border-radius: 10px; border: 1px solid var(--line);
+      object-fit: cover; background: rgba(148, 163, 184, 0.08); display: none; flex-shrink: 0;
+    }
+    .upload-preview.show { display: block; }
+    .upload-file-name { font-size: 0.8rem; color: var(--ink-soft); word-break: break-all; flex: 1; min-width: 120px; }
+    .form-hint { font-size: 0.76rem; color: var(--ink-soft); margin-top: 6px; line-height: 1.45; }
+    .form-divider { display: flex; align-items: center; gap: 10px; margin: 10px 0; font-size: 0.76rem; color: var(--ink-soft); }
+    .form-divider::before, .form-divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
     .checkbox-label { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; cursor: pointer; color: var(--ink); }
     .modal-foot { display: flex; gap: 10px; justify-content: flex-end; margin-top: 22px; }
 
@@ -992,7 +1005,18 @@
         </div>
 
         <div class="form-group">
-          <label for="projImg">Görsel URL</label>
+          <label for="projImgFile">Proje Görseli</label>
+          <div class="upload-box">
+            <img id="projImgPreview" class="upload-preview" alt="Seçilen görsel önizlemesi">
+            <input type="file" id="projImgFile" accept="image/png,image/jpeg,image/webp,image/gif" onchange="handleImageSelected(this)">
+            <button type="button" class="btn-ctrl" onclick="document.getElementById('projImgFile').click()">📁 Bilgisayardan Seç</button>
+            <button type="button" class="btn-ctrl danger" id="btnClearImg" style="display:none;" onclick="clearImageSelection()">Kaldır</button>
+            <span class="upload-file-name" id="projImgFileName">Dosya seçilmedi</span>
+          </div>
+          <div class="form-hint">PNG, JPG, WEBP veya GIF · en fazla 5 MB</div>
+
+          <div class="form-divider">veya görsel linki yaz</div>
+          <label for="projImg" style="font-weight:500;">Görsel URL</label>
           <input type="url" id="projImg" class="form-input" placeholder="https://ornek.com/resim.jpg">
         </div>
 
@@ -1355,19 +1379,103 @@
       showToast(okMsg);
     }
 
+    // ------------------------------------------------------------
+    // Görsel yükleme (Supabase Storage)
+    // ------------------------------------------------------------
+    const IMAGE_BUCKET = 'project-images';
+    const MAX_IMAGE_MB = 5;
+    const ALLOWED_IMAGE_TYPES = { 'image/png': 'png', 'image/jpeg': 'jpg', 'image/webp': 'webp', 'image/gif': 'gif' };
+    let selectedImageFile = null;
+    let previewObjectUrl = null;
+
+    function handleImageSelected(input) {
+      const file = input.files && input.files[0];
+      if (!file) return;
+
+      if (!ALLOWED_IMAGE_TYPES[file.type]) {
+        alert('Sadece PNG, JPG, WEBP veya GIF yükleyebilirsiniz.');
+        input.value = '';
+        return;
+      }
+      if (file.size > MAX_IMAGE_MB * 1024 * 1024) {
+        alert('Görsel en fazla ' + MAX_IMAGE_MB + ' MB olabilir.');
+        input.value = '';
+        return;
+      }
+
+      selectedImageFile = file;
+      if (previewObjectUrl) URL.revokeObjectURL(previewObjectUrl);
+      previewObjectUrl = URL.createObjectURL(file);
+
+      const prev = document.getElementById('projImgPreview');
+      prev.src = previewObjectUrl;
+      prev.classList.add('show');
+      document.getElementById('projImgFileName').textContent = file.name;
+      document.getElementById('btnClearImg').style.display = 'inline-flex';
+    }
+
+    function clearImageSelection() {
+      selectedImageFile = null;
+      if (previewObjectUrl) { URL.revokeObjectURL(previewObjectUrl); previewObjectUrl = null; }
+      document.getElementById('projImgFile').value = '';
+      const prev = document.getElementById('projImgPreview');
+      prev.removeAttribute('src');
+      prev.classList.remove('show');
+      document.getElementById('projImgFileName').textContent = 'Dosya seçilmedi';
+      document.getElementById('btnClearImg').style.display = 'none';
+    }
+
+    // Düzenlerken mevcut görseli önizleme olarak göster
+    function showExistingImagePreview(url) {
+      clearImageSelection();
+      const safe = safeUrl(url);
+      if (!safe) return;
+      const prev = document.getElementById('projImgPreview');
+      prev.src = safe;
+      prev.classList.add('show');
+      document.getElementById('projImgFileName').textContent = 'Mevcut görsel';
+    }
+
+    async function uploadSelectedImage() {
+      const ext = ALLOWED_IMAGE_TYPES[selectedImageFile.type];
+      const path = (crypto.randomUUID ? crypto.randomUUID() : Date.now() + '-' + Math.random().toString(36).slice(2)) + '.' + ext;
+
+      const { error } = await supabaseClient.storage
+        .from(IMAGE_BUCKET)
+        .upload(path, selectedImageFile, { contentType: selectedImageFile.type, cacheControl: '31536000', upsert: false });
+      if (error) throw new Error('Görsel yüklenemedi: ' + error.message);
+
+      const { data } = supabaseClient.storage.from(IMAGE_BUCKET).getPublicUrl(path);
+      return data.publicUrl;
+    }
+
     async function handleSaveProject(e) {
       e.preventDefault();
       const saveBtn = document.getElementById('btnSave');
       saveBtn.disabled = true;
-      saveBtn.textContent = 'Kaydediliyor...';
+      saveBtn.textContent = selectedImageFile ? 'Görsel yükleniyor...' : 'Kaydediliyor...';
 
       const id = document.getElementById('editProjectId').value;
       const tagsRaw = document.getElementById('projTags').value.trim();
 
+      let imgUrl = safeUrl(document.getElementById('projImg').value.trim());
+      if (selectedImageFile) {
+        try {
+          imgUrl = await uploadSelectedImage();   // dosya seçildiyse linkten önceliklidir
+        } catch (err) {
+          console.error(err);
+          alert(err.message);
+          saveBtn.disabled = false;
+          saveBtn.textContent = 'Kaydet';
+          return;
+        }
+        saveBtn.textContent = 'Kaydediliyor...';
+      }
+
       const payload = {
         title: document.getElementById('projTitle').value.trim(),
         description: document.getElementById('projDesc').value.trim(),
-        img: safeUrl(document.getElementById('projImg').value.trim()),
+        img: imgUrl,
         github: safeUrl(document.getElementById('projGithub').value.trim()),
         demo: safeUrl(document.getElementById('projDemo').value.trim()),
         tags: tagsRaw ? tagsRaw.split(',').map(t => t.trim()).filter(Boolean) : ['Yazılım'],
@@ -1428,6 +1536,7 @@
     function openAddProjectModal() {
       document.getElementById('editProjectId').value = '';
       document.getElementById('projectForm').reset();
+      clearImageSelection();
       document.getElementById('modalTitle').textContent = 'Yeni Proje Ekle';
       document.getElementById('checkVisible').checked = true;
       document.getElementById('checkGithub').checked = true;
@@ -1443,6 +1552,7 @@
       document.getElementById('projTitle').value = p.title || '';
       document.getElementById('projDesc').value = p.description || '';
       document.getElementById('projImg').value = p.img || '';
+      showExistingImagePreview(p.img);
       document.getElementById('projGithub').value = p.github || '';
       document.getElementById('projDemo').value = p.demo || '';
       document.getElementById('projTags').value = (p.tags || []).join(', ');
