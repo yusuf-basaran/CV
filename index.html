@@ -40,7 +40,7 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Yusuf Başaran",
-    "jobTitle": "IT / Bilgi İşlem",
+    "jobTitle": "Bilgisayar Programcısı · Web Geliştirme & IT Destek",
     "url": "https://yusufbasaran.dev/",
     "image": "https://yusufbasaran.dev/profile.jpg",
     "address": { "@type": "PostalAddress", "addressLocality": "Gazimağusa", "addressCountry": "CY" },
@@ -251,7 +251,14 @@
     }
     .hero-card:hover .avatar-img { border-color: var(--accent); transform: scale(1.02); }
 
-    .hero-content { flex: 1; }
+    .hero-content { flex: 1; min-width: 0; }
+    .hero-intro { color: var(--ink-soft); font-size: 0.94rem; line-height: 1.7; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+    .hero-action { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 10px; color: var(--ink); font-size: 0.88rem; font-weight: 700; text-decoration: none; transition: var(--transition); }
+    .hero-action.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+    .hero-action:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .btn-print { width: auto; border-radius: 100px; padding: 0 12px; gap: 7px; font: inherit; font-size: 0.8rem; white-space: nowrap; }
+    #projectsSection { scroll-margin-top: 100px; }
     .hero-content h1 {
       font-family: 'Outfit', sans-serif;
       font-size: clamp(1.8rem, 4vw, 2.5rem);
@@ -459,7 +466,10 @@
     .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
     .project-tag { font-size: 0.74rem; font-weight: 600; color: var(--accent); background: var(--accent-glow); padding: 2px 8px; border-radius: 100px; }
     .project-title { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
-    .project-desc { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.55; margin-bottom: 16px; flex: 1; }
+    .project-desc { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.65; margin-bottom: 16px; overflow-wrap: anywhere; }
+    .project-details { margin-bottom: 16px; font-size: 0.88rem; color: var(--ink-soft); line-height: 1.65; }
+    .project-details summary { width: fit-content; color: var(--accent); cursor: pointer; font-weight: 600; padding: 6px 0; }
+    .project-details p { margin-top: 8px; white-space: pre-line; overflow-wrap: anywhere; }
     .project-links { display: flex; gap: 8px; margin-top: auto; }
 
     .project-link-btn {
@@ -634,8 +644,19 @@
     @media (max-width: 680px) {
       .hero-card { flex-direction: column; text-align: center; padding: 28px 20px; gap: 20px; }
       .contact-chips { justify-content: center; }
+      .hero-actions { justify-content: center; }
+      .skills-filter { flex-wrap: wrap; overflow-x: visible; }
       .refs-grid { grid-template-columns: 1fr; }
       .action-btn { max-width: 100%; }
+    }
+    @media (max-width: 380px) {
+      .top-bar { padding: 10px 12px; gap: 8px; }
+      .nav-status { font-size: 0.72rem; }
+      .nav-actions { gap: 6px; }
+      .chip-btn { max-width: 100%; padding: 7px 9px; font-size: 0.76rem; }
+      .chip-btn span { overflow-wrap: anywhere; min-width: 0; }
+      .dropdown-wrapper { max-width: 100%; }
+      #emailDropdownBtn { font-size: 0.68rem; padding: 7px 6px; gap: 4px; }
     }
 
     /* Diller kartı */
@@ -662,7 +683,7 @@
       body { display: block; padding: 0; background: #fff; color: #111; }
       body::before, body::after { display: none; }
       .top-bar, .admin-bar, .skills-filter, .scroll-top, .toast, .bottom-actions,
-      .modal-overlay, .admin-card-controls, .skip-link, .chevron-icon, .dropdown-menu { display: none !important; }
+      .modal-overlay, .admin-card-controls, .skip-link, .chevron-icon, .dropdown-menu, .hero-actions, .project-details { display: none !important; }
       .reveal { opacity: 1 !important; transform: none !important; }
       .hero-card, .about-card, .card, .skill-card, .project-card, .ref-card {
         backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: none; break-inside: avoid;
@@ -687,12 +708,13 @@
         <button class="btn-icon" id="themeToggle" title="Tema Değiştir" aria-label="Tema Değiştir">
           <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"></svg>
         </button>
-        <button class="btn-icon" onclick="window.print()" title="Yazdır / PDF Kaydet" aria-label="Yazdır / PDF Kaydet">
+        <button class="btn-icon btn-print" onclick="window.print()" title="Yazdır / PDF Kaydet" aria-label="Yazdır / PDF Kaydet">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <polyline points="6 9 6 2 18 2 18 9"></polyline>
             <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
             <rect x="6" y="14" width="12" height="8"></rect>
           </svg>
+          <span>CV / PDF</span>
         </button>
       </div>
     </header>
@@ -716,7 +738,12 @@
         </div>
         <div class="hero-content">
           <h1 id="heroName">Yusuf Başaran</h1>
-          <span class="hero-badge">IT / Bilgi İşlem</span>
+          <span class="hero-badge">Bilgisayar Programcısı · Web Geliştirme &amp; IT Destek</span>
+          <p class="hero-intro">JavaScript ile web uygulamaları geliştiriyor; API entegrasyonları, donanım arıza tespiti ve IT destek alanlarında çalışıyorum.</p>
+          <div class="hero-actions">
+            <a class="hero-action primary" href="mailto:yusufbasaran63@hotmail.com">İletişime Geç</a>
+            <a class="hero-action" href="#projectsSection">Projelerimi Gör</a>
+          </div>
 
           <div class="contact-chips" id="contactChips">
             <div class="dropdown-wrapper" id="phoneWrapper">
@@ -771,7 +798,7 @@
           <span>Hakkımda</span>
         </h2>
         <div class="about-card">
-          Doğu Akdeniz Üniversitesi Bilgisayar Programcılığı bölümünden mezun; yazılım, web geliştirme ve donanım arıza tespiti konularında temel teknik yetkinliklere sahip bir bilişim mezunuyum. Farklı iş kollarında edindiğim çalışma tecrübeleri sayesinde sorumluluk bilinci yüksek, güçlü iletişim kurabilen ve takım çalışmasına yatkın bir profile sahibim.
+          Doğu Akdeniz Üniversitesi Bilgisayar Programcılığı mezunuyum. HTML, CSS ve JavaScript ile web uygulamaları geliştiriyor; REST API entegrasyonları ve veritabanı tabanlı projeler üzerinde çalışıyorum. Stajımda Bitrix24 ve Google Workspace ile görev takibi ve CRM süreçlerine destek verdim. Gönüllü bilgisayar eğitmenliği deneyimimle teknik konuları anlaşılır biçimde aktarmaya ve ekip içinde sorumluluk almaya önem veriyorum.
         </div>
       </section>
 
@@ -789,8 +816,10 @@
         </div>
 
         <div class="skills-grid" id="skillsGrid">
-          <div class="skill-card" data-cat="tech"><div class="skill-icon-box" aria-hidden="true">💻</div><div class="skill-info"><strong>Yazılım Geliştirme</strong><span>Web &amp; Temel Algoritmalar</span></div></div>
-          <div class="skill-card" data-cat="tech"><div class="skill-icon-box" aria-hidden="true">⚙️</div><div class="skill-info"><strong>Donanım Uzmanlığı</strong><span>Arıza Tespiti &amp; Montaj</span></div></div>
+          <div class="skill-card" data-cat="tech"><div class="skill-icon-box" aria-hidden="true">💻</div><div class="skill-info"><strong>Web Geliştirme</strong><span>HTML, CSS, JavaScript</span></div></div>
+          <div class="skill-card" data-cat="tech"><div class="skill-icon-box" aria-hidden="true">🔗</div><div class="skill-info"><strong>API &amp; Veritabanı</strong><span>REST API, Supabase, PostgreSQL</span></div></div>
+          <div class="skill-card" data-cat="tech"><div class="skill-icon-box" aria-hidden="true">📁</div><div class="skill-info"><strong>Sürüm Kontrolü &amp; Yayınlama</strong><span>GitHub, GitHub Pages, Vercel</span></div></div>
+          <div class="skill-card" data-cat="tech"><div class="skill-icon-box" aria-hidden="true">⚙️</div><div class="skill-info"><strong>Donanım &amp; Teknik Destek</strong><span>Arıza Tespiti &amp; Montaj</span></div></div>
           <div class="skill-card" data-cat="tech"><div class="skill-icon-box" aria-hidden="true">📊</div><div class="skill-info"><strong>CRM &amp; Proje Yönetimi</strong><span>Bitrix24, Google Workspace</span></div></div>
           <div class="skill-card" data-cat="soft"><div class="skill-icon-box" aria-hidden="true">🧩</div><div class="skill-info"><strong>Problem Çözme</strong><span>Analitik &amp; Hızlı Çözümleme</span></div></div>
           <div class="skill-card" data-cat="soft"><div class="skill-icon-box" aria-hidden="true">🤝</div><div class="skill-info"><strong>İletişim ve Uyum</strong><span>Takım Çalışması &amp; İfade</span></div></div>
@@ -1081,7 +1110,7 @@
 
     // Dolu olan linkler hero bölümünde chip olarak görünür. Boş bırakılanlar gösterilmez.
     const SOCIAL_LINKS = [
-      { label: 'GitHub',   url: '' },   // örn: 'https://github.com/kullaniciadin'
+      { label: 'GitHub',   url: 'https://github.com/yusuf-basaran' },
       { label: 'LinkedIn', url: '' }    // örn: 'https://www.linkedin.com/in/kullaniciadin'
     ];
 
@@ -1291,6 +1320,18 @@
       }
     }
 
+    // Kısa kart özeti; tam açıklama yerel details denetimiyle erişilebilir kalır.
+    // Yeni veya düzenlenen projeler de veritabanı değişikliği gerektirmeden aynı düzeni kullanır.
+    function projectDescriptionHtml(description) {
+      const text = String(description || '').trim();
+      if (text.length <= 200) return `<p class="project-desc">${escapeHtml(text)}</p>`;
+      const firstSentence = text.match(/^.{40,}?[.!?](?=\s|$)/u)?.[0];
+      const excerpt = text.slice(0, 180).replace(/\s+\S*$/u, '').trimEnd();
+      const summary = firstSentence && firstSentence.length <= 200 ? firstSentence : excerpt + '…';
+      return `<p class="project-desc">${escapeHtml(summary)}</p>
+        <details class="project-details"><summary>Proje ayrıntıları</summary><p>${escapeHtml(text)}</p></details>`;
+    }
+
     function renderProjects() {
       const grid = document.getElementById('projectsGrid');
       const displayList = isAdmin ? projects : projects.filter(p => p.visible !== false);
@@ -1312,13 +1353,13 @@
         const dm = safeUrl(p.demo);
 
         const gitBtn = (gh && p.show_github !== false) ? `
-          <a href="${escapeHtml(gh)}" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+          <a href="${escapeHtml(gh)}" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="${escapeHtml(p.title)} — GitHub">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
             <span>GitHub</span>
           </a>` : '';
 
         const demoBtn = (dm && p.show_demo !== false) ? `
-          <a href="${escapeHtml(dm)}" target="_blank" rel="noopener noreferrer" class="project-link-btn">Canlı İncele</a>` : '';
+          <a href="${escapeHtml(dm)}" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="${escapeHtml(p.title)} — Canlı İncele">Canlı İncele</a>` : '';
 
         const pid = escapeHtml(String(p.id));
 
@@ -1330,7 +1371,7 @@
           <div class="project-body">
             <div class="project-tags">${tagsHtml}</div>
             <h3 class="project-title">${escapeHtml(p.title)}</h3>
-            <p class="project-desc">${escapeHtml(p.description || '')}</p>
+            ${projectDescriptionHtml(p.description)}
             <div class="project-links">${gitBtn}${demoBtn}</div>
           </div>
           <div class="admin-card-controls">
