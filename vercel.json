@@ -1,12 +1,14 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": "public",
   "redirects": [
     {
       "source": "/:path*",
       "has": [
-        { "type": "host", "value": "www\\.yusufbasaran\\.dev" }
+        { "type": "host", "value": "yusufbasaran\\.dev" }
       ],
-      "destination": "https://yusufbasaran.dev/:path*",
+      "destination": "https://www.yusufbasaran.dev/:path*",
       "statusCode": 301
     }
   ]

@@ -647,7 +647,7 @@ Tüm ticari değerler `js/price-calculator.js` dosyasının başındaki `CONFIG`
 - Mobil toplam kutusu yalnızca Hizmetler görünürken sabitlenir. “Seçim özeti ve notlar” açılarak kalemler kaldırılabilir; diğer CV bölümlerinde alt kutu sabit kalmaz.
 - Sıfırlama, hesaplayıcı seçimlerini varsayılana döndürür; yazılmış iletişim bilgilerini silmez.
 - Hesaplayıcı CV/PDF çıktısında gizlenir; mevcut özgeçmiş akışı korunur.
-- Bu sürüm GitHub’daki feat/web-price-calculator-seo dalında teslim edilir. Ana dala alınmadan önce SEO-KURULUM.md içindeki Vercel yönlendirme adımlarını uygulayın. Canlı domain ayarları değiştirilmemiştir.
+- Bu sürüm GitHub’daki feat/web-price-calculator-seo dalında teslim edilir. Yayın, mevcut çalışan www.yusufbasaran.dev ana adresini kullanır; ek domain ayarı gerektirmez.
 
 ## Doğrulama
 

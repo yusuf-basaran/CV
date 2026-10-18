@@ -2,7 +2,7 @@
 
 Düzenlemeler index.html ve bağlı dosyalara uygulanmıştır. Bu rehber aynı değişiklikleri elle uygulamak ve ileride güncellemek içindir. Güncellenmiş dosyalara bu blokları ikinci kez yapıştırmayın.
 
-Ana adres her yerde **https://yusufbasaran.dev/** seçildi. Bu sürüm GitHub’daki feat/web-price-calculator-seo dalında teslim edilir. Ana dala alınmadan önce aşağıdaki Vercel yönlendirme adımları uygulanmalıdır. Canlı domain ayarları bu çalışma kapsamında değiştirilmemiştir.
+Ana adres her yerde **https://www.yusufbasaran.dev/** seçildi. Mevcut canlı yönlendirmeye uyum sağlandığı için yayın öncesi domain ayarı yapmanız gerekmez. Bu sürüm GitHub ana dalına doğrudan alınmak üzere hazırlanmıştır.
 
 ## 1. HTML başlangıcı ve head bloğunun tamamı
 
@@ -40,7 +40,7 @@ Mevcut `<head>…</head>` bloğunu aşağıdakiyle değiştirin; eski title/meta
   <meta name="color-scheme" content="dark light">
   <meta name="keywords" content="web tasarım Gazimağusa, web sitesi yaptırma KKTC, freelance web geliştirici Kıbrıs, bilgisayar programcısı, IT destek, Bitrix24, HTML CSS JavaScript, Supabase">
   <meta name="geo.placename" content="Gazimağusa, Kıbrıs">
-  <link rel="canonical" href="https://yusufbasaran.dev/">
+  <link rel="canonical" href="https://www.yusufbasaran.dev/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
@@ -51,9 +51,9 @@ Mevcut `<head>…</head>` bloğunu aşağıdakiyle değiştirin; eski title/meta
   <meta property="og:site_name" content="Yusuf Başaran">
   <meta property="og:title" content="Yusuf Başaran | Web Geliştirici &amp; IT Destek | Gazimağusa">
   <meta property="og:description" content="Gazimağusa, KKTC web geliştirici Yusuf Başaran. Kurumsal site, randevu sistemi ve IT destek için özelliklere göre web sitesi fiyatı hesaplayın, teklif alın.">
-  <meta property="og:url" content="https://yusufbasaran.dev/">
+  <meta property="og:url" content="https://www.yusufbasaran.dev/">
   <meta property="og:locale" content="tr_TR">
-  <meta property="og:image" content="https://yusufbasaran.dev/og-image.jpg">
+  <meta property="og:image" content="https://www.yusufbasaran.dev/og-image.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -62,7 +62,7 @@ Mevcut `<head>…</head>` bloğunu aşağıdakiyle değiştirin; eski title/meta
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Yusuf Başaran | Web Geliştirici &amp; IT Destek | Gazimağusa">
   <meta name="twitter:description" content="Gazimağusa, KKTC web geliştirici Yusuf Başaran. Kurumsal site, randevu sistemi ve IT destek için özelliklere göre web sitesi fiyatı hesaplayın, teklif alın.">
-  <meta name="twitter:image" content="https://yusufbasaran.dev/og-image.jpg">
+  <meta name="twitter:image" content="https://www.yusufbasaran.dev/og-image.jpg">
   <meta name="twitter:image:alt" content="Yusuf Başaran — Gazimağusa, Kıbrıs web geliştirici ve IT destek hizmetleri">
 
   <!-- Statik şema: paket fiyatlarını değiştirirken bu katalog da güncellenir. -->
@@ -72,11 +72,11 @@ Mevcut `<head>…</head>` bloğunu aşağıdakiyle değiştirin; eski title/meta
   "@graph": [
     {
       "@type": "Person",
-      "@id": "https://yusufbasaran.dev/#person",
+      "@id": "https://www.yusufbasaran.dev/#person",
       "name": "Yusuf Başaran",
       "jobTitle": "Web Geliştirici ve IT Destek",
-      "url": "https://yusufbasaran.dev/",
-      "image": "https://yusufbasaran.dev/profile.jpg",
+      "url": "https://www.yusufbasaran.dev/",
+      "image": "https://www.yusufbasaran.dev/profile.jpg",
       "email": "yusufbasaran63@hotmail.com",
       "telephone": "+905338493063",
       "address": {
@@ -104,12 +104,12 @@ Mevcut `<head>…</head>` bloğunu aşağıdakiyle değiştirin; eski title/meta
     },
     {
       "@type": "WebSite",
-      "@id": "https://yusufbasaran.dev/#website",
+      "@id": "https://www.yusufbasaran.dev/#website",
       "name": "Yusuf Başaran | Web Geliştirici ve IT Destek",
-      "url": "https://yusufbasaran.dev/",
+      "url": "https://www.yusufbasaran.dev/",
       "inLanguage": "tr",
       "publisher": {
-        "@id": "https://yusufbasaran.dev/#person"
+        "@id": "https://www.yusufbasaran.dev/#person"
       }
     },
     {
@@ -117,10 +117,10 @@ Mevcut `<head>…</head>` bloğunu aşağıdakiyle değiştirin; eski title/meta
         "ProfessionalService",
         "Service"
       ],
-      "@id": "https://yusufbasaran.dev/#web-hizmeti",
+      "@id": "https://www.yusufbasaran.dev/#web-hizmeti",
       "name": "Web Sitesi Geliştirme Hizmeti",
-      "url": "https://yusufbasaran.dev/",
-      "image": "https://yusufbasaran.dev/og-image.jpg",
+      "url": "https://www.yusufbasaran.dev/",
+      "image": "https://www.yusufbasaran.dev/og-image.jpg",
       "description": "Gazimağusa, KKTC ve Türkiye için web sitesi geliştirme ve IT destek hizmetleri.",
       "email": "yusufbasaran63@hotmail.com",
       "telephone": "+905338493063",
@@ -131,10 +131,10 @@ Mevcut `<head>…</head>` bloğunu aşağıdakiyle değiştirin; eski title/meta
         "addressCountry": "CY"
       },
       "provider": {
-        "@id": "https://yusufbasaran.dev/#person"
+        "@id": "https://www.yusufbasaran.dev/#person"
       },
       "founder": {
-        "@id": "https://yusufbasaran.dev/#person"
+        "@id": "https://www.yusufbasaran.dev/#person"
       },
       "areaServed": [
         {
@@ -160,14 +160,14 @@ Mevcut `<head>…</head>` bloğunu aşağıdakiyle değiştirin; eski title/meta
             "name": "Tek Sayfa Tanıtım Sitesi",
             "price": 4000,
             "priceCurrency": "TRY",
-            "url": "https://yusufbasaran.dev/",
+            "url": "https://www.yusufbasaran.dev/",
             "description": "Başlangıç paket fiyatıdır. Ek özellikler, aylık bakım ve yıllık alan adı / hosting bedelleri ayrıdır.",
             "itemOffered": {
               "@type": "Service",
               "name": "Tek Sayfa Tanıtım Sitesi",
               "description": "İşinizi tek sayfada tanıtan web sitesi.",
               "provider": {
-                "@id": "https://yusufbasaran.dev/#person"
+                "@id": "https://www.yusufbasaran.dev/#person"
               },
               "serviceType": "Web sitesi geliştirme"
             }
@@ -177,14 +177,14 @@ Mevcut `<head>…</head>` bloğunu aşağıdakiyle değiştirin; eski title/meta
             "name": "Çok Sayfalı Site (5 sayfaya kadar)",
             "price": 8000,
             "priceCurrency": "TRY",
-            "url": "https://yusufbasaran.dev/",
+            "url": "https://www.yusufbasaran.dev/",
             "description": "Başlangıç paket fiyatıdır. Ek özellikler, aylık bakım ve yıllık alan adı / hosting bedelleri ayrıdır.",
             "itemOffered": {
               "@type": "Service",
               "name": "Çok Sayfalı Site (5 sayfaya kadar)",
               "description": "Hizmetlerinizi ayrı sayfalarda anlatan web sitesi.",
               "provider": {
-                "@id": "https://yusufbasaran.dev/#person"
+                "@id": "https://www.yusufbasaran.dev/#person"
               },
               "serviceType": "Web sitesi geliştirme"
             }
@@ -194,14 +194,14 @@ Mevcut `<head>…</head>` bloğunu aşağıdakiyle değiştirin; eski title/meta
             "name": "Kurumsal Site (10 sayfaya kadar)",
             "price": 13000,
             "priceCurrency": "TRY",
-            "url": "https://yusufbasaran.dev/",
+            "url": "https://www.yusufbasaran.dev/",
             "description": "Başlangıç paket fiyatıdır. Ek özellikler, aylık bakım ve yıllık alan adı / hosting bedelleri ayrıdır.",
             "itemOffered": {
               "@type": "Service",
               "name": "Kurumsal Site (10 sayfaya kadar)",
               "description": "Firmanızı ve çalışmalarınızı kapsamlı biçimde tanıtan web sitesi.",
               "provider": {
-                "@id": "https://yusufbasaran.dev/#person"
+                "@id": "https://www.yusufbasaran.dev/#person"
               },
               "serviceType": "Web sitesi geliştirme"
             }
@@ -211,14 +211,14 @@ Mevcut `<head>…</head>` bloğunu aşağıdakiyle değiştirin; eski title/meta
             "name": "Blog / Haber Sitesi",
             "price": 12000,
             "priceCurrency": "TRY",
-            "url": "https://yusufbasaran.dev/",
+            "url": "https://www.yusufbasaran.dev/",
             "description": "Başlangıç paket fiyatıdır. Ek özellikler, aylık bakım ve yıllık alan adı / hosting bedelleri ayrıdır.",
             "itemOffered": {
               "@type": "Service",
               "name": "Blog / Haber Sitesi",
               "description": "Yazı ve haber paylaşımına yönelik web sitesi.",
               "provider": {
-                "@id": "https://yusufbasaran.dev/#person"
+                "@id": "https://www.yusufbasaran.dev/#person"
               },
               "serviceType": "Web sitesi geliştirme"
             }
@@ -228,14 +228,14 @@ Mevcut `<head>…</head>` bloğunu aşağıdakiyle değiştirin; eski title/meta
             "name": "Özel Web Uygulaması",
             "price": 20000,
             "priceCurrency": "TRY",
-            "url": "https://yusufbasaran.dev/",
+            "url": "https://www.yusufbasaran.dev/",
             "description": "Başlangıç paket fiyatıdır. Ek özellikler, aylık bakım ve yıllık alan adı / hosting bedelleri ayrıdır.",
             "itemOffered": {
               "@type": "Service",
               "name": "Özel Web Uygulaması",
               "description": "Yönetim ekranları, kullanıcı yetkileri ve veri saklama ihtiyaçlarına özel uygulama.",
               "provider": {
-                "@id": "https://yusufbasaran.dev/#person"
+                "@id": "https://www.yusufbasaran.dev/#person"
               },
               "serviceType": "Web sitesi geliştirme"
             }
@@ -245,8 +245,8 @@ Mevcut `<head>…</head>` bloğunu aşağıdakiyle değiştirin; eski title/meta
     },
     {
       "@type": "FAQPage",
-      "@id": "https://yusufbasaran.dev/#fiyat-sss",
-      "url": "https://yusufbasaran.dev/",
+      "@id": "https://www.yusufbasaran.dev/#fiyat-sss",
+      "url": "https://www.yusufbasaran.dev/",
       "inLanguage": "tr",
       "mainEntity": [
         {
@@ -514,7 +514,7 @@ Paylaşım kartında Yusuf Başaran, Web Geliştirici & IT Destek, Gazimağusa/K
 User-agent: *
 Allow: /
 
-Sitemap: https://yusufbasaran.dev/sitemap.xml
+Sitemap: https://www.yusufbasaran.dev/sitemap.xml
 ```
 
 Tüm botlara izin verilir. CSS, JS ve görseller engellenmez. robots.txt güvenlik/yönetici yetkilendirmesi sağlamaz; mevcut Supabase yetki akışı aynen sürer.
@@ -525,7 +525,7 @@ Tüm botlara izin verilir. CSS, JS ve görseller engellenmez. robots.txt güvenl
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://yusufbasaran.dev/</loc>
+    <loc>https://www.yusufbasaran.dev/</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
   </url>
@@ -566,50 +566,44 @@ Tek sayfa olduğu için yalnızca ana URL listelendi. `#hizmetler` ve `#fiyat-ss
 
 Manifest ve ikonlar site kimliğini tanımlar; çevrimdışı çalışma eklenmedi.
 
-## 8. www → www'suz adres: Vercel ayarı ve tam 301 kuralı
+## 8. Mevcut ana adres ve otomatik Vercel yayını
 
-**Canlı kontrol sonucu:** 18 Ekim 2026 tarihinde kök adres `https://yusufbasaran.dev/`, HTTP 308 ile `https://www.yusufbasaran.dev/` adresine yönleniyordu. Yeni tercih bunun tersidir. Eski kök → www yönlendirmesini kaldırmadan www → kök yönlendirmesini etkinleştirmeyin; yönlendirme döngüsü oluşur.
+Ana adres **https://www.yusufbasaran.dev/** olarak mevcut çalışan Vercel ayarıyla aynı tutuldu. Www'suz adresin www'ya mevcut kalıcı HTTP 308 yönlendirmesi korunur. Böylece ek domain ayarı gerekmez ve yönlendirme döngüsü oluşmaz.
 
-Vercel'de uygulanacak sıra:
+Vercel API'sinde explicit team kapsamıyla domain yönetimi 403 döndürdüğü için hesap ayarı değiştirilmedi; kod mevcut çalışan altyapıya uyarlandı. 308 ve 301 arama motorları açısından kalıcı yönlendirmelerdir. Mevcut domain düzeyi yönlendirmesi bulunmadığında aşağıdaki host kuralı aynı yönde 301 uygular; mevcut durumda domain düzeyindeki 308 önce çalışır.
 
-1. İlgili projenin **Settings → Domains** bölümünü açın. Her iki alan adının bu projeye bağlı olduğunu doğrulayın.
-2. `yusufbasaran.dev` için **Edit** seçin. Mevcut `Redirect to www.yusufbasaran.dev` ayarını kaldırın; kök alan adını doğrudan **Production** yayınına bağlayın.
-3. `www.yusufbasaran.dev` için **Edit → Redirect to → yusufbasaran.dev** seçin. Paneliniz durum kodunu seçtiriyorsa **301** kullanın ve kaydedin.
-4. Panel yalnızca 307/308 sunuyorsa, tam 301 için domain düzeyindeki yönlendirmeyi kullanmayın. Her iki domaini aynı Production deployment'ına bağlayın ve aşağıdaki `vercel.json` kuralını kullanın. Dosya teslim paketine eklenmiştir. Dashboard'daki eski ters yönlendirmeyi yine kaldırın.
-5. Vercel'in domain kartında gösterdiği DNS doğrulama değerlerini kullanın. Evrensel A/CNAME değerleri tahmin ederek mevcut e-posta kayıtlarını değiştirmeyin.
-6. Yayından sonra www'suz adresin 200, www adresinin tek 301 ile köke gittiğini doğrulayın. HTTP→HTTPS katmanında ayrıca Vercel'in HTTPS yönlendirmesi bulunabilir.
+Önizleme yayını ilk derlemede STATIC_BUILD_NO_OUT_DIR hatası verdi. Build script'i artık yalnızca gerekli 15 dosyayı public dizinine kopyalar; Vercel bu klasörü yayınlar. Kaynak kod, node_modules ve rehberler yayın klasörüne alınmaz.
 
-`vercel.json` içeriği; varsa mevcut ayar dosyanıza redirects alanını birleştirin:
+vercel.json dosyasının tamamı:
 
 ```json
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": "public",
   "redirects": [
     {
       "source": "/:path*",
       "has": [
-        { "type": "host", "value": "www\\.yusufbasaran\\.dev" }
+        { "type": "host", "value": "yusufbasaran\\.dev" }
       ],
-      "destination": "https://yusufbasaran.dev/:path*",
+      "destination": "https://www.yusufbasaran.dev/:path*",
       "statusCode": 301
     }
   ]
 }
 ```
 
-Bu kural yalnızca www hostunu eşleştirir; hedef adresi ve Vercel önizleme adreslerini eşleştirmez. Yol ve sorgu parametreleri korunur. Sunucuya URL fragment'i gönderilmediği için anchor'lar sitemap veya canonical alternatifi değildir.
-
 Kontrol komutları:
 
 ```bash
-curl -I https://yusufbasaran.dev/
 curl -I https://www.yusufbasaran.dev/
-curl -IL https://www.yusufbasaran.dev/?kaynak=kontrol
+curl -I https://yusufbasaran.dev/
 ```
 
-Beklenti: www için `301` ve `Location: https://yusufbasaran.dev/`; ana adreste `200`. Bu Vercel ayarları hesapta uygulanmadı; dosya ve adımlar hazırlandı.
+Beklenti: www adresinde 200; www'suz adreste www'ya yönlendirme. Canonical, OG, sitemap ve JSON-LD aynı www adresini kullanır. Preview adresleri bu host kuralına dahil değildir.
 
-Kaynaklar: [Vercel domain yönlendirmeleri](https://vercel.com/docs/domains/working-with-domains/deploying-and-redirecting), [host koşullu yönlendirmeler](https://vercel.com/docs/routing/redirects).
+Kaynak: [Vercel domain yönlendirmeleri](https://vercel.com/docs/domains/working-with-domains/deploying-and-redirecting).
 
 ## 9. Küçültme ve script sırası
 
@@ -634,14 +628,14 @@ HTML yalnızca .min sürümlerini yükler. Hesaplayıcı head'de defer ile yükl
 
 Font bağlantısı zaten `display=swap` parametresini içerir ve Google Fonts / gstatic preconnect'leri korunur. Font ailesi, renk değişkenleri ve mevcut kart/buton stilleri değiştirilmedi.
 
-Küçültülmüş dosyalar hazırdır; yayınlamak için yerel Node kurulumu gerekmez. Kaynak dosyaları değiştirdikten sonra yeniden üretmek için:
+Küçültülmüş dosyalar hazırdır. Vercel otomatik derlemesinde npm run build çalışır ve public klasörü yayınlanır. Kaynak dosyaları değiştirdikten sonra yeniden üretmek için:
 
 ```bash
 npm ci
 npm run build
 ```
 
-Terser ve CleanCSS yalnızca geliştirme bağımlılıklarıdır; tarayıcıya ek kütüphane yüklenmez. Global fonksiyon adları korunarak inline onclick bağlantılarının bozulması önlenir. `package.json`, kilit dosyası ve build script'i pakette bulunur.
+Build script’i public klasörünü yeniden oluşturur ve yalnızca yayın dosyalarını buraya kopyalar. Terser ve CleanCSS yalnızca geliştirme bağımlılıklarıdır; tarayıcıya ek kütüphane yüklenmez. Global fonksiyon adları korunarak inline onclick bağlantılarının bozulması önlenir. `package.json`, kilit dosyası ve build script'i pakette bulunur.
 
 Dört CSS/JS dosyasının kaynak toplamı yaklaşık 107 KB, yayın sürümlerinin toplamı yaklaşık 83 KB'dir (sıkıştırma öncesi). Sunucu gzip/Brotli aktarımı bu değerlerden farklı olur.
 
