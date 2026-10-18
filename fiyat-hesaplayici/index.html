@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tema titremesini önlemek için erken uygula -->
+  <script>
+    try {
+      var t = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+
+  <!-- İkonlar ve paylaşım görseli kök dizinde tutulur. -->
+
+  <title>Web Sitesi Yaptırma Fiyatları ve Hesaplayıcı | Yusuf Başaran</title>
+  <meta name="description" content="Gazimağusa ve KKTC için web sitesi fiyatını özelliklere göre hesaplayın. Paket, sayfa ve ek hizmetleri seçin; tahmini bütçenizi görün, hemen teklif alın.">
+  <meta name="author" content="Yusuf Başaran">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0d1117">
+  <meta name="color-scheme" content="dark light">
+  <meta name="keywords" content="web tasarım Gazimağusa, web sitesi yaptırma KKTC, freelance web geliştirici Kıbrıs, bilgisayar programcısı, IT destek, Bitrix24, HTML CSS JavaScript, Supabase">
+  <meta name="geo.placename" content="Gazimağusa, Kıbrıs">
+  <link rel="canonical" href="https://www.yusufbasaran.dev/fiyat-hesaplayici/">
+  <!-- GOOGLE_SITE_VERIFICATION: Search Console'dan aldığın <meta name="google-site-verification" content="..."> satırını buraya yapıştır -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Paylaşım görseli 1200 × 630 piksel; profile.jpg yerine kullanılır. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Yusuf Başaran">
+  <meta property="og:title" content="Web Sitesi Yaptırma Fiyatları ve Hesaplayıcı | Yusuf Başaran">
+  <meta property="og:description" content="Gazimağusa ve KKTC için web sitesi fiyatını özelliklere göre hesaplayın. Paket, sayfa ve ek hizmetleri seçin; tahmini bütçenizi görün, hemen teklif alın.">
+  <meta property="og:url" content="https://www.yusufbasaran.dev/fiyat-hesaplayici/">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:image" content="https://www.yusufbasaran.dev/og-image.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Yusuf Başaran — Gazimağusa, Kıbrıs web geliştirici ve IT destek hizmetleri">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Web Sitesi Yaptırma Fiyatları ve Hesaplayıcı | Yusuf Başaran">
+  <meta name="twitter:description" content="Gazimağusa ve KKTC için web sitesi fiyatını özelliklere göre hesaplayın. Paket, sayfa ve ek hizmetleri seçin; tahmini bütçenizi görün, hemen teklif alın.">
+  <meta name="twitter:image" content="https://www.yusufbasaran.dev/og-image.jpg">
+  <meta name="twitter:image:alt" content="Yusuf Başaran — Gazimağusa, Kıbrıs web geliştirici ve IT destek hizmetleri">
+
+  <!-- Görünür SSS bu sayfadadır; paket kataloğu ana sayfada kalır. -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.yusufbasaran.dev/fiyat-hesaplayici/#webpage",
+      "url": "https://www.yusufbasaran.dev/fiyat-hesaplayici/",
+      "name": "Web Sitesi Yaptırma: Özelliğe Göre Fiyat Hesaplayıcı",
+      "inLanguage": "tr",
+      "isPartOf": {
+        "@id": "https://www.yusufbasaran.dev/#website"
+      },
+      "about": {
+        "@id": "https://www.yusufbasaran.dev/#web-hizmeti"
+      },
+      "breadcrumb": {
+        "@id": "https://www.yusufbasaran.dev/fiyat-hesaplayici/#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.yusufbasaran.dev/fiyat-hesaplayici/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Ana Sayfa",
+          "item": "https://www.yusufbasaran.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Fiyat Hesaplayıcı",
+          "item": "https://www.yusufbasaran.dev/fiyat-hesaplayici/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.yusufbasaran.dev/fiyat-hesaplayici/#fiyat-sss",
+      "url": "https://www.yusufbasaran.dev/fiyat-hesaplayici/",
+      "inLanguage": "tr",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Web sitesi fiyatları neye göre değişir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fiyat; seçilen temel pakete, sayfa sayısına, tasarım ihtiyaçlarına ve ek özelliklere göre değişir. Hesaplayıcı tahmini bir fiyat aralığı gösterir. Kesin tutar, proje kapsamı netleştikten sonra belirlenir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Domain ve sunucu ücreti proje fiyatına dahil mi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hayır. Alan adı (domain) ve sunucu / hosting ücretleri yıllık olarak ayrıca ödenir ve tek seferlik proje ücretine dahil değildir. Kesin yıllık tutarlar, istediğiniz alan adı ve altyapı belirlendikten sonra bildirilir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Web sitesi ne kadar sürede hazırlanır?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Temel paketler için tahmini süre 5–25 iş günüdür. Seçilen ek sayfa ve özellikler hazırlık süresini artırabilir. İçeriklerin teslimi ve proje kapsamı değerlendirildikten sonra çalışma takvimi kesinleştirilir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Revizyon hakkı var mı?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Revizyon sayısı, kapsamı ve teslimden sonraki düzenlemelerin koşulları kesin teklif hazırlanırken birlikte belirlenir. Başlangıçta kararlaştırılan kapsamı aşan istekler ayrıca fiyatlandırılabilir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Sitenin yayına alınmasını da yapıyor musunuz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Evet. Hesaplayıcıdan yayına alma hizmetini seçebilirsiniz. GitHub ve Vercel kurulumu ile alan adı bağlama hizmetleri ayrı kalemlerdir. Alan adı ve hosting sağlayıcılarının yıllık ücretleri ayrıca ödenir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Web sitesi için nasıl teklif alabilirim?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "İhtiyacınıza uygun paketi ve ek özellikleri seçin. Adınızı ve iletişim bilginizi Teklif Al formuna yazın; e-posta veya WhatsApp ile seçimlerinizi iletin. Listede olmayan ihtiyaçlarınızı da proje açıklamasına ekleyebilirsiniz."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="/css/site.min.css">
+  <!-- Hesaplayıcı: mevcut değişkenleri ve bileşen stillerini kullanır. -->
+  <link rel="stylesheet" href="/css/price-calculator.min.css">
+  <link rel="stylesheet" href="/css/calculator-page.min.css">
+  <script src="/js/page-common.min.js" defer></script>
+  <script src="/js/price-calculator.min.js" defer></script>
+</head>
+<body class="calculator-page">
+  <a class="skip-link" href="#main">İçeriğe geç</a>
+  <div class="container">
+    <header class="top-bar">
+      <nav aria-label="Ana sayfa bağlantısı"><a class="chip-btn" href="/">← Ana Sayfa</a></nav>
+      <button class="btn-icon" id="themeToggle" type="button" title="Tema Değiştir" aria-label="Tema Değiştir">
+        <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"></svg>
+      </button>
+    </header>
+    <main id="main">
+<!-- Hesaplayıcı ve SSS, kimlikleri korunarak taşındı. -->
+      <section id="hizmetler" aria-labelledby="servicesTitle">
+        <h1 class="calculator-title" id="servicesTitle">Web Sitesi Yaptırma: Özelliğe Göre Fiyat Hesaplayıcı</h1>
+        <p class="calc-intro">İhtiyacınıza uygun paketi ve ek hizmetleri seçin, tahmini bütçenizi hemen görün. Her sayfa size özel ve ayrıntılı olarak hazırlanır.</p>
+        <noscript><p class="about-card">Fiyat hesaplayıcı için JavaScript’i etkinleştirin. Teklif için <a class="ref-action" href="mailto:yusufbasaran63@hotmail.com">e-posta gönderebilirsiniz.</a></p></noscript>
+        <h2 class="section-title" id="calculatorOptionsTitle">Paketinizi ve özellikleri seçin</h2>
+        <div id="priceCalculator" hidden>
+          <!-- Adımlar ve tüm seçenekler tek JS yapılandırmasından üretilir. -->
+          <div id="calculatorSteps"></div>
+          <div class="calc-summary-slot">
+            <aside class="card calc-summary" id="calculatorSummary" aria-labelledby="calculatorSummaryTitle">
+              <h3 class="card-title" id="calculatorSummaryTitle">Tahmini teklifiniz</h3>
+              <div id="calculatorTotals" role="status" aria-live="polite" aria-atomic="true"></div>
+              <details class="calc-summary-details" id="calculatorSummaryDetails" open>
+                <summary>Seçim özeti ve notlar</summary>
+                <p class="form-hint">Ek kalemleri kaldırmak için üzerlerine tıklayın. Temel paketi 1. adımdan değiştirebilirsiniz.</p>
+                <ul class="calc-selection-list" id="calculatorSelections" aria-label="Seçilen kalemler"></ul>
+                <button type="button" class="action-btn" id="calculatorReset">Seçimleri Sıfırla</button>
+                <p class="calc-note">Bu tahmini bir tekliftir. Kesin fiyat, proje kapsamı netleştikten sonra belirlenir.</p>
+                <p class="calc-note">Aradığınız özellik listede yoksa bana yazın, özel teklif hazırlayayım.</p>
+              </details>
+            </aside>
+          </div>
+          <form class="card calc-quote" id="calculatorQuoteForm" aria-labelledby="calculatorQuoteTitle" novalidate>
+            <h3 class="card-title" id="calculatorQuoteTitle">Teklif Al</h3>
+            <p class="calc-note">Seçimleriniz ve aşağıdaki bilgiler e-posta veya WhatsApp mesajına eklenir. Göndermeden önce mesajı gözden geçirebilirsiniz.</p>
+            <div class="calc-grid">
+              <div class="form-group">
+                <label for="quoteName">Ad Soyad (zorunlu)</label>
+                <input class="form-input" id="quoteName" name="name" autocomplete="name" maxlength="120" required aria-describedby="quoteNameError">
+                <p class="calc-error" id="quoteNameError" hidden></p>
+              </div>
+              <div class="form-group">
+                <label for="quoteContact">E-posta veya telefon (zorunlu)</label>
+                <input class="form-input" id="quoteContact" name="contact" autocomplete="email" maxlength="160" required aria-describedby="quoteContactError" placeholder="E-posta adresiniz veya telefonunuz">
+                <p class="calc-error" id="quoteContactError" hidden></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="quoteDomain">İstediğiniz alan adı (isteğe bağlı)</label>
+              <input class="form-input" id="quoteDomain" name="domain" maxlength="253" autocapitalize="none" spellcheck="false" placeholder="ornekfirma.com">
+            </div>
+            <div class="form-group">
+              <label for="quoteDescription">Projenizi kısaca anlatın (isteğe bağlı)</label>
+              <textarea class="form-textarea" id="quoteDescription" name="description" maxlength="3000" rows="4"></textarea>
+            </div>
+            <p class="calc-error" id="quoteFormError" role="alert" hidden></p>
+            <div class="calc-actions">
+              <button class="action-btn" type="submit" name="channel" value="email">E-posta ile Teklif Al</button>
+              <button class="action-btn" type="submit" name="channel" value="whatsapp">WhatsApp ile gönder</button>
+            </div>
+          </form>
+        </div>
+        <article class="calc-faq" id="fiyat-sss" aria-labelledby="priceFaqTitle">
+          <h3 class="card-title" id="priceFaqTitle">Web sitesi yaptırma hakkında sık sorulan sorular</h3>
+          <details class="card calc-faq-item">
+            <summary><h4>Web sitesi fiyatları neye göre değişir?</h4></summary>
+            <p>Fiyat; seçilen temel pakete, sayfa sayısına, tasarım ihtiyaçlarına ve ek özelliklere göre değişir. Hesaplayıcı tahmini bir fiyat aralığı gösterir. Kesin tutar, proje kapsamı netleştikten sonra belirlenir.</p>
+          </details>
+          <details class="card calc-faq-item">
+            <summary><h4>Domain ve sunucu ücreti proje fiyatına dahil mi?</h4></summary>
+            <p>Hayır. Alan adı (domain) ve sunucu / hosting ücretleri yıllık olarak ayrıca ödenir ve tek seferlik proje ücretine dahil değildir. Kesin yıllık tutarlar, istediğiniz alan adı ve altyapı belirlendikten sonra bildirilir.</p>
+          </details>
+          <details class="card calc-faq-item">
+            <summary><h4>Web sitesi ne kadar sürede hazırlanır?</h4></summary>
+            <p>Temel paketler için tahmini süre 5–25 iş günüdür. Seçilen ek sayfa ve özellikler hazırlık süresini artırabilir. İçeriklerin teslimi ve proje kapsamı değerlendirildikten sonra çalışma takvimi kesinleştirilir.</p>
+          </details>
+          <details class="card calc-faq-item">
+            <summary><h4>Revizyon hakkı var mı?</h4></summary>
+            <p>Revizyon sayısı, kapsamı ve teslimden sonraki düzenlemelerin koşulları kesin teklif hazırlanırken birlikte belirlenir. Başlangıçta kararlaştırılan kapsamı aşan istekler ayrıca fiyatlandırılabilir.</p>
+          </details>
+          <details class="card calc-faq-item">
+            <summary><h4>Sitenin yayına alınmasını da yapıyor musunuz?</h4></summary>
+            <p>Evet. Hesaplayıcıdan yayına alma hizmetini seçebilirsiniz. GitHub ve Vercel kurulumu ile alan adı bağlama hizmetleri ayrı kalemlerdir. Alan adı ve hosting sağlayıcılarının yıllık ücretleri ayrıca ödenir.</p>
+          </details>
+          <details class="card calc-faq-item">
+            <summary><h4>Web sitesi için nasıl teklif alabilirim?</h4></summary>
+            <p>İhtiyacınıza uygun paketi ve ek özellikleri seçin. Adınızı ve iletişim bilginizi Teklif Al formuna yazın; e-posta veya WhatsApp ile seçimlerinizi iletin. Listede olmayan ihtiyaçlarınızı da proje açıklamasına ekleyebilirsiniz.</p>
+          </details>
+        </article>
+      </section>
+    </main>
+    <footer>
+      <span>© <span id="yearNow">2026</span> Yusuf Başaran — Tüm Hakları Saklıdır.</span>
+      <a class="ref-action" href="/">Yusuf Başaran · Ana Sayfa</a>
+    </footer>
+    <div class="bottom-actions"><a class="action-btn" href="/">Ana Sayfaya Dön</a></div>
+  </div>
+</body>
+</html>
