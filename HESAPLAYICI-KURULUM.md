@@ -101,6 +101,12 @@ gh pr create --base main --head feat/standalone-price-calculator
 
 PR'da dosyaları ve Vercel preview sonucunu kontrol ettikten sonra GitHub'da Merge seçin. Vercel Deployments'ta main commit'i için Production / Ready durumunu doğrulayın. Search Console'da yeni URL'yi denetleyip dizine eklenmesini isteyin ve iki URL içeren sitemap'i yeniden gönderin.
 
-## Kontrol kapsamı
+## Kontrol sonuçları
+
+Yerel tarayıcı kontrollerinin tamamı geçti: gerçek bağlantılar ve eski hash; Supabase proje okuma ve modallar; sayfalar arası tema/yıl; masaüstü sticky; seçim/form doğrulaması; aynı e-posta/WhatsApp metni; 375 px alt kutusu ve örtülmeyen form/footer; JavaScript kapalı link/SSS; tek h1/canonical/meta; tüm public yolları. Hesaplayıcı/form ve SSS HTML’i önceki sürümle birebir aynıdır. CONFIG ve site.js bayt düzeyinde değişmemiştir; beş JSON-LD paket fiyatı CONFIG ile eşleşir. npm run build: 19 yayın dosyası, çıkış kodu 0.
+
+Vercel preview derlemesi READY. Korumalı preview içeriğini açma isteği 403 döndürdüğü için Vercel üzerindeki iki URL biçiminin HTTP davranışı doğrulanamadı; yerelde iki biçim de 200’e ulaşır. Platform koruması kapatılmadı ve trailingSlash eklenmedi. Yayın sonrası kontrol listesine bu iki adres dahildir.
+
+## Test edilen akışlar
 
 İki sayfada gerçek linkler/dosya yolları, tek h1/canonical, yinelenmeyen meta, taşınmış FAQ ve paket fiyatlarının CONFIG ile eşleşmesi; hesaplayıcı seçimi/form/payload, 375 px alt kutusu, tema/yıl, JS kapalı kullanım ve ana sayfa proje/modal akışları kontrol edilir. Gerçek e-posta/WhatsApp gönderimi veya Supabase veri yazma/silme yapılmaz.

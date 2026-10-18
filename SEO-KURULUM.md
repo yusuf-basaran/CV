@@ -466,7 +466,7 @@ Ana sayfada id=hizmetler kullanılmaz. Eski /#hizmetler bağlantısı home-links
 
 Build yeni fiyat-hesaplayici/index.html dosyasını public/fiyat-hesaplayici/index.html olarak kopyalar. CSS/JS yolları kökten başlar; alt sayfada /fiyat-hesaplayici/css gibi yanlış yollar oluşmaz. Yeni sayfa yalnızca site.min.css, price-calculator.min.css, calculator-page.min.css, page-common.min.js ve price-calculator.min.js yükler; Supabase/site.js yüklemez.
 
-vercel.json aynen korunur; trailingSlash ayarı eklenmedi. Yerel sunucuda /fiyat-hesaplayici → /fiyat-hesaplayici/ → 200 çalışır, yönlendirme döngüsü yoktur. Vercel preview ve üretim yayını sonrasında iki biçimi de kontrol edin. Bir platform ayarı değişikliği gerekirse ayrıca değerlendirilmelidir; mevcut izin olmadan trailingSlash eklenmez.
+vercel.json aynen korunur; trailingSlash ayarı eklenmedi. Yerel sunucuda /fiyat-hesaplayici → /fiyat-hesaplayici/ → 200 çalışır, yönlendirme döngüsü yoktur. Vercel preview derlemesi READY oldu; korumalı içeriğe erişim 403 ile reddedildiği için platform üzerindeki URL testi tamamlanamadı. Üretim yayını sonrasında iki biçimi de kontrol edin. Bir platform ayarı değişikliği gerekirse ayrıca değerlendirilmelidir; mevcut izin olmadan trailingSlash eklenmez.
 
 Vercel Project Settings → Git/Environments bölümünde Production Branch main, Build Command npm run build, Output Directory public olmalı. Deployments'ta doğru main commit'inin Production / Ready olduğunu kontrol edin. Paket fiyatları değişirse CONFIG ve statik OfferCatalog'u; SSS değişirse görünür HTML ve FAQPage'i birlikte güncelleyin.
 
