@@ -41,6 +41,7 @@ Mevcut `<head>…</head>` bloğunu aşağıdakiyle değiştirin; eski title/meta
   <meta name="keywords" content="web tasarım Gazimağusa, web sitesi yaptırma KKTC, freelance web geliştirici Kıbrıs, bilgisayar programcısı, IT destek, Bitrix24, HTML CSS JavaScript, Supabase">
   <meta name="geo.placename" content="Gazimağusa, Kıbrıs">
   <link rel="canonical" href="https://www.yusufbasaran.dev/">
+  <!-- GOOGLE_SITE_VERIFICATION: Search Console'dan aldığın <meta name="google-site-verification" content="..."> satırını buraya yapıştır -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
@@ -618,8 +619,8 @@ HTML yalnızca .min sürümlerini yükler. Hesaplayıcı head'de defer ile yükl
 
 ```html
   <!-- Defer sırası: önce Supabase, sonra ona bağlı mevcut site kodu.
-       Üretimde "@2" yerine sabit bir sürüm (ör. @2.x.y) kullanmanız önerilir. -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+       npm üzerindeki son kararlı 2.x sürümüne sabitlendi: 2.118.0. -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0" defer></script>
 
   <script src="/js/site.min.js" defer></script>
 ```
@@ -685,3 +686,7 @@ Supabase uygulama kodu kaynak dosyaya taşındı; fonksiyon akışı değiştiri
 Yayından sonra [Schema Markup Validator](https://validator.schema.org/) ve [Google Rich Results Test](https://search.google.com/test/rich-results) ile canlı URL'yi de kontrol edin. FAQ şeması içeriği tanımlar; kişisel sitelerde Google'ın FAQ zengin sonucunu göstermesi beklenmemelidir. Social meta önizlemesi ve www yönlendirmesi de canlı ortamda son kez doğrulanmalıdır.
 
 Fiyatları değiştirirken CONFIG ve statik OfferCatalog'u; SSS yanıtlarını değiştirirken görünür HTML ve FAQPage'i birlikte güncelleyin. Bilinmeyen profil placeholder'ını gerçek URL ile doldurmadıkça JSON içine eklemeyin. Sitemap lastmod değerini yalnızca anlamlı değişiklik olduğunda değiştirin.
+
+## Search Console doğrulama hazırlığı
+
+Head içine GOOGLE_SITE_VERIFICATION yorum placeholder’ı eklendi. Gerçek doğrulama kodu eklenmedi. Alan adı mülkü ve DNS TXT yöntemi için bu yorumu değiştirmeniz gerekmez. Yalnızca URL öneki + HTML etiketi yöntemini seçerseniz Google’ın verdiği gerçek meta satırını yorum yerine ekleyin ve yeniden yayınlayın. Tam teşhis ve numaralı Google/Bing adımları YAYIN-TESHIS-VE-SEARCH-CONSOLE.md dosyasındadır.
