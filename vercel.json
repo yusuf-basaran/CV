@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        { "type": "host", "value": "www\\.yusufbasaran\\.dev" }
+      ],
+      "destination": "https://yusufbasaran.dev/:path*",
+      "statusCode": 301
+    }
+  ]
+}

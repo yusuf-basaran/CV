@@ -1,0 +1,11 @@
+{
+  "name": "yusuf-basaran-cv",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-assets.cjs"
+  },
+  "devDependencies": {
+    "clean-css": "5.3.3",
+    "terser": "5.44.0"
+  }
+}
