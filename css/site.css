@@ -634,3 +634,15 @@
       .container { max-width: 100%; }
       section { margin-bottom: 20px; }
     }
+
+/* Hesaplayıcı bağlantıları, ana sayfanın ortak gezinme düzenini kullanır. */
+.top-bar:has(.services-nav) { flex-wrap: wrap; gap: 10px; }
+#hizmetler-cta { scroll-margin-top: 150px; }
+#hizmetler-cta .card-list { margin-top: 16px; }
+#hizmetler-cta .hero-actions { margin-bottom: 0; }
+@media (max-width: 680px) {
+  .services-nav { order: 3; flex-basis: 100%; text-align: center; }
+}
+@media print {
+  #hizmetler-cta, .services-nav { display: none !important; }
+}

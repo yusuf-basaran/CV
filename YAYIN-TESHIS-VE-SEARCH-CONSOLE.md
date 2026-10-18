@@ -1,5 +1,7 @@
 # Yayın teşhisi ve Search Console hazırlığı
 
+> Bu rapor, hesaplayıcının ana sayfada bulunduğu önceki sürümün tarihsel teşhisidir. Ayrı sayfa sonrasında güncel yapı: 19 yayın dosyası, iki sitemap URL’si ve /fiyat-hesaplayici/. Güncel kurulum için HESAPLAYICI-KURULUM.md ve SEO-KURULUM.md kullanın.
+
 Kontrol tarihi: 18 Ekim 2026. İnceleme önce kaynak dosyaları ve yayın ayarları değiştirilmeden yapıldı; kullanıcının istediği npm ci ve build yalnızca bağımlılıkları ve üretilen çıktıları yeniledi.
 
 ## Teşhis ve kanıt

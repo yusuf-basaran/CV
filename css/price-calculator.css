@@ -1,5 +1,4 @@
 /* Mevcut renkler, kartlar, butonlar ve form sınıfları korunur. */
-.top-bar:has(.services-nav) { flex-wrap: wrap; gap: 10px; }
 #hizmetler { scroll-margin-top: 150px; }
 #hizmetler .section-title > span { min-width: 0; }
 #hizmetler [hidden] { display: none !important; }
@@ -57,7 +56,6 @@
 #hizmetler .calc-faq-item p { margin-top: 12px; color: var(--ink-soft); font-size: 0.88rem; line-height: 1.8; }
 
 @media (max-width: 680px) {
-  .services-nav { order: 3; flex-basis: 100%; text-align: center; }
   #hizmetler .calc-grid { grid-template-columns: minmax(0, 1fr); }
   #hizmetler .calc-step, #hizmetler .calc-quote { padding: 16px; }
   #hizmetler:has(.calc-mobile-active) { padding-bottom: 260px; }
@@ -72,6 +70,3 @@
   #hizmetler .calc-total-label { margin-top: 4px; }
   #hizmetler :is(input, textarea, select, button, summary, a) { scroll-margin-top: 150px; scroll-margin-bottom: 260px; }
 }
-
-/* CV / PDF çıktısında mevcut özgeçmiş akışı korunur. */
-@media print { #hizmetler, .services-nav { display: none !important; } }
