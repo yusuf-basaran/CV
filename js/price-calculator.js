@@ -81,12 +81,35 @@
 
   const root = document.getElementById('priceCalculator');
   if (!root) return;
-  const section = document.getElementById('hizmetler');
   const steps = document.getElementById('calculatorSteps');
   const selections = document.getElementById('calculatorSelections');
   const totals = document.getElementById('calculatorTotals');
   const form = document.getElementById('calculatorQuoteForm');
   const summaryDetails = document.getElementById('calculatorSummaryDetails');
+  const dock = document.getElementById('calculatorDock');
+  const dockTotals = document.getElementById('calculatorDockTotals');
+  const navigation = document.getElementById('calculatorStepNavigation');
+  const reviewPanel = document.getElementById('calculatorReviewPanel');
+  const previousButton = document.getElementById('calculatorPrev');
+  const nextButton = document.getElementById('calculatorNext');
+  const overviewButton = document.getElementById('calculatorViewSummary');
+  const panels = [];
+  const navigationButtons = [];
+  const visited = new Set([0]);
+  let activeStep = 0;
+  // Yalnızca arayüz başlıkları; fiyat ve süreler CONFIG içinde kalır.
+  const stepCopy = {
+    packages: { label: 'Paket', title: 'Nasıl bir siteye ihtiyacınız var?' },
+    pages: { label: 'Sayfalar', title: 'Hangi sayfalar olsun?' },
+    design: { label: 'Tasarım', title: 'Siteniz nasıl görünsün?' },
+    features: { label: 'Özellikler', title: 'Neler yapabilsin?' },
+    support: { label: 'Yayın ve destek', title: 'Yayına hazır hale getirelim.' },
+    annual: { label: 'Yıllık giderler', title: 'Yıllık giderleri planlayın.' }
+  };
+  const flow = [
+    ...CONFIG.steps.map(step => ({ ...stepCopy[step.id], id: step.id })),
+    { id: 'quote', label: 'Teklif', title: 'Seçimlerinizi gönderin.' }
+  ];
   const number = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 });
   const money = value => `${number.format(value)} TL`;
   const byId = new Map(CONFIG.items.map(item => [item.id, item]));
@@ -144,7 +167,7 @@
     info.append(title, description, price);
     card.append(info);
     if (item.quantity) {
-      const quantity = node('div', 'calc-quantity');
+      const quantity = node('span', 'calc-quantity');
       const minus = node('button', 'btn-icon', '−');
       const plus = node('button', 'btn-icon', '+');
       const input = node('input', 'form-input');
@@ -203,13 +226,23 @@
   }
 
   CONFIG.steps.forEach((step, index) => {
-    const details = node('details', 'card calc-step');
-    details.id = `calculator-step-${step.id}`;
-    details.open = index === 0;
-    const summary = node('summary');
-    summary.append(node('h3', '', step.title));
+    const panel = node('section', 'card calc-step');
+    panel.id = `calculator-step-${step.id}`;
+    panel.hidden = index !== 0;
+    const heading = node('div', 'calc-panel-heading');
+    const title = node('h3', '', stepCopy[step.id].title);
+    title.id = `calculator-heading-${step.id}`;
+    title.tabIndex = -1;
+    panel.setAttribute('aria-labelledby', title.id);
+    heading.append(
+      node('p', 'calc-panel-eyebrow', `Adım ${index + 1} / ${flow.length}`),
+      title
+    );
+    const count = node('p', 'calc-selection-count');
+    count.id = `calculator-count-${step.id}`;
+    heading.append(count);
     const fieldset = node('fieldset');
-    fieldset.append(node('legend', '', step.hint));
+    fieldset.append(node('legend', 'calc-step-hint', step.hint));
     const grid = node('div', 'calc-grid');
     fieldset.append(grid);
     if (step.id === 'annual') {
@@ -219,8 +252,24 @@
     } else {
       inCategory(step.id).forEach(item => addOption(item, grid));
     }
-    details.append(summary, fieldset);
-    steps.append(details);
+    panel.append(heading, fieldset);
+    steps.append(panel);
+    panels.push(panel);
+  });
+  panels.push(reviewPanel);
+
+  flow.forEach((step, index) => {
+    const li = node('li');
+    const button = node('button', 'calc-step-button');
+    button.type = 'button';
+    button.id = `calculator-nav-${step.id}`;
+    button.setAttribute('aria-controls', panels[index].id);
+    button.setAttribute('aria-label', `${index + 1}. adım: ${step.label}`);
+    button.append(node('span', 'calc-step-number', String(index + 1)), node('span', 'calc-step-name', step.label));
+    button.addEventListener('click', () => showStep(index));
+    li.append(button);
+    navigation.append(li);
+    navigationButtons.push(button);
   });
 
   function calculate() {
@@ -262,6 +311,12 @@
       node('p', 'calc-total-line', `Yıllık giderler (ayrı): ${annualText(result)}`),
       node('p', 'calc-total-line', `Aylık bakım (ayrı): ${result.monthly ? `${money(result.monthly)} / ay` : 'seçilmedi'}`)
     );
+    dockTotals.replaceChildren(
+      node('p', 'calc-dock-price', `${number.format(result.lower)} – ${money(result.upper)}`),
+      node('p', 'calc-dock-meta', `Tahmini süre: ${result.days} iş günü`),
+      node('p', 'calc-dock-costs', `Yıllık (ayrı): ${annualText(result)}${result.monthly ? ` · Bakım: ${money(result.monthly)} / ay` : ''}`)
+    );
+    syncStepCounts(result);
     // Özet düğmesi kaldırılınca klavye odağını sıradaki kaleme taşı.
     const focusedId = selections.contains(document.activeElement) ? document.activeElement.dataset.remove : null;
     const previousButtons = [...selections.querySelectorAll('button')];
@@ -306,6 +361,7 @@
     Object.assign(state, defaults, { extraPages: 0 });
     state.selected.clear();
     update();
+    showStep(0);
   });
 
   function validate() {
@@ -382,33 +438,65 @@
     }
   });
 
-  // Mobilde yalnızca Hizmetler görünürken sabitle; diğer CV bölümlerini örtme.
-  const mobile = window.matchMedia('(max-width: 680px)');
-  let sectionVisible = false;
-  function syncDock() {
-    root.classList.toggle('calc-mobile-active', mobile.matches && sectionVisible);
+  // Adımlar arasında giderken seçimler ve hesaplama durumu korunur.
+  function showStep(index, moveFocus = true) {
+    activeStep = Math.max(0, Math.min(flow.length - 1, index));
+    visited.add(activeStep);
+    panels.forEach((panel, position) => { panel.hidden = position !== activeStep; });
+    steps.hidden = activeStep === flow.length - 1;
+    navigationButtons.forEach((button, position) => {
+      if (position === activeStep) button.setAttribute('aria-current', 'step');
+      else button.removeAttribute('aria-current');
+      button.dataset.visited = String(visited.has(position));
+    });
+    const current = flow[activeStep];
+    document.getElementById('calculatorProgressText').textContent = `Adım ${activeStep + 1} / ${flow.length} — ${current.label}`;
+    const progress = document.getElementById('calculatorProgress');
+    progress.setAttribute('aria-valuenow', String(activeStep + 1));
+    progress.setAttribute('aria-valuetext', `${activeStep + 1}. adım: ${current.label}`);
+    document.getElementById('calculatorProgressFill').style.width = `${(activeStep + 1) / flow.length * 100}%`;
+    document.getElementById('calculatorDockStep').textContent = `${activeStep + 1} / ${flow.length}`;
+    previousButton.disabled = activeStep === 0;
+    nextButton.textContent = activeStep === flow.length - 1 ? 'E-posta ile gönder' : 'Devam et →';
+    overviewButton.hidden = activeStep === flow.length - 1;
+    const button = navigationButtons[activeStep];
+    navigation.parentElement.scrollLeft = Math.max(0, button.offsetLeft - navigation.offsetLeft - navigation.parentElement.clientWidth / 2 + button.offsetWidth / 2);
+    if (moveFocus) {
+      panels[activeStep].querySelector('h3').focus({ preventScroll: true });
+      document.getElementById('calculatorWizard').scrollIntoView({ block: 'start', behavior: 'instant' });
+    }
   }
-  function syncViewport() {
-    summaryDetails.open = !mobile.matches;
-    syncDock();
+
+  function syncStepCounts(result) {
+    CONFIG.steps.forEach(step => {
+      const count = document.getElementById(`calculator-count-${step.id}`);
+      if (step.id === 'packages') count.textContent = '1 paket seçili';
+      else if (step.id === 'pages') count.textContent = `${result.pageCount} sayfa seçili`;
+      else if (step.id === 'annual') count.textContent = 'Proje ücretinden ayrı';
+      else {
+        const selected = inCategory(step.id).filter(item => state.selected.has(item.id)).length;
+        count.textContent = selected ? `${selected} ek hizmet seçili` : 'İsteğe bağlı';
+      }
+    });
   }
-  mobile.addEventListener('change', syncViewport);
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(entries => {
-      sectionVisible = entries[0].isIntersecting;
-      syncDock();
-    }).observe(section);
-  } else {
-    const checkVisibility = () => {
-      const rect = section.getBoundingClientRect();
-      sectionVisible = rect.top < window.innerHeight && rect.bottom > 0;
-      syncDock();
-    };
-    window.addEventListener('scroll', checkVisibility, { passive: true });
-    window.addEventListener('resize', checkVisibility);
-    checkVisibility();
+
+  previousButton.addEventListener('click', () => showStep(activeStep - 1));
+  nextButton.addEventListener('click', () => {
+    if (activeStep < flow.length - 1) showStep(activeStep + 1);
+    else form.requestSubmit(form.querySelector('button[value="email"]'));
+  });
+  overviewButton.addEventListener('click', () => showStep(flow.length - 1));
+
+  // Alt çubuğun gerçek yüksekliği kadar yer ayır; içerik arkasında kalmasın.
+  function reserveDockSpace() {
+    document.documentElement.style.setProperty('--calculator-dock-height', `${Math.ceil(dock.getBoundingClientRect().height)}px`);
   }
-  syncViewport();
+  summaryDetails.open = true;
   update();
+  showStep(0, false);
   root.hidden = false;
+  dock.hidden = false;
+  reserveDockSpace();
+  if ('ResizeObserver' in window) new ResizeObserver(reserveDockSpace).observe(dock);
+  else window.addEventListener('resize', reserveDockSpace);
 })();

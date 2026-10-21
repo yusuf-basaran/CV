@@ -169,58 +169,93 @@
       </button>
     </header>
     <main id="main">
-<!-- Hesaplayıcı ve SSS, kimlikleri korunarak taşındı. -->
+      <!-- Hesaplayıcı seçenekleri JavaScript ile adım adım oluşturulur. -->
       <section id="hizmetler" aria-labelledby="servicesTitle">
+        <p class="calculator-eyebrow">Web sitesi teklifi</p>
         <h1 class="calculator-title" id="servicesTitle">Web Sitesi Yaptırma: Özelliğe Göre Fiyat Hesaplayıcı</h1>
-        <p class="calc-intro">İhtiyacınıza uygun paketi ve ek hizmetleri seçin, tahmini bütçenizi hemen görün. Her sayfa size özel ve ayrıntılı olarak hazırlanır.</p>
+        <p class="calc-intro">Paketinizi seçin, ihtiyacınız olan sayfaları ve özellikleri ekleyin. Tahmini ücret her adımda aşağıda güncellenir.</p>
         <noscript><p class="about-card">Fiyat hesaplayıcı için JavaScript’i etkinleştirin. Teklif için <a class="ref-action" href="mailto:yusufbasaran63@hotmail.com">e-posta gönderebilirsiniz.</a></p></noscript>
-        <h2 class="section-title" id="calculatorOptionsTitle">Paketinizi ve özellikleri seçin</h2>
+        <h2 class="calc-sr-only" id="calculatorOptionsTitle">Projenizi adım adım planlayın</h2>
         <div id="priceCalculator" hidden>
-          <!-- Adımlar ve tüm seçenekler tek JS yapılandırmasından üretilir. -->
-          <div id="calculatorSteps"></div>
-          <div class="calc-summary-slot">
-            <aside class="card calc-summary" id="calculatorSummary" aria-labelledby="calculatorSummaryTitle">
-              <h3 class="card-title" id="calculatorSummaryTitle">Tahmini teklifiniz</h3>
-              <div id="calculatorTotals" role="status" aria-live="polite" aria-atomic="true"></div>
-              <details class="calc-summary-details" id="calculatorSummaryDetails" open>
-                <summary>Seçim özeti ve notlar</summary>
-                <p class="form-hint">Ek kalemleri kaldırmak için üzerlerine tıklayın. Temel paketi 1. adımdan değiştirebilirsiniz.</p>
-                <ul class="calc-selection-list" id="calculatorSelections" aria-label="Seçilen kalemler"></ul>
-                <button type="button" class="action-btn" id="calculatorReset">Seçimleri Sıfırla</button>
-                <p class="calc-note">Bu tahmini bir tekliftir. Kesin fiyat, proje kapsamı netleştikten sonra belirlenir.</p>
-                <p class="calc-note">Aradığınız özellik listede yoksa bana yazın, özel teklif hazırlayayım.</p>
-              </details>
-            </aside>
+          <div class="calc-wizard" id="calculatorWizard">
+            <div class="calc-wizard-caption">
+              <p id="calculatorProgressText" role="status" aria-live="polite">Adım 1 / 7</p>
+              <span>Seçimlerinizi her adımda değiştirebilirsiniz.</span>
+            </div>
+            <nav aria-label="Teklif adımları" class="calc-step-navigation">
+              <ol id="calculatorStepNavigation" class="calc-step-list"></ol>
+            </nav>
+            <div id="calculatorProgress" class="calc-progress" role="progressbar" aria-label="Teklif ilerlemesi" aria-valuemin="1" aria-valuemax="7" aria-valuenow="1">
+              <span id="calculatorProgressFill"></span>
+            </div>
           </div>
-          <form class="card calc-quote" id="calculatorQuoteForm" aria-labelledby="calculatorQuoteTitle" novalidate>
-            <h3 class="card-title" id="calculatorQuoteTitle">Teklif Al</h3>
-            <p class="calc-note">Seçimleriniz ve aşağıdaki bilgiler e-posta veya WhatsApp mesajına eklenir. Göndermeden önce mesajı gözden geçirebilirsiniz.</p>
-            <div class="calc-grid">
-              <div class="form-group">
-                <label for="quoteName">Ad Soyad (zorunlu)</label>
-                <input class="form-input" id="quoteName" name="name" autocomplete="name" maxlength="120" required aria-describedby="quoteNameError">
-                <p class="calc-error" id="quoteNameError" hidden></p>
+          <div id="calculatorSteps"></div>
+          <section id="calculatorReviewPanel" class="calc-review-panel" aria-labelledby="calculatorReviewTitle" hidden>
+            <div class="calc-panel-heading">
+              <p class="calc-panel-eyebrow">Son adım</p>
+              <h3 id="calculatorReviewTitle" tabindex="-1">Seçimlerinizi gönderin.</h3>
+              <p class="calc-step-hint">Özetinizi kontrol edin, iletişim bilgilerinizi bırakın. Projenizin ayrıntılarını birlikte netleştirelim.</p>
+            </div>
+            <div class="calc-review-grid">
+                <div class="calc-summary-slot">
+                  <aside class="card calc-summary" id="calculatorSummary" aria-labelledby="calculatorSummaryTitle">
+                    <h3 class="card-title" id="calculatorSummaryTitle">Tahmini teklifiniz</h3>
+                    <div id="calculatorTotals" role="status" aria-live="polite" aria-atomic="true"></div>
+                    <details class="calc-summary-details" id="calculatorSummaryDetails" open>
+                      <summary>Seçim özeti ve notlar</summary>
+                      <p class="form-hint">Ek kalemleri kaldırmak için üzerlerine tıklayın. Temel paketi 1. adımdan değiştirebilirsiniz.</p>
+                      <ul class="calc-selection-list" id="calculatorSelections" aria-label="Seçilen kalemler"></ul>
+                      <button type="button" class="action-btn" id="calculatorReset">Seçimleri Sıfırla</button>
+                      <p class="calc-note">Bu tahmini bir tekliftir. Kesin fiyat, proje kapsamı netleştikten sonra belirlenir.</p>
+                      <p class="calc-note">Aradığınız özellik listede yoksa bana yazın, özel teklif hazırlayayım.</p>
+                    </details>
+                  </aside>
+                </div>
+                <form class="card calc-quote" id="calculatorQuoteForm" aria-labelledby="calculatorQuoteTitle" novalidate>
+                  <h3 class="card-title" id="calculatorQuoteTitle">Teklif Al</h3>
+                  <p class="calc-note">Seçimleriniz ve aşağıdaki bilgiler e-posta veya WhatsApp mesajına eklenir. Göndermeden önce mesajı gözden geçirebilirsiniz.</p>
+                  <div class="calc-grid">
+                    <div class="form-group">
+                      <label for="quoteName">Ad Soyad (zorunlu)</label>
+                      <input class="form-input" id="quoteName" name="name" autocomplete="name" maxlength="120" required aria-describedby="quoteNameError">
+                      <p class="calc-error" id="quoteNameError" hidden></p>
+                    </div>
+                    <div class="form-group">
+                      <label for="quoteContact">E-posta veya telefon (zorunlu)</label>
+                      <input class="form-input" id="quoteContact" name="contact" autocomplete="email" maxlength="160" required aria-describedby="quoteContactError" placeholder="E-posta adresiniz veya telefonunuz">
+                      <p class="calc-error" id="quoteContactError" hidden></p>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="quoteDomain">İstediğiniz alan adı (isteğe bağlı)</label>
+                    <input class="form-input" id="quoteDomain" name="domain" maxlength="253" autocapitalize="none" spellcheck="false" placeholder="ornekfirma.com">
+                  </div>
+                  <div class="form-group">
+                    <label for="quoteDescription">Projenizi kısaca anlatın (isteğe bağlı)</label>
+                    <textarea class="form-textarea" id="quoteDescription" name="description" maxlength="3000" rows="4"></textarea>
+                  </div>
+                  <p class="calc-error" id="quoteFormError" role="alert" hidden></p>
+                  <div class="calc-actions">
+                    <button class="action-btn" type="submit" name="channel" value="email">E-posta ile Teklif Al</button>
+                    <button class="action-btn" type="submit" name="channel" value="whatsapp">WhatsApp ile gönder</button>
+                  </div>
+                </form>
+            </div>
+          </section>
+          <div id="calculatorDock" class="calc-dock" role="region" aria-label="Tahmini ücret ve adım kontrolleri" hidden>
+            <div class="calc-dock-inner">
+              <div class="calc-dock-estimate">
+                <p class="calc-dock-label">Tahmini proje ücreti</p>
+                <div id="calculatorDockTotals" role="status" aria-live="polite" aria-atomic="true"></div>
               </div>
-              <div class="form-group">
-                <label for="quoteContact">E-posta veya telefon (zorunlu)</label>
-                <input class="form-input" id="quoteContact" name="contact" autocomplete="email" maxlength="160" required aria-describedby="quoteContactError" placeholder="E-posta adresiniz veya telefonunuz">
-                <p class="calc-error" id="quoteContactError" hidden></p>
+              <button type="button" class="calc-overview-button" id="calculatorViewSummary">Özeti gör</button>
+              <div class="calc-wizard-actions">
+                <button type="button" class="hero-action" id="calculatorPrev" disabled>← Geri</button>
+                <span id="calculatorDockStep" class="calc-dock-step" aria-hidden="true">1 / 7</span>
+                <button type="button" class="hero-action primary" id="calculatorNext">Devam et →</button>
               </div>
             </div>
-            <div class="form-group">
-              <label for="quoteDomain">İstediğiniz alan adı (isteğe bağlı)</label>
-              <input class="form-input" id="quoteDomain" name="domain" maxlength="253" autocapitalize="none" spellcheck="false" placeholder="ornekfirma.com">
-            </div>
-            <div class="form-group">
-              <label for="quoteDescription">Projenizi kısaca anlatın (isteğe bağlı)</label>
-              <textarea class="form-textarea" id="quoteDescription" name="description" maxlength="3000" rows="4"></textarea>
-            </div>
-            <p class="calc-error" id="quoteFormError" role="alert" hidden></p>
-            <div class="calc-actions">
-              <button class="action-btn" type="submit" name="channel" value="email">E-posta ile Teklif Al</button>
-              <button class="action-btn" type="submit" name="channel" value="whatsapp">WhatsApp ile gönder</button>
-            </div>
-          </form>
+          </div>
         </div>
         <article class="calc-faq" id="fiyat-sss" aria-labelledby="priceFaqTitle">
           <h3 class="card-title" id="priceFaqTitle">Web sitesi yaptırma hakkında sık sorulan sorular</h3>

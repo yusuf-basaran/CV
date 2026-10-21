@@ -6,17 +6,17 @@ Hesaplayıcı artık **/fiyat-hesaplayici/** adresindedir. Kaynak dosya `fiyat-h
 
 - `index.html`: Projeler ile Deneyim arasında `#hizmetler-cta` çağrı kartı; üst menüde Fiyat Hesapla, hero ve footer'da gerçek sayfa bağlantıları.
 - `fiyat-hesaplayici/index.html`: tek h1, giriş, hesaplayıcı/form ve aynı altı soruluk SSS. Ana Sayfa bağlantıları, tema düğmesi ve footer.
-- `js/price-calculator.js`: CONFIG, fiyat/süre hesaplaması, özet, sıfırlama, doğrulama ve e-posta/WhatsApp gönderimi **değişmedi**.
+- `js/price-calculator.js`: yedi adımın oluşturulması, gezinme ve sabit alt çubuğun güncellenmesi. CONFIG, fiyat/süre kuralları, doğrulama ve e-posta/WhatsApp mesajı korunur.
 - `js/site.js`: ana sayfanın tema, Supabase proje listesi, yönetici ve modal kodu **değişmedi**.
 - `js/page-common.js`: yalnızca ayrı sayfanın tema ve yıl kodu; Supabase bağımlılığı yok.
 - `js/home-links.js`: eski `/#hizmetler` hash'ini `#hizmetler-cta` konumuna kaydırır. Ana sayfaya `id="hizmetler"` veya boş çapa eklenmez.
 - `css/site.css`: aynı değişkenler/kart/buton/form stilleri; ortak üst çubuk kuralları ve ana sayfa CTA yazdırma kuralı.
 - `css/price-calculator.css`: hesaplayıcının `#hizmetler` kapsamındaki kuralları.
-- `css/calculator-page.css`: yalnızca `.calculator-page` kapsamındaki 960 px genişlik ve sayfa yerleşimi.
+- `css/calculator-page.css`: yalnızca `.calculator-page` kapsamındaki 1080 px genişlik ve sayfa yerleşimi.
 
 ## Stil kapsamı incelemesi
 
-price-calculator.css; adım ve seçenek kartlarını, iki/tek sütunlu seçenek ızgarasını, seçili/focus durumlarını, adet alanını, yıllık gider notlarını, toplam/özet listesini, teklif formunu/hatalarını, SSS'yi ve 680 px altındaki sabit alt kutuyu düzenler. Üst çubuğu etkileyen `.top-bar:has(.services-nav)` ve mobil `.services-nav` kuralları buradan site.css'e taşındı. Print sırasında çağrı kartı ve services-nav ortak CSS'te gizlenir. Ayrı hesaplayıcı sayfasının tamamını gizleyen eski print kuralı kaldırıldı; hesaplayıcı sayfasında toplam kutusu yazdırırken normal akışa döner.
+price-calculator.css; yedi adımlı gezinmeyi, ilerleme göstergesini, büyük seçim kartlarını, iki/tek sütunlu seçenek ızgarasını, seçili/focus durumlarını, adet alanını, yıllık gider notlarını, özeti, teklif formunu/hatalarını, SSS'yi ve tüm ekranlarda sabit fiyat çubuğunu düzenler. Kurallar #hizmetler kapsamında kalır. Ortak üst çubuk kuralları site.css'tedir; ana sayfanın görünümü ve kaynakları değişmez.
 
 site.js içindeki tema/yıl işlemleri doğrudan Supabase kullanmaz; fakat dosyanın başında window.supabase.createClient çağrıldığı için dosyanın tamamı Supabase gerektirir. Yeni sayfaya bu nedenle site.js, Supabase CDN'i, proje kodu veya yönetici modalları yüklenmez.
 
@@ -42,9 +42,11 @@ Hesaplayıcı ve SSS yeni sayfada `<section id="hizmetler">` içindedir. priceCa
 
 ## Yerleşim ve yazdırma
 
-Masaüstünde (900 px ve üstü) seçenek/adımlar solda, toplam kutusu sağda sticky durumdadır. 681–899 px aralığında akış tek ana sütundur. Seçenek kartları masaüstünde iki, 680 px ve altında bir sütundur. Mobil alt kutunun hesaplama ve görünürlük mantığı değişmedi. Yeni sayfaya özel alt boşluk, form ve dönüş linkinin kutunun arkasında kalmadan kaydırılabilmesini sağlar.
+Her seferinde tek adım görünür: Paket, Sayfalar, Tasarım, Özellikler, Yayın ve destek, Yıllık giderler, Teklif. Geri / Devam et düğmeleri veya numaralı adım düğmeleriyle geçiş yapılır; seçimler korunur. Özeti gör düğmesi son adıma gider. Son adımda seçilen kalemler ve iletişim formu bulunur; ek kalemler özetten kaldırılabilir, seçimler sıfırlanabilir.
 
-Ana sayfa çağrı kartı CV/PDF çıktısında gizlenir. Yeni sayfada içerik görünür kalır; toplam kutusu sabitlenmez.
+Seçenek kartları 760 px üzerinde iki, altında bir sütundur. Kartın tamamı tıklanabilir; yerel radio/checkbox kontrolleri, büyük dokunma hedefleri ve klavye odak stilleri kullanılır. Aktif adım aria-current ile, ilerleme ve toplamlar canlı bölgeyle bildirilir. Adım değişince odak yeni başlığa taşınır.
+
+Proje fiyat aralığı, süre ve ayrı yıllık/aylık ücretler masaüstünde ve mobilde ekranın altında görünür. ResizeObserver gerçek çubuk yüksekliğini ölçerek sayfanın altına boşluk ayırır; form ve dönüş bağlantısı çubuğun arkasında kalmaz. Ana sayfa çağrı kartı CV/PDF çıktısında gizlenir; hesaplayıcı sayfasında sabit çubuk ve adım gezinmesi yazdırılmaz.
 
 ## Fiyat değiştirme
 
@@ -88,25 +90,12 @@ package.json build komutu değişmedi: `node scripts/build-assets.cjs`. Kaynakla
 
 vercel.json değiştirilmedi: buildCommand npm run build, outputDirectory public ve www'suz → www yönlendirmesi korunur. trailingSlash ayarı eklenmedi. Yerel klasör/index yapısında /fiyat-hesaplayici bir yönlendirmeyle /fiyat-hesaplayici/ adresine, bu adres ise doğrudan 200'e çıkar. Ana bağlantılar canonical olan sondaki eğik çizgili adresi kullanır.
 
-## Dal ve birleştirme
+## Yayın
 
-Çalışma dalı `feat/standalone-price-calculator`. Ana dal bu taşıma için otomatik birleştirilmez. Dalı göndermek ve PR açmak için:
+Kullanıcının doğrudan yayın isteğiyle değişiklikler main dalına gönderilir; Vercel bu dalı otomatik derler. Build Command `npm run build`, Output Directory `public` olarak kalır. Yeni arayüz ek kütüphane veya hizmet gerektirmez.
 
-```bash
-git switch feat/standalone-price-calculator
-npm run build
-git push -u origin feat/standalone-price-calculator
-gh pr create --base main --head feat/standalone-price-calculator
-```
+## Kontrol sonuçları — 21 Ekim 2026
 
-PR'da dosyaları ve Vercel preview sonucunu kontrol ettikten sonra GitHub'da Merge seçin. Vercel Deployments'ta main commit'i için Production / Ready durumunu doğrulayın. Search Console'da yeni URL'yi denetleyip dizine eklenmesini isteyin ve iki URL içeren sitemap'i yeniden gönderin.
+Yedi adım, geri/ileri ve doğrudan gezinme, seçimlerin korunması, fiyat aralığı/süre hesabı, aylık/yıllık ücretlerin ayrılması, özetten kaldırma ve sıfırlama kontrol edilir. Örnek kapsam: Çok Sayfalı Site + Hakkımızda + Galeri + 2 özel sayfa + Özel tasarım + İletişim formu + 5 sayfa içerik yazımı = 16.000–20.000 TL, 24 iş günü. Bakım 750 TL/ay ve seçilen .dev/paylaşımlı hosting 2.700 TL/yıl ayrıca gösterilir.
 
-## Kontrol sonuçları
-
-Yerel tarayıcı kontrollerinin tamamı geçti: gerçek bağlantılar ve eski hash; Supabase proje okuma ve modallar; sayfalar arası tema/yıl; masaüstü sticky; seçim/form doğrulaması; aynı e-posta/WhatsApp metni; 375 px alt kutusu ve örtülmeyen form/footer; JavaScript kapalı link/SSS; tek h1/canonical/meta; tüm public yolları. Hesaplayıcı/form ve SSS HTML’i önceki sürümle birebir aynıdır. CONFIG ve site.js bayt düzeyinde değişmemiştir; beş JSON-LD paket fiyatı CONFIG ile eşleşir. npm run build: 19 yayın dosyası, çıkış kodu 0.
-
-Vercel preview derlemesi READY. Korumalı preview içeriğini açma isteği 403 döndürdüğü için Vercel üzerindeki iki URL biçiminin HTTP davranışı doğrulanamadı; yerelde iki biçim de 200’e ulaşır. Platform koruması kapatılmadı ve trailingSlash eklenmedi. Yayın sonrası kontrol listesine bu iki adres dahildir.
-
-## Test edilen akışlar
-
-İki sayfada gerçek linkler/dosya yolları, tek h1/canonical, yinelenmeyen meta, taşınmış FAQ ve paket fiyatlarının CONFIG ile eşleşmesi; hesaplayıcı seçimi/form/payload, 375 px alt kutusu, tema/yıl, JS kapalı kullanım ve ana sayfa proje/modal akışları kontrol edilir. Gerçek e-posta/WhatsApp gönderimi veya Supabase veri yazma/silme yapılmaz.
+320, 375 ve 768 px ekranlarda sabit çubuk, yatay taşma, erişilebilir form/footer; ortak tema, ana sayfa Supabase proje listesi ve modallar; tek h1/canonical/meta, kaynak yolları ve görünür SSS/JSON-LD uyumu kontrol edilir. E-posta/WhatsApp aynı mesajı üretir; gerçek mesaj gönderilmez ve Supabase verisi değiştirilmez. CONFIG ve fiyat/süre/mesaj/doğrulama fonksiyonları önceki sürümle karşılaştırılır. site.js değiştirilmez.

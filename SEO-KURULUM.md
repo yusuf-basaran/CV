@@ -10,6 +10,10 @@ Ana sayfa canonical adresi https://www.yusufbasaran.dev/, hesaplayıcı canonica
 - Yeni sayfa başlığı 60 karakter, açıklaması 153 karakterdir. OG/Twitter URL ve metinleri yeni sayfaya özeldir; mevcut 1200×630 /og-image.jpg kullanılır. İkonlar, manifest, fontlar ve theme-color aynıdır.
 - Doğrulanmış GitHub sameAs ve LinkedIn placeholder yorumu ana sayfada korunur; uydurma profil URL'si eklenmez.
 
+## Adımlı hesaplayıcı — 21 Ekim 2026
+
+Hesaplayıcı yedi adımlı arayüz kullanır. URL, title, description ve statik WebPage/BreadcrumbList/FAQPage korunur; SSS tüm adımlarda sayfanın altında erişilebilirdir. Fiyatlar, CONFIG ve ana sayfanın statik OfferCatalog verisi değişmez. Sabit alt fiyat çubuğu için ölçülen yükseklik kadar boşluk ayrılır; form ve footer mobilde erişilebilir kalır. Ana sayfanın Supabase, yönetici ve modal kodu değiştirilmez. Yayınlanan sayfalarda yapay zekâya atıf yapan rozet veya ifade bulunmaz.
+
 ## İki sayfanın güncel head kodları
 
 Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerektiğinde kaynak dosyanın head bloğunu bütünüyle güncelleyin.
@@ -437,13 +441,13 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
   </url>
   <url>
     <loc>https://www.yusufbasaran.dev/fiyat-hesaplayici/</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
 </urlset>
 ```
 
-Ana sayfa ve yeni sayfa için lastmod 2026-10-18 (bu düzenlemenin tarihi). Anchor URL'ler sitemap'e eklenmez. İleride anlamlı içerik değişikliklerinde gerçek tarih güncellenir.
+Ana sayfanın lastmod tarihi 2026-10-18, hesaplayıcının son arayüz düzenlemesi 2026-10-21 tarihindedir. Anchor URL'ler sitemap'e eklenmez. İleride anlamlı içerik değişikliklerinde gerçek tarih güncellenir.
 
 ## Robots
 

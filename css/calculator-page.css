@@ -1,53 +1,22 @@
-/* Yalnızca ayrı hesaplayıcı sayfasının yerleşimi. */
-.calculator-page .container { max-width: 960px; }
+/* Ayrı sayfanın genişliği ve sabit alt çubuk için gereken boşluk. */
+.calculator-page { padding-bottom: calc(var(--calculator-dock-height, 0px) + 40px); }
+.calculator-page::before, .calculator-page::after { display: none; }
+.calculator-page .container { max-width: 1080px; }
+.calculator-page main { padding-top: 16px; }
+.calculator-page .calculator-eyebrow { color: var(--accent); font-size: 0.78rem; font-weight: 700; margin-bottom: 14px; }
 .calculator-page .calculator-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(1.7rem, 4vw, 2.4rem);
-  font-weight: 600;
-  line-height: 1.25;
-  margin-bottom: 18px;
+  font-family: 'Outfit', sans-serif; font-size: clamp(1.85rem, 4vw, 2.75rem);
+  max-width: 28ch; font-weight: 600; line-height: 1.18; margin-bottom: 18px;
 }
-.calculator-page #hizmetler .calc-intro { font-size: 0.95rem; max-width: 70ch; }
-.calculator-page #hizmetler .calc-summary-slot { min-width: 0; }
-.calculator-page #hizmetler .calc-quote { min-width: 0; }
-
-@media (min-width: 900px) {
-  .calculator-page #priceCalculator:not([hidden]) {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 310px;
-    align-items: start;
-    gap: 20px;
-  }
-  .calculator-page #calculatorSteps { grid-column: 1; min-width: 0; }
-  .calculator-page #hizmetler .calc-summary-slot {
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    align-self: stretch;
-    margin: 0;
-  }
-  .calculator-page #hizmetler .calc-summary {
-    position: sticky;
-    top: 100px;
-    max-height: calc(100vh - 120px);
-    max-height: calc(100dvh - 120px);
-    overflow-y: auto;
-  }
-  .calculator-page #hizmetler .calc-total { font-size: 1.6rem; }
-  .calculator-page #calculatorQuoteForm { grid-column: 1; }
+.calculator-page #hizmetler .calc-intro { font-size: 0.95rem; max-width: 68ch; }
+.calculator-page .bottom-actions { margin-top: 20px; }
+@media (max-width: 760px) {
+  .calculator-page { padding-left: 14px; padding-right: 14px; }
+  .calculator-page .top-bar { top: 10px; }
+  .calculator-page main { padding-top: 8px; }
 }
-
-@media (max-width: 680px) {
-  /* Alt kutu açıkken footer ve dönüş bağlantısı da kaydırılarak erişilebilir. */
-  .calculator-page { padding-bottom: calc(260px + env(safe-area-inset-bottom)); }
-}
-
 @media print {
   .calculator-page { padding: 0; }
-  .calculator-page #priceCalculator:not([hidden]) { display: block; }
-  .calculator-page #hizmetler { padding-bottom: 0; }
-  .calculator-page #hizmetler .calc-summary {
-    position: static;
-    max-height: none;
-    overflow: visible;
-  }
+  .calculator-page #hizmetler .calc-dock, .calculator-page #hizmetler .calc-wizard { display: none !important; }
+  .calculator-page #hizmetler .calc-review-grid { display: block; }
 }
