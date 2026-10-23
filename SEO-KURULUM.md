@@ -1,6 +1,24 @@
 # SEO — ana sayfa ve ayrı fiyat hesaplayıcı
 
-Ana sayfa canonical adresi https://www.yusufbasaran.dev/, hesaplayıcı canonical adresi https://www.yusufbasaran.dev/fiyat-hesaplayici/ şeklindedir. Her sayfada tek h1, tek canonical ve tekil meta etiketleri bulunur. İki sayfayı aynı canonical'a yönlendirmeyin.
+Ana sayfa canonical adresi https://www.yusufbasaran.dev/, hesaplayıcı canonical adresi https://www.yusufbasaran.dev/fiyat-hesaplayici/ şeklindedir. Her sayfada tek h1, tek canonical ve tekil meta etiketleri bulunur. Her sayfanın kendi canonical adresi vardır; yeni hizmet sayfası https://www.yusufbasaran.dev/kktc-web-tasarim/ adresini kullanır.
+
+## KKTC geneline genişletme — 23 Ekim 2026
+
+Kapsam, kullanıcının isteği doğrultusunda KKTC genelindeki web geliştirme ihtiyaçlarıdır. Ana sayfa kişisel CV kimliğini ve IT destek bilgisini korur; yeni hizmet sayfası web alanına odaklanır. Fiziksel çalışma merkezi Gazimağusa olarak doğru tutulur; başka ilçelerde ofis veya şube iddiası eklenmez. KKTC için uzaktan çalışma anlatılır.
+
+| Sayfa | Odak |
+| --- | --- |
+| `/` | Yusuf Başaran, KKTC web tasarım, kodlama ve CV/portföy |
+| `/kktc-web-tasarim/` | KKTC web tasarım ve kodlama, kurumsal site, özel web yazılımı, API/veritabanı, blog ve portföy, randevu/form, temel SEO ve yayın |
+| `/fiyat-hesaplayici/` | KKTC web sitesi yaptırma fiyatları, paketler, sayfa/özellik seçimi ve teklif |
+
+Üç sayfanın başlık, description, keywords, Open Graph ve Twitter metinleri sayfanın amacına göre ayrı düzenlenmiştir. Başlıklar en fazla 60, açıklamalar 150–160 karakterdir. Anahtar kelimeler CV'deki HTML/CSS/JavaScript, REST API, Supabase, GitHub ve Vercel becerileri ile sitede sunulan özelliklerle sınırlandırılmıştır. WordPress/React gibi CV'de olmayan uzmanlıklar, sahte müşteri sayıları veya ajans iddiaları eklenmemiştir.
+
+Yeni sayfada görünür altı hizmet, çalışma süreci, KKTC genelinde uzaktan çalışma bilgisi, gerçek iletişim bağlantıları ve altı soru/yanıt bulunur. CollectionPage, ItemList/Service, Person, BreadcrumbList ve FAQPage verileri bu görünür içerikle eşleşir. Başlangıç ücreti yine CONFIG'ten build sırasında alınır. Yerel arama hacmi aracı bağlı olmadığından hacim, zorluk veya mevcut sıralama için veri iddiası yapılmaz.
+
+Meta keywords Google sıralamasında kullanılmaz; içerikle tutarlı yardımcı bir alan olarak tutulur. Aynı şehir metninden çoğaltılmış sayfalar veya görünmez kelime listeleri oluşturulmaz. [Google'ın meta etiket açıklaması](https://developers.google.com/search/docs/crawling-indexing/special-tags) ve [arama spam politikaları](https://developers.google.com/search/docs/essentials/spam-policies).
+
+Sitemap artık üç gerçek URL içerir; Production sonrası IndexNow bildirimi üçünü de kapsar. Yeni URL için Search Console URL Denetimi kullanıcı hesabından yapılabilir. Yeni sayfanın tam head kodu `kktc-web-tasarim/index.html` içindedir; bir kopyasını başka sayfaya yapıştırmayın.
 
 ## Son düzenleme — 23 Ekim 2026
 
@@ -8,8 +26,8 @@ Ana sayfa canonical adresi https://www.yusufbasaran.dev/, hesaplayıcı canonica
 - Paket fiyatları ve süreleri artık JavaScript olmadan okunabilen, ziyaretçilerin de açabildiği HTML özetinde bulunur. Build bunları CONFIG'ten üretir; statik JSON-LD fiyatı yanlışsa yayın çıktısı hazırlanmaz.
 - Ana sayfa ProfilePage ile Person'a bağlanır; hesaplayıcıda Service ve paket kataloğu bulunur. Görünür SSS ile FAQPage metni aynı kalır. Sahte puan, yorum, adres veya sosyal profil eklenmez; FAQ şeması bu tür sitelere Google'da SSS görünümü garantisi vermez.
 - Profil fotoğrafı için WebP kaynak ve JPEG yedeği eklendi (yaklaşık 70 KB → 21 KB). CSS/JS küçültme, defer, font swap ve görsel boyutları korunur.
-- sitemap'teki iki gerçek sayfanın lastmod tarihi 2026-10-23 olarak güncellendi. Her build'de tarih değiştirilmez; anlamlı içerik değişikliğini yansıtır.
-- IndexNow sahiplik dosyası ve Vercel Production başarısından sonra çalışan GitHub Actions bildirimi eklendi. `npm run submit:indexnow -- --dry-run` canlı dosya/canonical kontrolü yapar; normal komut iki URL'yi katılımcı motorlara bildirir. HTTP 200/202 yalnızca alınma/onay bekleme anlamındadır; Google Indexing API veya Google sitemap ping kullanılmaz.
+- sitemap'teki üç gerçek sayfanın lastmod tarihi 2026-10-23 olarak güncellendi. Her build'de tarih değiştirilmez; anlamlı içerik değişikliğini yansıtır.
+- IndexNow sahiplik dosyası ve Vercel Production başarısından sonra çalışan GitHub Actions bildirimi eklendi. `npm run submit:indexnow -- --dry-run` canlı dosya/canonical kontrolü yapar; normal komut üç URL'yi katılımcı motorlara bildirir. HTTP 200/202 yalnızca alınma/onay bekleme anlamındadır; Google Indexing API veya Google sitemap ping kullanılmaz.
 - 23 Ekim kontrolünde alan adının DNS TXT kayıtlarında mevcut bir google-site-verification kaydı görüldü; değiştirilmedi. Search Console oturumu/API erişimi olmadığı için mülkün doğrulanma durumu, sitemap gönderimi ve hesaba özel üretken arama kontrolleri buradan teyit edilemez. DNS kaydının varlığı, hesabın tamamlandığı anlamına gelmez.
 
 Google'ın açıklamasına göre yapay zekâ araması için özel meta etiketleri veya llms.txt gerekli değildir. Bu nedenle sıralama vaat eden ek dosya, görünmez anahtar kelime veya yalnızca botlara sunulan içerik eklenmedi. Kullanıcıya görünen sayfalarda yapay zekâ rozeti veya üretim atfı bulunmaz.
@@ -49,13 +67,13 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
 
   <!-- İkonlar ve paylaşım görseli kök dizinde tutulur. -->
 
-  <title>Yusuf Başaran | Web Geliştirici &amp; IT Destek | Gazimağusa</title>
-  <meta name="description" content="Gazimağusa, KKTC web geliştirici Yusuf Başaran. Kurumsal site, randevu sistemi ve IT destek için özelliklere göre web sitesi fiyatı hesaplayın, teklif alın.">
+  <title>Yusuf Başaran | KKTC Web Tasarım, Kodlama ve IT Destek</title>
+  <meta name="description" content="KKTC genelinde web tasarım ve kodlama: Yusuf Başaran’dan kurumsal site, özel web yazılımı, API ve veritabanı bağlantıları. Fiyat hesaplayın, teklif alın.">
   <meta name="author" content="Yusuf Başaran">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="theme-color" content="#0d1117">
   <meta name="color-scheme" content="dark light">
-  <meta name="keywords" content="web tasarım Gazimağusa, web sitesi yaptırma KKTC, freelance web geliştirici Kıbrıs, bilgisayar programcısı, IT destek, Bitrix24, HTML CSS JavaScript, Supabase">
+  <meta name="keywords" content="Yusuf Başaran, KKTC web tasarım, Kıbrıs web tasarım, Gazimağusa web tasarım, KKTC web sitesi yaptırma, web tasarım ve kodlama, freelance web geliştirici Kıbrıs, kurumsal web sitesi, özel web yazılımı, yönetici paneli, online randevu sistemi, IT destek Gazimağusa, Bitrix24, HTML CSS JavaScript, Supabase">
   <meta name="geo.placename" content="Gazimağusa, Kıbrıs">
   <link rel="canonical" href="https://www.yusufbasaran.dev/">
   <!-- GOOGLE_SITE_VERIFICATION: Search Console'dan aldığın <meta name="google-site-verification" content="..."> satırını buraya yapıştır -->
@@ -67,8 +85,8 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
   <!-- Paylaşım görseli 1200 × 630 piksel; profile.jpg yerine kullanılır. -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Yusuf Başaran">
-  <meta property="og:title" content="Yusuf Başaran | Web Geliştirici &amp; IT Destek | Gazimağusa">
-  <meta property="og:description" content="Gazimağusa, KKTC web geliştirici Yusuf Başaran. Kurumsal site, randevu sistemi ve IT destek için özelliklere göre web sitesi fiyatı hesaplayın, teklif alın.">
+  <meta property="og:title" content="Yusuf Başaran | KKTC Web Tasarım, Kodlama ve IT Destek">
+  <meta property="og:description" content="KKTC genelinde web tasarım ve kodlama: Yusuf Başaran’dan kurumsal site, özel web yazılımı, API ve veritabanı bağlantıları. Fiyat hesaplayın, teklif alın.">
   <meta property="og:url" content="https://www.yusufbasaran.dev/">
   <meta property="og:locale" content="tr_TR">
   <meta property="og:image" content="https://www.yusufbasaran.dev/og-image.jpg">
@@ -78,8 +96,8 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
   <meta property="og:image:alt" content="Yusuf Başaran — Gazimağusa, Kıbrıs web geliştirici ve IT destek hizmetleri">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Yusuf Başaran | Web Geliştirici &amp; IT Destek | Gazimağusa">
-  <meta name="twitter:description" content="Gazimağusa, KKTC web geliştirici Yusuf Başaran. Kurumsal site, randevu sistemi ve IT destek için özelliklere göre web sitesi fiyatı hesaplayın, teklif alın.">
+  <meta name="twitter:title" content="Yusuf Başaran | KKTC Web Tasarım, Kodlama ve IT Destek">
+  <meta name="twitter:description" content="KKTC genelinde web tasarım ve kodlama: Yusuf Başaran’dan kurumsal site, özel web yazılımı, API ve veritabanı bağlantıları. Fiyat hesaplayın, teklif alın.">
   <meta name="twitter:image" content="https://www.yusufbasaran.dev/og-image.jpg">
   <meta name="twitter:image:alt" content="Yusuf Başaran — Gazimağusa, Kıbrıs web geliştirici ve IT destek hizmetleri">
 
@@ -114,11 +132,17 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
         "REST API",
         "Supabase",
         "Bitrix24",
-        "Donanım arıza tespiti"
+        "Donanım arıza tespiti",
+        "Web tasarım",
+        "Web geliştirme",
+        "Özel web yazılımı",
+        "Teknik SEO",
+        "IT destek"
       ],
       "sameAs": [
         "https://github.com/yusuf-basaran"
-      ]
+      ],
+      "description": "Gazimağusa, KKTC merkezli freelance web geliştirici; web tasarım, özel web yazılımı ve IT destek alanlarında çalışır."
     },
     {
       "@type": "WebSite",
@@ -130,7 +154,7 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
         "@id": "https://www.yusufbasaran.dev/#person"
       },
       "alternateName": "Yusuf Başaran",
-      "description": "Gazimağusa merkezli Yusuf Başaran’ın web geliştirme, IT destek ve proje portföyü."
+      "description": "Yusuf Başaran’ın KKTC web tasarım ve kodlama hizmetleri, Gazimağusa merkezli web geliştirme projeleri ve IT destek portföyü."
     },
     {
       "@type": [
@@ -141,7 +165,7 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
       "name": "Web Sitesi Geliştirme Hizmeti",
       "url": "https://www.yusufbasaran.dev/",
       "image": "https://www.yusufbasaran.dev/og-image.jpg",
-      "description": "Gazimağusa, KKTC ve Türkiye için web sitesi geliştirme ve IT destek hizmetleri.",
+      "description": "Gazimağusa merkezli, KKTC ve Türkiye için web tasarım, kurumsal site, özel web yazılımı, yönetici paneli, randevu sistemi ve IT destek hizmetleri.",
       "email": "yusufbasaran63@hotmail.com",
       "telephone": "+905338493063",
       "address": {
@@ -261,14 +285,17 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
             }
           }
         ]
+      },
+      "subjectOf": {
+        "@id": "https://www.yusufbasaran.dev/kktc-web-tasarim/#webpage"
       }
     },
     {
       "@type": "ProfilePage",
       "@id": "https://www.yusufbasaran.dev/#webpage",
       "url": "https://www.yusufbasaran.dev/",
-      "name": "Yusuf Başaran | Web Geliştirici ve IT Destek | Gazimağusa",
-      "description": "Gazimağusa, KKTC merkezli web geliştirici Yusuf Başaran’ın özgeçmişi, projeleri ve web sitesi geliştirme hizmetleri.",
+      "name": "Yusuf Başaran | KKTC Web Tasarım, Kodlama ve IT Destek",
+      "description": "KKTC genelinde web tasarım ve kodlama: Yusuf Başaran’dan kurumsal site, özel web yazılımı, API ve veritabanı bağlantıları. Fiyat hesaplayın, teklif alın.",
       "inLanguage": "tr",
       "dateModified": "2026-10-23",
       "isPartOf": {
@@ -317,12 +344,12 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
   <!-- İkonlar ve paylaşım görseli kök dizinde tutulur. -->
 
   <title>Web Sitesi Yaptırma Fiyatları ve Hesaplayıcı | Yusuf Başaran</title>
-  <meta name="description" content="Gazimağusa ve KKTC için web sitesi fiyatını özelliklere göre hesaplayın. Paket, sayfa ve ek hizmetleri seçin; tahmini bütçenizi görün, hemen teklif alın.">
+  <meta name="description" content="KKTC genelinde web sitesi yaptırma ve web tasarım fiyatlarını hesaplayın. Paket, sayfa ve yazılım özelliklerini seçin; tahmini bütçeyi görün, teklif alın.">
   <meta name="author" content="Yusuf Başaran">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="theme-color" content="#0d1117">
   <meta name="color-scheme" content="dark light">
-  <meta name="keywords" content="web tasarım Gazimağusa, web sitesi yaptırma KKTC, freelance web geliştirici Kıbrıs, bilgisayar programcısı, IT destek, Bitrix24, HTML CSS JavaScript, Supabase">
+  <meta name="keywords" content="KKTC web sitesi fiyatları, Kıbrıs web tasarım fiyatları, Gazimağusa web sitesi yaptırma, web sitesi fiyat hesaplayıcı, kurumsal site fiyatı, özel web yazılımı fiyatı, randevu sistemi fiyatı, web tasarım teklifi, alan adı hosting ücretleri, Yusuf Başaran">
   <meta name="geo.placename" content="Gazimağusa, Kıbrıs">
   <link rel="canonical" href="https://www.yusufbasaran.dev/fiyat-hesaplayici/">
   <!-- GOOGLE_SITE_VERIFICATION: Search Console'dan aldığın <meta name="google-site-verification" content="..."> satırını buraya yapıştır -->
@@ -335,7 +362,7 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Yusuf Başaran">
   <meta property="og:title" content="Web Sitesi Yaptırma Fiyatları ve Hesaplayıcı | Yusuf Başaran">
-  <meta property="og:description" content="Gazimağusa ve KKTC için web sitesi fiyatını özelliklere göre hesaplayın. Paket, sayfa ve ek hizmetleri seçin; tahmini bütçenizi görün, hemen teklif alın.">
+  <meta property="og:description" content="KKTC genelinde web sitesi yaptırma ve web tasarım fiyatlarını hesaplayın. Paket, sayfa ve yazılım özelliklerini seçin; tahmini bütçeyi görün, teklif alın.">
   <meta property="og:url" content="https://www.yusufbasaran.dev/fiyat-hesaplayici/">
   <meta property="og:locale" content="tr_TR">
   <meta property="og:image" content="https://www.yusufbasaran.dev/og-image.jpg">
@@ -346,7 +373,7 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Web Sitesi Yaptırma Fiyatları ve Hesaplayıcı | Yusuf Başaran">
-  <meta name="twitter:description" content="Gazimağusa ve KKTC için web sitesi fiyatını özelliklere göre hesaplayın. Paket, sayfa ve ek hizmetleri seçin; tahmini bütçenizi görün, hemen teklif alın.">
+  <meta name="twitter:description" content="KKTC genelinde web sitesi yaptırma ve web tasarım fiyatlarını hesaplayın. Paket, sayfa ve yazılım özelliklerini seçin; tahmini bütçeyi görün, teklif alın.">
   <meta name="twitter:image" content="https://www.yusufbasaran.dev/og-image.jpg">
   <meta name="twitter:image:alt" content="Yusuf Başaran — Gazimağusa, Kıbrıs web geliştirici ve IT destek hizmetleri">
 
@@ -370,7 +397,7 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
       "breadcrumb": {
         "@id": "https://www.yusufbasaran.dev/fiyat-hesaplayici/#breadcrumb"
       },
-      "description": "Gazimağusa ve KKTC için paket, sayfa ve özelliklere göre tahmini web sitesi ücreti hesaplama ve teklif talebi.",
+      "description": "KKTC genelinde web sitesi yaptırma ve web tasarım fiyatlarını hesaplayın. Paket, sayfa ve yazılım özelliklerini seçin; tahmini bütçeyi görün, teklif alın.",
       "dateModified": "2026-10-23",
       "author": {
         "@id": "https://www.yusufbasaran.dev/#person"
@@ -599,7 +626,7 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
 </head>
 ```
 
-## Sitemap — iki gerçek URL
+## Sitemap — üç gerçek URL
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -611,6 +638,11 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
   </url>
   <url>
     <loc>https://www.yusufbasaran.dev/fiyat-hesaplayici/</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.yusufbasaran.dev/kktc-web-tasarim/</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
   </url>

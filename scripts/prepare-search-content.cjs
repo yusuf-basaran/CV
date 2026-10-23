@@ -46,6 +46,11 @@ async function prepareSearchContent(root) {
     }
     await fs.writeFile(filename, html);
   }
+  // Hizmet sayfasının başlangıç ücreti de aynı yapılandırmadan gelir.
+  const servicesPath = path.join(root, 'kktc-web-tasarim/index.html');
+  const servicesHtml = await fs.readFile(servicesPath, 'utf8');
+  await fs.writeFile(servicesPath, replaceBlock(servicesHtml, 'SERVICE_START_PRICE',
+    `          <p>Web sitesi paketleri ${money(Math.min(...packages.map(item => item.price)))}’den başlar. Bu tutar temel geliştirme ücretidir; ek özellikler, aylık bakım ve yıllık alan adı / hosting bedelleri ayrıca hesaplanır.</p>`));
 }
 
 module.exports = { prepareSearchContent, readCalculatorPackages };

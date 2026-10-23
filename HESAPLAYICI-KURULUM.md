@@ -62,16 +62,18 @@ npm run build
 python -m http.server 8002 --directory public
 ```
 
-Build; 4 JavaScript ve 3 CSS kaynağını küçültür, public klasörünü yeniden üretir ve aşağıdaki 21 dosyayı kopyalar. Yeni HTML ve sayfa-common kaynaklarının .min sürümleri dahil edilmiştir.
+Build; 4 JavaScript ve 4 CSS kaynağını küçültür, public klasörünü yeniden üretir ve aşağıdaki 23 dosyayı kopyalar. Yeni HTML ve sayfa-common kaynaklarının .min sürümleri dahil edilmiştir.
 
 ```text
 public/apple-touch-icon.png
 public/css/calculator-page.min.css
 public/css/price-calculator.min.css
 public/css/site.min.css
+public/css/services-page.min.css
 public/favicon-32x32.png
 public/favicon.svg
 public/fiyat-hesaplayici/index.html
+public/kktc-web-tasarim/index.html
 public/icon-192.png
 public/icon-512.png
 public/index.html
@@ -108,4 +110,10 @@ Hesaplayıcının altında yerel HTML details öğesiyle açılan beş paketlik 
 
 Tarayıcıdaki CONFIG, fiyatlama, adım sistemi ve gönderim işlevleri değiştirilmemiştir. Ana sayfanın profilinde 21 KB WebP ve JPEG yedeği kullanılır; diğer görseller ve Supabase kodu korunur. SEO değişikliklerinin doğrulaması `npm run build && npm run test:seo` ile yapılır.
 
-`indexnow-key.txt`, alan adı sahipliğinin IndexNow tarafından sınanabilmesi için yayınlanan bir metin dosyasıdır; Google doğrulama kodu değildir. Vercel Production yayını başarılı olduktan sonra `.github/workflows/indexnow.yml`, `npm run submit:indexnow` komutunu çalıştırır. Bu komut canlı sahiplik dosyasını ve canonical URL'leri kontrol eder, sitemap'teki iki adresi tek istekte bildirir. Bildirim alınması dizine eklenme anlamına gelmez. Aynı komut çok sık veya her sayfa ziyaretinde çalıştırılmaz.
+`indexnow-key.txt`, alan adı sahipliğinin IndexNow tarafından sınanabilmesi için yayınlanan bir metin dosyasıdır; Google doğrulama kodu değildir. Vercel Production yayını başarılı olduktan sonra `.github/workflows/indexnow.yml`, `npm run submit:indexnow` komutunu çalıştırır. Bu komut canlı sahiplik dosyasını ve canonical URL'leri kontrol eder, sitemap'teki üç adresi tek istekte bildirir. Bildirim alınması dizine eklenme anlamına gelmez. Aynı komut çok sık veya her sayfa ziyaretinde çalıştırılmaz.
+
+## KKTC hizmet sayfası
+
+`/kktc-web-tasarim/`, CV'deki web becerilerine dayanan hizmetleri KKTC geneli için anlatır. Ana sayfanın menü/çağrı kartı/footer'ından, hesaplayıcının footer'ından erişilir. Bu sayfa hesaplayıcının yerini almaz; fiyat seçimleri `/fiyat-hesaplayici/` içinde kalır. Bağımsız sayfa yalnızca `site.min.css`, `services-page.min.css` ve tema/yıl için `page-common.min.js` kullanır. Proje, Supabase ve yönetici kodu yüklenmez.
+
+Yeni sayfanın başlangıç fiyatı da CONFIG'ten üretilir. Hesaplayıcı yapılandırması, fiyatlama, form ve adımlı akış değiştirilmemiştir. Üç canonical URL birbirinden ayrıdır; IndexNow bildirimi sitemap'teki üçünü içerir.

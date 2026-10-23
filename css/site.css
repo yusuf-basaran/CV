@@ -637,6 +637,7 @@
 
 /* Hesaplayıcı bağlantıları, ana sayfanın ortak gezinme düzenini kullanır. */
 .top-bar:has(.services-nav) { flex-wrap: wrap; gap: 10px; }
+.services-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
 #hizmetler-cta { scroll-margin-top: 150px; }
 #hizmetler-cta .card-list { margin-top: 16px; }
 #hizmetler-cta .hero-actions { margin-bottom: 0; }

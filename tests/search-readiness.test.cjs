@@ -32,7 +32,7 @@ test('Yanlış sahiplik dosyasında hiçbir bildirim gönderilmez', async t => {
   assert.ok(calls.every(([, options]) => !options.method));
 });
 
-test('Sahiplik ve canonical doğrulandıktan sonra iki URL tek bildirimde gönderilir', async t => {
+test('Sahiplik ve canonical doğrulandıktan sonra üç URL tek bildirimde gönderilir', async t => {
   const actualKey = (await fs.readFile(path.join(root, 'indexnow-key.txt'), 'utf8')).trim();
   let posted;
   t.mock.method(globalThis, 'fetch', async (url, options) => {
@@ -44,7 +44,7 @@ test('Sahiplik ve canonical doğrulandıktan sonra iki URL tek bildirimde gönde
     return new Response(url.endsWith('/indexnow-key.txt') ? actualKey : `<link rel="canonical" href="${url}">`);
   });
   await submitIndexNow();
-  assert.deepEqual(posted.urlList, [`${origin}/`, `${origin}/fiyat-hesaplayici/`]);
+  assert.deepEqual(posted.urlList, [`${origin}/`, `${origin}/fiyat-hesaplayici/`, `${origin}/kktc-web-tasarim/`]);
 });
 
 test('CONFIG ile statik JSON-LD fiyatları uyuşmazsa build durur', async t => {

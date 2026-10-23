@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tema titremesini önlemek için erken uygula -->
+  <script>
+    try {
+      var t = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+
+  <!-- İkonlar ve paylaşım görseli kök dizinde tutulur. -->
+
+  <title>KKTC Web Tasarım ve Kodlama | Yusuf Başaran</title>
+  <meta name="description" content="KKTC genelinde web tasarım ve kodlama. Yusuf Başaran’dan kurumsal site, blog, yönetici paneli, API ve veritabanı bağlantıları. Projenizi anlatın, teklif alın.">
+  <meta name="author" content="Yusuf Başaran">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#0d1117">
+  <meta name="color-scheme" content="dark light">
+  <meta name="keywords" content="KKTC web tasarım ve kodlama, Kıbrıs web tasarım, Gazimağusa web tasarım, KKTC web sitesi yaptırma, freelance web geliştirici Kıbrıs, kurumsal web sitesi, özel web yazılımı, yönetici paneli, online randevu sistemi, REST API entegrasyonu, Supabase veritabanı, blog ve portföy sitesi, mobil uyumlu web sitesi, temel SEO, Yusuf Başaran">
+  <meta name="geo.placename" content="Gazimağusa, Kıbrıs">
+  <link rel="canonical" href="https://www.yusufbasaran.dev/kktc-web-tasarim/">
+  <!-- GOOGLE_SITE_VERIFICATION: Search Console'dan aldığın <meta name="google-site-verification" content="..."> satırını buraya yapıştır -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Paylaşım görseli 1200 × 630 piksel; profile.jpg yerine kullanılır. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Yusuf Başaran">
+  <meta property="og:title" content="KKTC Web Tasarım ve Kodlama | Yusuf Başaran">
+  <meta property="og:description" content="KKTC genelinde web tasarım ve kodlama. Yusuf Başaran’dan kurumsal site, blog, yönetici paneli, API ve veritabanı bağlantıları. Projenizi anlatın, teklif alın.">
+  <meta property="og:url" content="https://www.yusufbasaran.dev/kktc-web-tasarim/">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:image" content="https://www.yusufbasaran.dev/og-image.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Yusuf Başaran — Gazimağusa, Kıbrıs web geliştirici ve IT destek hizmetleri">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="KKTC Web Tasarım ve Kodlama | Yusuf Başaran">
+  <meta name="twitter:description" content="KKTC genelinde web tasarım ve kodlama. Yusuf Başaran’dan kurumsal site, blog, yönetici paneli, API ve veritabanı bağlantıları. Projenizi anlatın, teklif alın.">
+  <meta name="twitter:image" content="https://www.yusufbasaran.dev/og-image.jpg">
+  <meta name="twitter:image:alt" content="Yusuf Başaran — Gazimağusa, Kıbrıs web geliştirici ve IT destek hizmetleri">
+
+  <!-- Hizmet açıklamaları ve SSS yanıtları görünür içerikle eşleşir. -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://www.yusufbasaran.dev/kktc-web-tasarim/#webpage",
+      "url": "https://www.yusufbasaran.dev/kktc-web-tasarim/",
+      "name": "KKTC Web Tasarım ve Kodlama | Yusuf Başaran",
+      "description": "KKTC genelinde web tasarım ve kodlama. Yusuf Başaran’dan kurumsal site, blog, yönetici paneli, API ve veritabanı bağlantıları. Projenizi anlatın, teklif alın.",
+      "inLanguage": "tr",
+      "dateModified": "2026-10-23",
+      "isPartOf": {
+        "@id": "https://www.yusufbasaran.dev/#website"
+      },
+      "author": {
+        "@id": "https://www.yusufbasaran.dev/#person"
+      },
+      "mainEntity": {
+        "@id": "https://www.yusufbasaran.dev/kktc-web-tasarim/#hizmet-listesi"
+      },
+      "breadcrumb": {
+        "@id": "https://www.yusufbasaran.dev/kktc-web-tasarim/#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.yusufbasaran.dev/kktc-web-tasarim/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Ana Sayfa",
+          "item": "https://www.yusufbasaran.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "KKTC Web Tasarım ve Kodlama",
+          "item": "https://www.yusufbasaran.dev/kktc-web-tasarim/"
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.yusufbasaran.dev/#person",
+      "name": "Yusuf Başaran",
+      "jobTitle": "Web Geliştirici ve IT Destek",
+      "description": "Gazimağusa, KKTC merkezli freelance web geliştirici; web tasarım, özel web yazılımı ve IT destek alanlarında çalışır.",
+      "url": "https://www.yusufbasaran.dev/",
+      "image": "https://www.yusufbasaran.dev/profile.jpg",
+      "email": "yusufbasaran63@hotmail.com",
+      "telephone": "+905338493063",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Gazimağusa",
+        "addressRegion": "KKTC",
+        "addressCountry": "CY"
+      },
+      "sameAs": [
+        "https://github.com/yusuf-basaran"
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://www.yusufbasaran.dev/kktc-web-tasarim/#hizmet-listesi",
+      "name": "Web geliştirme ve teknik destek hizmetleri",
+      "numberOfItems": 6,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Service",
+            "@id": "https://www.yusufbasaran.dev/kktc-web-tasarim/#kurumsal-web-sitesi",
+            "url": "https://www.yusufbasaran.dev/kktc-web-tasarim/#kurumsal-web-sitesi",
+            "name": "Kurumsal ve tanıtım siteleri",
+            "serviceType": "Web tasarım ve kurumsal web sitesi geliştirme",
+            "description": "İşletmenizi, hizmetlerinizi ve iletişim bilgilerinizi anlaşılır bir düzende sunan web siteleri hazırlıyorum. Hakkımızda, hizmetler, galeri, referanslar ve iletişim gibi sayfalar ihtiyacınıza göre seçilir. Tek sayfalık bir tanıtım sitesiyle başlayabilir veya daha kapsamlı bir kurumsal site planlayabilirsiniz. Telefon, tablet ve bilgisayar ekranlarında rahat kullanılacak bir arayüz hedeflenir.",
+            "provider": {
+              "@id": "https://www.yusufbasaran.dev/#person"
+            },
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Gazimağusa"
+              },
+              {
+                "@type": "Place",
+                "name": "KKTC"
+              },
+              {
+                "@type": "Country",
+                "name": "Türkiye"
+              }
+            ]
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Service",
+            "@id": "https://www.yusufbasaran.dev/kktc-web-tasarim/#ozel-web-yazilimi",
+            "url": "https://www.yusufbasaran.dev/kktc-web-tasarim/#ozel-web-yazilimi",
+            "name": "Özel web yazılımı ve yönetici paneli",
+            "serviceType": "Özel web uygulaması ve yönetici paneli geliştirme",
+            "description": "Hazır bir sayfanın yetmediği işlerde; kullanıcı girişi, farklı yetkiler, veritabanı ve içerik yönetimi gibi ihtiyaçları birlikte belirliyoruz. Yönetici paneliyle hangi bilgileri kendiniz değiştireceğiniz baştan netleşir. HTML, CSS ve JavaScript ile geliştirme; REST API bağlantıları ve Supabase tabanlı veri saklama seçenekleri proje kapsamına göre değerlendirilir. Mevcut iş akışınızın nasıl işleyeceğini anlatmanız yeterlidir.",
+            "provider": {
+              "@id": "https://www.yusufbasaran.dev/#person"
+            },
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Gazimağusa"
+              },
+              {
+                "@type": "Place",
+                "name": "KKTC"
+              },
+              {
+                "@type": "Country",
+                "name": "Türkiye"
+              }
+            ]
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Service",
+            "@id": "https://www.yusufbasaran.dev/kktc-web-tasarim/#online-randevu",
+            "url": "https://www.yusufbasaran.dev/kktc-web-tasarim/#online-randevu",
+            "name": "Online randevu ve başvuru sistemleri",
+            "serviceType": "Online randevu sistemi geliştirme",
+            "description": "Müşterilerin uygun gün ve saatleri seçebileceği bir randevu akışı veya başvuruları düzenli toplayan bir form planlayabiliriz. Kimlerin randevuları göreceği ve hangi bilgilerin isteneceği ihtiyaçlarınıza göre belirlenir. Üyelik, yönetim ekranı ve e-posta bildirimleri ayrı seçeneklerdir. Takvim kuralları, iptal koşulları ve dış hizmet bağlantıları teklif hazırlanırken konuşulur.",
+            "provider": {
+              "@id": "https://www.yusufbasaran.dev/#person"
+            },
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Gazimağusa"
+              },
+              {
+                "@type": "Place",
+                "name": "KKTC"
+              },
+              {
+                "@type": "Country",
+                "name": "Türkiye"
+              }
+            ]
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "Service",
+            "@id": "https://www.yusufbasaran.dev/kktc-web-tasarim/#api-veritabani",
+            "url": "https://www.yusufbasaran.dev/kktc-web-tasarim/#api-veritabani",
+            "name": "API ve veritabanı bağlantıları",
+            "serviceType": "REST API ve Supabase veritabanı entegrasyonu",
+            "description": "Web sitenizin bir dış kaynaktan bilgi alması veya form, kullanıcı ve içerik kayıtlarını saklaması gerekebilir. REST API bağlantıları ve Supabase ile veri saklama seçeneklerini projenizin ihtiyacına göre değerlendiriyorum. Canlı hava durumu, döviz, harita veya başka bir servisten bilgi gösterme gibi işlerde kullanılacak kaynağı birlikte belirleriz. Harici hizmetin kullanım koşulları ve varsa ücretleri geliştirme bedelinden ayrı ele alınır.",
+            "provider": {
+              "@id": "https://www.yusufbasaran.dev/#person"
+            },
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Gazimağusa"
+              },
+              {
+                "@type": "Place",
+                "name": "KKTC"
+              },
+              {
+                "@type": "Country",
+                "name": "Türkiye"
+              }
+            ]
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "Service",
+            "@id": "https://www.yusufbasaran.dev/kktc-web-tasarim/#teknik-seo",
+            "url": "https://www.yusufbasaran.dev/kktc-web-tasarim/#teknik-seo",
+            "name": "Temel SEO ve siteyi yayına alma",
+            "serviceType": "Teknik SEO düzenlemesi ve web sitesi yayınlama",
+            "description": "Sayfa başlıkları, arama açıklamaları, site haritası, mobil kullanım ve temel hız düzenlemelerini siteyle birlikte ele alıyorum. GitHub ve Vercel üzerinden yayına alma, alan adı bağlama ve güvenli bağlantı kurulumu seçilebilir. Google Search Console ve ziyaretçi takibi kurulumu ek hizmetler arasındadır. Teknik SEO, arama motorlarının sayfaları anlamasını ve erişmesini destekler; belirli bir sıralama veya ziyaretçi sayısı taahhüt edilmez.",
+            "provider": {
+              "@id": "https://www.yusufbasaran.dev/#person"
+            },
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Gazimağusa"
+              },
+              {
+                "@type": "Place",
+                "name": "KKTC"
+              },
+              {
+                "@type": "Country",
+                "name": "Türkiye"
+              }
+            ]
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "Service",
+            "@id": "https://www.yusufbasaran.dev/kktc-web-tasarim/#blog-portfolyo",
+            "url": "https://www.yusufbasaran.dev/kktc-web-tasarim/#blog-portfolyo",
+            "name": "Blog, duyuru ve portföy siteleri",
+            "serviceType": "Blog, haber ve kişisel portföy sitesi geliştirme",
+            "description": "Yazılarınızı, duyurularınızı veya çalışmalarınızı düzenli sunabileceğiniz sayfalar hazırlayabilirim. Blog, haber ve portföy içerikleri için kategori, arama, filtreleme ve galeri gibi seçenekler ihtiyaca göre eklenir. İçerikleri kendiniz güncellemek isterseniz yönetim ekranını da kapsama alabiliriz. Mevcut yazı ve görsellerinizin hazırlanması, içerik yazımı ve siteyi nasıl kullanacağınız teklif aşamasında konuşulur.",
+            "provider": {
+              "@id": "https://www.yusufbasaran.dev/#person"
+            },
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Gazimağusa"
+              },
+              {
+                "@type": "Place",
+                "name": "KKTC"
+              },
+              {
+                "@type": "Country",
+                "name": "Türkiye"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.yusufbasaran.dev/kktc-web-tasarim/#hizmet-sss",
+      "url": "https://www.yusufbasaran.dev/kktc-web-tasarim/",
+      "inLanguage": "tr",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "KKTC’de web tasarım ve kodlama hizmetini kim veriyor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hizmeti Gazimağusa merkezli freelance web geliştirici Yusuf Başaran olarak veriyorum. Tanıtım ve kurumsal siteler, özel web uygulamaları ve ek işlevler için proje kapsamına göre çalışıyorum."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kıbrıs’ta web sitesi yaptırmak için hangi bilgileri hazırlamalıyım?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "İşinizin ne olduğunu, sitenin amacını, ihtiyaç duyduğunuz sayfaları ve örnek beğendiğiniz siteleri paylaşabilirsiniz. Mevcut logo, metin, fotoğraf ve alan adı bilgileriniz varsa bunları da belirtin."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Web tasarımı ve web yazılımı hangi işleri kapsar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Web tasarımı; görünüm, sayfa düzeni ve farklı ekranlarda kullanım gibi konuları kapsar. Web yazılımı ise üyelik, randevu, veri saklama ve yönetim paneli gibi çalışan işlevleri içerir. Projenizde ikisine birlikte ihtiyaç olabilir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Lefkoşa veya Girne’deki bir işletmeyle uzaktan çalışabilir misiniz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gazimağusa merkezliyim; Lefkoşa, Girne ve KKTC’nin diğer bölgelerindeki web projelerini uzaktan iletişimle yürütebilirim. İhtiyaçlar e-posta veya WhatsApp üzerinden paylaşılabilir. Yerinde teknik destek gerekiyorsa koşulları ayrıca konuşuruz."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Web tasarım fiyatına domain, hosting ve bakım dahil mi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hayır. Alan adı ve sunucu / hosting ücretleri yıllık olarak ayrıca ödenir. Aylık bakım da isteğe bağlı ve ayrı ücretlidir. Hesaplayıcıdaki proje tutarı tek seferlik geliştirme bedelini tahmini aralık olarak gösterir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Web sitesi için nasıl fiyat teklifi alabilirim?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fiyat hesaplayıcıda paket ve özellikleri seçin, ardından adınızı ve iletişim bilginizi yazın. Seçimlerinizi e-posta veya WhatsApp ile gönderebilirsiniz. Listede olmayan istekler ve kesin teslim takvimi teklif aşamasında netleşir."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="/css/site.min.css">
+  <link rel="stylesheet" href="/css/services-page.min.css">
+  <script src="/js/page-common.min.js" defer></script>
+</head>
+<body class="services-page">
+  <a class="skip-link" href="#main">İçeriğe geç</a>
+  <div class="container">
+    <header class="top-bar">
+      <nav class="service-top-links" aria-label="Sayfa menüsü">
+        <a class="chip-btn" href="/">← Ana Sayfa</a>
+        <a class="chip-btn" href="/fiyat-hesaplayici/">Fiyat Hesapla</a>
+      </nav>
+      <button class="btn-icon" id="themeToggle" type="button" title="Tema Değiştir" aria-label="Tema Değiştir">
+        <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"></svg>
+      </button>
+    </header>
+    <main id="main">
+      <section class="service-hero" aria-labelledby="serviceTitle">
+        <p class="service-eyebrow">Yusuf Başaran · Gazimağusa, Kıbrıs</p>
+        <h1 id="serviceTitle">KKTC Web Tasarım ve Kodlama</h1>
+        <p class="service-lead">İşletmeniz için anlaşılır bir web sitesi, müşterileriniz için kolay bir deneyim.</p>
+        <p>Gazimağusa merkezli freelance web geliştirici olarak kurumsal web siteleri ve özel web uygulamaları hazırlıyorum. KKTC genelinde web sitesi yaptırmak isteyen işletmelerle ve bireysel projelerle, sitenin görünümünden çalışacak özelliklerine kadar kapsamı birlikte belirliyorum.</p>
+        <div class="hero-actions">
+          <a class="hero-action primary" href="/fiyat-hesaplayici/">Web Sitesi Fiyatı Hesapla →</a>
+          <a class="hero-action" href="mailto:yusufbasaran63@hotmail.com?subject=Web%20Sitesi%20Teklif%20Talebi">Projenizi Anlatın</a>
+        </div>
+        <nav class="service-topic-links" aria-label="Hizmet başlıkları">
+          <a href="#kurumsal-web-sitesi">Web tasarım</a>
+          <a href="#ozel-web-yazilimi">Özel yazılım</a>
+          <a href="#online-randevu">Randevu sistemi</a>
+          <a href="#api-veritabani">API ve veritabanı</a>
+          <a href="#teknik-seo">SEO ve yayın</a>
+          <a href="#blog-portfolyo">Blog ve portföy</a>
+        </nav>
+      </section>
+      <section aria-labelledby="servicesHeading">
+        <h2 class="section-title" id="servicesHeading">Hangi web sitesine ihtiyacınız var?</h2>
+        <div class="service-grid">
+          <article class="card" id="kurumsal-web-sitesi">
+            <h3>Kurumsal ve tanıtım siteleri</h3>
+            <p>İşletmenizi, hizmetlerinizi ve iletişim bilgilerinizi anlaşılır bir düzende sunan web siteleri hazırlıyorum. Hakkımızda, hizmetler, galeri, referanslar ve iletişim gibi sayfalar ihtiyacınıza göre seçilir.</p>
+            <p>Tek sayfalık bir tanıtım sitesiyle başlayabilir veya daha kapsamlı bir kurumsal site planlayabilirsiniz. Telefon, tablet ve bilgisayar ekranlarında rahat kullanılacak bir arayüz hedeflenir.</p>
+          </article>
+          <article class="card" id="ozel-web-yazilimi">
+            <h3>Özel web yazılımı ve yönetici paneli</h3>
+            <p>Hazır bir sayfanın yetmediği işlerde; kullanıcı girişi, farklı yetkiler, veritabanı ve içerik yönetimi gibi ihtiyaçları birlikte belirliyoruz. Yönetici paneliyle hangi bilgileri kendiniz değiştireceğiniz baştan netleşir.</p>
+            <p>HTML, CSS ve JavaScript ile geliştirme; REST API bağlantıları ve Supabase tabanlı veri saklama seçenekleri proje kapsamına göre değerlendirilir. Mevcut iş akışınızın nasıl işleyeceğini anlatmanız yeterlidir.</p>
+          </article>
+          <article class="card" id="online-randevu">
+            <h3>Online randevu ve başvuru sistemleri</h3>
+            <p>Müşterilerin uygun gün ve saatleri seçebileceği bir randevu akışı veya başvuruları düzenli toplayan bir form planlayabiliriz. Kimlerin randevuları göreceği ve hangi bilgilerin isteneceği ihtiyaçlarınıza göre belirlenir.</p>
+            <p>Üyelik, yönetim ekranı ve e-posta bildirimleri ayrı seçeneklerdir. Takvim kuralları, iptal koşulları ve dış hizmet bağlantıları teklif hazırlanırken konuşulur.</p>
+          </article>
+          <article class="card" id="api-veritabani">
+            <h3>API ve veritabanı bağlantıları</h3>
+            <p>Web sitenizin bir dış kaynaktan bilgi alması veya form, kullanıcı ve içerik kayıtlarını saklaması gerekebilir. REST API bağlantıları ve Supabase ile veri saklama seçeneklerini projenizin ihtiyacına göre değerlendiriyorum.</p>
+            <p>Canlı hava durumu, döviz, harita veya başka bir servisten bilgi gösterme gibi işlerde kullanılacak kaynağı birlikte belirleriz. Harici hizmetin kullanım koşulları ve varsa ücretleri geliştirme bedelinden ayrı ele alınır.</p>
+          </article>
+          <article class="card" id="teknik-seo">
+            <h3>Temel SEO ve siteyi yayına alma</h3>
+            <p>Sayfa başlıkları, arama açıklamaları, site haritası, mobil kullanım ve temel hız düzenlemelerini siteyle birlikte ele alıyorum. GitHub ve Vercel üzerinden yayına alma, alan adı bağlama ve güvenli bağlantı kurulumu seçilebilir.</p>
+            <p>Google Search Console ve ziyaretçi takibi kurulumu ek hizmetler arasındadır. Teknik SEO, arama motorlarının sayfaları anlamasını ve erişmesini destekler; belirli bir sıralama veya ziyaretçi sayısı taahhüt edilmez.</p>
+          </article>
+          <article class="card" id="blog-portfolyo">
+            <h3>Blog, duyuru ve portföy siteleri</h3>
+            <p>Yazılarınızı, duyurularınızı veya çalışmalarınızı düzenli sunabileceğiniz sayfalar hazırlayabilirim. Blog, haber ve portföy içerikleri için kategori, arama, filtreleme ve galeri gibi seçenekler ihtiyaca göre eklenir.</p>
+            <p>İçerikleri kendiniz güncellemek isterseniz yönetim ekranını da kapsama alabiliriz. Mevcut yazı ve görsellerinizin hazırlanması, içerik yazımı ve siteyi nasıl kullanacağınız teklif aşamasında konuşulur.</p>
+          </article>
+        </div>
+      </section>
+      <section aria-labelledby="serviceBudgetTitle">
+        <h2 class="section-title" id="serviceBudgetTitle">Web sitesi fiyatı ve çalışma süreci</h2>
+        <div class="card service-budget">
+          <!-- SERVICE_START_PRICE:START -->
+          <p>Web sitesi paketleri 4.000 TL’den başlar. Bu tutar temel geliştirme ücretidir; ek özellikler, aylık bakım ve yıllık alan adı / hosting bedelleri ayrıca hesaplanır.</p>
+          <!-- SERVICE_START_PRICE:END -->
+          <p>Sayfa sayısı, özel tasarım, üyelik, yönetici paneli ve randevu gibi işlevler geliştirme ücretini ve süreyi etkiler. Fiyat hesaplayıcıda her seçimin etkisini görebilir, yıllık giderleri ayrı inceleyebilirsiniz.</p>
+          <ol class="service-process">
+            <li><strong>İhtiyaçlar:</strong> Sitenin amacı, hedef kitlesi, sayfaları ve gerekli işlevleri konuşuruz.</li>
+            <li><strong>Kapsam ve teklif:</strong> İçerik, revizyon koşulları, geliştirme bedeli ve tahmini takvim netleşir.</li>
+            <li><strong>Hazırlık ve kontrol:</strong> Tasarım ve kodlama sonrasında sayfaları ve seçilen işlevleri birlikte gözden geçiririz.</li>
+            <li><strong>Yayın:</strong> Seçilen hizmetlere göre alan adı bağlantısı, yayına alma ve kullanım eğitimi planlanır.</li>
+          </ol>
+          <a class="hero-action primary" href="/fiyat-hesaplayici/">Paketleri Karşılaştırın ve Fiyat Hesaplayın</a>
+        </div>
+      </section>
+      <section aria-labelledby="serviceAreaTitle">
+        <h2 class="section-title" id="serviceAreaTitle">KKTC genelinde uzaktan web geliştirme</h2>
+        <div class="card">
+          <p>Çalışma merkezim Gazimağusa. Lefkoşa ve Girne dahil KKTC’nin diğer bölgelerindeki web projelerini uzaktan iletişimle yürütebilirim; Türkiye’deki projeler için de uzaktan çalışıyorum. Görüşmeler ve içerik paylaşımı e-posta veya WhatsApp üzerinden yapılabilir.</p>
+          <p>Doğu Akdeniz Üniversitesi Bilgisayar Programcılığı mezunuyum. Çalışmalarımı ve deneyimimi <a class="ref-action" href="/#projectsSection">proje portföyümde</a> inceleyebilirsiniz. Yerinde teknik destek gerektiren işler için kapsam ve uygunluğu ayrıca değerlendiririz.</p>
+        </div>
+      </section>
+      <section id="hizmet-sss" aria-labelledby="serviceFaqTitle">
+        <h2 class="section-title" id="serviceFaqTitle">Web sitesi yaptırmadan önce</h2>
+        <details class="card service-faq-item">
+          <summary><h3>KKTC’de web tasarım ve kodlama hizmetini kim veriyor?</h3></summary>
+          <p>Hizmeti Gazimağusa merkezli freelance web geliştirici Yusuf Başaran olarak veriyorum. Tanıtım ve kurumsal siteler, özel web uygulamaları ve ek işlevler için proje kapsamına göre çalışıyorum.</p>
+        </details>
+        <details class="card service-faq-item">
+          <summary><h3>Kıbrıs’ta web sitesi yaptırmak için hangi bilgileri hazırlamalıyım?</h3></summary>
+          <p>İşinizin ne olduğunu, sitenin amacını, ihtiyaç duyduğunuz sayfaları ve örnek beğendiğiniz siteleri paylaşabilirsiniz. Mevcut logo, metin, fotoğraf ve alan adı bilgileriniz varsa bunları da belirtin.</p>
+        </details>
+        <details class="card service-faq-item">
+          <summary><h3>Web tasarımı ve web yazılımı hangi işleri kapsar?</h3></summary>
+          <p>Web tasarımı; görünüm, sayfa düzeni ve farklı ekranlarda kullanım gibi konuları kapsar. Web yazılımı ise üyelik, randevu, veri saklama ve yönetim paneli gibi çalışan işlevleri içerir. Projenizde ikisine birlikte ihtiyaç olabilir.</p>
+        </details>
+        <details class="card service-faq-item">
+          <summary><h3>Lefkoşa veya Girne’deki bir işletmeyle uzaktan çalışabilir misiniz?</h3></summary>
+          <p>Gazimağusa merkezliyim; Lefkoşa, Girne ve KKTC’nin diğer bölgelerindeki web projelerini uzaktan iletişimle yürütebilirim. İhtiyaçlar e-posta veya WhatsApp üzerinden paylaşılabilir. Yerinde teknik destek gerekiyorsa koşulları ayrıca konuşuruz.</p>
+        </details>
+        <details class="card service-faq-item">
+          <summary><h3>Web tasarım fiyatına domain, hosting ve bakım dahil mi?</h3></summary>
+          <p>Hayır. Alan adı ve sunucu / hosting ücretleri yıllık olarak ayrıca ödenir. Aylık bakım da isteğe bağlı ve ayrı ücretlidir. Hesaplayıcıdaki proje tutarı tek seferlik geliştirme bedelini tahmini aralık olarak gösterir.</p>
+        </details>
+        <details class="card service-faq-item">
+          <summary><h3>Web sitesi için nasıl fiyat teklifi alabilirim?</h3></summary>
+          <p>Fiyat hesaplayıcıda paket ve özellikleri seçin, ardından adınızı ve iletişim bilginizi yazın. Seçimlerinizi e-posta veya WhatsApp ile gönderebilirsiniz. Listede olmayan istekler ve kesin teslim takvimi teklif aşamasında netleşir.</p>
+        </details>
+      </section>
+      <section class="card service-contact" aria-labelledby="serviceContactTitle">
+        <h2 id="serviceContactTitle">Projenizi birlikte netleştirelim.</h2>
+        <p>İhtiyacınızı kısaca yazın veya hesaplayıcıdan seçimlerinizi gönderin. Kesin fiyatı ve teslim koşullarını proje kapsamına göre belirleyelim.</p>
+        <div class="hero-actions">
+          <a class="hero-action primary" href="/fiyat-hesaplayici/">Fiyat Hesapla →</a>
+          <a class="hero-action" href="https://wa.me/905338493063">WhatsApp ile İletişim</a>
+          <a class="hero-action" href="mailto:yusufbasaran63@hotmail.com">E-posta Gönder</a>
+        </div>
+        <a class="ref-action" href="tel:+905338493063">+90 533 849 30 63</a>
+      </section>
+    </main>
+    <footer>
+      <span>© <span id="yearNow">2026</span> Yusuf Başaran — Tüm Hakları Saklıdır.</span>
+      <a class="ref-action" href="/">Yusuf Başaran · Ana Sayfa</a>
+      <a class="ref-action" href="/fiyat-hesaplayici/">Web Sitesi Fiyat Hesaplayıcı</a>
+    </footer>
+  </div>
+</body>
+</html>

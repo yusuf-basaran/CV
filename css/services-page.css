@@ -1,0 +1,35 @@
+/* Hizmet sayfası mevcut tema, kart ve butonları kullanır. */
+.services-page .container { max-width: 1080px; }
+.services-page main { padding-top: 20px; }
+.services-page .service-top-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.services-page .service-eyebrow { font-size: 0.8rem; font-weight: 600; color: var(--accent); margin-bottom: 14px; }
+.services-page h1 { font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.15; max-width: 24ch; margin-bottom: 20px; }
+.services-page .service-lead { font-size: clamp(1rem, 2vw, 1.25rem); color: var(--ink); margin-bottom: 14px; }
+.services-page p { color: var(--ink-soft); font-size: 0.9rem; line-height: 1.9; }
+.services-page p + p { margin-top: 12px; }
+.services-page .service-hero > p { max-width: 74ch; }
+.services-page .service-topic-links { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); }
+.services-page .service-topic-links a { color: var(--ink-soft); font-size: 0.8rem; line-height: 1.7; text-underline-offset: 5px; }
+.services-page .service-topic-links a:hover { color: var(--accent); }
+.services-page .service-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.services-page .service-grid article { margin: 0; scroll-margin-top: 120px; }
+.services-page .service-grid h3 { font-family: 'Outfit', sans-serif; font-size: 1.2rem; line-height: 1.4; margin-bottom: 14px; }
+.services-page .service-grid .card:hover, .services-page .service-faq-item:hover { transform: none; }
+.services-page .service-process { margin: 20px 0 24px; padding-left: 22px; color: var(--ink-soft); font-size: 0.88rem; line-height: 1.9; }
+.services-page .service-process li + li { margin-top: 10px; }
+.services-page .service-process strong { color: var(--ink); }
+.services-page .service-faq-item { margin-bottom: 12px; }
+.services-page .service-faq-item summary { cursor: pointer; line-height: 1.8; }
+.services-page .service-faq-item summary h3 { display: inline; font: inherit; font-size: 0.9rem; font-weight: 600; }
+.services-page .service-faq-item p { margin-top: 14px; }
+.services-page .service-contact h2 { font-family: 'Outfit', sans-serif; font-size: 1.65rem; margin-bottom: 14px; }
+.services-page .service-contact .hero-actions { margin-bottom: 16px; }
+.services-page footer { flex-wrap: wrap; gap: 14px 24px; }
+@media (max-width: 680px) {
+  .services-page .service-grid { grid-template-columns: minmax(0, 1fr); }
+  .services-page .card { padding: 20px; }
+  .services-page .top-bar { padding: 10px 12px; gap: 10px; }
+  .services-page .top-bar .btn-icon { flex-shrink: 0; }
+  .services-page .hero-actions { justify-content: flex-start; }
+  .services-page .section-title { font-size: 1.2rem; }
+}

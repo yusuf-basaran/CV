@@ -20,7 +20,7 @@ const { prepareSearchContent } = require('./prepare-search-content.cjs');
     await fs.writeFile(path.join(root, 'js', `${name}.min.js`), result.code + '\n');
     console.log(`${name}: JS ${Buffer.byteLength(js)} → ${Buffer.byteLength(result.code)} bayt`);
   }
-  for (const name of ['site', 'price-calculator', 'calculator-page']) {
+  for (const name of ['site', 'price-calculator', 'calculator-page', 'services-page']) {
     const cssPath = path.join(root, 'css', `${name}.css`);
     const css = await fs.readFile(cssPath, 'utf8');
     const output = new CleanCSS({ level: 1, rebase: false }).minify(css);
@@ -33,10 +33,10 @@ const { prepareSearchContent } = require('./prepare-search-content.cjs');
   const publicDir = path.join(root, 'public');
   await fs.rm(publicDir, { recursive: true, force: true });
   const files = [
-    'index.html', 'fiyat-hesaplayici/index.html', 'profile.jpg', 'profile.webp', 'og-image.jpg', 'favicon.svg',
+    'index.html', 'fiyat-hesaplayici/index.html', 'kktc-web-tasarim/index.html', 'profile.jpg', 'profile.webp', 'og-image.jpg', 'favicon.svg',
     'favicon-32x32.png', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png',
     'robots.txt', 'sitemap.xml', 'site.webmanifest', 'indexnow-key.txt',
-    'css/site.min.css', 'css/price-calculator.min.css', 'css/calculator-page.min.css',
+    'css/site.min.css', 'css/price-calculator.min.css', 'css/calculator-page.min.css', 'css/services-page.min.css',
     'js/site.min.js', 'js/price-calculator.min.js', 'js/page-common.min.js', 'js/home-links.min.js'
   ];
   for (const file of files) {
