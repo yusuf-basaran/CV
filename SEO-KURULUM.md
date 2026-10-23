@@ -2,6 +2,20 @@
 
 Ana sayfa canonical adresi https://www.yusufbasaran.dev/, hesaplayıcı canonical adresi https://www.yusufbasaran.dev/fiyat-hesaplayici/ şeklindedir. Her sayfada tek h1, tek canonical ve tekil meta etiketleri bulunur. İki sayfayı aynı canonical'a yönlendirmeyin.
 
+## Son düzenleme — 23 Ekim 2026
+
+- robots.txt tüm genel arama botlarına açık; Googlebot, Bingbot, DuckDuckBot, Applebot, OAI-SearchBot ve PerplexityBot için izin ayrıca belirginleştirildi. Model eğitimi politikasını değiştiren yeni bir kural eklenmedi. Bir User-Agent ile HTTP 200 almak, gerçek bot IP'lerinin tüm koşullarda erişebileceği garantisi değildir; güvenlik duvarı kapatılmadı.
+- Paket fiyatları ve süreleri artık JavaScript olmadan okunabilen, ziyaretçilerin de açabildiği HTML özetinde bulunur. Build bunları CONFIG'ten üretir; statik JSON-LD fiyatı yanlışsa yayın çıktısı hazırlanmaz.
+- Ana sayfa ProfilePage ile Person'a bağlanır; hesaplayıcıda Service ve paket kataloğu bulunur. Görünür SSS ile FAQPage metni aynı kalır. Sahte puan, yorum, adres veya sosyal profil eklenmez; FAQ şeması bu tür sitelere Google'da SSS görünümü garantisi vermez.
+- Profil fotoğrafı için WebP kaynak ve JPEG yedeği eklendi (yaklaşık 70 KB → 21 KB). CSS/JS küçültme, defer, font swap ve görsel boyutları korunur.
+- sitemap'teki iki gerçek sayfanın lastmod tarihi 2026-10-23 olarak güncellendi. Her build'de tarih değiştirilmez; anlamlı içerik değişikliğini yansıtır.
+- IndexNow sahiplik dosyası ve Vercel Production başarısından sonra çalışan GitHub Actions bildirimi eklendi. `npm run submit:indexnow -- --dry-run` canlı dosya/canonical kontrolü yapar; normal komut iki URL'yi katılımcı motorlara bildirir. HTTP 200/202 yalnızca alınma/onay bekleme anlamındadır; Google Indexing API veya Google sitemap ping kullanılmaz.
+- 23 Ekim kontrolünde alan adının DNS TXT kayıtlarında mevcut bir google-site-verification kaydı görüldü; değiştirilmedi. Search Console oturumu/API erişimi olmadığı için mülkün doğrulanma durumu, sitemap gönderimi ve hesaba özel üretken arama kontrolleri buradan teyit edilemez. DNS kaydının varlığı, hesabın tamamlandığı anlamına gelmez.
+
+Google'ın açıklamasına göre yapay zekâ araması için özel meta etiketleri veya llms.txt gerekli değildir. Bu nedenle sıralama vaat eden ek dosya, görünmez anahtar kelime veya yalnızca botlara sunulan içerik eklenmedi. Kullanıcıya görünen sayfalarda yapay zekâ rozeti veya üretim atfı bulunmaz.
+
+Resmî kaynaklar: [Google arama ve üretken özellikler](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide), [OpenAI arama botu](https://developers.openai.com/api/docs/bots), [Perplexity botları](https://docs.perplexity.ai/docs/resources/perplexity-crawlers), [IndexNow protokolü](https://www.indexnow.org/documentation).
+
 ## Yeni yapıda şemalar ve içerik
 
 - Ana sayfa Person, WebSite ve ProfessionalService/Service düğümlerini içerir. Ana sayfada SSS görünmediği için FAQPage buradan kaldırıldı.
@@ -114,7 +128,9 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
       "inLanguage": "tr",
       "publisher": {
         "@id": "https://www.yusufbasaran.dev/#person"
-      }
+      },
+      "alternateName": "Yusuf Başaran",
+      "description": "Gazimağusa merkezli Yusuf Başaran’ın web geliştirme, IT destek ve proje portföyü."
     },
     {
       "@type": [
@@ -246,6 +262,24 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
           }
         ]
       }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://www.yusufbasaran.dev/#webpage",
+      "url": "https://www.yusufbasaran.dev/",
+      "name": "Yusuf Başaran | Web Geliştirici ve IT Destek | Gazimağusa",
+      "description": "Gazimağusa, KKTC merkezli web geliştirici Yusuf Başaran’ın özgeçmişi, projeleri ve web sitesi geliştirme hizmetleri.",
+      "inLanguage": "tr",
+      "dateModified": "2026-10-23",
+      "isPartOf": {
+        "@id": "https://www.yusufbasaran.dev/#website"
+      },
+      "mainEntity": {
+        "@id": "https://www.yusufbasaran.dev/#person"
+      },
+      "about": {
+        "@id": "https://www.yusufbasaran.dev/#web-hizmeti"
+      }
     }
   ]
 }
@@ -285,7 +319,7 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
   <title>Web Sitesi Yaptırma Fiyatları ve Hesaplayıcı | Yusuf Başaran</title>
   <meta name="description" content="Gazimağusa ve KKTC için web sitesi fiyatını özelliklere göre hesaplayın. Paket, sayfa ve ek hizmetleri seçin; tahmini bütçenizi görün, hemen teklif alın.">
   <meta name="author" content="Yusuf Başaran">
-  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="theme-color" content="#0d1117">
   <meta name="color-scheme" content="dark light">
   <meta name="keywords" content="web tasarım Gazimağusa, web sitesi yaptırma KKTC, freelance web geliştirici Kıbrıs, bilgisayar programcısı, IT destek, Bitrix24, HTML CSS JavaScript, Supabase">
@@ -316,7 +350,7 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
   <meta name="twitter:image" content="https://www.yusufbasaran.dev/og-image.jpg">
   <meta name="twitter:image:alt" content="Yusuf Başaran — Gazimağusa, Kıbrıs web geliştirici ve IT destek hizmetleri">
 
-  <!-- Görünür SSS bu sayfadadır; paket kataloğu ana sayfada kalır. -->
+  <!-- Paket fiyatları görünür özetle, SSS yanıtları sayfadaki metinle eşleşir. -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -335,6 +369,14 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
       },
       "breadcrumb": {
         "@id": "https://www.yusufbasaran.dev/fiyat-hesaplayici/#breadcrumb"
+      },
+      "description": "Gazimağusa ve KKTC için paket, sayfa ve özelliklere göre tahmini web sitesi ücreti hesaplama ve teklif talebi.",
+      "dateModified": "2026-10-23",
+      "author": {
+        "@id": "https://www.yusufbasaran.dev/#person"
+      },
+      "mainEntity": {
+        "@id": "https://www.yusufbasaran.dev/fiyat-hesaplayici/#web-gelistirme"
       }
     },
     {
@@ -410,6 +452,134 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
           }
         }
       ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.yusufbasaran.dev/#person",
+      "name": "Yusuf Başaran",
+      "url": "https://www.yusufbasaran.dev/",
+      "jobTitle": "Web Geliştirici ve IT Destek",
+      "email": "yusufbasaran63@hotmail.com",
+      "telephone": "+905338493063",
+      "sameAs": [
+        "https://github.com/yusuf-basaran"
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.yusufbasaran.dev/fiyat-hesaplayici/#web-gelistirme",
+      "name": "Web Sitesi Geliştirme ve Fiyatlandırma",
+      "serviceType": "Web sitesi geliştirme",
+      "url": "https://www.yusufbasaran.dev/fiyat-hesaplayici/",
+      "provider": {
+        "@id": "https://www.yusufbasaran.dev/#person"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Gazimağusa"
+        },
+        {
+          "@type": "Place",
+          "name": "KKTC"
+        },
+        {
+          "@type": "Country",
+          "name": "Türkiye"
+        }
+      ],
+      "description": "Paket, sayfa ve ek hizmet seçimine göre tahmini fiyatlandırma. Alan adı ve hosting yıllık ayrıca ödenir; kesin teklif kapsam netleşince verilir.",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Web Sitesi Paketleri",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Tek Sayfa Tanıtım Sitesi",
+            "price": 4000,
+            "priceCurrency": "TRY",
+            "url": "https://www.yusufbasaran.dev/fiyat-hesaplayici/",
+            "description": "Başlangıç paket fiyatıdır. Ek özellikler, aylık bakım ve yıllık alan adı / hosting bedelleri ayrıdır.",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Tek Sayfa Tanıtım Sitesi",
+              "description": "İşinizi tek sayfada tanıtan web sitesi.",
+              "provider": {
+                "@id": "https://www.yusufbasaran.dev/#person"
+              },
+              "serviceType": "Web sitesi geliştirme"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Çok Sayfalı Site (5 sayfaya kadar)",
+            "price": 8000,
+            "priceCurrency": "TRY",
+            "url": "https://www.yusufbasaran.dev/fiyat-hesaplayici/",
+            "description": "Başlangıç paket fiyatıdır. Ek özellikler, aylık bakım ve yıllık alan adı / hosting bedelleri ayrıdır.",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Çok Sayfalı Site (5 sayfaya kadar)",
+              "description": "Hizmetlerinizi ayrı sayfalarda anlatan web sitesi.",
+              "provider": {
+                "@id": "https://www.yusufbasaran.dev/#person"
+              },
+              "serviceType": "Web sitesi geliştirme"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Kurumsal Site (10 sayfaya kadar)",
+            "price": 13000,
+            "priceCurrency": "TRY",
+            "url": "https://www.yusufbasaran.dev/fiyat-hesaplayici/",
+            "description": "Başlangıç paket fiyatıdır. Ek özellikler, aylık bakım ve yıllık alan adı / hosting bedelleri ayrıdır.",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Kurumsal Site (10 sayfaya kadar)",
+              "description": "Firmanızı ve çalışmalarınızı kapsamlı biçimde tanıtan web sitesi.",
+              "provider": {
+                "@id": "https://www.yusufbasaran.dev/#person"
+              },
+              "serviceType": "Web sitesi geliştirme"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Blog / Haber Sitesi",
+            "price": 12000,
+            "priceCurrency": "TRY",
+            "url": "https://www.yusufbasaran.dev/fiyat-hesaplayici/",
+            "description": "Başlangıç paket fiyatıdır. Ek özellikler, aylık bakım ve yıllık alan adı / hosting bedelleri ayrıdır.",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Blog / Haber Sitesi",
+              "description": "Yazı ve haber paylaşımına yönelik web sitesi.",
+              "provider": {
+                "@id": "https://www.yusufbasaran.dev/#person"
+              },
+              "serviceType": "Web sitesi geliştirme"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Özel Web Uygulaması",
+            "price": 20000,
+            "priceCurrency": "TRY",
+            "url": "https://www.yusufbasaran.dev/fiyat-hesaplayici/",
+            "description": "Başlangıç paket fiyatıdır. Ek özellikler, aylık bakım ve yıllık alan adı / hosting bedelleri ayrıdır.",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Özel Web Uygulaması",
+              "description": "Yönetim ekranları, kullanıcı yetkileri ve veri saklama ihtiyaçlarına özel uygulama.",
+              "provider": {
+                "@id": "https://www.yusufbasaran.dev/#person"
+              },
+              "serviceType": "Web sitesi geliştirme"
+            }
+          }
+        ]
+      }
     }
   ]
 }
@@ -436,18 +606,18 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.yusufbasaran.dev/</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://www.yusufbasaran.dev/fiyat-hesaplayici/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
   </url>
 </urlset>
 ```
 
-Ana sayfanın lastmod tarihi 2026-10-18, hesaplayıcının son arayüz düzenlemesi 2026-10-21 tarihindedir. Anchor URL'ler sitemap'e eklenmez. İleride anlamlı içerik değişikliklerinde gerçek tarih güncellenir.
+Her iki sayfanın son içerik/şema düzenlemesi 2026-10-23 tarihindedir. Anchor URL'ler sitemap'e eklenmez. İleride anlamlı içerik değişikliklerinde gerçek tarih güncellenir.
 
 ## Robots
 

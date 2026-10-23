@@ -52,7 +52,7 @@ Proje fiyat aralığı, süre ve ayrı yıllık/aylık ücretler masaüstünde v
 
 Tüm fiyat ve süreler js/price-calculator.js içindeki CONFIG nesnesindedir. Para biçimi tr-TR, üst sınır toplam × 1,25, aylık ve yıllık ücretler proje toplamından ayrıdır. İçerik yazımı seçili sayfa adediyle, ek özel sayfa adedi kendi birim ücretiyle çarpılır. Bu kurallar taşıma sırasında değiştirilmedi.
 
-Ana sayfa JSON-LD OfferCatalog paket fiyatları CONFIG ile aynı olmalıdır. Kontrol edilen fiyatlar sırasıyla 4.000, 8.000, 13.000, 12.000 ve 20.000 TL'dir; fark yoktur. Fiyat değiştirince statik kataloğu da güncelleyin. Tekliflerin url alanı yeni hesaplayıcı sayfasını gösterir.
+Ana sayfa JSON-LD OfferCatalog paket fiyatları CONFIG ile aynı olmalıdır. Kontrol edilen fiyatlar sırasıyla 4.000, 8.000, 13.000, 12.000 ve 20.000 TL'dir; fark yoktur. Fiyat değiştirince her iki sayfanın statik JSON-LD kataloğunu da güncelleyin. Build, katalog ücretleri CONFIG ile uyuşmazsa durur. Görünür paket özeti ve ana sayfadaki başlangıç fiyatı CONFIG verisinden otomatik güncellenir. Tekliflerin url alanı yeni hesaplayıcı sayfasını gösterir.
 
 ## Build ve yayın çıktısı
 
@@ -62,7 +62,7 @@ npm run build
 python -m http.server 8002 --directory public
 ```
 
-Build; 4 JavaScript ve 3 CSS kaynağını küçültür, public klasörünü yeniden üretir ve aşağıdaki 19 dosyayı kopyalar. Yeni HTML ve sayfa-common kaynaklarının .min sürümleri dahil edilmiştir.
+Build; 4 JavaScript ve 3 CSS kaynağını küçültür, public klasörünü yeniden üretir ve aşağıdaki 21 dosyayı kopyalar. Yeni HTML ve sayfa-common kaynaklarının .min sürümleri dahil edilmiştir.
 
 ```text
 public/apple-touch-icon.png
@@ -81,6 +81,8 @@ public/js/price-calculator.min.js
 public/js/site.min.js
 public/og-image.jpg
 public/profile.jpg
+public/profile.webp
+public/indexnow-key.txt
 public/robots.txt
 public/site.webmanifest
 public/sitemap.xml
@@ -99,3 +101,11 @@ Kullanıcının doğrudan yayın isteğiyle değişiklikler main dalına gönder
 Yedi adım, geri/ileri ve doğrudan gezinme, seçimlerin korunması, fiyat aralığı/süre hesabı, aylık/yıllık ücretlerin ayrılması, özetten kaldırma ve sıfırlama kontrol edilir. Örnek kapsam: Çok Sayfalı Site + Hakkımızda + Galeri + 2 özel sayfa + Özel tasarım + İletişim formu + 5 sayfa içerik yazımı = 16.000–20.000 TL, 24 iş günü. Bakım 750 TL/ay ve seçilen .dev/paylaşımlı hosting 2.700 TL/yıl ayrıca gösterilir.
 
 320, 375 ve 768 px ekranlarda sabit çubuk, yatay taşma, erişilebilir form/footer; ortak tema, ana sayfa Supabase proje listesi ve modallar; tek h1/canonical/meta, kaynak yolları ve görünür SSS/JSON-LD uyumu kontrol edilir. E-posta/WhatsApp aynı mesajı üretir; gerçek mesaj gönderilmez ve Supabase verisi değiştirilmez. CONFIG ve fiyat/süre/mesaj/doğrulama fonksiyonları önceki sürümle karşılaştırılır. site.js değiştirilmez.
+
+## Arama erişimi — 23 Ekim 2026
+
+Hesaplayıcının altında yerel HTML details öğesiyle açılan beş paketlik bir karşılaştırma özeti vardır. Fiyatlar ve süreler `scripts/prepare-search-content.cjs` tarafından CONFIG'ten alınır. Kaynak HTML ve public çıktısı aynı metni içerir; JavaScript çalıştırmayan ziyaretçiler ve botlar paketleri, yıllık ücret açıklamasını ve SSS'yi okuyabilir. Bu içerik yalnızca botlara gösterilmez.
+
+Tarayıcıdaki CONFIG, fiyatlama, adım sistemi ve gönderim işlevleri değiştirilmemiştir. Ana sayfanın profilinde 21 KB WebP ve JPEG yedeği kullanılır; diğer görseller ve Supabase kodu korunur. SEO değişikliklerinin doğrulaması `npm run build && npm run test:seo` ile yapılır.
+
+`indexnow-key.txt`, alan adı sahipliğinin IndexNow tarafından sınanabilmesi için yayınlanan bir metin dosyasıdır; Google doğrulama kodu değildir. Vercel Production yayını başarılı olduktan sonra `.github/workflows/indexnow.yml`, `npm run submit:indexnow` komutunu çalıştırır. Bu komut canlı sahiplik dosyasını ve canonical URL'leri kontrol eder, sitemap'teki iki adresi tek istekte bildirir. Bildirim alınması dizine eklenme anlamına gelmez. Aynı komut çok sık veya her sayfa ziyaretinde çalıştırılmaz.

@@ -101,8 +101,19 @@
 #hizmetler .calc-faq-item { margin-bottom: 10px; padding: 18px 20px; }
 #hizmetler .calc-faq-item:hover { transform: none; }
 #hizmetler .calc-faq-item > summary { cursor: pointer; line-height: 1.7; }
-#hizmetler .calc-faq-item h4 { display: inline; font: inherit; font-size: 0.86rem; font-weight: 600; }
+#hizmetler .calc-faq-item h3 { display: inline; font: inherit; font-size: 0.86rem; font-weight: 600; }
 #hizmetler .calc-faq-item p { margin-top: 12px; color: var(--ink-soft); font-size: 0.85rem; line-height: 1.85; }
+
+/* Paket bilgileri JavaScript kapalıyken de okunabilir ve güncel kalır. */
+#hizmetler .calc-package-guide { margin-top: 32px; }
+#hizmetler .calc-package-guide:hover, #hizmetler .calc-package-card:hover { transform: none; }
+#hizmetler .calc-package-guide > summary { cursor: pointer; line-height: 1.8; }
+#hizmetler .calc-package-guide > summary h2 { display: inline; font: inherit; font-weight: 600; }
+#hizmetler .calc-package-guide > .calc-note { margin-top: 18px; }
+#hizmetler .calc-package-card { margin: 0; padding: 18px; }
+#hizmetler .calc-package-card h3 { font-size: 0.9rem; line-height: 1.6; margin-bottom: 10px; }
+#hizmetler .calc-package-card p { color: var(--ink-soft); font-size: 0.8rem; line-height: 1.8; }
+#hizmetler .calc-package-card .calc-package-price { color: var(--accent); font-weight: 600; margin-top: 12px; }
 
 @media (max-width: 760px) {
   #hizmetler .calc-grid, #hizmetler .calc-review-grid { grid-template-columns: minmax(0, 1fr); }

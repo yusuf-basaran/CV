@@ -93,7 +93,9 @@
       "inLanguage": "tr",
       "publisher": {
         "@id": "https://www.yusufbasaran.dev/#person"
-      }
+      },
+      "alternateName": "Yusuf Başaran",
+      "description": "Gazimağusa merkezli Yusuf Başaran’ın web geliştirme, IT destek ve proje portföyü."
     },
     {
       "@type": [
@@ -225,6 +227,24 @@
           }
         ]
       }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://www.yusufbasaran.dev/#webpage",
+      "url": "https://www.yusufbasaran.dev/",
+      "name": "Yusuf Başaran | Web Geliştirici ve IT Destek | Gazimağusa",
+      "description": "Gazimağusa, KKTC merkezli web geliştirici Yusuf Başaran’ın özgeçmişi, projeleri ve web sitesi geliştirme hizmetleri.",
+      "inLanguage": "tr",
+      "dateModified": "2026-10-23",
+      "isPartOf": {
+        "@id": "https://www.yusufbasaran.dev/#website"
+      },
+      "mainEntity": {
+        "@id": "https://www.yusufbasaran.dev/#person"
+      },
+      "about": {
+        "@id": "https://www.yusufbasaran.dev/#web-hizmeti"
+      }
     }
   ]
 }
@@ -285,7 +305,10 @@
       <!-- Hero -->
       <section class="hero-card reveal" aria-labelledby="heroName">
         <div class="avatar-wrapper" id="avatarWrapper" title="Yusuf Başaran">
-          <img class="avatar-img" width="124" height="124" src="/profile.jpg" alt="Gazimağusa web geliştirici Yusuf Başaran’ın portresi" decoding="async" fetchpriority="high">
+          <picture>
+            <source srcset="/profile.webp" type="image/webp">
+            <img class="avatar-img" width="124" height="124" src="/profile.jpg" alt="Gazimağusa web geliştirici Yusuf Başaran’ın portresi" decoding="async" fetchpriority="high">
+          </picture>
         </div>
         <div class="hero-content">
           <h1 id="heroName">Yusuf Başaran</h1>
@@ -419,6 +442,10 @@
         <h2 class="section-title" id="servicesCtaTitle">Web Sitesi mi Yaptırmak İstiyorsunuz?</h2>
         <div class="card">
           <p class="hero-intro">İhtiyacınıza göre paket ve özellikleri seçin, tahmini bütçenizi anında görün. Projenizi birlikte netleştirelim.</p>
+          <p class="hero-intro">Gazimağusa ve KKTC için tanıtım ve kurumsal siteler, bloglar, randevu sistemleri ve yönetim panelleri geliştiriyorum. Türkiye’deki projeler için de uzaktan çalışıyorum. Sayfa, tasarım ve ek özellikleri seçerek projenizin kapsamına uygun bir tahmin alabilirsiniz.</p>
+          <!-- SERVICE_START_PRICE:START -->
+          <p class="hero-intro">Başlangıç paketleri 4.000 TL’den başlar. Ek özellikler, aylık bakım ve yıllık alan adı / hosting bedelleri ayrıca hesaplanır.</p>
+          <!-- SERVICE_START_PRICE:END -->
           <ul class="card-list">
             <li>Özelliğe göre fiyat</li>
             <li>Anında tahmini teklif</li>

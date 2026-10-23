@@ -640,6 +640,8 @@
 #hizmetler-cta { scroll-margin-top: 150px; }
 #hizmetler-cta .card-list { margin-top: 16px; }
 #hizmetler-cta .hero-actions { margin-bottom: 0; }
+#hizmetler-cta .hero-intro + .hero-intro { margin-top: 12px; }
+.avatar-wrapper picture { display: block; }
 @media (max-width: 680px) {
   .services-nav { order: 3; flex-basis: 100%; text-align: center; }
 }
