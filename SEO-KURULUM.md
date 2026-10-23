@@ -77,10 +77,12 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
   <meta name="geo.placename" content="Gazimağusa, Kıbrıs">
   <link rel="canonical" href="https://www.yusufbasaran.dev/">
   <!-- GOOGLE_SITE_VERIFICATION: Search Console'dan aldığın <meta name="google-site-verification" content="..."> satırını buraya yapıştır -->
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" href="/favicon.ico?v=yb1" type="image/x-icon" sizes="16x16 32x32 48x48">
+  <link rel="icon" href="/favicon-32x32.png?v=yb1" type="image/png" sizes="32x32">
+  <link rel="icon" href="/favicon-96x96.png?v=yb1" type="image/png" sizes="96x96">
+  <link rel="icon" href="/favicon.svg?v=yb1" type="image/svg+xml" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=yb1" sizes="180x180">
+  <link rel="manifest" href="/site.webmanifest?v=yb1">
 
   <!-- Paylaşım görseli 1200 × 630 piksel; profile.jpg yerine kullanılır. -->
   <meta property="og:type" content="website">
@@ -353,10 +355,12 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
   <meta name="geo.placename" content="Gazimağusa, Kıbrıs">
   <link rel="canonical" href="https://www.yusufbasaran.dev/fiyat-hesaplayici/">
   <!-- GOOGLE_SITE_VERIFICATION: Search Console'dan aldığın <meta name="google-site-verification" content="..."> satırını buraya yapıştır -->
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" href="/favicon.ico?v=yb1" type="image/x-icon" sizes="16x16 32x32 48x48">
+  <link rel="icon" href="/favicon-32x32.png?v=yb1" type="image/png" sizes="32x32">
+  <link rel="icon" href="/favicon-96x96.png?v=yb1" type="image/png" sizes="96x96">
+  <link rel="icon" href="/favicon.svg?v=yb1" type="image/svg+xml" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=yb1" sizes="180x180">
+  <link rel="manifest" href="/site.webmanifest?v=yb1">
 
   <!-- Paylaşım görseli 1200 × 630 piksel; profile.jpg yerine kullanılır. -->
   <meta property="og:type" content="website">
@@ -688,3 +692,7 @@ Ana dala birleştirme ve Vercel yayını tamamlandıktan sonra:
 4. Gerekirse ana sayfayı da URL Denetimi ile yeniden taratın. Birkaç gün sonra Sayfa dizine ekleme/Performans raporlarını kontrol edin.
 5. Yeni sayfanın JSON-LD'sini https://search.google.com/test/rich-results ve https://validator.schema.org/ ile kontrol edin. Her şema türü Google'da zengin sonuç oluşturmak zorunda değildir.
 6. Bing Webmaster Tools'ta mevcut mülkün sitemap'ini yenileyin; mülk yoksa doğrulanmış Search Console mülkünü içe aktarın.
+
+## Kişisel ikon
+
+`favicon.svg` koyu zemin üzerinde YB monogramının vektör kaynağıdır; beyaz Y ve sitenin mavi vurgu rengindeki B kullanılır. Metin fontuna veya harici kaynağa bağlı değildir. Aynı tasarım ICO (16/32/48), PNG (32/48/96), Apple Touch (180) ve uygulama ikonlarında (192/512) bulunur. Üç sayfa aynı ikonları kullanır; `v=yb1` mevcut tarayıcı önbelleğini yenilemek içindir. Manifest kimliği ve başlangıç URL'si değişmez. Google/Bing'in arama sonucundaki ikonu kendi yeniden tarama takvimlerinde güncellemesi beklenir.

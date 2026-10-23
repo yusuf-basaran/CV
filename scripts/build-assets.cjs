@@ -34,7 +34,7 @@ const { prepareSearchContent } = require('./prepare-search-content.cjs');
   await fs.rm(publicDir, { recursive: true, force: true });
   const files = [
     'index.html', 'fiyat-hesaplayici/index.html', 'kktc-web-tasarim/index.html', 'profile.jpg', 'profile.webp', 'og-image.jpg', 'favicon.svg',
-    'favicon-32x32.png', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png',
+    'favicon.ico', 'favicon-32x32.png', 'favicon-48x48.png', 'favicon-96x96.png', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png',
     'robots.txt', 'sitemap.xml', 'site.webmanifest', 'indexnow-key.txt',
     'css/site.min.css', 'css/price-calculator.min.css', 'css/calculator-page.min.css', 'css/services-page.min.css',
     'js/site.min.js', 'js/price-calculator.min.js', 'js/page-common.min.js', 'js/home-links.min.js'
