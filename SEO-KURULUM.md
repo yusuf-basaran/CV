@@ -696,3 +696,9 @@ Ana dala birleştirme ve Vercel yayını tamamlandıktan sonra:
 ## Kişisel ikon
 
 `favicon.svg` koyu zemin üzerinde YB monogramının vektör kaynağıdır; beyaz Y ve sitenin mavi vurgu rengindeki B kullanılır. Metin fontuna veya harici kaynağa bağlı değildir. Aynı tasarım ICO (16/32/48), PNG (32/48/96), Apple Touch (180) ve uygulama ikonlarında (192/512) bulunur. Üç sayfa aynı ikonları kullanır; `v=yb1` mevcut tarayıcı önbelleğini yenilemek içindir. Manifest kimliği ve başlangıç URL'si değişmez. Google/Bing'in arama sonucundaki ikonu kendi yeniden tarama takvimlerinde güncellemesi beklenir.
+
+## Yandex Webmaster doğrulaması — 27 Ekim 2026
+
+Kullanıcının Yandex ekranından verdiği HTML dosyası `yandex_78b336ef1242f2e2.html` olarak site köküne eklendi. Build bu dosyayı aynı içerikle public köküne kopyalar. Üretim adresi: https://www.yusufbasaran.dev/yandex_78b336ef1242f2e2.html . Dosya yalnızca Yandex'in istediği doğrulama HTML'ini içerir; site şablonu veya script eklenmez. Bu teknik URL sitemap'e eklenmez ve mevcut sayfa metalarını değiştirmez.
+
+Yayın sonrasında dosya HTTP 200 ile erişilebilir olduğunda kullanıcı Yandex Webmaster'daki HTML file sekmesinde Verify düğmesine basar. Doğrulama dosyasını sonradan silmeyin; Yandex sahipliği tekrar kontrol edebilir. Panelde doğrulama tamamlandıktan sonra sitemap ve üç gerçek sayfa adresi gönderilebilir.

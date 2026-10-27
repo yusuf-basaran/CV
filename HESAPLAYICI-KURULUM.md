@@ -62,7 +62,7 @@ npm run build
 python -m http.server 8002 --directory public
 ```
 
-Build; 4 JavaScript ve 4 CSS kaynağını küçültür, public klasörünü yeniden üretir ve aşağıdaki 26 dosyayı kopyalar. Yeni HTML ve sayfa-common kaynaklarının .min sürümleri dahil edilmiştir.
+Build; 4 JavaScript ve 4 CSS kaynağını küçültür, public klasörünü yeniden üretir ve aşağıdaki 27 dosyayı kopyalar. Yeni HTML ve sayfa-common kaynaklarının .min sürümleri dahil edilmiştir.
 
 ```text
 public/apple-touch-icon.png
@@ -90,6 +90,7 @@ public/profile.webp
 public/indexnow-key.txt
 public/robots.txt
 public/site.webmanifest
+public/yandex_78b336ef1242f2e2.html
 public/sitemap.xml
 ```
 
