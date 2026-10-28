@@ -67,3 +67,25 @@ test('Build çıktısı beş paketi script dışında fiyat ve süreleriyle içe
     assert.ok(html.includes(`Tahmini süre: ${item.days} iş günü`));
   }
 });
+
+test('JSON-LD tarih alanları saat ve saat dilimi içeren DateTime kullanır', async () => {
+  const dateTime = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?(?:Z|[+-]\d{2}:\d{2})$/;
+  const dateProperties = new Set(['dateCreated', 'dateModified', 'datePublished']);
+  for (const file of ['index.html', 'fiyat-hesaplayici/index.html', 'kktc-web-tasarim/index.html']) {
+    const html = await fs.readFile(path.join(root, 'public', file), 'utf8');
+    const schema = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+    let datesChecked = 0;
+    function checkDates(value) {
+      if (!value || typeof value !== 'object') return;
+      for (const [property, entry] of Object.entries(value)) {
+        if (dateProperties.has(property)) {
+          assert.match(entry, dateTime, `${file}: ${property} saat ve saat dilimi içermeli.`);
+          assert.ok(Number.isFinite(Date.parse(entry)), `${file}: ${property} geçerli bir tarih olmalı.`);
+          datesChecked++;
+        } else checkDates(entry);
+      }
+    }
+    checkDates(schema);
+    assert.ok(datesChecked > 0, `${file}: şema tarihi kontrol edilmeli.`);
+  }
+});

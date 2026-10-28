@@ -299,7 +299,7 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
       "name": "Yusuf Başaran | KKTC Web Tasarım, Kodlama ve IT Destek",
       "description": "KKTC genelinde web tasarım ve kodlama: Yusuf Başaran’dan kurumsal site, özel web yazılımı, API ve veritabanı bağlantıları. Fiyat hesaplayın, teklif alın.",
       "inLanguage": "tr",
-      "dateModified": "2026-10-23",
+      "dateModified": "2026-10-23T18:52:40Z",
       "isPartOf": {
         "@id": "https://www.yusufbasaran.dev/#website"
       },
@@ -402,7 +402,7 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
         "@id": "https://www.yusufbasaran.dev/fiyat-hesaplayici/#breadcrumb"
       },
       "description": "KKTC genelinde web sitesi yaptırma ve web tasarım fiyatlarını hesaplayın. Paket, sayfa ve yazılım özelliklerini seçin; tahmini bütçeyi görün, teklif alın.",
-      "dateModified": "2026-10-23",
+      "dateModified": "2026-10-23T18:52:40Z",
       "author": {
         "@id": "https://www.yusufbasaran.dev/#person"
       },
@@ -702,3 +702,9 @@ Ana dala birleştirme ve Vercel yayını tamamlandıktan sonra:
 Kullanıcının Yandex ekranından verdiği HTML dosyası `yandex_78b336ef1242f2e2.html` olarak site köküne eklendi. Build bu dosyayı aynı içerikle public köküne kopyalar. Üretim adresi: https://www.yusufbasaran.dev/yandex_78b336ef1242f2e2.html . Dosya yalnızca Yandex'in istediği doğrulama HTML'ini içerir; site şablonu veya script eklenmez. Bu teknik URL sitemap'e eklenmez ve mevcut sayfa metalarını değiştirmez.
 
 Yayın sonrasında dosya HTTP 200 ile erişilebilir olduğunda kullanıcı Yandex Webmaster'daki HTML file sekmesinde Verify düğmesine basar. Doğrulama dosyasını sonradan silmeyin; Yandex sahipliği tekrar kontrol edebilir. Panelde doğrulama tamamlandıktan sonra sitemap ve üç gerçek sayfa adresi gönderilebilir.
+
+## Profil şeması tarih biçimi — 28 Ekim 2026
+
+Search Console'daki `dateModified` için geçersiz datetime uyarısı düzeltildi. ProfilePage, WebPage ve CollectionPage alanlarında gün/saat/saat dilimi içeren ISO 8601 DateTime kullanılır: `2026-10-23T18:52:40Z`. Bu değer, son anlamlı içerik düzenlemesinin Git commit zamanıdır (`9bf6f68`); biçim düzeltildiği için içerik yeniymiş gibi bugünün tarihi yazılmaz. Sitemap'teki Date biçimli lastmod alanları bu uyarının konusu değildir ve değiştirilmez.
+
+Yeni kontrol `npm run build && npm run test:seo` ile üç yayın sayfasındaki JSON-LD tarih alanlarının saat ve saat dilimi içerdiğini doğrular. İleride tarih güncellenirken aynı biçim kullanılmalıdır. Yayından sonra Search Console → Profil sayfası raporu → ilgili uyarı → Düzeltmeyi doğrula seçilir; sonuç Google yeniden taradıktan sonra değişir.
