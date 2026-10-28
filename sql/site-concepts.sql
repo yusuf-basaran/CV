@@ -6,7 +6,7 @@ do $$
 begin
   if not exists (
     select 1 from auth.users
-    where lower(email) = lower('yusufbasaran63@hotmail.com')
+    where lower(email) = lower('yusufbasarann63@gmail.com')
       and email_confirmed_at is not null
   ) then
     raise exception 'Doğrulanmış yönetici hesabı bulunamadı. SQL içindeki e-posta, mevcut yönetici girişinde kullandığınız adres olmalı.';
@@ -36,7 +36,7 @@ grant update (preset) on public.cv_site_concept_settings to authenticated;
 
 insert into public.cv_site_concept_admins (user_id)
 select id from auth.users
-where lower(email) = lower('yusufbasaran63@hotmail.com')
+where lower(email) = lower('yusufbasarann63@gmail.com')
   and email_confirmed_at is not null
 on conflict (user_id) do nothing;
 

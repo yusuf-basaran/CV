@@ -5,9 +5,11 @@
 Sitenin bağlı olduğu Supabase projesi `hqauyhneidkjpchjhutb` olduğundan SQL bu projede çalıştırılmalıdır. Mevcut bağlı yönetim hesabının bu projeye erişimi olmadığı için kurulum, kullanıcının seçimiyle SQL Editor üzerinden yapılır; başka bir Supabase projesine veri taşınmaz.
 
 1. [CV projesinin SQL Editor ekranını](https://supabase.com/dashboard/project/hqauyhneidkjpchjhutb/sql/new) açın.
-2. `sql/site-concepts.sql` dosyasının tamamını yeni sorguya yapıştırın. Dosya `yusufbasaran63@hotmail.com` hesabına göre hazırlanmıştır; sitede yönetici girişinde başka e-posta kullanılıyorsa iki e-posta satırını o adresle değiştirin. Şifre veya gizli API anahtarı gerekmez.
+2. [Güncel SQL dosyasının](https://raw.githubusercontent.com/yusuf-basaran/CV/main/sql/site-concepts.sql) tamamını yeni sorguya yapıştırın. Dosya, kullanıcının bildirdiği yönetici giriş adresi `yusufbasarann63@gmail.com` için hazırlanmıştır. Önceki Hotmail adresini içeren sorguyu kullanmayın. Şifre veya gizli API anahtarı gerekmez.
 3. **Run** düğmesine basın. Sonuçta tek satır (`id = 1`, `preset = normal`) görünmelidir. Var olan kurulumda daha önce seçilen konsept korunur. Yönetici e-postası bulunamazsa işlem değişiklik yapmadan durur.
 4. Sitedeki mevcut yönetici girişini kullanın. Yönetici çubuğunda **Site Konsepti** düğmesini açın. Panel açıksa **Yeniden Kontrol Et** ile yeni kurulumu algılatabilirsiniz.
+
+`Doğrulanmış yönetici hesabı bulunamadı` hatası alınırsa önce bu projenin **Authentication → Users** ekranında `yusufbasarann63@gmail.com` hesabının bulunduğunu ve e-postasının doğrulanmış olduğunu kontrol edin. Kurulum bu kontrol başarısız olduğunda değişiklik yapmadan durur; doğrulama kontrolünü kaldırmayın. Site iletişim adresi `yusufbasaran63@hotmail.com` olarak kalır; giriş hesabı ile iletişim adresi farklıdır.
 
 ## Kullanım
 
