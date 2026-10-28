@@ -63,6 +63,12 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
       var t = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
       document.documentElement.setAttribute('data-theme', t);
     } catch (e) {}
+    try {
+      var conceptCache = JSON.parse(localStorage.getItem('site-concept'));
+      if (conceptCache && ['religious', 'national'].includes(conceptCache.family)) {
+        document.documentElement.setAttribute('data-occasion-family', conceptCache.family);
+      }
+    } catch (e) {}
   </script>
 
   <!-- İkonlar ve paylaşım görseli kök dizinde tutulur. -->
@@ -324,6 +330,8 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
   <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 
   <link rel="stylesheet" href="/css/site.min.css">
+  <link rel="stylesheet" href="/css/site-concepts.min.css">
+  <script src="/js/site-concepts.min.js" defer></script>
   <script src="/js/home-links.min.js" defer></script>
 </head>
 ```
@@ -340,6 +348,12 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
     try {
       var t = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
       document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+    try {
+      var conceptCache = JSON.parse(localStorage.getItem('site-concept'));
+      if (conceptCache && ['religious', 'national'].includes(conceptCache.family)) {
+        document.documentElement.setAttribute('data-occasion-family', conceptCache.family);
+      }
     } catch (e) {}
   </script>
 
@@ -622,6 +636,8 @@ Aşağıdaki bloklar mevcut dosyalara uygulanmıştır. Tekrar eklemeyin; gerekt
 
 
   <link rel="stylesheet" href="/css/site.min.css">
+  <link rel="stylesheet" href="/css/site-concepts.min.css">
+  <script src="/js/site-concepts.min.js" defer></script>
   <!-- Hesaplayıcı: mevcut değişkenleri ve bileşen stillerini kullanır. -->
   <link rel="stylesheet" href="/css/price-calculator.min.css">
   <link rel="stylesheet" href="/css/calculator-page.min.css">
@@ -708,3 +724,7 @@ Yayın sonrasında dosya HTTP 200 ile erişilebilir olduğunda kullanıcı Yande
 Search Console'daki `dateModified` için geçersiz datetime uyarısı düzeltildi. ProfilePage, WebPage ve CollectionPage alanlarında gün/saat/saat dilimi içeren ISO 8601 DateTime kullanılır: `2026-10-23T18:52:40Z`. Bu değer, son anlamlı içerik düzenlemesinin Git commit zamanıdır (`9bf6f68`); biçim düzeltildiği için içerik yeniymiş gibi bugünün tarihi yazılmaz. Sitemap'teki Date biçimli lastmod alanları bu uyarının konusu değildir ve değiştirilmez.
 
 Yeni kontrol `npm run build && npm run test:seo` ile üç yayın sayfasındaki JSON-LD tarih alanlarının saat ve saat dilimi içerdiğini doğrular. İleride tarih güncellenirken aynı biçim kullanılmalıdır. Yayından sonra Search Console → Profil sayfası raporu → ilgili uyarı → Düzeltmeyi doğrula seçilir; sonuç Google yeniden taradıktan sonra değişir.
+
+## Bayram konseptleri
+
+Konseptler yalnızca görünüm değişkenleri ve kutlama bandını etkiler. H1, title/description, canonical, JSON-LD kimlikleri ve tarihler değiştirilmez; fiyatlar ve form mantığı aynı kalır. Standart görünümde bayram bandı gizlidir. CSS ve JavaScript kaynakları üç sayfaya eklenmiştir; diğer sayfalara Supabase SDK veya yönetici kodu yüklenmez. SQL kurulum adımları `KONSEPT-KURULUM.md` içindedir.

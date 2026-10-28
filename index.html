@@ -10,6 +10,12 @@
       var t = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
       document.documentElement.setAttribute('data-theme', t);
     } catch (e) {}
+    try {
+      var conceptCache = JSON.parse(localStorage.getItem('site-concept'));
+      if (conceptCache && ['religious', 'national'].includes(conceptCache.family)) {
+        document.documentElement.setAttribute('data-occasion-family', conceptCache.family);
+      }
+    } catch (e) {}
   </script>
 
   <!-- İkonlar ve paylaşım görseli kök dizinde tutulur. -->
@@ -271,6 +277,8 @@
   <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 
   <link rel="stylesheet" href="/css/site.min.css">
+  <link rel="stylesheet" href="/css/site-concepts.min.css">
+  <script src="/js/site-concepts.min.js" defer></script>
   <script src="/js/home-links.min.js" defer></script>
 </head>
 <body>
@@ -302,6 +310,21 @@
       </div>
     </header>
 
+    <aside class="occasion-banner" id="occasionBanner" aria-labelledby="occasionTitle" aria-live="polite" hidden>
+      <svg class="occasion-symbol" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><mask id="occasionMoon"><rect width="64" height="64" fill="white"/><circle cx="33" cy="23" r="17" fill="black"/></mask></defs>
+        <circle cx="25" cy="31" r="22" fill="currentColor" mask="url(#occasionMoon)"/>
+        <path d="m49 25 2.2 6.6h7l-5.6 4.1 2.1 6.6-5.7-4.1-5.7 4.1 2.1-6.6-5.6-4.1h7Z" fill="currentColor"/>
+      </svg>
+      <div>
+        <p class="occasion-label" id="occasionLabel"></p>
+        <p class="occasion-title" id="occasionTitle"></p>
+        <p class="occasion-message" id="occasionMessage"></p>
+      </div>
+      <span class="occasion-preview" id="occasionPreview" hidden>Önizleme</span>
+    </aside>
+
+
     <!-- Yönetici Kontrol Çubuğu -->
     <div class="admin-bar" id="adminBar">
       <div class="admin-title">
@@ -309,6 +332,7 @@
       </div>
       <div class="admin-actions">
         <button class="btn-ctrl" onclick="openAddProjectModal()">➕ Yeni Proje Ekle</button>
+        <button type="button" class="btn-ctrl" id="conceptAdminButton">Site Konsepti</button>
         <button class="btn-ctrl danger" onclick="logoutAdmin()">Çıkış Yap</button>
       </div>
     </div>
@@ -618,6 +642,28 @@
     </footer>
   </div>
 
+  <!-- Konsept önizlemesi yalnızca yöneticinin tarayıcısında uygulanır. -->
+  <div class="modal-overlay concept-modal" id="conceptModal" role="dialog" aria-modal="true" aria-labelledby="conceptModalTitle" aria-describedby="conceptIntro" hidden>
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2 class="modal-title" id="conceptModalTitle">Site Konsepti</h2>
+        <button type="button" class="modal-close-btn" data-concept-close aria-label="Konsept penceresini kapat">&times;</button>
+      </div>
+      <p class="concept-intro" id="conceptIntro">Bir konsept seçerek renkleri ve bayram mesajını önizleyin. Konsepti Yayınla düğmesine bastığınızda tüm ziyaretçileriniz aynı görünümü görür. Bayram bittiğinde Standart görünüm seçeneğini yayınlayabilirsiniz.</p>
+      <div id="conceptChoices"></div>
+      <div class="concept-preview-card" aria-live="polite" aria-atomic="true">
+        <strong id="conceptPreviewTitle">Standart görünüm</strong>
+        <p id="conceptPreviewMessage">Sitenin normal renkleri kullanılır; bayram mesajı gösterilmez.</p>
+      </div>
+      <p class="concept-status" id="conceptStatus" role="status">Konsept ayarı kontrol ediliyor…</p>
+      <button type="button" class="concept-reload" id="conceptReload">Yeniden Kontrol Et</button>
+      <div class="modal-foot">
+        <button type="button" class="btn-ctrl" data-concept-close>Vazgeç</button>
+        <button type="button" class="btn-ctrl active-state" id="conceptSave" disabled>Konsepti Yayınla</button>
+      </div>
+    </div>
+  </div>
+
   <!-- YÖNETİCİ GİRİŞ MODALI -->
   <div class="modal-overlay" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle" onclick="if(event.target === this) closeLoginModal()">
     <div class="modal-card" style="max-width: 380px;">
@@ -731,5 +777,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0" defer></script>
 
   <script src="/js/site.min.js" defer></script>
+  <script src="/js/concept-admin.min.js" defer></script>
 </body>
 </html>

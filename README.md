@@ -41,8 +41,13 @@ python -m http.server 8000 --directory public
 
 Derleme `public/` klasörünü üretir; Vercel bu klasörü yayınlar. Üretilmiş `.min` dosyaları yerine kaynak dosyalar düzenlenmelidir.
 
+## Bayram konseptleri
+
+Yönetici çubuğundaki Site Konsepti düğmesiyle dinî ve millî bayram görünümü önizlenir ve tüm ziyaretçilere yayınlanır. Normal görünüm, iki dinî bayram ve Türkiye/KKTC için millî bayram seçenekleri vardır. Bir defalık Supabase kurulumu ve güvenlik ayrıntıları [konsept rehberindedir](KONSEPT-KURULUM.md).
+
 ## Rehberler
 
+- [Bayram konseptlerinin kurulumu ve kullanımı](KONSEPT-KURULUM.md)
 - [Fiyat hesaplayıcının işleyişi](HESAPLAYICI-KURULUM.md)
 - [SEO kurulumu](SEO-KURULUM.md)
 - [Yayın ve Search Console kontrolleri](YAYIN-TESHIS-VE-SEARCH-CONSOLE.md)

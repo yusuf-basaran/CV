@@ -8,7 +8,7 @@ const { prepareSearchContent } = require('./prepare-search-content.cjs');
 (async () => {
   const root = path.resolve(__dirname, '..');
   await prepareSearchContent(root);
-  for (const name of ['site', 'price-calculator', 'page-common', 'home-links']) {
+  for (const name of ['site', 'price-calculator', 'page-common', 'home-links', 'site-concepts', 'concept-admin']) {
     const jsPath = path.join(root, 'js', `${name}.js`);
     const js = await fs.readFile(jsPath, 'utf8');
     const result = await minify(js, {
@@ -20,7 +20,7 @@ const { prepareSearchContent } = require('./prepare-search-content.cjs');
     await fs.writeFile(path.join(root, 'js', `${name}.min.js`), result.code + '\n');
     console.log(`${name}: JS ${Buffer.byteLength(js)} → ${Buffer.byteLength(result.code)} bayt`);
   }
-  for (const name of ['site', 'price-calculator', 'calculator-page', 'services-page']) {
+  for (const name of ['site', 'price-calculator', 'calculator-page', 'services-page', 'site-concepts']) {
     const cssPath = path.join(root, 'css', `${name}.css`);
     const css = await fs.readFile(cssPath, 'utf8');
     const output = new CleanCSS({ level: 1, rebase: false }).minify(css);
@@ -36,8 +36,8 @@ const { prepareSearchContent } = require('./prepare-search-content.cjs');
     'index.html', 'fiyat-hesaplayici/index.html', 'kktc-web-tasarim/index.html', 'profile.jpg', 'profile.webp', 'og-image.jpg', 'favicon.svg',
     'favicon.ico', 'favicon-32x32.png', 'favicon-48x48.png', 'favicon-96x96.png', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png',
     'robots.txt', 'sitemap.xml', 'site.webmanifest', 'indexnow-key.txt', 'yandex_78b336ef1242f2e2.html',
-    'css/site.min.css', 'css/price-calculator.min.css', 'css/calculator-page.min.css', 'css/services-page.min.css',
-    'js/site.min.js', 'js/price-calculator.min.js', 'js/page-common.min.js', 'js/home-links.min.js'
+    'css/site.min.css', 'css/site-concepts.min.css', 'css/price-calculator.min.css', 'css/calculator-page.min.css', 'css/services-page.min.css',
+    'js/site.min.js', 'js/site-concepts.min.js', 'js/concept-admin.min.js', 'js/price-calculator.min.js', 'js/page-common.min.js', 'js/home-links.min.js'
   ];
   for (const file of files) {
     const target = path.join(publicDir, file);

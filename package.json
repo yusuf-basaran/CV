@@ -4,7 +4,8 @@
   "scripts": {
     "build": "node scripts/build-assets.cjs",
     "submit:indexnow": "node scripts/submit-indexnow.cjs",
-    "test:seo": "node --test tests/search-readiness.test.cjs"
+    "test:seo": "node --test tests/search-readiness.test.cjs",
+    "test:concepts": "node --test tests/site-concepts.test.cjs"
   },
   "devDependencies": {
     "clean-css": "5.3.3",

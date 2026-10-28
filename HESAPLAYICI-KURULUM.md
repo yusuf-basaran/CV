@@ -62,13 +62,14 @@ npm run build
 python -m http.server 8002 --directory public
 ```
 
-Build; 4 JavaScript ve 4 CSS kaynağını küçültür, public klasörünü yeniden üretir ve aşağıdaki 27 dosyayı kopyalar. Yeni HTML ve sayfa-common kaynaklarının .min sürümleri dahil edilmiştir.
+Build; 6 JavaScript ve 5 CSS kaynağını küçültür, public klasörünü yeniden üretir ve aşağıdaki 30 dosyayı kopyalar. Yeni HTML ve sayfa-common kaynaklarının .min sürümleri dahil edilmiştir.
 
 ```text
 public/apple-touch-icon.png
 public/css/calculator-page.min.css
 public/css/price-calculator.min.css
 public/css/site.min.css
+public/css/site-concepts.min.css
 public/css/services-page.min.css
 public/favicon-32x32.png
 public/favicon-48x48.png
@@ -84,6 +85,8 @@ public/js/home-links.min.js
 public/js/page-common.min.js
 public/js/price-calculator.min.js
 public/js/site.min.js
+public/js/site-concepts.min.js
+public/js/concept-admin.min.js
 public/og-image.jpg
 public/profile.jpg
 public/profile.webp
@@ -121,3 +124,7 @@ Tarayıcıdaki CONFIG, fiyatlama, adım sistemi ve gönderim işlevleri değişt
 `/kktc-web-tasarim/`, CV'deki web becerilerine dayanan hizmetleri KKTC geneli için anlatır. Ana sayfanın menü/çağrı kartı/footer'ından, hesaplayıcının footer'ından erişilir. Bu sayfa hesaplayıcının yerini almaz; fiyat seçimleri `/fiyat-hesaplayici/` içinde kalır. Bağımsız sayfa yalnızca `site.min.css`, `services-page.min.css` ve tema/yıl için `page-common.min.js` kullanır. Proje, Supabase ve yönetici kodu yüklenmez.
 
 Yeni sayfanın başlangıç fiyatı da CONFIG'ten üretilir. Hesaplayıcı yapılandırması, fiyatlama, form ve adımlı akış değiştirilmemiştir. Üç canonical URL birbirinden ayrıdır; IndexNow bildirimi sitemap'teki üçünü içerir.
+
+## Bayram konsepti
+
+Üç sayfa `site-concepts.min.css` ve `site-concepts.min.js` ortak kaynaklarını yükler. Bu kaynaklar yalnızca bayram rengi ve kutlama bandını yönetir; fiyat seçimi, form ve hesaplama kuralları değişmez. Hesaplayıcı ve hizmet sayfasına Supabase SDK veya yönetici kodu eklenmez. Konsept kurulumu için `KONSEPT-KURULUM.md` ve `sql/site-concepts.sql` kullanılır.
