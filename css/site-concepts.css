@@ -2,14 +2,23 @@
 :root[data-occasion-family="religious"] { --accent: var(--brand); --accent-glow: rgba(245, 158, 11, 0.18); }
 :root[data-occasion-family="national"] { --accent: var(--danger); --accent-glow: rgba(239, 68, 68, 0.16); --brand: var(--danger); }
 :root[data-occasion-family] .card:hover { border-color: var(--accent); }
-.occasion-banner[hidden], .concept-modal[hidden], .occasion-preview[hidden] { display: none !important; }
+.occasion-banner[hidden], .concept-modal[hidden], .occasion-preview[hidden], .occasion-decorations[hidden], .occasion-footer-mark[hidden], .occasion-symbol[hidden] { display: none !important; }
 .occasion-banner {
   display: flex; align-items: center; gap: 20px; position: relative; overflow: hidden;
   padding: 22px 24px; margin: 0 0 24px; background: var(--bg-panel);
   border: 1px solid var(--accent); border-radius: var(--radius);
 }
 .occasion-banner::after { content: ''; position: absolute; width: 150px; height: 150px; border: 1px solid var(--accent); border-radius: 50%; opacity: 0.12; right: -45px; top: -55px; pointer-events: none; }
-.occasion-symbol { width: 54px; height: 54px; flex-shrink: 0; color: var(--accent); }
+.occasion-symbol { display: block; width: 68px; height: 68px; flex-shrink: 0; color: var(--accent); pointer-events: none; }
+.occasion-symbol > svg { display: block; width: 100%; height: 100%; }
+/* Süslemeler kendi alanında kalır; içerik ve sabit fiyat çubuğu örtülmez. */
+.occasion-decorations { height: 112px; overflow: hidden; margin: -18px 0 8px; color: var(--accent); pointer-events: none; user-select: none; }
+.occasion-decorations > svg { display: block; width: 100%; height: 112px; }
+.occasion-footer-mark { color: var(--accent); width: min(320px, 80%); height: 72px; margin: 20px auto 8px; pointer-events: none; user-select: none; }
+.occasion-footer-mark > svg { display: block; width: 100%; height: 100%; }
+:root[data-occasion-family] .section-title::after { background: linear-gradient(90deg, var(--accent), var(--line) 70%); opacity: .65; }
+:root[data-occasion-family="religious"] .occasion-banner { background-image: radial-gradient(ellipse at top right, var(--accent-glow), transparent 70%); }
+:root[data-occasion-family="national"] .hero-card { border-top-color: var(--accent); }
 .occasion-label { font-size: 0.73rem; color: var(--accent); font-weight: 600; margin-bottom: 6px; }
 .occasion-title { font-family: 'Outfit', sans-serif; color: var(--ink); font-size: clamp(1.15rem, 3vw, 1.55rem); font-weight: 600; line-height: 1.4; }
 .occasion-message { color: var(--ink-soft); font-size: 0.82rem; line-height: 1.8; margin-top: 6px; }
@@ -36,12 +45,16 @@
 .concept-modal input { scroll-margin-block: 24px 90px; }
 @media (max-width: 480px) {
   .occasion-banner { padding: 20px 16px; gap: 12px; }
-  .occasion-symbol { width: 36px; height: 36px; }
+  .occasion-symbol { width: 48px; height: 48px; }
+  .occasion-decorations { height: 100px; margin-bottom: 4px; }
+  .occasion-footer-mark { height: 60px; margin-top: 12px; }
   .concept-modal .modal-card { padding: 20px; }
   .concept-options-grid { grid-template-columns: minmax(0, 1fr); }
   .concept-modal .modal-foot { bottom: -20px; flex-wrap: wrap; }
 }
 @media print {
   :root[data-occasion-family] { --accent: #0369a1; --accent-glow: #e6f3fa; --brand: #b45309; }
-  .occasion-banner, .concept-modal { display: none !important; }
+  .occasion-banner, .occasion-decorations, .occasion-footer-mark, .concept-modal { display: none !important; }
+  :root[data-occasion-family] .section-title::after { background: var(--line); opacity: 1; }
+  :root[data-occasion-family="national"] .hero-card { border-top-color: var(--line); }
 }

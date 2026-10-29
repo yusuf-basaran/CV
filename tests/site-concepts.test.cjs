@@ -43,8 +43,13 @@ test('Önizleme yayınlanan seçimi veya tarayıcıdaki kaydı değiştirmez; ip
 test('Standart görünüm bayram rengini ve mesajını tamamen kaldırır', async () => {
   const { concepts, elements, document } = await browserFixture('kurban');
   assert.equal(elements.get('occasionBanner').hidden, false);
+  assert.equal(elements.get('occasionDecorations').hidden, false);
   concepts.acceptPublished('normal');
   assert.equal(elements.get('occasionBanner').hidden, true);
+  for (const id of ['occasionDecorations', 'occasionSymbol', 'occasionFooterMark']) {
+    assert.equal(elements.get(id).hidden, true);
+    assert.equal(elements.get(id).innerHTML, '');
+  }
   assert.equal(document.documentElement.dataset.occasionFamily, undefined);
   assert.equal(document.documentElement.dataset.occasion, undefined);
 });

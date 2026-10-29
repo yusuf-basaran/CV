@@ -19,6 +19,8 @@ Seçenekler: Standart görünüm, Ramazan Bayramı, Kurban Bayramı, genel mill�
 
 Konsept seçimi elle yapılır; otomatik takvim veya bitiş tarihi yoktur. Bayram sonrasında Standart görünümü yayınlayın. Konseptler CV/PDF çıktısında görünmez.
 
+Sayfa içi süslemeler de seçilen konsepti izler: millî bayramlarda ay-yıldızlı Türk bayrakları, 20 Temmuz ve 15 Kasım'da Türkiye–KKTC bayrakları birlikte; 23 Nisan'da renkli flamalar; 30 Ağustos'ta defne dallı yıldız; dinî bayramlarda kandiller, hilal ve geometrik motifler gösterilir. Bayrak dizisi üst kutunun altında, küçük mühür motifi sayfa sonunda yer alır. Yerel SVG çizimleri ağdan dosya indirmez, hareket etmez, tıklamaları engellemez, ekran okuyucudan ve yazdırma çıktısından gizlenir. Mobilde bayrak dizisinin ortası gösterilir; yatay kayma oluşturmaz. Önizleme ve iptal bu detayları da kapsar. Standart görünümde tamamı kaldırılır; ek SQL kurulumu gerekmez.
+
 ## Güvenlik ve veri yapısı
 
 - `cv_site_concept_settings` tek satır tutar: id, önceden tanımlı konsept kimliği ve sunucunun güncellediği zaman.
