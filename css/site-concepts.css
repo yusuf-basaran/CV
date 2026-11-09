@@ -1,5 +1,7 @@
 /* Seçili konsept mevcut açık/koyu tema değişkenlerini kullanır. */
 :root[data-occasion-family="religious"] { --accent: var(--brand); --accent-glow: rgba(245, 158, 11, 0.18); }
+:root[data-occasion-family="community"] { --accent: #5eead4; --accent-glow: rgba(94, 234, 212, 0.12); --brand: #2dd4bf; }
+:root[data-theme="light"][data-occasion-family="community"] { --accent: #0f766e; --accent-glow: rgba(15, 118, 110, 0.1); --brand: #0f766e; }
 :root[data-occasion-family="national"] { --accent: var(--danger); --accent-glow: rgba(239, 68, 68, 0.16); --brand: var(--danger); }
 :root[data-occasion-family="remembrance"] { --accent: #cbd5e1; --accent-glow: rgba(203, 213, 225, 0.1); --brand: #94a3b8; }
 :root[data-theme="light"][data-occasion-family="remembrance"] { --accent: #334155; --accent-glow: rgba(51, 65, 85, 0.08); --brand: #475569; }
@@ -26,7 +28,7 @@
 :root[data-occasion-family="national"] .hero-card { border-top-color: var(--accent); }
 .occasion-label { font-size: 0.73rem; color: var(--accent); font-weight: 600; margin-bottom: 6px; }
 .occasion-title { font-family: 'Outfit', sans-serif; color: var(--ink); font-size: clamp(1.15rem, 3vw, 1.55rem); font-weight: 600; line-height: 1.4; }
-.occasion-message { color: var(--ink-soft); font-size: 0.82rem; line-height: 1.8; margin-top: 6px; }
+.occasion-message { white-space: pre-line; overflow-wrap: anywhere; color: var(--ink-soft); font-size: 0.82rem; line-height: 1.8; margin-top: 6px; }
 .occasion-preview { position: absolute; top: 8px; right: 12px; font-size: 0.65rem; color: var(--ink-soft); }
 .concept-modal .modal-card { max-width: 680px; }
 .concept-modal { color-scheme: dark; }

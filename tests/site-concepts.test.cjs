@@ -155,12 +155,11 @@ test('Bütün sabit tarihli bayram ve anmalar her yıl yalnızca iki gün göste
   for (const year of [2026, 2027, 2028, 2031]) for (const [preset, date] of dates) {
     const start = Date.parse(`${year}-${date}T00:00:00+03:00`);
     const fixture = await browserFixture('auto', {now: new Date(start).toISOString()});
-    assert.equal(fixture.concepts.state().effectivePreset, preset, `${year} ${preset}`);
+    assert.ok(fixture.concepts.state().activePresets.includes(preset), `${year} ${preset}`);
     await fixture.advance(new Date(start + 48 * 60 * 60 * 1000 - 1).toISOString());
-    assert.equal(fixture.concepts.state().effectivePreset, preset);
+    assert.ok(fixture.concepts.state().activePresets.includes(preset));
     await fixture.advance(new Date(start + 48 * 60 * 60 * 1000).toISOString());
-    // 2026'da 18 Mart bittiği anda Ramazan Bayramı başlar.
-    assert.equal(fixture.concepts.state().effectivePreset, year === 2026 && preset === 'march18' ? 'ramazan' : 'normal');
+    assert.equal(fixture.concepts.state().activePresets.includes(preset), false);
   }
 });
 
@@ -169,9 +168,9 @@ test('Dinî bayramlar 2026–2030 Diyanet tarihlerinde başlar; yıl bazında de
     for (const [preset, date] of [['ramazan',ramazan],['kurban',kurban]]) {
       const start = Date.parse(`${year}-${date}T00:00:00+03:00`);
       const fixture = await browserFixture('auto', {now: new Date(start).toISOString()});
-      assert.equal(fixture.concepts.state().effectivePreset, preset);
+      assert.ok(fixture.concepts.state().activePresets.includes(preset));
       await fixture.advance(new Date(start + 48 * 60 * 60 * 1000).toISOString());
-      assert.equal(fixture.concepts.state().effectivePreset, 'normal');
+      assert.equal(fixture.concepts.state().activePresets.includes(preset), false);
     }
   }
 });
@@ -220,15 +219,108 @@ test('İki günlük sınır önizlemeyi bozmaz; iptal, sekmeye dönüş ve depol
   assert.equal(fixture.document.documentElement.dataset.occasion, 'november10');
 });
 
-test('Çakışan tarihlerde yeni başlayan gün önceliklidir; elle seçimin bitmesi takvimi geri getirir', async () => {
+test('Çakışan tarihlerde millî bayram önceliklidir ve diğer günün mesajı korunur; elle seçimin bitmesi takvimi geri getirir', async () => {
   const fixture = await browserFixture('auto', {now:'2029-04-23T12:00:00+03:00'});
   assert.equal(fixture.concepts.state().effectivePreset, 'april23');
   await fixture.advance('2029-04-24T00:00:00+03:00');
-  assert.equal(fixture.concepts.state().effectivePreset, 'kurban');
+  assert.equal(fixture.concepts.state().effectivePreset, 'april23');
+  assert.ok(fixture.concepts.state().activePresets.includes('kurban'));
+  assert.match(fixture.elements.get('occasionMessage').textContent, /Kurban Bayramınız/);
   const manual = await browserFixture('memorial', {now:'2026-11-10T12:00:00+03:00',updatedAt:'2026-11-08T12:00:01+03:00'});
   assert.equal(manual.concepts.state().effectivePreset, 'memorial');
   await manual.advance('2026-11-10T12:00:01+03:00');
   assert.equal(manual.concepts.state().effectivePreset, 'november10');
   await manual.advance('2026-11-12T00:00:00+03:00');
   assert.equal(manual.elements.get('occasionBanner').hidden, true);
+});
+
+test('İstanbul ve Kıbrıs fetihleri ile KKTC anmaları doğru tarihte ve uygun görselle gösterilir', async () => {
+  for (const [id, date, family, keyword] of [
+    ['may29','2026-05-29','national','İstanbul’un fethinin'],
+    ['august1','2026-08-01','national','Toplumsal Direniş'],
+    ['august8','2026-08-08','remembrance','Erenköy'],
+    ['january13','2026-01-13','remembrance','Denktaş'],
+    ['january15','2026-01-15','remembrance','Küçük'],
+    ['february6','2026-02-06','remembrance','6 Şubat'],
+    ['december21','2026-12-21','remembrance','Kıbrıs Türk']
+  ]) {
+    const fixture = await browserFixture('auto', {now:date+'T00:00:00+03:00'});
+    assert.ok(fixture.concepts.state().activePresets.includes(id));
+    assert.equal(fixture.document.documentElement.dataset.occasionFamily, family);
+    assert.ok(fixture.elements.get('occasionTitle').textContent.includes(keyword));
+    if (id === 'august1') {
+      assert.match(fixture.elements.get('occasionMessage').textContent, /Kıbrıs’ın fethini/);
+      assert.match(fixture.elements.get('occasionSymbol').innerHTML, /data-occasion-flag="kktc"/);
+    }
+    if (family === 'remembrance') {
+      assert.doesNotMatch(fixture.elements.get('occasionTitle').textContent, /kutlu/);
+      assert.doesNotMatch(fixture.elements.get('occasionSymbol').innerHTML, /data-occasion-flag/);
+    }
+  }
+});
+
+test('Anneler ve Babalar Günü sabit güne bağlanmaz; her yıl doğru pazar günü iki gün görünür', async () => {
+  for (const [year, motherDate, fatherDate] of [[2026,'05-10','06-21'],[2027,'05-09','06-20'],[2028,'05-14','06-18'],[2029,'05-13','06-17'],[2030,'05-12','06-16']]) {
+    for (const [id,date] of [['mothers',motherDate],['fathers',fatherDate]]) {
+      const start = Date.parse(`${year}-${date}T00:00:00+03:00`);
+      const fixture = await browserFixture('auto', {now:new Date(start-1).toISOString()});
+      assert.equal(fixture.concepts.state().activePresets.includes(id),false);
+      await fixture.advance(new Date(start).toISOString());
+      assert.ok(fixture.concepts.state().activePresets.includes(id));
+      await fixture.advance(new Date(start+48*60*60*1000-1).toISOString());
+      assert.ok(fixture.concepts.state().activePresets.includes(id));
+      await fixture.advance(new Date(start+48*60*60*1000).toISOString());
+      assert.equal(fixture.concepts.state().activePresets.includes(id),false);
+    }
+  }
+});
+
+test('Bir yılda tekrar eden kandiller ve Ramazan başlangıcı ile arefe/bayram geçişleri korunur', async () => {
+  for (const [id, dates] of [
+    ['mirac',['2027-01-04','2027-12-24']],
+    ['berat',['2028-01-11','2028-12-30']],
+    ['ramadanStart',['2030-01-05','2030-12-26']]
+  ]) {
+    for (const date of dates) {
+      const fixture = await browserFixture('auto',{now:date+'T12:00:00+03:00'});
+      assert.ok(fixture.concepts.state().activePresets.includes(id));
+    }
+  }
+  const fixture = await browserFixture('auto',{now:'2027-03-08T23:59:59+03:00'});
+  assert.ok(fixture.concepts.state().activePresets.includes('ramazanEve'));
+  await fixture.advance('2027-03-09T00:00:00+03:00');
+  assert.ok(fixture.concepts.state().activePresets.includes('ramazan'));
+  assert.ok(fixture.concepts.state().activePresets.includes('ramazanEve'));
+  await fixture.advance('2027-03-10T00:00:00+03:00');
+  assert.ok(fixture.concepts.state().activePresets.includes('ramazan'));
+  assert.equal(fixture.concepts.state().activePresets.includes('ramazanEve'),false);
+});
+
+test('Aynı günün mesajları birlikte görünür; ikincil olay bittiğinde metinden kaldırılır', async () => {
+  const fixture = await browserFixture('auto',{now:'2026-03-21T12:00:00+03:00'});
+  for (const id of ['ramazan','nowruz','forests']) assert.ok(fixture.concepts.state().activePresets.includes(id));
+  const text = fixture.elements.get('occasionMessage').textContent;
+  for (const keyword of ['Nevruz','Orman','bayram']) assert.ok(text.includes(keyword));
+  await fixture.advance('2026-03-22T00:00:00+03:00');
+  assert.equal(fixture.concepts.state().activePresets.includes('ramazan'),false);
+  assert.doesNotMatch(fixture.elements.get('occasionMessage').textContent,/Ramazan Bayramı/);
+  fixture.concepts.preview('november10');
+  assert.doesNotMatch(fixture.elements.get('occasionMessage').textContent,/Nevruz/);
+  fixture.concepts.cancelPreview();
+  assert.match(fixture.elements.get('occasionMessage').textContent,/Nevruz/);
+});
+
+test('Bütün tarihli katalog girdileri iki günlük dönem sonunda listeden çıkar; kimlikler benzersizdir', async () => {
+  const {concepts} = await browserFixture('auto');
+  assert.equal(new Set(concepts.presets.map(p=>p.id)).size,concepts.presets.length);
+  for (const preset of concepts.presets.filter(p=>p.date)) {
+    const start=Date.parse(`2028-${preset.date}T00:00:00+03:00`);
+    const fixture=await browserFixture('auto',{now:new Date(start).toISOString()});
+    assert.ok(fixture.concepts.state().activePresets.includes(preset.id),preset.id);
+    await fixture.advance(new Date(start+48*60*60*1000).toISOString());
+    assert.equal(fixture.concepts.state().activePresets.includes(preset.id),false,preset.id);
+  }
+  const fixture=await browserFixture('auto',{now:'2026-03-08T12:00:00+03:00'});
+  assert.equal(fixture.document.documentElement.dataset.occasionFamily,'community');
+  assert.doesNotMatch(fixture.elements.get('occasionSymbol').innerHTML,/data-occasion-flag/);
 });

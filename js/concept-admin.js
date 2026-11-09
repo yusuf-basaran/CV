@@ -19,9 +19,11 @@
 
   for (const group of [
     { id: 'normal', name: 'Standart' },
-    { id: 'religious', name: 'Dinî bayramlar' },
+    { id: 'religious', name: 'Dinî bayramlar ve özel günler' },
     { id: 'national', name: 'Millî bayramlar' },
-    { id: 'remembrance', name: 'Anma günleri' }
+    { id: 'remembrance', name: 'Anma günleri' },
+    { id: 'historical', name: 'Fetih, kurtuluş ve tarihî günler' },
+    { id: 'community', name: 'Toplumsal ve kültürel günler' }
   ]) {
     const fieldset = document.createElement('fieldset');
     fieldset.className = 'concept-group';

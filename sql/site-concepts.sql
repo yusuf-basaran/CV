@@ -25,12 +25,12 @@ create table if not exists public.cv_site_concept_settings (
 );
 
 -- CREATE TABLE IF NOT EXISTS mevcut kısıtı güncellemez.
--- Tekrar kurulumda seçili konsepti koruyarak yeni anma seçeneklerini aç.
+-- Tekrar kurulumda seçili konsepti koruyarak bütün yeni özel gün seçeneklerini aç.
 alter table public.cv_site_concept_settings
   drop constraint if exists cv_site_concept_settings_preset_check;
 alter table public.cv_site_concept_settings
   add constraint cv_site_concept_settings_preset_check
-  check (preset in ('auto', 'normal', 'ramazan', 'kurban', 'national', 'april23', 'may19', 'july20', 'august30', 'october29', 'november15', 'memorial', 'november10', 'march18'));
+  check (preset in ('auto', 'normal', 'ramazan', 'kurban', 'national', 'april23', 'may19', 'july20', 'august30', 'october29', 'november15', 'memorial', 'november10', 'march18', 'ramadanStart', 'threeMonths', 'regaib', 'mirac', 'berat', 'kadir', 'mevlid', 'hijri', 'ashura', 'ramazanEve', 'kurbanEve', 'may1', 'august1', 'january13', 'january15', 'january27', 'february6', 'march12', 'july15', 'august8', 'august17', 'september19', 'december21', 'february13', 'april29', 'may29', 'july1', 'july24', 'august26', 'september9', 'september13', 'october6', 'october11', 'october13', 'december27', 'newyear', 'february14', 'march8', 'march14', 'nowruz', 'forests', 'water', 'theatre', 'autism', 'health', 'police', 'environment', 'peace', 'cleanAir', 'language', 'tourism', 'olderPeople', 'animals', 'worldTeachers', 'redCrescent', 'diabetes', 'childRights', 'teachers', 'disability', 'miners', 'womenVote', 'humanRights', 'localGoods', 'mothers', 'fathers'));
 
 alter table public.cv_site_concept_settings alter column preset set default 'auto';
 
