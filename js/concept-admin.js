@@ -79,7 +79,7 @@
           ? 'Konsept kaydı henüz hazır değil. Kurulumdan sonra Yeniden Kontrol Et düğmesini kullanın.'
           : !authorized ? 'Bu hesabın konsept değiştirme yetkisi bulunmuyor.'
             : !concepts.state().ready ? 'Konsept ayarı okunamadı. Yeniden kontrol edin.'
-              : 'Yayınladığınız konsept tüm ziyaretçilere ve üç sayfaya uygulanır.';
+              : 'Otomatik takvim özel günleri iki gün gösterir. Elle yayınlanan seçim 48 saat sonra otomatik takvime döner.';
       }
     } catch (error) {
       authorized = false;
@@ -140,7 +140,7 @@
       const { data, error } = await client.from('cv_site_concept_settings')
         .update({ preset: selected }).eq('id', 1).select('preset,updated_at').single();
       if (error || data?.preset !== selected) throw new Error('Yayınlanamadı.');
-      concepts.acceptPublished(data.preset);
+      concepts.acceptPublished(data.preset, data.updated_at);
       close(false);
       if (typeof showToast === 'function') showToast('Site konsepti tüm ziyaretçiler için güncellendi.');
     } catch (error) {

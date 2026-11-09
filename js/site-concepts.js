@@ -2,6 +2,7 @@
 (() => {
   'use strict';
   const PRESETS = Object.freeze([
+    { id: 'auto', group: 'normal', label: 'Otomatik takvim', title: 'Otomatik takvim', message: 'Özel günlerde ilgili konsept iki gün gösterilir; diğer günlerde standart görünüm kullanılır.', family: '' },
     { id: 'normal', group: 'normal', label: 'Standart görünüm', title: '', message: '', family: '' },
     { id: 'ramazan', group: 'religious', label: 'Ramazan Bayramı', title: 'Ramazan Bayramınız kutlu olsun.', message: 'Sevdiklerinizle birlikte huzurlu, sağlıklı ve güzel bir bayram dilerim.', family: 'religious' },
     { id: 'kurban', group: 'religious', label: 'Kurban Bayramı', title: 'Kurban Bayramınız kutlu olsun.', message: 'Paylaşmanın ve dayanışmanın çoğaldığı, huzurlu bir bayram dilerim.', family: 'religious' },
@@ -22,11 +23,23 @@
   const API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhxYXV5aG5laWRranBjaGpodXRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTExMzc2NjIsImV4cCI6MjEwNjcxMzY2Mn0.XmAwz3BRDyN2iAxvQTCLehevdfeoR04dOxKxDxpwEXg';
   const root = document.documentElement;
   const banner = document.getElementById('occasionBanner');
-  let savedPreset = 'normal';
+  const DURATION = 48 * 60 * 60 * 1000;
+  const ANNUAL_DATES = { march18: '03-18', april23: '04-23', may19: '05-19', july20: '07-20', august30: '08-30', october29: '10-29', november10: '11-10', november15: '11-15' };
+  // Diyanet'in yıllık listeleri; kaynaklar KONSEPT-KURULUM.md içinde.
+  const RELIGIOUS_DATES = {
+    2026: { ramazan: '03-20', kurban: '05-27' },
+    2027: { ramazan: '03-09', kurban: '05-16' },
+    2028: { ramazan: '02-26', kurban: '05-05' },
+    2029: { ramazan: '02-14', kurban: '04-24' },
+    2030: { ramazan: '02-04', kurban: '04-13' }
+  };
+  let savedPreset = 'auto';
+  let updatedAt = null;
   let ready = false;
   let previewing = false;
   let loading;
   let artworkPreset;
+  let rolloverTimer;
 
   // Çizimler yerel ve sabittir; sunucudan HTML alınmaz.
   const star = '<path d="m0-10 2.25 6.9h7.25L3.63 1.18l2.24 6.91L0 3.82l-5.87 4.27 2.24-6.91-5.87-4.28h7.25Z" fill="currentColor"/>';
@@ -104,8 +117,39 @@
     }
   }
 
+  function automatic(now = Date.now()) {
+    // Takvim için tek referans Türkiye saati (UTC+3); ziyaretçinin saat dilimi etkilemez.
+    const year = new Date(now + 3 * 60 * 60 * 1000).getUTCFullYear();
+    const dates = { ...ANNUAL_DATES, ...RELIGIOUS_DATES[year] };
+    const active = Object.entries(dates).map(([preset, date]) => {
+      const start = Date.parse(`${year}-${date}T00:00:00+03:00`);
+      return { preset, start, expiresAt: start + DURATION };
+    }).filter(item => now >= item.start && now < item.expiresAt)
+      .sort((a, b) => b.start - a.start)[0];
+    return active || { preset: 'normal', expiresAt: null };
+  }
+
+  function state() {
+    const now = Date.now();
+    const start = typeof updatedAt === 'string' ? Date.parse(updatedAt) : NaN;
+    const manual = savedPreset !== 'auto' && start <= now && now < start + DURATION;
+    const current = manual ? { preset: savedPreset, expiresAt: start + DURATION } : automatic(now);
+    return { ready, preset: manual ? savedPreset : 'auto', effectivePreset: current.preset, expiresAt: current.expiresAt };
+  }
+
+  function refresh() {
+    if (previewing) return;
+    const current = state();
+    apply(current.effectivePreset);
+    clearTimeout(rolloverTimer);
+    const now = Date.now();
+    const day = DURATION / 2;
+    const nextMidnight = (Math.floor((now + 3 * 60 * 60 * 1000) / day) + 1) * day - 3 * 60 * 60 * 1000;
+    rolloverTimer = setTimeout(refresh, Math.max(1, Math.min(current.expiresAt || Infinity, nextMidnight) - now));
+  }
+
   function apply(id, preview = false) {
-    const preset = byId.get(id) || byId.get('normal');
+    const preset = byId.get(id === 'auto' ? automatic().preset : id) || byId.get('normal');
     renderArtwork(preset);
     if (preset.family) {
       root.dataset.occasionFamily = preset.family;
@@ -122,19 +166,20 @@
     document.getElementById('occasionPreview').hidden = !preview;
   }
 
-  function remember(id) {
+  function remember(id, timestamp) {
     const preset = byId.get(id) || byId.get('normal');
     savedPreset = preset.id;
+    updatedAt = typeof timestamp === 'string' && Number.isFinite(Date.parse(timestamp)) ? timestamp : null;
     try {
-      localStorage.setItem(CACHE_KEY, JSON.stringify({ preset: preset.id, family: preset.family, savedAt: Date.now() }));
+      localStorage.setItem(CACHE_KEY, JSON.stringify({ preset: preset.id, updatedAt }));
     } catch (error) {}
-    if (!previewing) apply(preset.id);
+    refresh();
   }
 
-  function acceptPublished(id) {
+  function acceptPublished(id, timestamp) {
     previewing = false;
     ready = true;
-    remember(id);
+    remember(id, timestamp);
     document.dispatchEvent(new CustomEvent('site-concept-loaded', { detail: { ready, preset: savedPreset } }));
   }
 
@@ -150,12 +195,13 @@
         const rows = await response.json();
         if (!Array.isArray(rows) || rows.length !== 1 || !byId.has(rows[0].preset)) throw new Error('Konsept ayarı geçersiz.');
         ready = true;
-        remember(rows[0].preset);
+        remember(rows[0].preset, rows[0].updated_at);
       } catch (error) {
         ready = false;
         // Bağlantı sorunu, proje listesini veya hesaplayıcıyı etkilemez.
       } finally {
         loading = null;
+        refresh();
         document.dispatchEvent(new CustomEvent('site-concept-loaded', { detail: { ready, preset: savedPreset } }));
       }
       return { ready, preset: savedPreset };
@@ -165,17 +211,17 @@
 
   try {
     const cached = JSON.parse(localStorage.getItem(CACHE_KEY));
-    if (cached && byId.has(cached.preset)) savedPreset = cached.preset;
+    if (cached && byId.has(cached.preset)) { savedPreset = cached.preset; updatedAt = cached.updatedAt; }
   } catch (error) {}
-  apply(savedPreset);
+  refresh();
 
   window.SiteConcepts = Object.freeze({
     presets: PRESETS,
     load,
     acceptPublished,
-    state: () => ({ ready, preset: savedPreset }),
+    state,
     preview(id) { previewing = true; apply(id, true); },
-    cancelPreview() { previewing = false; apply(savedPreset); }
+    cancelPreview() { previewing = false; refresh(); }
   });
   window.addEventListener('storage', event => {
     if (event.key !== CACHE_KEY) return;
@@ -183,13 +229,14 @@
       const cached = JSON.parse(event.newValue);
       if (cached && byId.has(cached.preset)) {
         savedPreset = cached.preset;
-        if (!previewing) apply(savedPreset);
+        updatedAt = cached.updatedAt;
+        refresh();
       }
     } catch (error) {}
   });
   document.addEventListener('visibilitychange', () => {
-    if (!document.hidden && !previewing) load();
+    if (!document.hidden && !previewing) { refresh(); load(); }
   });
-  setInterval(() => { if (!document.hidden && !previewing) load(); }, 60000);
+  setInterval(() => { if (!document.hidden && !previewing) { refresh(); load(); } }, 60000);
   load();
 })();

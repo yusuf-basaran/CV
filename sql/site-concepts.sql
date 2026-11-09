@@ -20,7 +20,7 @@ create table if not exists public.cv_site_concept_admins (
 
 create table if not exists public.cv_site_concept_settings (
   id smallint primary key default 1 check (id = 1),
-  preset text not null default 'normal',
+  preset text not null default 'auto',
   updated_at timestamptz not null default now()
 );
 
@@ -30,7 +30,9 @@ alter table public.cv_site_concept_settings
   drop constraint if exists cv_site_concept_settings_preset_check;
 alter table public.cv_site_concept_settings
   add constraint cv_site_concept_settings_preset_check
-  check (preset in ('normal', 'ramazan', 'kurban', 'national', 'april23', 'may19', 'july20', 'august30', 'october29', 'november15', 'memorial', 'november10', 'march18'));
+  check (preset in ('auto', 'normal', 'ramazan', 'kurban', 'national', 'april23', 'may19', 'july20', 'august30', 'october29', 'november15', 'memorial', 'november10', 'march18'));
+
+alter table public.cv_site_concept_settings alter column preset set default 'auto';
 
 alter table public.cv_site_concept_admins enable row level security;
 alter table public.cv_site_concept_settings enable row level security;
@@ -49,7 +51,7 @@ on conflict (user_id) do nothing;
 
 -- Tekrar çalıştırmak seçilmiş konsepti sıfırlamaz.
 insert into public.cv_site_concept_settings (id, preset)
-values (1, 'normal') on conflict (id) do nothing;
+values (1, 'auto') on conflict (id) do nothing;
 
 drop policy if exists cv_concept_admin_self_read on public.cv_site_concept_admins;
 create policy cv_concept_admin_self_read on public.cv_site_concept_admins
@@ -97,5 +99,5 @@ for each row execute function public.cv_concept_set_updated_at();
 notify pgrst, 'reload schema';
 commit;
 
--- Sonuç normal veya daha önce seçtiğiniz konsept olmalı.
+-- Sonuç auto veya daha önce seçtiğiniz konsept olmalı.
 select id, preset, updated_at from public.cv_site_concept_settings;
