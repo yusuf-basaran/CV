@@ -19,8 +19,11 @@
 
   for (const group of [
     { id: 'normal', name: 'Standart' },
-    { id: 'religious', name: 'Dinî bayramlar' },
-    { id: 'national', name: 'Millî bayramlar' }
+    { id: 'religious', name: 'Dinî bayramlar ve özel günler' },
+    { id: 'national', name: 'Millî bayramlar' },
+    { id: 'remembrance', name: 'Anma günleri' },
+    { id: 'historical', name: 'Fetih, kurtuluş ve tarihî günler' },
+    { id: 'community', name: 'Toplumsal ve kültürel günler' }
   ]) {
     const fieldset = document.createElement('fieldset');
     fieldset.className = 'concept-group';
@@ -56,7 +59,7 @@
     const preset = concepts.presets.find(item => item.id === selected);
     choices.forEach(input => { input.checked = input.value === selected; input.disabled = busy; });
     document.getElementById('conceptPreviewTitle').textContent = preset.title || 'Standart görünüm';
-    document.getElementById('conceptPreviewMessage').textContent = preset.message || 'Sitenin normal renkleri kullanılır; bayram mesajı gösterilmez.';
+    document.getElementById('conceptPreviewMessage').textContent = preset.message || 'Sitenin normal renkleri kullanılır; özel gün mesajı gösterilmez.';
     saveButton.disabled = busy || !authorized || !concepts.state().ready || selected === concepts.state().preset;
     saveButton.textContent = busy ? 'Yayınlanıyor…' : 'Konsepti Yayınla';
     reloadButton.disabled = busy;
@@ -78,7 +81,7 @@
           ? 'Konsept kaydı henüz hazır değil. Kurulumdan sonra Yeniden Kontrol Et düğmesini kullanın.'
           : !authorized ? 'Bu hesabın konsept değiştirme yetkisi bulunmuyor.'
             : !concepts.state().ready ? 'Konsept ayarı okunamadı. Yeniden kontrol edin.'
-              : 'Yayınladığınız konsept tüm ziyaretçilere ve üç sayfaya uygulanır.';
+              : 'Otomatik takvim özel günleri iki gün gösterir. Elle yayınlanan seçim 48 saat sonra otomatik takvime döner.';
       }
     } catch (error) {
       authorized = false;
@@ -139,7 +142,7 @@
       const { data, error } = await client.from('cv_site_concept_settings')
         .update({ preset: selected }).eq('id', 1).select('preset,updated_at').single();
       if (error || data?.preset !== selected) throw new Error('Yayınlanamadı.');
-      concepts.acceptPublished(data.preset);
+      concepts.acceptPublished(data.preset, data.updated_at);
       close(false);
       if (typeof showToast === 'function') showToast('Site konsepti tüm ziyaretçiler için güncellendi.');
     } catch (error) {

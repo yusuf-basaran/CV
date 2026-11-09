@@ -1,5 +1,8 @@
--- Supabase SQL Editor'da bir kez çalıştırın. Mevcut proje verileri değişmez.
--- Yetki yalnızca aşağıdaki e-postayla kayıtlı, doğrulanmış hesaba verilir.
+-- TAM KURULUM VE ETKİNLEŞTİRME: tamamını tek sorguda çalıştırın.
+-- Proje: hqauyhneidkjpchjhutb (CV).
+-- Yetki: yusufbasarann63@gmail.com ile kayıtlı, doğrulanmış yönetici hesabı.
+-- 75 özel günü / 79 panel seçeneğini destekler; otomatik takvimi hemen açar.
+-- Tekrar çalıştırılabilir. Projeleri, hesaplayıcıyı ve kullanıcıları silmez.
 begin;
 
 do $$
@@ -20,10 +23,19 @@ create table if not exists public.cv_site_concept_admins (
 
 create table if not exists public.cv_site_concept_settings (
   id smallint primary key default 1 check (id = 1),
-  preset text not null default 'normal'
-    check (preset in ('normal', 'ramazan', 'kurban', 'national', 'april23', 'may19', 'july20', 'august30', 'october29', 'november15')),
+  preset text not null default 'auto',
   updated_at timestamptz not null default now()
 );
+
+-- CREATE TABLE IF NOT EXISTS mevcut kısıtı güncellemez.
+-- Bütün özel gün kimliklerini mevcut kurulumda da kullanılabilir yap.
+alter table public.cv_site_concept_settings
+  drop constraint if exists cv_site_concept_settings_preset_check;
+alter table public.cv_site_concept_settings
+  add constraint cv_site_concept_settings_preset_check
+  check (preset in ('auto', 'normal', 'ramazan', 'kurban', 'national', 'april23', 'may19', 'july20', 'august30', 'october29', 'november15', 'memorial', 'november10', 'march18', 'ramadanStart', 'threeMonths', 'regaib', 'mirac', 'berat', 'kadir', 'mevlid', 'hijri', 'ashura', 'ramazanEve', 'kurbanEve', 'may1', 'august1', 'january13', 'january15', 'january27', 'february6', 'march12', 'july15', 'august8', 'august17', 'september19', 'december21', 'february13', 'april29', 'may29', 'july1', 'july24', 'august26', 'september9', 'september13', 'october6', 'october11', 'october13', 'december27', 'newyear', 'february14', 'march8', 'march14', 'nowruz', 'forests', 'water', 'theatre', 'autism', 'health', 'police', 'environment', 'peace', 'cleanAir', 'language', 'tourism', 'olderPeople', 'animals', 'worldTeachers', 'redCrescent', 'diabetes', 'childRights', 'teachers', 'disability', 'miners', 'womenVote', 'humanRights', 'localGoods', 'mothers', 'fathers'));
+
+alter table public.cv_site_concept_settings alter column preset set default 'auto';
 
 alter table public.cv_site_concept_admins enable row level security;
 alter table public.cv_site_concept_settings enable row level security;
@@ -39,10 +51,6 @@ select id from auth.users
 where lower(email) = lower('yusufbasarann63@gmail.com')
   and email_confirmed_at is not null
 on conflict (user_id) do nothing;
-
--- Tekrar çalıştırmak seçilmiş konsepti sıfırlamaz.
-insert into public.cv_site_concept_settings (id, preset)
-values (1, 'normal') on conflict (id) do nothing;
 
 drop policy if exists cv_concept_admin_self_read on public.cv_site_concept_admins;
 create policy cv_concept_admin_self_read on public.cv_site_concept_admins
@@ -87,8 +95,14 @@ create trigger cv_concept_updated_at
 before update on public.cv_site_concept_settings
 for each row execute function public.cv_concept_set_updated_at();
 
+-- Tek çalıştırmada etkinleştirme: varsa elle seçilmiş konsepti de otomatik takvime al.
+insert into public.cv_site_concept_settings (id, preset)
+values (1, 'auto')
+on conflict (id) do update set preset = excluded.preset;
+
 notify pgrst, 'reload schema';
 commit;
 
--- Sonuç normal veya daha önce seçtiğiniz konsept olmalı.
+-- Başarılı sonuç: id = 1, preset = auto.
+-- Panelden ayrıca yayınlama yapmanız gerekmez.
 select id, preset, updated_at from public.cv_site_concept_settings;
