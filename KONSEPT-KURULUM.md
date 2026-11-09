@@ -1,4 +1,4 @@
-# Dinî ve millî bayram konseptleri
+# Bayram ve anma günü konseptleri
 
 ## Bir defalık kurulum
 
@@ -15,11 +15,17 @@ Sitenin bağlı olduğu Supabase projesi `hqauyhneidkjpchjhutb` olduğundan SQL 
 
 Bir konsept seçmek o sayfada özel önizleme başlatır. Bu aşamada veritabanı ve diğer ziyaretçiler etkilenmez. **Vazgeç**, Esc veya pencere dışına tıklamak önizlemeyi iptal eder. **Konsepti Yayınla**, seçimi kaydeder; tüm ziyaretçiler için ana sayfaya, hizmet sayfasına ve fiyat hesaplayıcıya uygulanır. Başka bir tarayıcı da seçimi sunucudan okur. Açık sekmeler görünürken yaklaşık bir dakikada bir yeniler; sayfa açılışında veya sekmeye dönüldüğünde tekrar kontrol edilir.
 
-Seçenekler: Standart görünüm, Ramazan Bayramı, Kurban Bayramı, genel millî bayram, 23 Nisan, 19 Mayıs, 20 Temmuz (KKTC), 30 Ağustos, 29 Ekim ve 15 Kasım (KKTC). Dinî bayramlarda altın tonları; millî bayramlarda kırmızı vurgu ve ay-yıldızlı kutlama bandı kullanılır. Açık/koyu tema tercihi `theme` anahtarında bağımsız kalır. Standart görünüm yayınlandığında bayram bandı ve ek renkler tamamen kaldırılır.
+Bayram seçenekleri: Standart görünüm, Ramazan Bayramı, Kurban Bayramı, genel millî bayram, 23 Nisan, 19 Mayıs, 20 Temmuz (KKTC), 30 Ağustos, 29 Ekim ve 15 Kasım (KKTC). Dinî bayramlarda altın tonları; millî bayramlarda kırmızı vurgu ve ay-yıldızlı kutlama bandı kullanılır. Açık/koyu tema tercihi `theme` anahtarında bağımsız kalır. Standart görünüm yayınlandığında bayram bandı ve ek renkler tamamen kaldırılır.
 
-Konsept seçimi elle yapılır; otomatik takvim veya bitiş tarihi yoktur. Bayram sonrasında Standart görünümü yayınlayın. Konseptler CV/PDF çıktısında görünmez.
+Konsept seçimi elle yapılır; otomatik takvim veya bitiş tarihi yoktur. Özel gün sonrasında Standart görünümü yayınlayın. Konseptler CV/PDF çıktısında görünmez.
 
-Sayfa içi süslemeler de seçilen konsepti izler: millî bayramlarda ay-yıldızlı Türk bayrakları, 20 Temmuz ve 15 Kasım'da Türkiye–KKTC bayrakları birlikte; 23 Nisan'da renkli flamalar; 30 Ağustos'ta defne dallı yıldız; dinî bayramlarda kandiller, hilal ve geometrik motifler gösterilir. Bayrak dizisi üst kutunun altında, küçük mühür motifi sayfa sonunda yer alır. Yerel SVG çizimleri ağdan dosya indirmez, hareket etmez, tıklamaları engellemez, ekran okuyucudan ve yazdırma çıktısından gizlenir. Mobilde bayrak dizisinin ortası gösterilir; yatay kayma oluşturmaz. Önizleme ve iptal bu detayları da kapsar. Standart görünümde tamamı kaldırılır; ek SQL kurulumu gerekmez.
+### Anma günleri
+
+**Site Konsepti → Anma günleri** altında **10 Kasım · Atatürk’ü Anma**, **18 Mart · Şehitleri Anma** ve **Genel anma** seçenekleri bulunur. Anma konseptleri açık ve koyu temada sade gri tonları, siyah kurdele ve anma mesajları kullanır. 10 Kasım’da 1881–1938 ve 09.05, 18 Mart’ta 1915 vurgusu gösterilir. Önizleme, iptal, yayınlama ve üç sayfada ortak görünüm diğer konseptlerle aynı çalışır.
+
+**Mevcut kurulum için de [güncel SQL dosyasını](sql/site-concepts.sql) CV projesinin SQL Editor ekranında bir kez yeniden çalıştırın.** Eski veritabanı kısıtı yeni konsept kimliklerini kabul etmez. Güncel dosya bu kısıtı yeniler; seçili konsepti ve mevcut yetkilendirmeyi korur. Sonrasında panelden anma konseptini seçip **Konsepti Yayınla** düğmesini kullanın.
+
+Sayfa içi süslemeler de seçilen konsepti izler: millî bayramlarda ay-yıldızlı Türk bayrakları, 20 Temmuz ve 15 Kasım'da Türkiye–KKTC bayrakları birlikte; 23 Nisan'da renkli flamalar; 30 Ağustos'ta defne dallı yıldız; dinî bayramlarda kandiller, hilal ve geometrik motifler gösterilir. Bayrak dizisi üst kutunun altında, küçük mühür motifi sayfa sonunda yer alır. Yerel SVG çizimleri ağdan dosya indirmez, hareket etmez, tıklamaları engellemez, ekran okuyucudan ve yazdırma çıktısından gizlenir. Mobilde bayrak dizisinin ortası gösterilir; yatay kayma oluşturmaz. Önizleme ve iptal bu detayları da kapsar. Standart görünümde tamamı kaldırılır; bayram süslemeleri için ek SQL kurulumu gerekmez.
 
 ## Güvenlik ve veri yapısı
 

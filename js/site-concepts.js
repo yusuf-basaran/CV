@@ -1,4 +1,4 @@
-// Bayram konsepti tüm sayfalarda çalışır; Supabase SDK gerektirmez.
+// Bayram ve anma konseptleri tüm sayfalarda çalışır; Supabase SDK gerektirmez.
 (() => {
   'use strict';
   const PRESETS = Object.freeze([
@@ -11,7 +11,10 @@
     { id: 'july20', group: 'national', label: '20 Temmuz · KKTC', title: '20 Temmuz Barış ve Özgürlük Bayramımız kutlu olsun.', message: 'Barış, özgürlük ve dayanışma içinde nice yıllara.', family: 'national' },
     { id: 'august30', group: 'national', label: '30 Ağustos', title: '30 Ağustos Zafer Bayramımız kutlu olsun.', message: 'Bağımsızlığımızı ve ortak geleceğimizi gururla kutluyoruz.', family: 'national' },
     { id: 'october29', group: 'national', label: '29 Ekim', title: '29 Ekim Cumhuriyet Bayramımız kutlu olsun.', message: 'Cumhuriyetimizin ışığında nice güzel yarınlara.', family: 'national' },
-    { id: 'november15', group: 'national', label: '15 Kasım · KKTC', title: '15 Kasım KKTC Cumhuriyet Bayramı kutlu olsun.', message: 'Birlik ve beraberlik içinde nice yıllara.', family: 'national' }
+    { id: 'november15', group: 'national', label: '15 Kasım · KKTC', title: '15 Kasım KKTC Cumhuriyet Bayramı kutlu olsun.', message: 'Birlik ve beraberlik içinde nice yıllara.', family: 'national' },
+    { id: 'memorial', group: 'remembrance', label: 'Genel anma', title: 'Saygı ve rahmetle anıyoruz.', message: 'Kaybettiklerimizin hatırasını saygıyla yaşatıyoruz.', family: 'remembrance' },
+    { id: 'november10', group: 'remembrance', label: '10 Kasım · Atatürk’ü Anma', title: 'Atatürk’ü saygı, sevgi ve özlemle anıyoruz.', message: '10 Kasım · 09.05 — Cumhuriyetimizin kurucusu Gazi Mustafa Kemal Atatürk’ün aziz hatırasına.', family: 'remembrance' },
+    { id: 'march18', group: 'remembrance', label: '18 Mart · Şehitleri Anma', title: 'Çanakkale şehitlerimizi saygı ve rahmetle anıyoruz.', message: '18 Mart Şehitleri Anma Günü ve Çanakkale Deniz Zaferi — Vatan uğruna hayatını kaybeden tüm kahramanlarımızın aziz hatırasına.', family: 'remembrance' }
   ]);
   const byId = new Map(PRESETS.map(preset => [preset.id, preset]));
   const CACHE_KEY = 'site-concept';
@@ -78,10 +81,21 @@
     };
   }
 
+  function remembranceArtwork(preset) {
+    const ribbon = '<path d="M-13-12C-23-43 23-43 13-12L-11 31l-3-12-12 1L3-15c8-14-8-14-6 0L26 20l-12-1-3 12Z" fill="#18181b" stroke="#a1a1aa" stroke-width="1.5" stroke-linejoin="round"/>';
+    const inscription = preset.id === 'november10' ? '1881 — 1938 · 09.05' : preset.id === 'march18' ? '18 MART · 1915' : 'SAYGIYLA ANIYORUZ';
+    return {
+      band: svg(`<path d="M100 56h230m300 0h230" stroke="currentColor" opacity=".2"/><text x="480" y="62" text-anchor="middle" fill="currentColor" font-family="sans-serif" font-size="16" letter-spacing="3">${inscription}</text>`),
+      symbol: svg(`<g transform="translate(45 43)">${ribbon}</g>`, '0 0 90 86'),
+      seal: svg(`<path d="M0 36h110m100 0h110" stroke="currentColor" opacity=".2"/><g transform="translate(160 36) scale(.7)">${ribbon}</g>`, '0 0 320 72')
+    };
+  }
+
   function renderArtwork(preset) {
     if (artworkPreset === preset.id) return;
     artworkPreset = preset.id;
-    const artwork = preset.family === 'national' ? nationalArtwork(preset) : religiousArtwork(preset);
+    const artwork = preset.family === 'remembrance' ? remembranceArtwork(preset)
+      : preset.family === 'national' ? nationalArtwork(preset) : religiousArtwork(preset);
     for (const [id, content] of [['occasionDecorations', artwork.band], ['occasionSymbol', artwork.symbol], ['occasionFooterMark', artwork.seal]]) {
       const element = document.getElementById(id);
       if (!element) continue;

@@ -1,6 +1,11 @@
 /* Seçili konsept mevcut açık/koyu tema değişkenlerini kullanır. */
 :root[data-occasion-family="religious"] { --accent: var(--brand); --accent-glow: rgba(245, 158, 11, 0.18); }
 :root[data-occasion-family="national"] { --accent: var(--danger); --accent-glow: rgba(239, 68, 68, 0.16); --brand: var(--danger); }
+:root[data-occasion-family="remembrance"] { --accent: #cbd5e1; --accent-glow: rgba(203, 213, 225, 0.1); --brand: #94a3b8; }
+:root[data-theme="light"][data-occasion-family="remembrance"] { --accent: #334155; --accent-glow: rgba(51, 65, 85, 0.08); --brand: #475569; }
+:root[data-occasion-family="remembrance"] body::before,
+:root[data-occasion-family="remembrance"] body::after { opacity: 0.05; }
+:root[data-occasion-family="remembrance"] .occasion-banner::after { display: none; }
 :root[data-occasion-family] .card:hover { border-color: var(--accent); }
 .occasion-banner[hidden], .concept-modal[hidden], .occasion-preview[hidden], .occasion-decorations[hidden], .occasion-footer-mark[hidden], .occasion-symbol[hidden] { display: none !important; }
 .occasion-banner {

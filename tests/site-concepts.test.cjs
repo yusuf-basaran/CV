@@ -68,3 +68,42 @@ test('SQL kısıtı, arayüzdeki tüm konseptleri kapsar', async () => {
   const values = sql.match(/check \(preset in \(([^)]+)\)\)/)[1].match(/'([^']+)'/g).map(value => value.slice(1, -1));
   assert.deepEqual(Array.from(concepts.presets, preset => preset.id), values);
 });
+
+test('Anma konseptleri sunucudan yüklenir ve kutlama süsleri yerine kurdele gösterir', async () => {
+  for (const id of ['memorial', 'november10', 'march18']) {
+    const { concepts, elements, document, storage } = await browserFixture(id);
+    assert.equal(concepts.state().ready, true);
+    assert.equal(document.documentElement.dataset.occasionFamily, 'remembrance');
+    assert.equal(document.documentElement.dataset.occasion, id);
+    assert.equal(elements.get('occasionBanner').hidden, false);
+    assert.match(elements.get('occasionTitle').textContent, /anıyoruz/);
+    assert.doesNotMatch(elements.get('occasionTitle').textContent, /kutlu/);
+    assert.match(elements.get('occasionSymbol').innerHTML, /#18181b/);
+    assert.doesNotMatch(elements.get('occasionDecorations').innerHTML, /data-occasion-flag/);
+    assert.equal(JSON.parse(storage.get('site-concept')).preset, id);
+    if (id === 'november10') {
+      assert.match(elements.get('occasionMessage').textContent, /09\.05/);
+      assert.match(elements.get('occasionDecorations').innerHTML, /1881 — 1938/);
+    }
+    concepts.acceptPublished('normal');
+    assert.equal(elements.get('occasionBanner').hidden, true);
+    assert.equal(elements.get('occasionSymbol').innerHTML, '');
+    assert.equal(document.documentElement.dataset.occasionFamily, undefined);
+  }
+});
+
+test('Bayramdan anma önizlemesine geçiş iptal edilir; yayınlanan anma sonraki okumada korunur', async () => {
+  const { concepts, elements, storage, document, remote } = await browserFixture('october29');
+  concepts.preview('november10');
+  assert.match(elements.get('occasionSymbol').innerHTML, /#18181b/);
+  assert.equal(JSON.parse(storage.get('site-concept')).preset, 'october29');
+  concepts.cancelPreview();
+  assert.equal(document.documentElement.dataset.occasionFamily, 'national');
+  assert.match(elements.get('occasionSymbol').innerHTML, /data-occasion-flag="tr"/);
+  concepts.acceptPublished('november10');
+  remote('november10');
+  await concepts.load();
+  assert.equal(concepts.state().preset, 'november10');
+  assert.equal(document.documentElement.dataset.occasionFamily, 'remembrance');
+  assert.equal(elements.get('occasionPreview').hidden, true);
+});

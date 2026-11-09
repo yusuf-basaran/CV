@@ -20,10 +20,17 @@ create table if not exists public.cv_site_concept_admins (
 
 create table if not exists public.cv_site_concept_settings (
   id smallint primary key default 1 check (id = 1),
-  preset text not null default 'normal'
-    check (preset in ('normal', 'ramazan', 'kurban', 'national', 'april23', 'may19', 'july20', 'august30', 'october29', 'november15')),
+  preset text not null default 'normal',
   updated_at timestamptz not null default now()
 );
+
+-- CREATE TABLE IF NOT EXISTS mevcut kısıtı güncellemez.
+-- Tekrar kurulumda seçili konsepti koruyarak yeni anma seçeneklerini aç.
+alter table public.cv_site_concept_settings
+  drop constraint if exists cv_site_concept_settings_preset_check;
+alter table public.cv_site_concept_settings
+  add constraint cv_site_concept_settings_preset_check
+  check (preset in ('normal', 'ramazan', 'kurban', 'national', 'april23', 'may19', 'july20', 'august30', 'october29', 'november15', 'memorial', 'november10', 'march18'));
 
 alter table public.cv_site_concept_admins enable row level security;
 alter table public.cv_site_concept_settings enable row level security;

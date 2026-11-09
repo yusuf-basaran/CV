@@ -20,7 +20,8 @@
   for (const group of [
     { id: 'normal', name: 'Standart' },
     { id: 'religious', name: 'Dinî bayramlar' },
-    { id: 'national', name: 'Millî bayramlar' }
+    { id: 'national', name: 'Millî bayramlar' },
+    { id: 'remembrance', name: 'Anma günleri' }
   ]) {
     const fieldset = document.createElement('fieldset');
     fieldset.className = 'concept-group';
@@ -56,7 +57,7 @@
     const preset = concepts.presets.find(item => item.id === selected);
     choices.forEach(input => { input.checked = input.value === selected; input.disabled = busy; });
     document.getElementById('conceptPreviewTitle').textContent = preset.title || 'Standart görünüm';
-    document.getElementById('conceptPreviewMessage').textContent = preset.message || 'Sitenin normal renkleri kullanılır; bayram mesajı gösterilmez.';
+    document.getElementById('conceptPreviewMessage').textContent = preset.message || 'Sitenin normal renkleri kullanılır; özel gün mesajı gösterilmez.';
     saveButton.disabled = busy || !authorized || !concepts.state().ready || selected === concepts.state().preset;
     saveButton.textContent = busy ? 'Yayınlanıyor…' : 'Konsepti Yayınla';
     reloadButton.disabled = busy;
