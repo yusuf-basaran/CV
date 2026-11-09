@@ -1,5 +1,8 @@
--- Supabase SQL Editor'da bir kez çalıştırın. Mevcut proje verileri değişmez.
--- Yetki yalnızca aşağıdaki e-postayla kayıtlı, doğrulanmış hesaba verilir.
+-- TAM KURULUM VE ETKİNLEŞTİRME: tamamını tek sorguda çalıştırın.
+-- Proje: hqauyhneidkjpchjhutb (CV).
+-- Yetki: yusufbasarann63@gmail.com ile kayıtlı, doğrulanmış yönetici hesabı.
+-- 75 özel günü / 79 panel seçeneğini destekler; otomatik takvimi hemen açar.
+-- Tekrar çalıştırılabilir. Projeleri, hesaplayıcıyı ve kullanıcıları silmez.
 begin;
 
 do $$
@@ -25,7 +28,7 @@ create table if not exists public.cv_site_concept_settings (
 );
 
 -- CREATE TABLE IF NOT EXISTS mevcut kısıtı güncellemez.
--- Tekrar kurulumda seçili konsepti koruyarak bütün yeni özel gün seçeneklerini aç.
+-- Bütün özel gün kimliklerini mevcut kurulumda da kullanılabilir yap.
 alter table public.cv_site_concept_settings
   drop constraint if exists cv_site_concept_settings_preset_check;
 alter table public.cv_site_concept_settings
@@ -48,10 +51,6 @@ select id from auth.users
 where lower(email) = lower('yusufbasarann63@gmail.com')
   and email_confirmed_at is not null
 on conflict (user_id) do nothing;
-
--- Tekrar çalıştırmak seçilmiş konsepti sıfırlamaz.
-insert into public.cv_site_concept_settings (id, preset)
-values (1, 'auto') on conflict (id) do nothing;
 
 drop policy if exists cv_concept_admin_self_read on public.cv_site_concept_admins;
 create policy cv_concept_admin_self_read on public.cv_site_concept_admins
@@ -96,8 +95,14 @@ create trigger cv_concept_updated_at
 before update on public.cv_site_concept_settings
 for each row execute function public.cv_concept_set_updated_at();
 
+-- Tek çalıştırmada etkinleştirme: varsa elle seçilmiş konsepti de otomatik takvime al.
+insert into public.cv_site_concept_settings (id, preset)
+values (1, 'auto')
+on conflict (id) do update set preset = excluded.preset;
+
 notify pgrst, 'reload schema';
 commit;
 
--- Sonuç auto veya daha önce seçtiğiniz konsept olmalı.
+-- Başarılı sonuç: id = 1, preset = auto.
+-- Panelden ayrıca yayınlama yapmanız gerekmez.
 select id, preset, updated_at from public.cv_site_concept_settings;
